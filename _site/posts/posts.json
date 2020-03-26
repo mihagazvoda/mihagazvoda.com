@@ -15,9 +15,61 @@
     "last_modified": "2020-03-26T02:28:04+01:00"
   },
   {
+    "path": "posts/2020-03-26-man-plans-god-laughs-the-planning-fallacy/",
+    "title": "Man Plans, God Laughs: The Planning Fallacy",
+    "description": "So you’re planning to read the whole article? Let’s see…",
+    "author": [
+      {
+        "name": "Miha Gazvoda",
+        "url": "https://mihagazvoda.com"
+      }
+    ],
+    "date": "2018-01-01",
+    "categories": [
+      "data-science"
+    ],
+    "preview": {},
+    "last_modified": "2020-03-26T22:24:18+01:00"
+  },
+  {
+    "path": "posts/2020-03-26-the-714-words-the-picture-cant-tell/",
+    "title": "The 714 words the picture can't tell",
+    "description": "I’m sorry, but the photo is private. Spoiler for friends: Instagram.",
+    "author": [
+      {
+        "name": "Miha Gazvoda",
+        "url": "https://mihagazvoda.com"
+      }
+    ],
+    "date": "2017-12-12",
+    "categories": [
+      "personal",
+      "this happened to me"
+    ],
+    "preview": {},
+    "last_modified": "2020-03-26T22:32:05+01:00"
+  },
+  {
+    "path": "posts/2020-03-26-how-i-built-my-first-memory-palace-in-15-minutes/",
+    "title": "How I built my first memory palace in 15 minutes",
+    "description": "And you can too.",
+    "author": [
+      {
+        "name": "Miha Gazvoda",
+        "url": "https://mihagazvoda.com"
+      }
+    ],
+    "date": "2017-07-29",
+    "categories": [
+      "personal"
+    ],
+    "preview": {},
+    "last_modified": "2020-03-26T22:06:23+01:00"
+  },
+  {
     "path": "posts/2020-03-26-my-phone-use-in-numbers-and-graphs/",
     "title": "My phone use in numbers and graphs",
-    "description": "Insights and visualizations from Moment app data",
+    "description": "\"Insights and visualizations from Moment app data\"",
     "author": [
       {
         "name": "Miha Gazvoda",
@@ -29,12 +81,12 @@
       "data science"
     ],
     "preview": {},
-    "last_modified": "2020-03-26T02:24:06+01:00"
+    "last_modified": "2020-03-26T21:37:20+01:00"
   },
   {
     "path": "posts/2020-03-26-monument-to-erasmus/",
     "title": "Monument to Erasmus",
-    "description": {},
+    "description": "\"Description for Monument to Erasmus\"",
     "author": [
       {
         "name": "Miha Gazvoda",
@@ -43,9 +95,9 @@
     ],
     "date": "2017-03-01",
     "categories": [
-      "life"
+      "personal"
     ],
     "preview": {},
-    "last_modified": "2020-03-26T02:19:06+01:00"
+    "last_modified": "2020-03-26T21:41:13+01:00"
   }
 ]

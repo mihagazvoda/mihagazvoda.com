@@ -19,369 +19,39 @@
  <!--/radix_placeholder_import_source-->
 
   <!--radix_placeholder_meta_tags-->
-  <title>Reproducible Finance with R: About this blog</title>
+  <title>Man Plans, God Laughs: The Planning Fallacy</title>
   
-  <meta property="description" itemprop="description" content="Some additional details about the blog"/>
+  <meta property="description" itemprop="description" content="So you’re planning to read the whole article? Let’s see…"/>
   
   
+  <!--  https://schema.org/Article -->
+  <meta property="article:published" itemprop="datePublished" content="2018-01-01"/>
+  <meta property="article:created" itemprop="dateCreated" content="2018-01-01"/>
+  <meta name="article:author" content="Miha Gazvoda"/>
   
   <!--  https://developers.facebook.com/docs/sharing/webmasters#markup -->
-  <meta property="og:title" content="Reproducible Finance with R: About this blog"/>
+  <meta property="og:title" content="Man Plans, God Laughs: The Planning Fallacy"/>
   <meta property="og:type" content="article"/>
-  <meta property="og:description" content="Some additional details about the blog"/>
+  <meta property="og:description" content="So you’re planning to read the whole article? Let’s see…"/>
   <meta property="og:locale" content="en_US"/>
-  <meta property="og:site_name" content="Reproducible Finance with R"/>
   
   <!--  https://dev.twitter.com/cards/types/summary -->
   <meta property="twitter:card" content="summary"/>
-  <meta property="twitter:title" content="Reproducible Finance with R: About this blog"/>
-  <meta property="twitter:description" content="Some additional details about the blog"/>
+  <meta property="twitter:title" content="Man Plans, God Laughs: The Planning Fallacy"/>
+  <meta property="twitter:description" content="So you’re planning to read the whole article? Let’s see…"/>
   
   <!--/radix_placeholder_meta_tags-->
   <!--radix_placeholder_rmarkdown_metadata-->
   
   <script type="text/json" id="radix-rmarkdown-metadata">
-  {"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","description"]}},"value":[{"type":"character","attributes":{},"value":["About this blog"]},{"type":"character","attributes":{},"value":["Some additional details about the blog"]}]}
+  {"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","description","categories","author","date","output"]}},"value":[{"type":"character","attributes":{},"value":["Man Plans, God Laughs: The Planning Fallacy"]},{"type":"character","attributes":{},"value":["So you’re planning to read the whole article? Let’s see…\n"]},{"type":"character","attributes":{},"value":["data-science"]},{"type":"list","attributes":{},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","url"]}},"value":[{"type":"character","attributes":{},"value":["Miha Gazvoda"]},{"type":"character","attributes":{},"value":["https://mihagazvoda.com"]}]}]},{"type":"character","attributes":{},"value":["2018-01-01"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["distill::distill_article"]}},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["self_contained"]}},"value":[{"type":"logical","attributes":{},"value":[false]}]}]}]}
   </script>
   <!--/radix_placeholder_rmarkdown_metadata-->
-  <!--radix_placeholder_navigation_in_header-->
   
-  <script type="application/javascript">
-  
-    window.headroom_prevent_pin = false;
-  
-    window.document.addEventListener("DOMContentLoaded", function (event) {
-  
-      // initialize headroom for banner
-      var header = $('header').get(0);
-      var headerHeight = header.offsetHeight;
-      var headroom = new Headroom(header, {
-        onPin : function() {
-          if (window.headroom_prevent_pin) {
-            window.headroom_prevent_pin = false;
-            headroom.unpin();
-          }
-        }
-      });
-      headroom.init();
-      if(window.location.hash)
-        headroom.unpin();
-      $(header).addClass('headroom--transition');
-  
-      // offset scroll location for banner on hash change
-      // (see: https://github.com/WickyNilliams/headroom.js/issues/38)
-      window.addEventListener("hashchange", function(event) {
-        window.scrollTo(0, window.pageYOffset - (headerHeight + 25));
-      });
-  
-      // responsive menu
-      $('.distill-site-header').each(function(i, val) {
-        var topnav = $(this);
-        var toggle = topnav.find('.nav-toggle');
-        toggle.on('click', function() {
-          topnav.toggleClass('responsive');
-        });
-      });
-  
-      // nav dropdowns
-      $('.nav-dropbtn').click(function(e) {
-        $(this).next('.nav-dropdown-content').toggleClass('nav-dropdown-active');
-        $(this).parent().siblings('.nav-dropdown')
-           .children('.nav-dropdown-content').removeClass('nav-dropdown-active');
-      });
-      $("body").click(function(e){
-        $('.nav-dropdown-content').removeClass('nav-dropdown-active');
-      });
-      $(".nav-dropdown").click(function(e){
-        e.stopPropagation();
-      });
-    });
+  <script type="text/json" id="radix-resource-manifest">
+  {"type":"character","attributes":{},"value":["man-plans-god-laughs-the-planning-fallacy_files/bowser-1.9.3/bowser.min.js","man-plans-god-laughs-the-planning-fallacy_files/distill-2.2.21/template.v2.js","man-plans-god-laughs-the-planning-fallacy_files/jquery-1.11.3/jquery.min.js","man-plans-god-laughs-the-planning-fallacy_files/webcomponents-2.0.0/webcomponents.js"]}
   </script>
-  
-  <style type="text/css">
-  
-  /* Theme (user-documented overrideables for nav appearance) */
-  
-  .distill-site-nav {
-    color: rgba(255, 255, 255, 0.8);
-    background-color: #455a64;
-    font-size: 15px;
-    font-weight: 300;
-  }
-  
-  .distill-site-nav a {
-    color: inherit;
-    text-decoration: none;
-  }
-  
-  .distill-site-nav a:hover {
-    color: white;
-  }
-  
-  @media print {
-    .distill-site-nav {
-      display: none;
-    }
-  }
-  
-  .distill-site-header {
-  
-  }
-  
-  .distill-site-footer {
-  
-  }
-  
-  
-  /* Site Header */
-  
-  .distill-site-header {
-    width: 100%;
-    box-sizing: border-box;
-    z-index: 3;
-  }
-  
-  .distill-site-header .nav-left {
-    display: inline-block;
-    margin-left: 8px;
-  }
-  
-  @media screen and (max-width: 768px) {
-    .distill-site-header .nav-left {
-      margin-left: 0;
-    }
-  }
-  
-  
-  .distill-site-header .nav-right {
-    float: right;
-    margin-right: 8px;
-  }
-  
-  .distill-site-header a,
-  .distill-site-header .title {
-    display: inline-block;
-    text-align: center;
-    padding: 14px 10px 14px 10px;
-  }
-  
-  .distill-site-header .title {
-    font-size: 18px;
-  }
-  
-  .distill-site-header .logo {
-    padding: 0;
-  }
-  
-  .distill-site-header .logo img {
-    display: none;
-    max-height: 20px;
-    width: auto;
-    margin-bottom: -4px;
-  }
-  
-  .distill-site-header .nav-image img {
-    max-height: 18px;
-    width: auto;
-    display: inline-block;
-    margin-bottom: -3px;
-  }
-  
-  
-  
-  @media screen and (min-width: 1000px) {
-    .distill-site-header .logo img {
-      display: inline-block;
-    }
-    .distill-site-header .nav-left {
-      margin-left: 20px;
-    }
-    .distill-site-header .nav-right {
-      margin-right: 20px;
-    }
-    .distill-site-header .title {
-      padding-left: 12px;
-    }
-  }
-  
-  
-  .distill-site-header .nav-toggle {
-    display: none;
-  }
-  
-  .nav-dropdown {
-    display: inline-block;
-    position: relative;
-  }
-  
-  .nav-dropdown .nav-dropbtn {
-    border: none;
-    outline: none;
-    color: rgba(255, 255, 255, 0.8);
-    padding: 16px 10px;
-    background-color: transparent;
-    font-family: inherit;
-    font-size: inherit;
-    font-weight: inherit;
-    margin: 0;
-    margin-top: 1px;
-    z-index: 2;
-  }
-  
-  .nav-dropdown-content {
-    display: none;
-    position: absolute;
-    background-color: white;
-    min-width: 200px;
-    border: 1px solid rgba(0,0,0,0.15);
-    border-radius: 4px;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.1);
-    z-index: 1;
-    margin-top: 2px;
-    white-space: nowrap;
-    padding-top: 4px;
-    padding-bottom: 4px;
-  }
-  
-  .nav-dropdown-content hr {
-    margin-top: 4px;
-    margin-bottom: 4px;
-    border: none;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-  }
-  
-  .nav-dropdown-active {
-    display: block;
-  }
-  
-  .nav-dropdown-content a, .nav-dropdown-content .nav-dropdown-header {
-    color: black;
-    padding: 6px 24px;
-    text-decoration: none;
-    display: block;
-    text-align: left;
-  }
-  
-  .nav-dropdown-content .nav-dropdown-header {
-    display: block;
-    padding: 5px 24px;
-    padding-bottom: 0;
-    text-transform: uppercase;
-    font-size: 14px;
-    color: #999999;
-    white-space: nowrap;
-  }
-  
-  .nav-dropdown:hover .nav-dropbtn {
-    color: white;
-  }
-  
-  .nav-dropdown-content a:hover {
-    background-color: #ddd;
-    color: black;
-  }
-  
-  .nav-right .nav-dropdown-content {
-    margin-left: -45%;
-    right: 0;
-  }
-  
-  @media screen and (max-width: 768px) {
-    .distill-site-header a, .distill-site-header .nav-dropdown  {display: none;}
-    .distill-site-header a.nav-toggle {
-      float: right;
-      display: block;
-    }
-    .distill-site-header .title {
-      margin-left: 0;
-    }
-    .distill-site-header .nav-right {
-      margin-right: 0;
-    }
-    .distill-site-header {
-      overflow: hidden;
-    }
-    .nav-right .nav-dropdown-content {
-      margin-left: 0;
-    }
-  }
-  
-  
-  @media screen and (max-width: 768px) {
-    .distill-site-header.responsive {position: relative;}
-    .distill-site-header.responsive a.nav-toggle {
-      position: absolute;
-      right: 0;
-      top: 0;
-    }
-    .distill-site-header.responsive a,
-    .distill-site-header.responsive .nav-dropdown {
-      display: block;
-      text-align: left;
-    }
-    .distill-site-header.responsive .nav-left,
-    .distill-site-header.responsive .nav-right {
-      width: 100%;
-    }
-    .distill-site-header.responsive .nav-dropdown {float: none;}
-    .distill-site-header.responsive .nav-dropdown-content {position: relative;}
-    .distill-site-header.responsive .nav-dropdown .nav-dropbtn {
-      display: block;
-      width: 100%;
-      text-align: left;
-    }
-  }
-  
-  /* Site Footer */
-  
-  .distill-site-footer {
-    width: 100%;
-    overflow: hidden;
-    box-sizing: border-box;
-    z-index: 3;
-    margin-top: 30px;
-    padding-top: 30px;
-    padding-bottom: 30px;
-    text-align: center;
-  }
-  
-  /* Headroom */
-  
-  d-title {
-    padding-top: 6rem;
-  }
-  
-  @media print {
-    d-title {
-      padding-top: 4rem;
-    }
-  }
-  
-  .headroom {
-    z-index: 1000;
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-  }
-  
-  .headroom--transition {
-    transition: all .4s ease-in-out;
-  }
-  
-  .headroom--unpinned {
-    top: -100px;
-  }
-  
-  .headroom--pinned {
-    top: 0;
-  }
-  
-  </style>
-  
-  <link href="site_libs/font-awesome-5.1.0/css/all.css" rel="stylesheet"/>
-  <link href="site_libs/font-awesome-5.1.0/css/v4-shims.css" rel="stylesheet"/>
-  <script src="site_libs/headroom-0.9.4/headroom.min.js"></script>
+  <!--radix_placeholder_navigation_in_header-->
   <!--/radix_placeholder_navigation_in_header-->
   <!--radix_placeholder_distill-->
   
@@ -1257,10 +927,10 @@
   </script>
   
   <!--/radix_placeholder_distill-->
-  <script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
-  <script src="site_libs/bowser-1.9.3/bowser.min.js"></script>
-  <script src="site_libs/webcomponents-2.0.0/webcomponents.js"></script>
-  <script src="site_libs/distill-2.2.21/template.v2.js"></script>
+  <script src="man-plans-god-laughs-the-planning-fallacy_files/jquery-1.11.3/jquery.min.js"></script>
+  <script src="man-plans-god-laughs-the-planning-fallacy_files/bowser-1.9.3/bowser.min.js"></script>
+  <script src="man-plans-god-laughs-the-planning-fallacy_files/webcomponents-2.0.0/webcomponents.js"></script>
+  <script src="man-plans-god-laughs-the-planning-fallacy_files/distill-2.2.21/template.v2.js"></script>
   <!--radix_placeholder_site_in_header-->
   <!--/radix_placeholder_site_in_header-->
 
@@ -1272,42 +942,108 @@
 <!--radix_placeholder_front_matter-->
 
 <script id="distill-front-matter" type="text/json">
-{"title":"About this blog","description":"Some additional details about the blog","authors":[]}
+{"title":"Man Plans, God Laughs: The Planning Fallacy","description":"So you’re planning to read the whole article? Let’s see…","authors":[{"author":"Miha Gazvoda","authorURL":"https://mihagazvoda.com","affiliation":"&nbsp;","affiliationURL":"#"}],"publishedDate":"2018-01-01T00:00:00.000+01:00","citationText":"Gazvoda, 2018"}
 </script>
 
 <!--/radix_placeholder_front_matter-->
 <!--radix_placeholder_navigation_before_body-->
-<header class="header header--fixed" role="banner">
-<nav class="distill-site-nav distill-site-header">
-<div class="nav-left">
-<span class="logo">
-<img src="images/rstudio.png"/>
-</span>
-<a href="index.html" class="title">Reproducible Finance with R</a>
-</div>
-<div class="nav-right">
-<a href="index.html">Home</a>
-<a href="about.html">About</a>
-<a href="contributors.html">Contributors</a>
-<a href="index.xml">
-<i class="fa fa-rss"></i>
-</a>
-<a href="javascript:void(0);" class="nav-toggle">&#9776;</a>
-</div>
-</nav>
-</header>
 <!--/radix_placeholder_navigation_before_body-->
 <!--radix_placeholder_site_before_body-->
 <!--/radix_placeholder_site_before_body-->
 
 <div class="d-title">
-<h1>About this blog</h1>
-<p>Some additional details about the blog</p>
+<h1>Man Plans, God Laughs: The Planning Fallacy</h1>
+<p>So you’re planning to read the whole article? Let’s see…</p>
 </div>
 
+<div class="d-byline">
+  Miha Gazvoda <a href="https://mihagazvoda.com" class="uri">https://mihagazvoda.com</a> 
+  
+<br/>2018-01-01
+</div>
 
 <div class="d-article">
-
+<p>Once upon a time, there were a guy and a girl. They had a date in Sydney Opera House. She was late as usual — something unexpected had happened — she couldn’t immediately find one of her 100 makeup products. (Other times she couldn’t find the other ones, so it was always different with the same result.)</p>
+<figure>
+<img src="https://cdn-images-1.medium.com/max/2048/1*ZTOrHGPirEPzDSye5jdjGg.png" alt="by Jovana Đukić" /><figcaption>by <a href="https://www.instagram.com/jovanadukic/">Jovana Đukić</a></figcaption>
+</figure>
+<p>While he was waiting, he googled fun facts about the Opera to impress her. This was what he had found on <a href="https://en.wikipedia.org/wiki/Sydney_Opera_House#Completion_and_cost">Wikipedia</a>:</p>
+<blockquote>
+<h3 id="sydney-opera-house-was-originally-scheduled-for-four-years-with-a-budget-of-aus-7-million.-it-ended-up-taking-14-years-to-be-completed-and-cost-aus-102-million.">“Sydney Opera House was originally scheduled for four years, with a budget of AUS $7 million. It ended up taking 14 years to be completed and cost AUS $102 million.”</h3>
+</blockquote>
+<p>“That’s so cool!” he thought. She said the same after hearing it. They have used the same phrase in the following months a lot, so they decided to get married. (She liked his fun facts and he liked her for being late — so he had enough time to find them.)</p>
+<p>His stubborn mother who had divorced his father warned him that there’s a 33% to 50% chance of them getting a divorce. “Not us, mother. We love each other very much.” “Sure, because your father and I got married out of hatred.”</p>
+<p>They had gotten married anyway and had done better than some marriages.</p>
+<blockquote>
+<h3 id="nothing-will-ever-separate-us.-we-will-probably-be-married-another-ten-years.-elizabeth-taylor-five-days-before-she-and-richard-burton-announced-their-divorce">“Nothing will ever separate us. We will probably be married another ten years.” — Elizabeth Taylor, five days before she and Richard Burton announced their divorce</h3>
+</blockquote>
+<p>But worse than most marriages. To be exact, worse than 67% to 50% of them.</p>
+<p>The wedding present she got was a box w %&gt;% here she could store her makeup. As a result, she stopped being late; so the guy didn’t have time to find the fun facts. And who wants to be in a marriage where the best fun fact is the prediction of your divorce?</p>
+<p>“Not me!” she grabbed the box and threw it on the floor. Both the box and the marriage fell apart that day.</p>
+<h2 id="the-planning-fallacy">The Planning Fallacy</h2>
+<p>People are late, projects cost millions instead of thousands, wars take years instead of months, and why my mom always comes home with a bag full of groceries, no matter what she intended to buy? It’s the planning fallacy!</p>
+<p>The concept of the planning fallacy was first introduced by Nobel Laureate Daniel Kahneman and his colleague Amos Tversky. It describes overly optimistic plans and forecasts that</p>
+<ul>
+<li><p>are unrealistically close to best-case scenarios</p></li>
+<li><p>could be improved by consulting the statistics of similar cases.</p></li>
+</ul>
+<figure>
+<img src="https://cdn-images-1.medium.com/max/2266/1*OmbvM1wGHVpCFf6S2vQUrw.png" alt="by Jovana Đukić" /><figcaption>by <a href="https://www.instagram.com/jovanadukic/">Jovana Đukić</a></figcaption>
+</figure>
+<p>In his book, <a href="https://www.goodreads.com/book/show/11468377-thinking-fast-and-slow">Thinking, Fast and Slow</a>, Kahneman describes the following forecasting story. He and his colleagues were designing a textbook to teach judgment and decision making in high school. After meeting once a week for a year, they’ve already made some progress: wrote a couple of chapters, constructed an outline of a syllabus and had run a few sample lessons.</p>
+<p>They were just discussing how to estimate uncertain quantities, so Kahneman proposed that everyone wrote down their estimates of duration before finishing the textbook. The results were centered around two years.</p>
+<p>Then Kahneman turned to the curriculum expert (both estimated the same as others) and asked him: “How long does it usually take to construct a curriculum?”</p>
+<p>“Seven to ten years. Not to mention almost half of the groups gave up before,” he replied.</p>
+<p>Kahneman dug further: “How good are we compared to other groups?”</p>
+<p>“Slightly below the average,” said the curriculum expert. A moment later, he raised his eyebrows, realizing the contradiction in his estimates. How can below average group outpace others by more than three years?</p>
+<p>It can, but it’s foolish assuming it will.</p>
+<p>The difference occurred because he used two different planning strategies. When writing down his estimate, he searched for information <em>inside</em> his mind, trying to envision the future. Later, with Kahneman’s help, he based the prediction on the statistics of similar situations from the <em>outside</em> world.</p>
+<h2 id="the-inside-view">The Inside View</h2>
+<p>It’s a strategy where the group members wrote down their estimates. The strategy focuses on our specific circumstances and searches for evidence in our experiences. It’s extrapolating — assuming that existing trends will continue. There’s one problem:</p>
+<blockquote>
+<h3 id="the-future-aint-what-it-used-to-be.-yogi-berra">“The future ain’t what it used to be.“ — Yogi Berra</h3>
+</blockquote>
+<p>“The reason for that [too optimistic forecasts] is that we underestimate uncertainty by compressing the range of possible uncertain states (by reducing the space of the unknown),” explains <a href="undefined">Nassim Nicholas Taleb</a> in his bestseller <a href="https://www.goodreads.com/book/show/242472.The_Black_Swan">The Black Swan</a>. In other words, we underestimate what we don’t know. In Kahneman’s situation, these could be more complex chapters, illnesses, bureaucracy problems… Hundreds of things one cannot even imagine.</p>
+<blockquote>
+<h3 id="unexpected-always-pushes-in-a-single-direction-higher-costs-and-a-longer-time-to-completion.-nassim-nicholas-taleb">“Unexpected always pushes in a single direction: higher costs and a longer time to completion.” — Nassim Nicholas Taleb</h3>
+</blockquote>
+<p>The longer, more complex and unique the task is, the harder the prediction. Think about the most basic one, getting up out of a chair. You can predict when you are going to stand up in case you don’t want to sit anymore — except if your friends like to play pranks with a glue.</p>
+<p>On the opposite side, there are wars. Each war has its own properties: people, terrain, weather, tactics, technologies. They usually last multiple years (although predicted less). And more time means more opportunities for unexpected to struck. Would Japan attack the USA if they could predict their development of the nuclear weapons?</p>
+<p>Even nowadays war predictions fail miserably. The Bush administration underestimated Iraq War expenses by more than 30-fold; current expenses are around $2 trillion (initial $60 billion) and growing.</p>
+<p>If there’s a lesson to be learned from the inside view, it’s Hofstadter’s Law:</p>
+<blockquote>
+<h3 id="it-always-takes-longer-than-you-expect-even-if-you-take-hofstadters-law-into-account.-douglas-hofstadter">“It always takes longer than you expect, even if you take Hofstadter’s Law into account.“ — Douglas Hofstadter</h3>
+</blockquote>
+<h2 id="the-outside-view">The Outside View</h2>
+<p>Using statistical information from the similar projects is the cure to the planning fallacy. On average, you will face the same amount of unexpected troubles as other people.</p>
+<p>The method called reference class forecasting was proposed by <a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=2238013">Flyvbjerg</a>. It contains three steps to which I added the practical examples from Kahnemann’s story:</p>
+<ol type="1">
+<li><p><strong>Identify an appropriate reference class</strong>: other curriculum projects.</p></li>
+<li><p><strong>Obtain the statistics of the reference class and generate a baseline prediction</strong>: 7 to 10 years and 40% failure rate.</p></li>
+<li><p><strong>Use specific information about the case to adjust the baseline prediction</strong>: is there any evidence that our group is better/worse than others?</p></li>
+</ol>
+<p>Kahneman’s group finished the project in eight years, close to the fastest ones. In those years, many things have changed: he wasn’t part of the group anymore and there wasn’t much interest in teaching decision making. The textbook has never made it to the schools’ benches.</p>
+<p>In some cases, we already use the outside view to some extent. Think about lifespan prediction. It’s typical to use the average lifespan and add or subtract a couple of years based on the lifestyle, genetics and health situation. One doesn’t look at their own experience and declare: “I’m feeling well and I haven’t died yet, based on this evidence I’m going to live forever.”</p>
+<figure>
+<img src="https://cdn-images-1.medium.com/max/2048/1*s3P9zzHPpzOfM8YeDkgK-Q.png" alt="by Jovana Đukić" /><figcaption>by <a href="https://www.instagram.com/jovanadukic/">Jovana Đukić</a></figcaption>
+</figure>
+<h2 id="the-optimism-bias">The Optimism Bias</h2>
+<p>There’s one more bias responsible for the planning fallacy; the optimism bias. It’s summarized in the following quote:</p>
+<blockquote>
+<h3 id="most-of-us-view-the-world-as-more-benign-than-it-really-is-our-own-attributes-as-more-favorable-than-they-truly-are-and-the-goals-we-adopt-as-more-achievable-than-they-likely-to-be.-daniel-kahneman">“Most of us view the world as more benign than it really is, our own attributes as more favorable than they truly are, and the goals we adopt as more achievable than they likely to be.” — Daniel Kahneman</h3>
+</blockquote>
+<p>We perceive events asymmetrically. We attribute successes to our skills and our failures to bad luck. But only for ourselves and people closely related to us, not the other human beings — this creates <a href="https://en.wikipedia.org/wiki/Illusory_superiority">illusory superiority</a>.</p>
+<p><a href="https://80000hours.org/2012/11/do-you-think-you-re-better-than-average/#fn:4">Researchers</a> found out that 90% of drivers think they are better than the average driver, and most students think they are more intelligent than the average student. Following this logic, why wouldn’t we be the ones who will succeed?</p>
+<p>Because everyone thinks they’re a little special but that makes no one special.</p>
+<blockquote>
+<h3 id="have-you-ever-noticed-that-anybody-driving-slower-than-you-is-an-idiot-and-anyone-going-faster-than-you-is-a-maniac-george-carlin">“Have you ever noticed that anybody driving slower than you is an idiot, and anyone going faster than you is a maniac?” — George Carlin</h3>
+</blockquote>
+<p>The newly single guy went out for a beer to cure his broken heart. He wanted to gain back his optimism (bias, but he wouldn’t admit that). When he switched to shots, he overshot. Instead of optimism about the future, he gained sorrow for the past. The phone was in his hands before friends could stop him (they were busy checking their phones).</p>
+<p>“i miz u;D” was the message which started to glue together the broken marriage. (She was asleep so she didn’t respond immediately — and we all know who liked to wait.)</p>
+<p>However, they didn’t need to glue together the makeup box. He bought it as a sign of their reborn love — it was the thing that made her say ‘that’s so cool’ again.</p>
+<p>And in their case, ‘oh, so cool’ wasn’t far away from saying ‘I do’.</p>
+<p>They planned, God laughed.</p>
+<p><em>Originally published in <a href="https://issuu.com/newedgemagazine/docs/newedge_09">New Edge</a> on December 29, 2017.</em></p>
 <!--radix_placeholder_article_footer-->
 <!--/radix_placeholder_article_footer-->
 </div>

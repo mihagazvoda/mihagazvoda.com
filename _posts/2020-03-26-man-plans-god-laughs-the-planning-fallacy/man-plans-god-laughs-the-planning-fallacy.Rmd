@@ -1,0 +1,135 @@
+---
+title: "Man Plans, God Laughs: The Planning Fallacy"
+description: |
+  So you’re planning to read the whole article? Let’s see…
+categories:
+  - data-science
+author:
+  - name: Miha Gazvoda
+    url: https://mihagazvoda.com
+date: 2018-01-01
+output:
+  distill::distill_article:
+    self_contained: false
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+Once upon a time, there were a guy and a girl. They had a date in Sydney Opera House. She was late as usual — something unexpected had happened — she couldn’t immediately find one of her 100 makeup products. (Other times she couldn’t find the other ones, so it was always different with the same result.)
+
+![by [Jovana Đukić](https://www.instagram.com/jovanadukic/)](https://cdn-images-1.medium.com/max/2048/1*ZTOrHGPirEPzDSye5jdjGg.png)
+
+While he was waiting, he googled fun facts about the Opera to impress her. This was what he had found on [Wikipedia](https://en.wikipedia.org/wiki/Sydney_Opera_House#Completion_and_cost):
+
+> ### “Sydney Opera House was originally scheduled for four years, with a budget of AUS $7 million. It ended up taking 14 years to be completed and cost AUS $102 million.”
+
+“That’s so cool!” he thought. She said the same after hearing it. They have used the same phrase in the following months a lot, so they decided to get married. (She liked his fun facts and he liked her for being late — so he had enough time to find them.)
+
+His stubborn mother who had divorced his father warned him that there’s a 33% to 50% chance of them getting a divorce. “Not us, mother. We love each other very much.” “Sure, because your father and I got married out of hatred.”
+
+They had gotten married anyway and had done better than some marriages.
+
+> ### “Nothing will ever separate us. We will probably be married another ten years.” — Elizabeth Taylor, five days before she and Richard Burton announced their divorce
+
+But worse than most marriages. To be exact, worse than 67% to 50% of them.
+
+The wedding present she got was a box w %>% here she could store her makeup. As a result, she stopped being late; so the guy didn’t have time to find the fun facts. And who wants to be in a marriage where the best fun fact is the prediction of your divorce?
+
+“Not me!” she grabbed the box and threw it on the floor. Both the box and the marriage fell apart that day.
+
+## The Planning Fallacy
+
+People are late, projects cost millions instead of thousands, wars take years instead of months, and why my mom always comes home with a bag full of groceries, no matter what she intended to buy? It’s the planning fallacy!
+
+The concept of the planning fallacy was first introduced by Nobel Laureate Daniel Kahneman and his colleague Amos Tversky. It describes overly optimistic plans and forecasts that
+
+* are unrealistically close to best-case scenarios
+
+* could be improved by consulting the statistics of similar cases.
+
+![by [Jovana Đukić](https://www.instagram.com/jovanadukic/)](https://cdn-images-1.medium.com/max/2266/1*OmbvM1wGHVpCFf6S2vQUrw.png)
+
+In his book, [Thinking, Fast and Slow](https://www.goodreads.com/book/show/11468377-thinking-fast-and-slow), Kahneman describes the following forecasting story. He and his colleagues were designing a textbook to teach judgment and decision making in high school. After meeting once a week for a year, they’ve already made some progress: wrote a couple of chapters, constructed an outline of a syllabus and had run a few sample lessons.
+
+They were just discussing how to estimate uncertain quantities, so Kahneman proposed that everyone wrote down their estimates of duration before finishing the textbook. The results were centered around two years.
+
+Then Kahneman turned to the curriculum expert (both estimated the same as others) and asked him: “How long does it usually take to construct a curriculum?”
+
+“Seven to ten years. Not to mention almost half of the groups gave up before,” he replied.
+
+Kahneman dug further: “How good are we compared to other groups?”
+
+“Slightly below the average,” said the curriculum expert. A moment later, he raised his eyebrows, realizing the contradiction in his estimates. How can below average group outpace others by more than three years?
+
+It can, but it’s foolish assuming it will.
+
+The difference occurred because he used two different planning strategies. When writing down his estimate, he searched for information *inside* his mind, trying to envision the future. Later, with Kahneman’s help, he based the prediction on the statistics of similar situations from the *outside* world.
+
+## The Inside View
+
+It’s a strategy where the group members wrote down their estimates. The strategy focuses on our specific circumstances and searches for evidence in our experiences. It’s extrapolating — assuming that existing trends will continue. There’s one problem:
+
+> ### “The future ain’t what it used to be.“ — Yogi Berra
+
+“The reason for that [too optimistic forecasts] is that we underestimate uncertainty by compressing the range of possible uncertain states (by reducing the space of the unknown),” explains [Nassim Nicholas Taleb](undefined) in his bestseller [The Black Swan](https://www.goodreads.com/book/show/242472.The_Black_Swan). In other words, we underestimate what we don’t know. In Kahneman’s situation, these could be more complex chapters, illnesses, bureaucracy problems… Hundreds of things one cannot even imagine.
+
+> ### “Unexpected always pushes in a single direction: higher costs and a longer time to completion.” — Nassim Nicholas Taleb
+
+The longer, more complex and unique the task is, the harder the prediction. Think about the most basic one, getting up out of a chair. You can predict when you are going to stand up in case you don’t want to sit anymore — except if your friends like to play pranks with a glue.
+
+On the opposite side, there are wars. Each war has its own properties: people, terrain, weather, tactics, technologies. They usually last multiple years (although predicted less). And more time means more opportunities for unexpected to struck. Would Japan attack the USA if they could predict their development of the nuclear weapons?
+
+Even nowadays war predictions fail miserably. The Bush administration underestimated Iraq War expenses by more than 30-fold; current expenses are around $2 trillion (initial $60 billion) and growing.
+
+If there’s a lesson to be learned from the inside view, it’s Hofstadter’s Law:
+
+> ### “It always takes longer than you expect, even if you take Hofstadter’s Law into account.“ — Douglas Hofstadter
+
+## The Outside View
+
+Using statistical information from the similar projects is the cure to the planning fallacy. On average, you will face the same amount of unexpected troubles as other people.
+
+The method called reference class forecasting was proposed by [Flyvbjerg](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=2238013). It contains three steps to which I added the practical examples from Kahnemann’s story:
+
+ 1. **Identify an appropriate reference class**: other curriculum projects.
+
+ 2. **Obtain the statistics of the reference class and generate a baseline prediction**: 7 to 10 years and 40% failure rate.
+
+ 3. **Use specific information about the case to adjust the baseline prediction**: is there any evidence that our group is better/worse than others?
+
+Kahneman’s group finished the project in eight years, close to the fastest ones. In those years, many things have changed: he wasn’t part of the group anymore and there wasn’t much interest in teaching decision making. The textbook has never made it to the schools’ benches.
+
+In some cases, we already use the outside view to some extent. Think about lifespan prediction. It’s typical to use the average lifespan and add or subtract a couple of years based on the lifestyle, genetics and health situation. One doesn’t look at their own experience and declare: “I’m feeling well and I haven’t died yet, based on this evidence I’m going to live forever.”
+
+![by [Jovana Đukić](https://www.instagram.com/jovanadukic/)](https://cdn-images-1.medium.com/max/2048/1*s3P9zzHPpzOfM8YeDkgK-Q.png)
+
+## The Optimism Bias
+
+There’s one more bias responsible for the planning fallacy; the optimism bias. It’s summarized in the following quote:
+
+> ### “Most of us view the world as more benign than it really is, our own attributes as more favorable than they truly are, and the goals we adopt as more achievable than they likely to be.” — Daniel Kahneman
+
+We perceive events asymmetrically. We attribute successes to our skills and our failures to bad luck. But only for ourselves and people closely related to us, not the other human beings — this creates [illusory superiority](https://en.wikipedia.org/wiki/Illusory_superiority).
+
+[Researchers](https://80000hours.org/2012/11/do-you-think-you-re-better-than-average/#fn:4) found out that 90% of drivers think they are better than the average driver, and most students think they are more intelligent than the average student. Following this logic, why wouldn’t we be the ones who will succeed?
+
+Because everyone thinks they’re a little special but that makes no one special.
+
+> ### “Have you ever noticed that anybody driving slower than you is an idiot, and anyone going faster than you is a maniac?” — George Carlin
+
+The newly single guy went out for a beer to cure his broken heart. He wanted to gain back his optimism (bias, but he wouldn’t admit that). When he switched to shots, he overshot. Instead of optimism about the future, he gained sorrow for the past. The phone was in his hands before friends could stop him (they were busy checking their phones).
+
+“i miz u;D” was the message which started to glue together the broken marriage. (She was asleep so she didn’t respond immediately — and we all know who liked to wait.)
+
+However, they didn’t need to glue together the makeup box. He bought it as a sign of their reborn love — it was the thing that made her say ‘that’s so cool’ again.
+
+And in their case, ‘oh, so cool’ wasn’t far away from saying ‘I do’.
+
+They planned, God laughed.
+
+*Originally published in [New Edge](https://issuu.com/newedgemagazine/docs/newedge_09) on December 29, 2017.*
+
+
+

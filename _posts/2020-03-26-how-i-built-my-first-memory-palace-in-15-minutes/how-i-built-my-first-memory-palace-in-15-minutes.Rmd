@@ -1,0 +1,76 @@
+---
+title: "How I built my first memory palace in 15 minutes"
+description: |
+  And you can too.
+categories: 
+  - personal 
+author:
+  - name: Miha Gazvoda
+    url: https://mihagazvoda.com
+date: 2017-07-29
+output:
+  distill::distill_article:
+    self_contained: false
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+*I’m just like you. First, I have no special memory. Second, I have doubts about its usefulness in today’s world. So, what’s the reason I did it? To see if I can. And the time used wasn’t too big of a cost — fifteen minutes — for 16 items on an imaginary to-do list.*
+
+![“Get out. I need to go to my mind palace.” — Sherlock (and me before taking a nap). [Image credit](https://static1.squarespace.com/static/5244f082e4b04206b983cf1e/524cf4d7e4b088674ffc35a4/56a13ed7fd5d084fb715fed5/1453408385339/?format=1500w).](https://cdn-images-1.medium.com/max/2668/1*JpfDC29ty8EQgps0ELRQLQ.png)
+
+For the past few days, I’ve been reading Joshua Foer’s book [Moonwalking with Einstein: The Art and Science of Remembering Everything](https://www.goodreads.com/book/show/6346975-moonwalking-with-einstein?ac=1&from_search=true). The book describes the author’s one-year path on becoming the USA Memory Champion. During his first step into the craft of memory (also called mnemonics) he built a simple [memory palace](https://en.wikipedia.org/wiki/Method_of_loci). Following his instructions I also built mine. That’s how I did it.
+
+## Our memories are from prehistorical times.
+
+Our memories weren’t shaped in the environment like today’s. Hunter-gatherers didn’t need to remember all these abstract definitions from school. But they did have to remember where to find food, how to get home from the hunt, which plants and animals are dangerous — spatial and visual things.
+
+We can describe why our memories sometimes work exceptionally well and other times badly [Baker/baker paradox](http://people.westminstercollege.edu/students/jrr0301/PDF_texts/Cohen.pdf). In this study, researchers have figured out that it’s easier to remember baker (the profession) than Baker (the surname). That’s because baker creates way more associations (white clothes and a hat, bread, oven, nice smell) than the Baker surname, which only creates a connection (usually too weak to recall it) to the person’s face. Joshua described a trick to better memorization in his [TEDx talk](https://www.ted.com/talks/joshua_foer_feats_of_memory_anyone_can_do):
+
+> "The entire art of what is going on in these memory contests, and the entire art of remembering stuff better in everyday life, is figuring out ways to transform capital B Bakers into lower-case B bakers — to take information that is lacking in context, in significance, in meaning, and transform it in some way, so that it becomes meaningful in the light of all the other things that you have in your mind."
+
+The goal of a memory palace is to translate whatever you have to remember in colorful, vivid, attention-grabbing images or scenes which you put on the familiar route. The first time that’s usually the route trough your home.
+
+![Excuse me, Sherlock. I think you forgot the memory palace on your head. ([Image credit](https://www.pinterest.com/pin/461689399271193499/).)](https://cdn-images-1.medium.com/max/2000/0*RXwMjtpe3SVUtk_V.)
+
+My imaginary to-do list is almost the same as the one from the book. It has some changes during the author’s building of the palace because sometimes it wasn’t clear to me which items he wants to memorize.
+
+The items on my list are pickled garlic, cottage cheese, Claudia Schiffer, salmon, 6 bottles of white wine, 3 pairs of socks, 3 hula-hoops, snorkel, ice, e-mail to Sophie, catsuit, Paul Newman, elk, dictaphone, rope, barometer.
+
+That’s how I put them into my memory palace.
+
+## My house has never been so fun before.
+
+My memory palace is my parents’ house. I start on the backyard, right beside the mailbox. I check the mail and find a glass of *pickled garlic*. Instead of the main door, there’s a box of *cottage cheese*. I pull it out, open it, and find *Claudia Schiffer* sunbathing in there. Next, I walk into the garage. There’s huge half alive *salmon* lying on the table. Then *six bottles of white wine stand *in the pantry. (Foer advises to spice them up with different personalities, that way they are easier to memorize.) *Three pairs of *(smelly) *socks* are getting dry hanging on the bicycle in the next room. When I walk to the next floor, there are *three* ladies *hula-hooping* on the stairs. Of course, I made them look hot, so they stick in the memory easier. In the kitchen, my brother is trying to dive in the sink. I block his *snorkel* and laugh at him when he goes out of breath. I open the freezer and a mountain of *ice* cubes falls down on me. On the window shelf, there is a book Sophie’s World with the phone on the top of it; send an *e-mail to Sophie*. On the first shelf, there’s a dancing lady (again hot) in a *catsuit*. On the television, there’s man inside the shopping bag so he’s supposed to be a new man: *Paul* *Newman* (You can do better than this.). There’s an *elk* on the second shelf. My father is marching on the tea table and shouting to the *dictaphone*. A climber is using a *rope* to climb on the picture hanging on the wall. Finally, I come to the thermometer but there is a bar in front of it, so it’s actually *barometer*.  
+
+> ### It doesn’t seem so hard, huh? What are you waiting for?
+
+## Remembering numbers is not so easy — but also not so hard.
+
+Words describing physical objects, like items on a shopping list, are easiest to put into the context — therefore, to remember. Way harder are abstract notions. How to put a complex verse of, for example, Shakespeare, into the memory palace? There’s no easy straightforward answer. However, there are some well-established systems for remembering numbers.
+
+The elementary one is called [Major System](http://major-system.info/en/) which “is based on the substitution of digits with sounds”. Those sounds combine into images for the memory palace. For example, if 0 is ‘s’ and 2 is ’n’, we can combine those two numbers into a ‘sun’ (vowels are ignored).
+
+The most known more advanced system is [Person-Action-Object (PAO)](http://artofmemory.com/wiki/Person-Action-Object_%28PAO%29_System). You pick and remember a person performing an action on an object for every two digit number. Let’s say your number is 123456. Then you combine the image from the person from 12, action from 34 and object from 56. One image, 6 digits — powerful. The same system can also be applied to remember the deck of cards.
+
+## The act of remembering is not as bad as you remember.
+
+I’ve always hated learning by root. It was my biggest nightmare when I had to recite — and before that, memorize by brute force — a poem at school. But building the memory palace feels different, it’s like creating something. Like creation through meditation.
+
+Joshua described the process in almost the same way:
+
+>  “I found that this was shockingly fun. I would never have expected that. It was fun because this is actually not about training your memory. What you’re doing, is you’re trying to get better and better at creating, at dreaming up, these utterly ludicrous, raunchy, hilarious, and hopefully unforgettable images in your mind’s eye.”
+
+## Memorize; why? Why not?
+
+Why memorize things? I think the right question is: why not? All great people in Antique had amazing memories, so it doesn’t hurt for sure. You need knowledge in order to obtain more knowledge — to connect the dots. Does it improve your life? Maybe. But it certainly makes it more interesting — therefore, memorable. 
+
+> “Monotony collapses time; novelty unfolds it. You can exercise daily and eat healthily and live a long life, while experiencing a short one. If you spend your life sitting in a cubicle and passing papers, one day is bound to blend unmemorably into the next — and disappear. That’s why it’s so important to change routines regularly, and take vacations to exotic locales, and have as many new experiences as possible that can serve to anchor our memories. Creating new memories stretches out psychological time, and lengthens our perception of our lives.” — Joshua Foer
+
+Live the life worth remembering; it will feel longer.
+
+*Originally published at [thriveglobal.com](https://www.thriveglobal.com/stories/10006-how-i-built-my-first-memory-palace-in-15-minutes).*
+
+

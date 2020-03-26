@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:media="http://search.yahoo.com/mrss/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:dc="http://purl.org/dc/elements/1.1/" version="2.0">
+  <channel>
+    <title>mihagazvoda.com</title>
+    <link>https://mihagazvoda.com</link>
+    <atom:link href="https://mihagazvoda.com/index.xml" rel="self" type="application/rss+xml"/>
+    <description>My personal website.
+</description>
+    <generator>Distill</generator>
+    <lastBuildDate>Thu, 26 Mar 2020 00:00:00 +0000</lastBuildDate>
+    <item>
+      <title>Welcome to mihagazvoda.com</title>
+      <dc:creator>Miha Gazvoda</dc:creator>
+      <link>https://mihagazvoda.com/posts/welcome</link>
+      <description>Welcome to our new blog, mihagazvoda.com. We hope you enjoy  reading what we have to say!</description>
+      <guid>https://mihagazvoda.com/posts/welcome</guid>
+      <pubDate>Thu, 26 Mar 2020 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>Man Plans, God Laughs: The Planning Fallacy</title>
+      <dc:creator>Miha Gazvoda</dc:creator>
+      <link>https://mihagazvoda.com/posts/2020-03-26-man-plans-god-laughs-the-planning-fallacy</link>
+      <description>So you’re planning to read the whole article? Let’s see…</description>
+      <guid>https://mihagazvoda.com/posts/2020-03-26-man-plans-god-laughs-the-planning-fallacy</guid>
+      <pubDate>Mon, 01 Jan 2018 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>The 714 words the picture can't tell</title>
+      <dc:creator>Miha Gazvoda</dc:creator>
+      <link>https://mihagazvoda.com/posts/2020-03-26-the-714-words-the-picture-cant-tell</link>
+      <description>I’m sorry, but the photo is private. Spoiler for friends: Instagram.</description>
+      <guid>https://mihagazvoda.com/posts/2020-03-26-the-714-words-the-picture-cant-tell</guid>
+      <pubDate>Tue, 12 Dec 2017 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>How I built my first memory palace in 15 minutes</title>
+      <dc:creator>Miha Gazvoda</dc:creator>
+      <link>https://mihagazvoda.com/posts/2020-03-26-how-i-built-my-first-memory-palace-in-15-minutes</link>
+      <description>And you can too.</description>
+      <guid>https://mihagazvoda.com/posts/2020-03-26-how-i-built-my-first-memory-palace-in-15-minutes</guid>
+      <pubDate>Sat, 29 Jul 2017 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>My phone use in numbers and graphs</title>
+      <dc:creator>Miha Gazvoda</dc:creator>
+      <link>https://mihagazvoda.com/posts/2020-03-26-my-phone-use-in-numbers-and-graphs</link>
+      <description>"Insights and visualizations from Moment app data"</description>
+      <guid>https://mihagazvoda.com/posts/2020-03-26-my-phone-use-in-numbers-and-graphs</guid>
+      <pubDate>Sat, 13 May 2017 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>Monument to Erasmus</title>
+      <dc:creator>Miha Gazvoda</dc:creator>
+      <link>https://mihagazvoda.com/posts/2020-03-26-monument-to-erasmus</link>
+      <description>"Description for Monument to Erasmus"</description>
+      <guid>https://mihagazvoda.com/posts/2020-03-26-monument-to-erasmus</guid>
+      <pubDate>Wed, 01 Mar 2017 00:00:00 +0000</pubDate>
+    </item>
+  </channel>
+</rss>

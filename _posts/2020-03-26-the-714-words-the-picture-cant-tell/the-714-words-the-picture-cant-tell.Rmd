@@ -1,0 +1,64 @@
+---
+title: "The 714 words the picture can't tell"
+categories:
+  - personal
+  - this happened to me
+description: |
+  I’m sorry, but the photo is private. Spoiler for friends: Instagram.
+author:
+  - name: Miha Gazvoda
+    url: https://mihagazvoda.com
+date: 2017-12-12
+output:
+  distill::distill_article:
+    self_contained: false
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+## I.
+
+It started as a self-promotion: “Jova, have you seen my new shoes?”
+
+She hasn’t, so she came to my and Tadej’s room to check them out. Her awkward smile told me everything and surely more than her words: “Mmm, they don’t look so bad for being completely white. Also, they seem organic.” (Seriously? They are shoes, not a vegetable. But thanks, still better than ‘they look comfortable’.) She continued, trying to change the topic: “Do you want to see my new trousers?”
+
+“Put them on and do not expect any mercy!” I shouted back, pretending to be hurt by her words. (That’s my defensive mechanism when I’m hurt.)
+
+Tadej peeped over his phone (He is addicted, I sometimes call him phoney.), hoping to have a little fun: “You two should have a fashion show.”
+
+Jana joined us; who on earth would miss that?
+
+## II.
+
+I’m a yes-man when it comes to food and doing stupid things. But Jovana, she used to be a kind and good girl. Back then, I believe, she would agree only out of generosity. She would participate with her mind, not her heart. But that was before she joined us on the dark side.
+
+> A few weeks ago I and Tadej were seating at our computers trading Bitcoins (reality: scrolling Facebook News Feeds). We heard someone knocking. I wanted to reach my daily step goal so I got up and crossed the room (you know, every step counts - unless you forget your phone on the table).  
+As I opened the door, the world I knew fell apart into thousand pieces. The first piece broke the bubble I've been living in. Second wounded the hope in humanity I had. Third, my heart. (Remaining 997 [stayed in the mediocrity](https://medium.com/@mihagazvoda/because-thats-a-definition-of-mediocrity-d85b8331ea4d).)  
+It was Jovana, too lazy to take out the keys and unlock the door. The only thing I could get out of my mouth was: “Et tu, Jova?”  
+Caesar used those words when he was assassinated by his son. I used them when my trust was assassinated by Jovana. 
+
+Bad company (I and Tadej are old hands when it comes to knocking) ruined her. She became one of us.
+
+## III.
+
+We started searching for the appropriate clothes to match our shoes or trousers. In the meantime, another idea pooped up: “Why only the two of us? We want to laugh together, not being laughed at.”
+
+Tadej and Jana joined us as well and things progressed to a whole new level. Clothes just weren’t enough anymore. We started adding accessories; if anyone ever dared to call that a floor cleaner or Croton Petra (for all people except Jana: the plant).
+
+At the end, laughing at (sorry, with) each other, we decided the moment is too precious to keep it only in our memories.
+
+## IV.
+
+On the photo, you can find my shoes and Jovana’s trousers. Intellectual wannabe who buys The Economist but doesn’t read it (not even in the photo). The person wearing the most beautiful shoes is faced with the existential crisis of his chest hair: to shave (and do it forever) or not to shave (and be hairy forever)? Jana would rather listen to her plant growing than her flatmates. Jovana is the only one holding cleaning and mechanical products. Is she trying to send the message about the work ethics? Is she the only one who has to work ? Is that the reason she needs the same model of trousers as [Mojster Miha](https://upload.wikimedia.org/wikipedia/en/c/c5/Bob_the_builder.jpg) ([Bob the Builder](https://upload.wikimedia.org/wikipedia/en/c/c5/Bob_the_builder.jpg))?
+
+I don’t know, she doesn’t speak to me anymore.
+
+## V.
+
+One day, when my shoes will finally be organic and Tadej will finish (or at least start) reading The Economist, I will find this story in a drawer. “Who are those adolescents showing off like baboons?” I will frown while searching for my glasses. Then I will recognize us. And no, I won’t be sentimental. I will grab my phone, call these baboons, and organize a dinner.
+
+While eating Jovana’s chili con carne, Jana’s vegetarian specialties, Tadej’s curry, and drinking my water, we will be laughing again. One of us will stand up and make a toast: “To the first flatmate’s dinner we’ve been able to organize.” And then we will laugh even harder.
+
+

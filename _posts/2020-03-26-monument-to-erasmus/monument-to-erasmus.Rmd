@@ -1,7 +1,9 @@
 ---
 title: "Monument to Erasmus"
 categories:
-  - life
+  - personal
+description: | 
+  "Description for Monument to Erasmus"
 author:
   - name: Miha Gazvoda
     url: https://mihagazvoda.com

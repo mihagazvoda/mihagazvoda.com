@@ -19,369 +19,39 @@
  <!--/radix_placeholder_import_source-->
 
   <!--radix_placeholder_meta_tags-->
-  <title>mihagazvoda.com: About this blog</title>
+  <title>The 714 words the picture can't tell</title>
   
-  <meta property="description" itemprop="description" content="Some additional details about the blog"/>
+  <meta property="description" itemprop="description" content="I’m sorry, but the photo is private. Spoiler for friends: Instagram."/>
   
   
+  <!--  https://schema.org/Article -->
+  <meta property="article:published" itemprop="datePublished" content="2017-12-12"/>
+  <meta property="article:created" itemprop="dateCreated" content="2017-12-12"/>
+  <meta name="article:author" content="Miha Gazvoda"/>
   
   <!--  https://developers.facebook.com/docs/sharing/webmasters#markup -->
-  <meta property="og:title" content="mihagazvoda.com: About this blog"/>
+  <meta property="og:title" content="The 714 words the picture can&#39;t tell"/>
   <meta property="og:type" content="article"/>
-  <meta property="og:description" content="Some additional details about the blog"/>
+  <meta property="og:description" content="I’m sorry, but the photo is private. Spoiler for friends: Instagram."/>
   <meta property="og:locale" content="en_US"/>
-  <meta property="og:site_name" content="mihagazvoda.com"/>
   
   <!--  https://dev.twitter.com/cards/types/summary -->
   <meta property="twitter:card" content="summary"/>
-  <meta property="twitter:title" content="mihagazvoda.com: About this blog"/>
-  <meta property="twitter:description" content="Some additional details about the blog"/>
+  <meta property="twitter:title" content="The 714 words the picture can&#39;t tell"/>
+  <meta property="twitter:description" content="I’m sorry, but the photo is private. Spoiler for friends: Instagram."/>
   
   <!--/radix_placeholder_meta_tags-->
   <!--radix_placeholder_rmarkdown_metadata-->
   
   <script type="text/json" id="radix-rmarkdown-metadata">
-  {"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","description"]}},"value":[{"type":"character","attributes":{},"value":["About this blog"]},{"type":"character","attributes":{},"value":["Some additional details about the blog"]}]}
+  {"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","categories","description","author","date","output"]}},"value":[{"type":"character","attributes":{},"value":["The 714 words the picture can't tell"]},{"type":"character","attributes":{},"value":["personal","this happened to me"]},{"type":"character","attributes":{},"value":["I’m sorry, but the photo is private. Spoiler for friends: Instagram.\n"]},{"type":"list","attributes":{},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","url"]}},"value":[{"type":"character","attributes":{},"value":["Miha Gazvoda"]},{"type":"character","attributes":{},"value":["https://mihagazvoda.com"]}]}]},{"type":"character","attributes":{},"value":["2017-12-12"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["distill::distill_article"]}},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["self_contained"]}},"value":[{"type":"logical","attributes":{},"value":[false]}]}]}]}
   </script>
   <!--/radix_placeholder_rmarkdown_metadata-->
-  <!--radix_placeholder_navigation_in_header-->
   
-  <script type="application/javascript">
-  
-    window.headroom_prevent_pin = false;
-  
-    window.document.addEventListener("DOMContentLoaded", function (event) {
-  
-      // initialize headroom for banner
-      var header = $('header').get(0);
-      var headerHeight = header.offsetHeight;
-      var headroom = new Headroom(header, {
-        onPin : function() {
-          if (window.headroom_prevent_pin) {
-            window.headroom_prevent_pin = false;
-            headroom.unpin();
-          }
-        }
-      });
-      headroom.init();
-      if(window.location.hash)
-        headroom.unpin();
-      $(header).addClass('headroom--transition');
-  
-      // offset scroll location for banner on hash change
-      // (see: https://github.com/WickyNilliams/headroom.js/issues/38)
-      window.addEventListener("hashchange", function(event) {
-        window.scrollTo(0, window.pageYOffset - (headerHeight + 25));
-      });
-  
-      // responsive menu
-      $('.distill-site-header').each(function(i, val) {
-        var topnav = $(this);
-        var toggle = topnav.find('.nav-toggle');
-        toggle.on('click', function() {
-          topnav.toggleClass('responsive');
-        });
-      });
-  
-      // nav dropdowns
-      $('.nav-dropbtn').click(function(e) {
-        $(this).next('.nav-dropdown-content').toggleClass('nav-dropdown-active');
-        $(this).parent().siblings('.nav-dropdown')
-           .children('.nav-dropdown-content').removeClass('nav-dropdown-active');
-      });
-      $("body").click(function(e){
-        $('.nav-dropdown-content').removeClass('nav-dropdown-active');
-      });
-      $(".nav-dropdown").click(function(e){
-        e.stopPropagation();
-      });
-    });
+  <script type="text/json" id="radix-resource-manifest">
+  {"type":"character","attributes":{},"value":["the-714-words-the-picture-cant-tell_files/bowser-1.9.3/bowser.min.js","the-714-words-the-picture-cant-tell_files/distill-2.2.21/template.v2.js","the-714-words-the-picture-cant-tell_files/jquery-1.11.3/jquery.min.js","the-714-words-the-picture-cant-tell_files/webcomponents-2.0.0/webcomponents.js"]}
   </script>
-  
-  <style type="text/css">
-  
-  /* Theme (user-documented overrideables for nav appearance) */
-  
-  .distill-site-nav {
-    color: rgba(255, 255, 255, 0.8);
-    background-color: #455a64;
-    font-size: 15px;
-    font-weight: 300;
-  }
-  
-  .distill-site-nav a {
-    color: inherit;
-    text-decoration: none;
-  }
-  
-  .distill-site-nav a:hover {
-    color: white;
-  }
-  
-  @media print {
-    .distill-site-nav {
-      display: none;
-    }
-  }
-  
-  .distill-site-header {
-  
-  }
-  
-  .distill-site-footer {
-  
-  }
-  
-  
-  /* Site Header */
-  
-  .distill-site-header {
-    width: 100%;
-    box-sizing: border-box;
-    z-index: 3;
-  }
-  
-  .distill-site-header .nav-left {
-    display: inline-block;
-    margin-left: 8px;
-  }
-  
-  @media screen and (max-width: 768px) {
-    .distill-site-header .nav-left {
-      margin-left: 0;
-    }
-  }
-  
-  
-  .distill-site-header .nav-right {
-    float: right;
-    margin-right: 8px;
-  }
-  
-  .distill-site-header a,
-  .distill-site-header .title {
-    display: inline-block;
-    text-align: center;
-    padding: 14px 10px 14px 10px;
-  }
-  
-  .distill-site-header .title {
-    font-size: 18px;
-  }
-  
-  .distill-site-header .logo {
-    padding: 0;
-  }
-  
-  .distill-site-header .logo img {
-    display: none;
-    max-height: 20px;
-    width: auto;
-    margin-bottom: -4px;
-  }
-  
-  .distill-site-header .nav-image img {
-    max-height: 18px;
-    width: auto;
-    display: inline-block;
-    margin-bottom: -3px;
-  }
-  
-  
-  
-  @media screen and (min-width: 1000px) {
-    .distill-site-header .logo img {
-      display: inline-block;
-    }
-    .distill-site-header .nav-left {
-      margin-left: 20px;
-    }
-    .distill-site-header .nav-right {
-      margin-right: 20px;
-    }
-    .distill-site-header .title {
-      padding-left: 12px;
-    }
-  }
-  
-  
-  .distill-site-header .nav-toggle {
-    display: none;
-  }
-  
-  .nav-dropdown {
-    display: inline-block;
-    position: relative;
-  }
-  
-  .nav-dropdown .nav-dropbtn {
-    border: none;
-    outline: none;
-    color: rgba(255, 255, 255, 0.8);
-    padding: 16px 10px;
-    background-color: transparent;
-    font-family: inherit;
-    font-size: inherit;
-    font-weight: inherit;
-    margin: 0;
-    margin-top: 1px;
-    z-index: 2;
-  }
-  
-  .nav-dropdown-content {
-    display: none;
-    position: absolute;
-    background-color: white;
-    min-width: 200px;
-    border: 1px solid rgba(0,0,0,0.15);
-    border-radius: 4px;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.1);
-    z-index: 1;
-    margin-top: 2px;
-    white-space: nowrap;
-    padding-top: 4px;
-    padding-bottom: 4px;
-  }
-  
-  .nav-dropdown-content hr {
-    margin-top: 4px;
-    margin-bottom: 4px;
-    border: none;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-  }
-  
-  .nav-dropdown-active {
-    display: block;
-  }
-  
-  .nav-dropdown-content a, .nav-dropdown-content .nav-dropdown-header {
-    color: black;
-    padding: 6px 24px;
-    text-decoration: none;
-    display: block;
-    text-align: left;
-  }
-  
-  .nav-dropdown-content .nav-dropdown-header {
-    display: block;
-    padding: 5px 24px;
-    padding-bottom: 0;
-    text-transform: uppercase;
-    font-size: 14px;
-    color: #999999;
-    white-space: nowrap;
-  }
-  
-  .nav-dropdown:hover .nav-dropbtn {
-    color: white;
-  }
-  
-  .nav-dropdown-content a:hover {
-    background-color: #ddd;
-    color: black;
-  }
-  
-  .nav-right .nav-dropdown-content {
-    margin-left: -45%;
-    right: 0;
-  }
-  
-  @media screen and (max-width: 768px) {
-    .distill-site-header a, .distill-site-header .nav-dropdown  {display: none;}
-    .distill-site-header a.nav-toggle {
-      float: right;
-      display: block;
-    }
-    .distill-site-header .title {
-      margin-left: 0;
-    }
-    .distill-site-header .nav-right {
-      margin-right: 0;
-    }
-    .distill-site-header {
-      overflow: hidden;
-    }
-    .nav-right .nav-dropdown-content {
-      margin-left: 0;
-    }
-  }
-  
-  
-  @media screen and (max-width: 768px) {
-    .distill-site-header.responsive {position: relative;}
-    .distill-site-header.responsive a.nav-toggle {
-      position: absolute;
-      right: 0;
-      top: 0;
-    }
-    .distill-site-header.responsive a,
-    .distill-site-header.responsive .nav-dropdown {
-      display: block;
-      text-align: left;
-    }
-    .distill-site-header.responsive .nav-left,
-    .distill-site-header.responsive .nav-right {
-      width: 100%;
-    }
-    .distill-site-header.responsive .nav-dropdown {float: none;}
-    .distill-site-header.responsive .nav-dropdown-content {position: relative;}
-    .distill-site-header.responsive .nav-dropdown .nav-dropbtn {
-      display: block;
-      width: 100%;
-      text-align: left;
-    }
-  }
-  
-  /* Site Footer */
-  
-  .distill-site-footer {
-    width: 100%;
-    overflow: hidden;
-    box-sizing: border-box;
-    z-index: 3;
-    margin-top: 30px;
-    padding-top: 30px;
-    padding-bottom: 30px;
-    text-align: center;
-  }
-  
-  /* Headroom */
-  
-  d-title {
-    padding-top: 6rem;
-  }
-  
-  @media print {
-    d-title {
-      padding-top: 4rem;
-    }
-  }
-  
-  .headroom {
-    z-index: 1000;
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-  }
-  
-  .headroom--transition {
-    transition: all .4s ease-in-out;
-  }
-  
-  .headroom--unpinned {
-    top: -100px;
-  }
-  
-  .headroom--pinned {
-    top: 0;
-  }
-  
-  </style>
-  
-  <link href="site_libs/font-awesome-5.1.0/css/all.css" rel="stylesheet"/>
-  <link href="site_libs/font-awesome-5.1.0/css/v4-shims.css" rel="stylesheet"/>
-  <script src="site_libs/headroom-0.9.4/headroom.min.js"></script>
+  <!--radix_placeholder_navigation_in_header-->
   <!--/radix_placeholder_navigation_in_header-->
   <!--radix_placeholder_distill-->
   
@@ -1257,10 +927,10 @@
   </script>
   
   <!--/radix_placeholder_distill-->
-  <script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
-  <script src="site_libs/bowser-1.9.3/bowser.min.js"></script>
-  <script src="site_libs/webcomponents-2.0.0/webcomponents.js"></script>
-  <script src="site_libs/distill-2.2.21/template.v2.js"></script>
+  <script src="the-714-words-the-picture-cant-tell_files/jquery-1.11.3/jquery.min.js"></script>
+  <script src="the-714-words-the-picture-cant-tell_files/bowser-1.9.3/bowser.min.js"></script>
+  <script src="the-714-words-the-picture-cant-tell_files/webcomponents-2.0.0/webcomponents.js"></script>
+  <script src="the-714-words-the-picture-cant-tell_files/distill-2.2.21/template.v2.js"></script>
   <!--radix_placeholder_site_in_header-->
   <!--/radix_placeholder_site_in_header-->
 
@@ -1272,38 +942,52 @@
 <!--radix_placeholder_front_matter-->
 
 <script id="distill-front-matter" type="text/json">
-{"title":"About this blog","description":"Some additional details about the blog","authors":[]}
+{"title":"The 714 words the picture can't tell","description":"I’m sorry, but the photo is private. Spoiler for friends: Instagram.","authors":[{"author":"Miha Gazvoda","authorURL":"https://mihagazvoda.com","affiliation":"&nbsp;","affiliationURL":"#"}],"publishedDate":"2017-12-12T00:00:00.000+01:00","citationText":"Gazvoda, 2017"}
 </script>
 
 <!--/radix_placeholder_front_matter-->
 <!--radix_placeholder_navigation_before_body-->
-<header class="header header--fixed" role="banner">
-<nav class="distill-site-nav distill-site-header">
-<div class="nav-left">
-<a href="index.html" class="title">mihagazvoda.com</a>
-</div>
-<div class="nav-right">
-<a href="index.html">Home</a>
-<a href="about.html">About</a>
-<a href="index.xml">
-<i class="fa fa-rss"></i>
-</a>
-<a href="javascript:void(0);" class="nav-toggle">&#9776;</a>
-</div>
-</nav>
-</header>
 <!--/radix_placeholder_navigation_before_body-->
 <!--radix_placeholder_site_before_body-->
 <!--/radix_placeholder_site_before_body-->
 
 <div class="d-title">
-<h1>About this blog</h1>
-<p>Some additional details about the blog</p>
+<h1>The 714 words the picture can’t tell</h1>
+<p>I’m sorry, but the photo is private. Spoiler for friends: Instagram.</p>
 </div>
 
+<div class="d-byline">
+  Miha Gazvoda <a href="https://mihagazvoda.com" class="uri">https://mihagazvoda.com</a> 
+  
+<br/>2017-12-12
+</div>
 
 <div class="d-article">
-
+<h2 id="i.">I.</h2>
+<p>It started as a self-promotion: “Jova, have you seen my new shoes?”</p>
+<p>She hasn’t, so she came to my and Tadej’s room to check them out. Her awkward smile told me everything and surely more than her words: “Mmm, they don’t look so bad for being completely white. Also, they seem organic.” (Seriously? They are shoes, not a vegetable. But thanks, still better than ‘they look comfortable’.) She continued, trying to change the topic: “Do you want to see my new trousers?”</p>
+<p>“Put them on and do not expect any mercy!” I shouted back, pretending to be hurt by her words. (That’s my defensive mechanism when I’m hurt.)</p>
+<p>Tadej peeped over his phone (He is addicted, I sometimes call him phoney.), hoping to have a little fun: “You two should have a fashion show.”</p>
+<p>Jana joined us; who on earth would miss that?</p>
+<h2 id="ii.">II.</h2>
+<p>I’m a yes-man when it comes to food and doing stupid things. But Jovana, she used to be a kind and good girl. Back then, I believe, she would agree only out of generosity. She would participate with her mind, not her heart. But that was before she joined us on the dark side.</p>
+<blockquote>
+<p>A few weeks ago I and Tadej were seating at our computers trading Bitcoins (reality: scrolling Facebook News Feeds). We heard someone knocking. I wanted to reach my daily step goal so I got up and crossed the room (you know, every step counts - unless you forget your phone on the table).<br />
+As I opened the door, the world I knew fell apart into thousand pieces. The first piece broke the bubble I’ve been living in. Second wounded the hope in humanity I had. Third, my heart. (Remaining 997 <a href="https://medium.com/@mihagazvoda/because-thats-a-definition-of-mediocrity-d85b8331ea4d">stayed in the mediocrity</a>.)<br />
+It was Jovana, too lazy to take out the keys and unlock the door. The only thing I could get out of my mouth was: “Et tu, Jova?”<br />
+Caesar used those words when he was assassinated by his son. I used them when my trust was assassinated by Jovana.</p>
+</blockquote>
+<p>Bad company (I and Tadej are old hands when it comes to knocking) ruined her. She became one of us.</p>
+<h2 id="iii.">III.</h2>
+<p>We started searching for the appropriate clothes to match our shoes or trousers. In the meantime, another idea pooped up: “Why only the two of us? We want to laugh together, not being laughed at.”</p>
+<p>Tadej and Jana joined us as well and things progressed to a whole new level. Clothes just weren’t enough anymore. We started adding accessories; if anyone ever dared to call that a floor cleaner or Croton Petra (for all people except Jana: the plant).</p>
+<p>At the end, laughing at (sorry, with) each other, we decided the moment is too precious to keep it only in our memories.</p>
+<h2 id="iv.">IV.</h2>
+<p>On the photo, you can find my shoes and Jovana’s trousers. Intellectual wannabe who buys The Economist but doesn’t read it (not even in the photo). The person wearing the most beautiful shoes is faced with the existential crisis of his chest hair: to shave (and do it forever) or not to shave (and be hairy forever)? Jana would rather listen to her plant growing than her flatmates. Jovana is the only one holding cleaning and mechanical products. Is she trying to send the message about the work ethics? Is she the only one who has to work ? Is that the reason she needs the same model of trousers as <a href="https://upload.wikimedia.org/wikipedia/en/c/c5/Bob_the_builder.jpg">Mojster Miha</a> (<a href="https://upload.wikimedia.org/wikipedia/en/c/c5/Bob_the_builder.jpg">Bob the Builder</a>)?</p>
+<p>I don’t know, she doesn’t speak to me anymore.</p>
+<h2 id="v.">V.</h2>
+<p>One day, when my shoes will finally be organic and Tadej will finish (or at least start) reading The Economist, I will find this story in a drawer. “Who are those adolescents showing off like baboons?” I will frown while searching for my glasses. Then I will recognize us. And no, I won’t be sentimental. I will grab my phone, call these baboons, and organize a dinner.</p>
+<p>While eating Jovana’s chili con carne, Jana’s vegetarian specialties, Tadej’s curry, and drinking my water, we will be laughing again. One of us will stand up and make a toast: “To the first flatmate’s dinner we’ve been able to organize.” And then we will laugh even harder.</p>
 <!--radix_placeholder_article_footer-->
 <!--/radix_placeholder_article_footer-->
 </div>
