@@ -1,0 +1,51 @@
+[
+  {
+    "path": "posts/welcome/",
+    "title": "Welcome to mihagazvoda.com",
+    "description": "Welcome to our new blog, mihagazvoda.com. We hope you enjoy  reading what we have to say!",
+    "author": [
+      {
+        "name": "Miha Gazvoda",
+        "url": "https://mihagazvoda.com"
+      }
+    ],
+    "date": "2020-03-26",
+    "categories": [],
+    "preview": {},
+    "last_modified": "2020-03-26T02:28:04+01:00"
+  },
+  {
+    "path": "posts/2020-03-26-my-phone-use-in-numbers-and-graphs/",
+    "title": "My phone use in numbers and graphs",
+    "description": "Insights and visualizations from Moment app data",
+    "author": [
+      {
+        "name": "Miha Gazvoda",
+        "url": "https://mihagazvoda.com"
+      }
+    ],
+    "date": "2017-05-13",
+    "categories": [
+      "data science"
+    ],
+    "preview": {},
+    "last_modified": "2020-03-26T02:24:06+01:00"
+  },
+  {
+    "path": "posts/2020-03-26-monument-to-erasmus/",
+    "title": "Monument to Erasmus",
+    "description": {},
+    "author": [
+      {
+        "name": "Miha Gazvoda",
+        "url": "https://mihagazvoda.com"
+      }
+    ],
+    "date": "2017-03-01",
+    "categories": [
+      "life"
+    ],
+    "preview": {},
+    "last_modified": "2020-03-26T02:19:06+01:00"
+  }
+]

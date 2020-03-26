@@ -1,0 +1,34 @@
+---
+title: "Monument to Erasmus"
+categories:
+  - life
+author:
+  - name: Miha Gazvoda
+    url: https://mihagazvoda.com
+date: 03-01-2017
+output:
+  distill::distill_article:
+    self_contained: false
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+*I decided not to ask anyone to correct grammar errors in my writing. I (or we, Erasmus people) have been talking this way all the semester. If it was good enough for us to build great friendships, it will be also good enough to read a few sentences.*
+
+It’s 8th February, first day of the last days of my Erasmus in Gdansk. Yesterday I passed all my faculty obligations. Previous years, that would uplift me. Nowadays I feel empty. Like I’m waiting for my best time of life just to pass by. Like I’m waiting for my adulthood to arrive.
+
+I remember one night in the last days of November, trying to fall asleep, thinking: “Erasmus is so amazing, I don’t want to fall asleep.” And then calculating that I’m almost on half of my exchange. Time, why do you have to pass so fast? Take it easy, pretend you are also on Erasmus.
+
+So here I am, acknowledging my experience. Building (writing) it the monument and at the same time trying to escape (or at least postpone) post Erasmus depression. Using depression as an inspiration and writing as a medicine for it.
+
+But, what exactly made me, emotionally reserved person, feel so depressed at the end and uplifted during the exchange? My friends would guess: partying. It’s true that I’ve never been partying so much in one semester. But I don’t think the reason are parties. My best memories of Erasmus don’t include any (hardcore) parties. It’s also not travelling as my acquaintances think. Although I’ve never travelled so much before. Sometimes I even cancelled some of my travel plans because I had so much fun at my city. (Naïve) elders think it’s because of the classes and university. No further explanation needed.
+
+It’s not even about saying yes to all new opportunities. Saying yes to one — to go on Erasmus — is enough. And when opportunities say yes to you, then you know you are on Erasmus. You have no other choice than to go with the flow, you are far away from your home and friends. There’s no place to hide. You are pushed out of your comfort zone and that’s where the magic happens. It feels like being a child again, discovering the whole new world. New world, where connecting and being present is the biggest present you can give and get.
+
+Erasmus is about making family who lives all around the Europe.
+
+It’s 28th of February. I’m already home. My Erasmus days already passed, but memories stayed. Dear Erasmus friends, thank you for making these memories with me. Listening to Oroscopo, singing correctly only “tutta la notte” part, I salute you with my spinach smoothie.
+
+

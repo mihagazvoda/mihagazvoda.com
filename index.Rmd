@@ -1,0 +1,5 @@
+---
+title: "Cheers!"
+site: distill::distill_website
+listing: posts
+---
