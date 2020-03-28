@@ -3,7 +3,7 @@ title: "Man Plans, God Laughs: The Planning Fallacy"
 description: |
   So you’re planning to read the whole article? Let’s see…
 categories:
-  - data-science
+  - decision making under uncertainty
 author:
   - name: Miha Gazvoda
     url: https://mihagazvoda.com

@@ -3,7 +3,8 @@ title: "The role of luck in poker: How the number of hands played affects the va
 description: |
   What makes poker the most thrilling and painful at the same time? Variance. Everyone can be a winner. But for how long?
 categories: 
-  - data-science
+  - data science
+  - decision making under uncertainty
 author:
   - name: Miha Gazvoda
     url: https://mihagazvoda.com
