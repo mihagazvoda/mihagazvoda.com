@@ -1,9 +1,9 @@
 ---
 title: "My phone use in numbers and graphs"
-categories:
-    - data science
 description: |
   Insights and visualizations from Moment app data
+categories:
+    - data science
 author:
   - name: Miha Gazvoda
     url: https://mihagazvoda.com
