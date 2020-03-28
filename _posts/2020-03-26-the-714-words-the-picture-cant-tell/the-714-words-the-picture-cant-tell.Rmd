@@ -1,10 +1,9 @@
 ---
 title: "The 714 words the picture can't tell"
-categories:
-  - personal
-  - this happened to me
 description: |
   I’m sorry, but the photo is private. Spoiler for friends: Instagram.
+categories:
+  - this happened to me
 author:
   - name: Miha Gazvoda
     url: https://mihagazvoda.com

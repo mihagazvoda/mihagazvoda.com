@@ -1,0 +1,54 @@
+---
+title: "Začetki so najtežji"
+description: |
+  No description.
+categories:
+    - this happened to me
+author:
+  - name: Miha Gazvoda
+    url: https://mihagazvoda.com
+date: 2014-07-08
+output:
+  distill::distill_article:
+    self_contained: false
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+*Ko sem napisal naslov sestavka, sem si oddahnil. Najtežji del, začetek, je bil že za menoj. Pred kratkim sem si kupil beležko, v katero naj bi si zapisoval ideje, doživetja, misli. Vendar je bila po nekaj tednih še vedno popolnoma prazna.*
+
+![](https://cdn-images-1.medium.com/max/12032/1*ZPr9i5WoPfjpOM7PnNQ65Q.jpeg)
+
+Zaslepljen od lastnega perfekcionizma se nisem mogel odločiti za najbolj absurdne reči: izbiro pisala, velikost in vrsto pisave, obliko besedila… Kot da bi zahteval od sebe, da naj bi imele moje čečkarije izgled zapiskov piflarske sošolke in hkrati vsebino najgenialnejših literarnih del.
+
+Pri tem sem spregledal najosnovnejšo idejo. Nobeno dobro literarno delo ni bilo napisano na prvo žogo (polo). Še sam Ernest Hemingway je dejal:
+
+> ### “The first draft of anything is shit.”
+
+Moja beležka pa naj bi bila zgolj temelj za prvi osnutek, torej sranje od sranja.
+
+Zatorej so začetki najtežji. Nihče ne želi biti označen za nesposobneža in “fejlat”, čeprav smo ravno to v otroštvu doživljali ves čas ter se tako naučili bistvenih življenjskih veščin. Sedaj kot odrasli znamo preživeti in smo pozabili, kako živeti. Morda bi se morali vprašati:
+
+> ### “Kdaj je bilo zadnjič, ko sem nekaj storil prvič?”
+
+in tvegati kanček ega. Sprejeti začetno sranje za končno znanje.
+
+Ko sem tako razmišljal o sranju in pisanju, sem doumel. Doumel, da več kot bom razmišljal, več časa bom izgubil v čakanju na tisti magični trenutek navdiha in idealno priložnost, ko se bo vse poklopilo. Doumel, da slednje ne bom nikoli dočakal.
+
+Priložnost narediš popolno s tem, da jo izkoristiš.
+
+Vzel sem najbližji kemični svinčnik in z velikimi tiskanimi črkami, s stilom komaj pismenega prvošolca vanjo zapisal:
+
+> ### “Najtežji začetki pripeljejo do najlepših koncev.”
+
+Za ličen izgled je bilo tedaj že prepozno. Za izvirno zapisano misel, ki prikliče iskrico v oči in nasmeh na obraz, zagotovo ne.
+
+Pot do konca beležke je še dolga. Potovanje do konca še daljše. Popestri si ga s težkimi začetki, da bo tudi konec miren in spokojen, brez slabe vesti in neizkoriščenih priložnosti. Predvsem pa uživaj v potovanju. Ne pozabi, dogaja se — tu in zdaj.
+
+P.S. Niti Chuck Norris ni bil vsemogočen že na začetku. Dejansko umre v eni izmed svojih prvih filmskih vlog. What a pussy!
+
+*Originally published at [triumfator.si](https://triumfator.si/2014/07/zacetki-so-najtezji/) on July 7, 2014.*
+
+

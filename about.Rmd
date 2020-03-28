@@ -1,9 +1,12 @@
 ---
-title: "About this blog"
+title: "About"
 description: |
-  Some additional details about the blog
+  Miha Gazvoda
 ---
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = FALSE)
 ```
+
+Hi,  
+I'm Miha.

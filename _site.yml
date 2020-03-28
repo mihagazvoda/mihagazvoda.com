@@ -1,5 +1,5 @@
 name: "mihagazvoda.com"
-title: "mihagazvoda.com"
+title: "miha gazvoda"
 description: |
   My personal website.
 base_url: https://mihagazvoda.com
@@ -10,10 +10,12 @@ collections:
 output_dir: "_site"
 navbar:
   right:
-    - text: "Home"
+    - text: "blog"
       href: index.html
-    - text: "About"
+    - text: "about"
       href: about.html
     - icon: fa fa-rss
       href: index.xml
-output: distill::distill_article
+output:
+  distill::distill_article:
+    css: styles.css

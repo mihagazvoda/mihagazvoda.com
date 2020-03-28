@@ -1,20 +1,5 @@
 [
   {
-    "path": "posts/welcome/",
-    "title": "Welcome to mihagazvoda.com",
-    "description": "Welcome to our new blog, mihagazvoda.com. We hope you enjoy  reading what we have to say!",
-    "author": [
-      {
-        "name": "Miha Gazvoda",
-        "url": "https://mihagazvoda.com"
-      }
-    ],
-    "date": "2020-03-26",
-    "categories": [],
-    "preview": {},
-    "last_modified": "2020-03-26T02:28:04+01:00"
-  },
-  {
     "path": "posts/2020-03-26-man-plans-god-laughs-the-planning-fallacy/",
     "title": "Man Plans, God Laughs: The Planning Fallacy",
     "description": "So you’re planning to read the whole article? Let’s see…",
@@ -29,7 +14,7 @@
       "data-science"
     ],
     "preview": {},
-    "last_modified": "2020-03-26T22:24:18+01:00"
+    "last_modified": "2020-03-28T16:08:00+01:00"
   },
   {
     "path": "posts/2020-03-26-the-714-words-the-picture-cant-tell/",
@@ -43,11 +28,10 @@
     ],
     "date": "2017-12-12",
     "categories": [
-      "personal",
       "this happened to me"
     ],
     "preview": {},
-    "last_modified": "2020-03-26T22:38:22+01:00"
+    "last_modified": "2020-03-28T16:08:06+01:00"
   },
   {
     "path": "posts/2020-03-26-how-i-built-my-first-memory-palace-in-15-minutes/",
@@ -61,15 +45,15 @@
     ],
     "date": "2017-07-29",
     "categories": [
-      "personal"
+      "this happened to me"
     ],
     "preview": {},
-    "last_modified": "2020-03-26T22:06:23+01:00"
+    "last_modified": "2020-03-28T16:08:25+01:00"
   },
   {
     "path": "posts/2020-03-26-my-phone-use-in-numbers-and-graphs/",
     "title": "My phone use in numbers and graphs",
-    "description": "\"Insights and visualizations from Moment app data\"",
+    "description": "Insights and visualizations from Moment app data",
     "author": [
       {
         "name": "Miha Gazvoda",
@@ -81,12 +65,12 @@
       "data science"
     ],
     "preview": {},
-    "last_modified": "2020-03-26T21:37:20+01:00"
+    "last_modified": "2020-03-28T16:03:48+01:00"
   },
   {
     "path": "posts/2020-03-26-monument-to-erasmus/",
     "title": "Monument to Erasmus",
-    "description": "\"Description for Monument to Erasmus\"",
+    "description": "No description.",
     "author": [
       {
         "name": "Miha Gazvoda",
@@ -95,9 +79,43 @@
     ],
     "date": "2017-03-01",
     "categories": [
-      "personal"
+      "this happened to me"
     ],
     "preview": {},
-    "last_modified": "2020-03-26T21:41:13+01:00"
+    "last_modified": "2020-03-28T16:07:45+01:00"
+  },
+  {
+    "path": "posts/2020-03-28-the-role-of-luck-in-poker/",
+    "title": "The role of luck in poker: How the number of hands played affects the variance",
+    "description": "What makes poker the most thrilling and painful at the same time? Variance. Everyone can be a winner. But for how long?",
+    "author": [
+      {
+        "name": "Miha Gazvoda",
+        "url": "https://mihagazvoda.com"
+      }
+    ],
+    "date": "2015-09-14",
+    "categories": [
+      "data-science"
+    ],
+    "preview": {},
+    "last_modified": "2020-03-28T16:08:12+01:00"
+  },
+  {
+    "path": "posts/2020-03-28-zacetki-so-najtezji/",
+    "title": "Začetki so najtežji",
+    "description": "No description.",
+    "author": [
+      {
+        "name": "Miha Gazvoda",
+        "url": "https://mihagazvoda.com"
+      }
+    ],
+    "date": "2014-07-08",
+    "categories": [
+      "this happened to me"
+    ],
+    "preview": {},
+    "last_modified": "2020-03-28T16:08:19+01:00"
   }
 ]
