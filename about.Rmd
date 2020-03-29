@@ -11,4 +11,6 @@ description: |
 knitr::opts_chunk$set(echo = FALSE)
 ```
 
+I'm Miha and I work as a data scientist at Outfit7 (Ekipa2 d.o.o. subsidiary) in Ljubljana.  
+More to come...
 
