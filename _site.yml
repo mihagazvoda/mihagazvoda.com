@@ -1,7 +1,7 @@
 name: "mihagazvoda.com"
 title: "mihagazvoda.com"
 description: |
-  My personal website.
+  Miha Gazvoda's personal website
 base_url: https://mihagazvoda.com
 collections:
   posts:
