@@ -2,9 +2,13 @@
 title: "About"
 description: |
   <a href="https://twitter.com/mihagazvoda"><img height="16" width="16" src="https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/twitter.svg" /></a>
+  &nbsp;
   <a href="https://www.linkedin.com/in/mihagazvoda/"><img height="16" width="16" src="https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/linkedin.svg" /></a>
+  &nbsp;
   <a href="https://github.com/mihagazvoda/"><img height="16" width="16" src="https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/github.svg" /></a>
+  &nbsp;
   <a href="https://medium.com/@mihagazvoda"><img height="16" width="16" src="https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/medium.svg" /></a>
+  &nbsp;
   <a href="https://www.goodreads.com/user/show/31076100-miha-gazvoda"><img height="16" width="16" src="https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/goodreads.svg" /></a>
 ---
 
