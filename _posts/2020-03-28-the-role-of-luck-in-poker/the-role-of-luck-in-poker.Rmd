@@ -1,7 +1,7 @@
 ---
-title: "The role of luck in poker: How the number of hands played affects the variance"
+title: "The role of luck in poker"
 description: |
-  What makes poker the most thrilling and painful at the same time? Variance. Everyone can be a winner. But for how long?
+  How the number of hands played affects the variance?
 categories: 
   - data science
   - decision making under uncertainty
@@ -9,6 +9,7 @@ author:
   - name: Miha Gazvoda
     url: https://mihagazvoda.com
 date: 2015-09-14
+preview: https://miro.medium.com/proxy/1*4yDpsryVOjbECfACP193Rg.png
 output:
   distill::distill_article:
     self_contained: false
@@ -18,11 +19,15 @@ output:
 knitr::opts_chunk$set(echo = FALSE)
 ```
 
+
+
 ![[Image credit.](http://www.edgewatercasino.ca/casino/poker)](https://cdn-images-1.medium.com/max/11520/1*FoBP7ga0wH8tQn_dyaQTrg.jpeg)
 
-*A few months ago me and my poker buddies had the debate: ‘What happens with the variance over the increasing hand sample?’ The answer was obvious to everybody, but surprisingly — different. Everyone’s arguments, reasoning, and logic seemed legit. But statistics can be tricky and sometimes, just like in poker, your ‘feeling’ is not enough. So I, the nerdiest guy in the group, decided to show off.*
+*What makes poker the most thrilling and painful at the same time? Variance. Everyone can be a winner. But for how long?*  
 
 <center>$\bullet\bullet\bullet$</center>
+
+A few months ago me and my poker buddies had the debate: ‘What happens with the variance over the increasing hand sample?’ The answer was obvious to everybody, but surprisingly — different. Everyone’s arguments, reasoning, and logic seemed legit. But statistics can be tricky and sometimes, just like in poker, your ‘feeling’ is not enough. So I, the nerdiest guy in the group, decided to show off.
 
 ## Basics
 

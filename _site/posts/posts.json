@@ -13,8 +13,8 @@
     "categories": [
       "decision making under uncertainty"
     ],
-    "preview": {},
-    "last_modified": "2020-04-18T22:58:58+02:00"
+    "preview": "https://cdn-images-1.medium.com/max/2266/1*OmbvM1wGHVpCFf6S2vQUrw.png",
+    "last_modified": "2020-04-22T21:02:44+02:00"
   },
   {
     "path": "posts/2020-03-26-the-714-words-the-picture-cant-tell/",
@@ -30,8 +30,8 @@
     "categories": [
       "this happened to me"
     ],
-    "preview": {},
-    "last_modified": "2020-03-28T16:35:55+01:00"
+    "preview": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/90/No_image_available_600_x_400.svg/1280px-No_image_available_600_x_400.svg.png",
+    "last_modified": "2020-04-22T21:22:06+02:00"
   },
   {
     "path": "posts/2020-03-26-how-i-built-my-first-memory-palace-in-15-minutes/",
@@ -47,8 +47,8 @@
     "categories": [
       "this happened to me"
     ],
-    "preview": {},
-    "last_modified": "2020-03-28T16:36:29+01:00"
+    "preview": "https://cdn-images-1.medium.com/max/2000/0*RXwMjtpe3SVUtk_V.",
+    "last_modified": "2020-04-22T21:00:49+02:00"
   },
   {
     "path": "posts/2020-03-26-my-phone-use-in-numbers-and-graphs/",
@@ -64,8 +64,8 @@
     "categories": [
       "data science"
     ],
-    "preview": {},
-    "last_modified": "2020-03-28T16:35:27+01:00"
+    "preview": "https://cdn-images-1.medium.com/max/2000/1*lc02xXZy0U12zB2fTIbuIw.png",
+    "last_modified": "2020-04-22T21:05:46+02:00"
   },
   {
     "path": "posts/2020-03-26-monument-to-erasmus/",
@@ -81,13 +81,13 @@
     "categories": [
       "this happened to me"
     ],
-    "preview": {},
-    "last_modified": "2020-03-28T16:35:42+01:00"
+    "preview": "https://images.unsplash.com/photo-1506869640319-fe1a24fd76dc?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80",
+    "last_modified": "2020-04-22T21:27:30+02:00"
   },
   {
     "path": "posts/2020-03-28-the-role-of-luck-in-poker/",
-    "title": "The role of luck in poker: How the number of hands played affects the variance",
-    "description": "What makes poker the most thrilling and painful at the same time? Variance. Everyone can be a winner. But for how long?",
+    "title": "The role of luck in poker",
+    "description": "How the number of hands played affects the variance?",
     "author": [
       {
         "name": "Miha Gazvoda",
@@ -99,8 +99,8 @@
       "data science",
       "decision making under uncertainty"
     ],
-    "preview": {},
-    "last_modified": "2020-03-28T16:36:06+01:00"
+    "preview": "https://miro.medium.com/proxy/1*4yDpsryVOjbECfACP193Rg.png",
+    "last_modified": "2020-04-22T21:09:46+02:00"
   },
   {
     "path": "posts/2020-03-28-zacetki-so-najtezji/",
@@ -116,7 +116,7 @@
     "categories": [
       "this happened to me"
     ],
-    "preview": {},
-    "last_modified": "2020-03-28T16:36:21+01:00"
+    "preview": "https://cdn-images-1.medium.com/max/12032/1*ZPr9i5WoPfjpOM7PnNQ65Q.jpeg",
+    "last_modified": "2020-04-22T21:10:34+02:00"
   }
 ]

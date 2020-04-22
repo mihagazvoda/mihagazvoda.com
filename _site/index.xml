@@ -7,14 +7,15 @@
     <description>Miha Gazvoda's personal website
 </description>
     <generator>Distill</generator>
-    <lastBuildDate>Sun, 31 Dec 2017 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 01 Jan 2018 00:00:00 +0000</lastBuildDate>
     <item>
       <title>Man Plans, God Laughs: The Planning Fallacy</title>
       <dc:creator>Miha Gazvoda</dc:creator>
       <link>https://mihagazvoda.com/posts/2020-03-26-man-plans-god-laughs-the-planning-fallacy</link>
       <description>So you’re planning to read the whole article? Let’s see…</description>
       <guid>https://mihagazvoda.com/posts/2020-03-26-man-plans-god-laughs-the-planning-fallacy</guid>
-      <pubDate>Sun, 31 Dec 2017 00:00:00 +0000</pubDate>
+      <pubDate>Mon, 01 Jan 2018 00:00:00 +0000</pubDate>
+      <media:content url="https://cdn-images-1.medium.com/max/2266/1*OmbvM1wGHVpCFf6S2vQUrw.png" medium="image" type="image/png"/>
     </item>
     <item>
       <title>The 714 words the picture can't tell</title>
@@ -23,6 +24,7 @@
       <description>I’m sorry, but the photo is private. Spoiler for friends: Instagram.</description>
       <guid>https://mihagazvoda.com/posts/2020-03-26-the-714-words-the-picture-cant-tell</guid>
       <pubDate>Tue, 12 Dec 2017 00:00:00 +0000</pubDate>
+      <media:content url="https://upload.wikimedia.org/wikipedia/commons/thumb/9/90/No_image_available_600_x_400.svg/1280px-No_image_available_600_x_400.svg.png" medium="image" type="image/png"/>
     </item>
     <item>
       <title>How I built my first memory palace in 15 minutes</title>
@@ -31,6 +33,7 @@
       <description>And you can too.</description>
       <guid>https://mihagazvoda.com/posts/2020-03-26-how-i-built-my-first-memory-palace-in-15-minutes</guid>
       <pubDate>Sat, 29 Jul 2017 00:00:00 +0000</pubDate>
+      <media:content url="https://cdn-images-1.medium.com/max/2000/0*RXwMjtpe3SVUtk_V." medium="image" type="text/plain"/>
     </item>
     <item>
       <title>My phone use in numbers and graphs</title>
@@ -39,6 +42,7 @@
       <description>Insights and visualizations from Moment app data</description>
       <guid>https://mihagazvoda.com/posts/2020-03-26-my-phone-use-in-numbers-and-graphs</guid>
       <pubDate>Sat, 13 May 2017 00:00:00 +0000</pubDate>
+      <media:content url="https://cdn-images-1.medium.com/max/2000/1*lc02xXZy0U12zB2fTIbuIw.png" medium="image" type="image/png"/>
     </item>
     <item>
       <title>Monument to Erasmus</title>
@@ -46,15 +50,17 @@
       <link>https://mihagazvoda.com/posts/2020-03-26-monument-to-erasmus</link>
       <description>No description.</description>
       <guid>https://mihagazvoda.com/posts/2020-03-26-monument-to-erasmus</guid>
-      <pubDate>Wed, 01 Mar 2017 00:00:00 +0000</pubDate>
+      <pubDate>Tue, 28 Feb 2017 00:00:00 +0000</pubDate>
+      <media:content url="https://images.unsplash.com/photo-1506869640319-fe1a24fd76dc?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=1050&amp;q=80" medium="image" type="text/plain"/>
     </item>
     <item>
-      <title>The role of luck in poker: How the number of hands played affects the variance</title>
+      <title>The role of luck in poker</title>
       <dc:creator>Miha Gazvoda</dc:creator>
       <link>https://mihagazvoda.com/posts/2020-03-28-the-role-of-luck-in-poker</link>
-      <description>What makes poker the most thrilling and painful at the same time? Variance. Everyone can be a winner. But for how long?</description>
+      <description>How the number of hands played affects the variance?</description>
       <guid>https://mihagazvoda.com/posts/2020-03-28-the-role-of-luck-in-poker</guid>
       <pubDate>Mon, 14 Sep 2015 00:00:00 +0000</pubDate>
+      <media:content url="https://miro.medium.com/proxy/1*4yDpsryVOjbECfACP193Rg.png" medium="image" type="image/png"/>
     </item>
     <item>
       <title>Začetki so najtežji</title>
@@ -63,6 +69,7 @@
       <description>No description.</description>
       <guid>https://mihagazvoda.com/posts/2020-03-28-zacetki-so-najtezji</guid>
       <pubDate>Tue, 08 Jul 2014 00:00:00 +0000</pubDate>
+      <media:content url="https://cdn-images-1.medium.com/max/12032/1*ZPr9i5WoPfjpOM7PnNQ65Q.jpeg" medium="image" type="image/jpeg"/>
     </item>
   </channel>
 </rss>
