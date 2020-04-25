@@ -1,11 +1,12 @@
 ---
-title: "{drake} tutorial"
+title: "drake mini-tutorial"
 description: |
-  As short tutorial as possible - but not shorter.
+  An R package that analyzes and improves your workflow.
 author:
   - name: Miha Gazvoda
     url: https://mihagazvoda.com
 date: 04-21-2020
+preview: https://camo.githubusercontent.com/44749362ca36c9e3295f2bcf18975d811564c121/68747470733a2f2f646f63732e726f70656e7363692e6f72672f6472616b652f7265666572656e63652f666967757265732f6c6f676f2e737667
 output:
   distill::distill_article:
     self_contained: false
@@ -17,30 +18,103 @@ knitr::opts_chunk$set(echo = FALSE)
 ```
 
 # Why is it useful
-[`drake`](https://github.com/ropensci/drake) is an R package that analyzes your workflow. This enables to skip steps of the analysis with up-to-date results and provides evidence that results match the underlying code and data.
+[`drake`](https://github.com/ropensci/drake) is an R package by [Will Landau](https://wlandau.github.io/) that analyzes your workflow. It
+
+* enables to skip steps of the analysis with up-to-date results;  
+* provides evidence that results match the underlying code and data;
+* encourages good programming practices by modularizing your code into functions^[[More about functions in R.](https://r4ds.had.co.nz/functions.html)];
+* visualizes network representation of your workflow. 
+
+<!-- ![](https://camo.githubusercontent.com/04d35d8cc5a548445bfc33840a88289fdc340ca3/68747470733a2f2f646f63732e726f70656e7363692e6f72672f6472616b652f7265666572656e63652f666967757265732f696e666f677261706869632e737667) -->
 
 <!-- TODO include image that: X 1. Launch the code. 2. Wait while it runs. 3. Discover an issue. 4. Restart from scratch. -->
 
-# Start
+# Action time
+## Setup
+Install `drake`. You can also load an example written by [Kirill Müller](https://github.com/krlmlr). It will appear in a new `main` folder. I will use it as a showcase for some file examples.  
 
-  
-- basic commands  
-- folder structure  
-- minimal example  
-- further reading  
+```{r, eval=F, echo=T}
+# Install and load drake
+install.packages("drake")
 
-Here are the most important ones.
-```
-    drake_plan(): create a workflow data frame (like my_plan).
-    make(): build your project.
-    drake_history(): show what you built, when you built it, and the function arguments you used.
-    loadd(): load one or more built targets into your R session.
-    readd(): read and return a built target.
-    vis_drake_graph(): show an interactive visual network representation of your workflow.
-    outdated(): see which targets will be built in the next make().
-    deps_code(): check the dependencies of a command or function.
-    drake_failed(): list the targets that failed to build in the last make().
-    diagnose(): return the full context of a build, including errors, warnings, and messages.
+# Get an example in a new `main` folder
+drake::drake_example("main")
+
+# You can use drake::examples() to see all examples
 ```
 
+<!-- # TODO maybe add R code to create all folders and scripts -->
+## Structure
+It's suggested that you start your project using this structure^[It's almost the same as in the example.]: 
+
+```markdown
+make.R
+R/
+├── packages.R
+├── functions.R
+└── plan.R
+data/
+```
+## Make
+`make.R` is a master script that 
+
+* loads your packages and functions^[If there are many functions, split them up into multiple files.];
+* creates a `drake` plan;
+* calls `make()`.
+
+```{r, eval=F, echo=T}
+# make.R
+source("R/packages.R")  # loads packages
+source("R/functions.R") # loads user-defined functions
+source("R/plan.R")      # creates drake plan
+
+make(plan)              # defined in R/plan.R
+```
+
+## Plan
+
+`drake` plan is the high-level catalog of all data analysis steps (such as data cleaning, model fitting, visuzalization, and reporting) in a workflow. 
+
+```{r, eval=F, echo=T}
+# plan.R
+# The workflow plan data frame outlines what you are going to do.
+plan <- drake_plan(
+  raw_data = readxl::read_excel(file_in("raw_data.xlsx")),
+  data = raw_data %>%
+    mutate(Species = forcats::fct_inorder(Species)),
+  hist = create_plot(data),
+  fit = lm(Sepal.Width ~ Petal.Width + Species, data),
+  report = rmarkdown::render(
+    knitr_in("report.Rmd"),
+    output_file = file_out("report.html"),
+    quiet = TRUE
+  )
+)
+
+```
+
+`drake` plan presented as a data frame with columns named `target` and `command`. Each row represents a step in the workflow. Each command is a concise expression that makes use of our functions, and each target is the return value of the command. (The target column has the names of the targets, not the values.)
+
+<!-- # TODO insert drake plan output -->
+```{r}
+
+```
+
+## Basic commands
+
+Here are the most useful commands.
+
+```{r, eval=F, echo=T}
+drake_plan() #create a workflow data frame (like my_plan).
+make() # build your project.
+drake_history() # show what you built, when you built it, and the function arguments you used.
+loadd() # load one or more built targets into your R session.
+readd() # read and return a built target.
+vis_drake_graph() # show an interactive visual network representation of your workflow.
+code_to_function() # creates drake_plan()-ready functions from scripts like these.
+    # outdated(): see which targets will be built in the next make().
+    # deps_code(): check the dependencies of a command or function.
+    # drake_failed(): list the targets that failed to build in the last make().
+    # diagnose(): return the full context of a build, including errors, warnings, and messages.
+```
 Further reading: [The drake R Package User Manual](https://books.ropensci.org/drake/)
