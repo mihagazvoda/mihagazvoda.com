@@ -8,7 +8,7 @@ author:
   - name: Miha Gazvoda
     url: https://mihagazvoda.com
 date: 2017-12-12
-preview: https://upload.wikimedia.org/wikipedia/commons/thumb/9/90/No_image_available_600_x_400.svg/1280px-No_image_available_600_x_400.svg.png
+preview: 
 output:
   distill::distill_article:
     self_contained: false
