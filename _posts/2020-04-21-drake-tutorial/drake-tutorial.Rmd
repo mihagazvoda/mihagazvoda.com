@@ -106,7 +106,7 @@ knitr::kable(plan)
 ```
 </details>
 
-
+<!-- TODO also include dependency plot -->
 
 ### Choose good targets
 Generally speaking, a good target is
