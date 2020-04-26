@@ -1,7 +1,10 @@
 ---
-title: "drake mini-tutorial"
+title: "Improve your workflow with drake"
 description: |
-  An R package that analyzes and improves your workflow.
+  An R package that analyzes and improves your data analysis workflow.
+categories: 
+  - data science
+  - R
 author:
   - name: Miha Gazvoda
     url: https://mihagazvoda.com
@@ -23,7 +26,7 @@ knitr::opts_chunk$set(echo = FALSE)
 * enables to skip steps of the analysis with up-to-date results;  
 * provides evidence that results match the underlying code and data;
 * encourages good programming practices by modularizing your code into functions^[[More about functions in R.](https://r4ds.had.co.nz/functions.html)];
-* visualizes network representation of your workflow. 
+* interactively visualizes network representation of your workflow. 
 
 <!-- ![](https://camo.githubusercontent.com/04d35d8cc5a548445bfc33840a88289fdc340ca3/68747470733a2f2f646f63732e726f70656e7363692e6f72672f6472616b652f7265666572656e63652f666967757265732f696e666f677261706869632e737667) -->
 
@@ -73,12 +76,14 @@ make(plan)              # defined in R/plan.R
 
 ## Plan
 
-`drake` plan is the high-level catalog of all data analysis steps (such as data cleaning, model fitting, visuzalization, and reporting) in a workflow. 
+`drake` plan is the high-level catalog of all data analysis steps (such as data cleaning, model fitting, visuzalization, and reporting) in a workflow.  
+Plan is presented as a data frame with columns named `target` and `command`.
 
-```{r, eval=F, echo=T}
+```{r, echo = TRUE}
 # plan.R
 # The workflow plan data frame outlines what you are going to do.
-plan <- drake_plan(
+plan <- drake::drake_plan(
+  #target, command
   raw_data = readxl::read_excel(file_in("raw_data.xlsx")),
   data = raw_data %>%
     mutate(Species = forcats::fct_inorder(Species)),
@@ -90,15 +95,29 @@ plan <- drake_plan(
     quiet = TRUE
   )
 )
-
 ```
 
-`drake` plan presented as a data frame with columns named `target` and `command`. Each row represents a step in the workflow. Each command is a concise expression that makes use of our functions, and each target is the return value of the command. (The target column has the names of the targets, not the values.)
+Drake plan is presented as a data frame with columns named `target` and `command`. Each row represents a step in the workflow. Each command is a concise expression that makes use of our functions, and each target is the return value of the command. (The target column has the names of the targets, not the values.)
 
-<!-- # TODO insert drake plan output -->
+<details>
+  <summary><b>See `plan` object.</b></summary>
 ```{r}
-
+knitr::kable(plan)
 ```
+</details>
+
+
+
+### Choose good targets
+Generally speaking, a good target is
+
+* long enough to eat up a decent chunk of runtime;
+* small enough that make() frequently skips it;
+* meaningful to your project;
+* a well-behaved R object compatible with saveRDS()^[[Don't be like me.](https://stackoverflow.com/questions/61359114/how-to-use-shiny-app-as-a-target-in-drake)].
+
+
+# Workflow
 
 ## Basic commands
 
@@ -117,4 +136,5 @@ code_to_function() # creates drake_plan()-ready functions from scripts like thes
     # drake_failed(): list the targets that failed to build in the last make().
     # diagnose(): return the full context of a build, including errors, warnings, and messages.
 ```
+
 Further reading: [The drake R Package User Manual](https://books.ropensci.org/drake/)
