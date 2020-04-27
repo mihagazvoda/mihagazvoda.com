@@ -16,6 +16,11 @@ description: |
 knitr::opts_chunk$set(echo = FALSE)
 ```
 
-I'm Miha and I work as a data scientist at Outfit7 (Ekipa2 d.o.o. subsidiary) in Ljubljana.  
-More to come...
+My name is Miha Gazvoda and I work as a data scientist at [Outfit7](https://outfit7.com/) (Ekipa2 d.o.o. subsidiary) in Ljubljana, Slovenia. I love outdoor sports - climbing, cycling, skiing, and slacklining. During my early student years, I was a semi-professional poker player and won a Slovenian poker championship (team event) in 2014. I can't say no to a non-fiction book that arouses my curiosity. And I can't say no to an excuse to not write. I'm trying to fix that - right here, right now. 
+
+<!-- <center>$\bullet\bullet\bullet$</center> -->
+
+This blog is a collection of my data science side projects, topics that interest me, and personal stories I want to share. It's built with [Distill](https://rstudio.github.io/distill/) and deployed using [Netlify](https://www.netlify.com/). My logo was created by [Jovana Đukić](https://www.jovanadukic.com).
+
+<!-- TODO if you want to support me you can use Flattr -->
 
