@@ -1337,7 +1337,9 @@
 
 <div class="d-article">
 <p>My name is Miha Gazvoda and I work as a data scientist at <a href="https://outfit7.com/">Outfit7</a> (Ekipa2 d.o.o. subsidiary) in Ljubljana, Slovenia. I love outdoor sports - climbing, cycling, skiing, and slacklining. During my early student years, I was a semi-professional poker player and won a Slovenian poker championship (team event) in 2014. I can’t say no to a non-fiction book that arouses my curiosity. And I can’t say no to an excuse to not write. I’m trying to fix that - right here, right now.</p>
-<!-- <center>$\bullet\bullet\bullet$</center> -->
+<center>
+<span class="math inline">\(\bullet\bullet\bullet\)</span>
+</center>
 <p>This blog is a collection of my data science side projects, topics that interest me, and personal stories I want to share. It’s built with <a href="https://rstudio.github.io/distill/">Distill</a> and deployed using <a href="https://www.netlify.com/">Netlify</a>. My logo was created by <a href="https://www.jovanadukic.com">Jovana Đukić</a>.</p>
 <!-- TODO if you want to support me you can use Flattr -->
 <!--radix_placeholder_article_footer-->
@@ -1347,6 +1349,15 @@
 <div class="d-appendix">
 </div>
 
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
 
 <!--radix_placeholder_site_after_body-->
 <!--/radix_placeholder_site_after_body-->
