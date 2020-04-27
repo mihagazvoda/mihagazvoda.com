@@ -9,6 +9,7 @@ author:
     url: https://mihagazvoda.com
 date: 2014-07-08
 preview: https://cdn-images-1.medium.com/max/12032/1*ZPr9i5WoPfjpOM7PnNQ65Q.jpeg
+draft: true
 output:
   distill::distill_article:
     self_contained: false

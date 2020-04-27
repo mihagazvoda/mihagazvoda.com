@@ -1,7 +1,7 @@
 ---
 title: "Monument to Erasmus"
 description: |
-  No description.
+  No description needed.
 categories:
   - this happened to me
 author:
