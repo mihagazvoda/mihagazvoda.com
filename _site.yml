@@ -1,5 +1,5 @@
 name: "mihagazvoda.com"
-title: "mihagazvoda.com"
+title: "Miha Gazvoda"
 description: |
   Miha Gazvoda's personal website
 base_url: https://mihagazvoda.com
@@ -11,9 +11,9 @@ output_dir: "_site"
 navbar:
   logo: images/miha-01.svg
   right:
-    - text: "blog"
+    - text: "Blog"
       href: index.html
-    - text: "about"
+    - text: "About"
       href: about.html
     - icon: fa fa-rss
       href: index.xml
