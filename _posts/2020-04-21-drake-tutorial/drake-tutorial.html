@@ -49,7 +49,7 @@
   <!--/radix_placeholder_rmarkdown_metadata-->
   
   <script type="text/json" id="radix-resource-manifest">
-  {"type":"character","attributes":{},"value":["drake-tutorial_files/bowser-1.9.3/bowser.min.js","drake-tutorial_files/distill-2.2.21/template.v2.js","drake-tutorial_files/jquery-1.11.3/jquery.min.js","drake-tutorial_files/webcomponents-2.0.0/webcomponents.js"]}
+  {"type":"character","attributes":{},"value":["drake-tutorial_files/bowser-1.9.3/bowser.min.js","drake-tutorial_files/distill-2.2.21/template.v2.js","drake-tutorial_files/htmlwidgets-1.5.1/htmlwidgets.js","drake-tutorial_files/jquery-1.11.3/jquery.min.js","drake-tutorial_files/vis-4.20.1/img/network/acceptDeleteIcon.png","drake-tutorial_files/vis-4.20.1/img/network/addNodeIcon.png","drake-tutorial_files/vis-4.20.1/img/network/backIcon.png","drake-tutorial_files/vis-4.20.1/img/network/connectIcon.png","drake-tutorial_files/vis-4.20.1/img/network/cross.png","drake-tutorial_files/vis-4.20.1/img/network/cross2.png","drake-tutorial_files/vis-4.20.1/img/network/deleteIcon.png","drake-tutorial_files/vis-4.20.1/img/network/downArrow.png","drake-tutorial_files/vis-4.20.1/img/network/editIcon.png","drake-tutorial_files/vis-4.20.1/img/network/leftArrow.png","drake-tutorial_files/vis-4.20.1/img/network/minus.png","drake-tutorial_files/vis-4.20.1/img/network/plus.png","drake-tutorial_files/vis-4.20.1/img/network/rightArrow.png","drake-tutorial_files/vis-4.20.1/img/network/upArrow.png","drake-tutorial_files/vis-4.20.1/img/network/zoomExtends.png","drake-tutorial_files/vis-4.20.1/vis.css","drake-tutorial_files/vis-4.20.1/vis.min.js","drake-tutorial_files/visNetwork-binding-2.0.9/visNetwork.js","drake-tutorial_files/webcomponents-2.0.0/webcomponents.js"]}
   </script>
   <!--radix_placeholder_navigation_in_header-->
   <!--/radix_placeholder_navigation_in_header-->
@@ -927,6 +927,10 @@
   </script>
   
   <!--/radix_placeholder_distill-->
+  <script src="drake-tutorial_files/htmlwidgets-1.5.1/htmlwidgets.js"></script>
+  <link href="drake-tutorial_files/vis-4.20.1/vis.css" rel="stylesheet" />
+  <script src="drake-tutorial_files/vis-4.20.1/vis.min.js"></script>
+  <script src="drake-tutorial_files/visNetwork-binding-2.0.9/visNetwork.js"></script>
   <script src="drake-tutorial_files/jquery-1.11.3/jquery.min.js"></script>
   <script src="drake-tutorial_files/bowser-1.9.3/bowser.min.js"></script>
   <script src="drake-tutorial_files/webcomponents-2.0.0/webcomponents.js"></script>
@@ -953,7 +957,7 @@
 
 <div class="d-title">
 <h1>Improve your workflow with drake</h1>
-<p>An R package that analyzes and improves your data analysis workflow.</p>
+<p><p>An R package that analyzes and improves your data analysis workflow.</p></p>
 </div>
 
 <div class="d-byline">
@@ -969,7 +973,7 @@
 <li>enables to skip steps of the analysis with up-to-date results;<br />
 </li>
 <li>provides evidence that results match the underlying code and data;</li>
-<li>encourages good programming practices by modularizing your code into functions<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a>;</li>
+<li>encourages good programming practices by modularizing your code into functions<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>;</li>
 <li>interactively visualizes network representation of your workflow.</li>
 </ul>
 <!-- ![](https://camo.githubusercontent.com/04d35d8cc5a548445bfc33840a88289fdc340ca3/68747470733a2f2f646f63732e726f70656e7363692e6f72672f6472616b652f7265666572656e63652f666967757265732f696e666f677261706869632e737667) -->
@@ -989,7 +993,7 @@ drake::drake_example(&quot;main&quot;)
 </div>
 <!-- # TODO maybe add R code to create all folders and scripts -->
 <h2 id="structure">Structure</h2>
-<p>It’s suggested that you start your project using this structure<a href="#fn2" class="footnote-ref" id="fnref2"><sup>2</sup></a>:</p>
+<p>It’s suggested that you start your project using this structure<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a>:</p>
 <pre class="markdown"><code>
 make.R
 R/
@@ -1000,7 +1004,7 @@ data/</code></pre>
 <h2 id="make">Make</h2>
 <p><code>make.R</code> is a master script that</p>
 <ul>
-<li>loads your packages and functions<a href="#fn3" class="footnote-ref" id="fnref3"><sup>3</sup></a>;</li>
+<li>loads your packages and functions<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a>;</li>
 <li>creates a <code>drake</code> plan;</li>
 <li>calls <code>make()</code>.</li>
 </ul>
@@ -1070,39 +1074,39 @@ plan &lt;- drake::drake_plan(
 </table>
 </div>
 </details>
+<details>
+<summary><b>See dependency graph.</b></summary>
+<div class="layout-chunk" data-layout="l-body">
+<div id="htmlwidget-9b841de324d41155df19" style="width:624px;height:384px;" class="visNetwork html-widget"></div>
+<script type="application/json" data-for="htmlwidget-9b841de324d41155df19">{"x":{"nodes":{"id":["n-OJSWCZDYNQ5DU4TFMFSF6ZLYMNSWY","p-OJQXOX3EMF2GCLTYNRZXQ","n-OJWWC4TLMRXXO3R2HJZGK3TEMVZA","p-OJSXA33SOQXFE3LE","n-MZXXEY3BORZTUOTGMN2F62LON5ZGIZLS","raw_data","report","data","p-OJSXA33SOQXGQ5DNNQ","fit","hist"],"imported":[true,true,true,true,true,false,false,false,false,false,false],"label":["readxl::read_excel","file raw_data.xlsx","rmarkdown::render","file report.Rmd","forcats::fct_inorder","raw_data","report","data","file report.html","fit","hist"],"status":["imported","missing","imported","missing","imported","outdated","outdated","outdated","outdated","outdated","outdated"],"type":["function","file","function","file","function","object","object","object","file","object","object"],"font.size":[20,20,20,20,20,20,20,20,20,20,20],"color":["#1874CD","#9A32CD","#1874CD","#9A32CD","#1874CD","#000000","#000000","#000000","#000000","#000000","#000000"],"shape":["triangle","square","triangle","square","triangle","dot","dot","dot","square","dot","dot"],"level":[1,1,1,1,1,2,2,3,3,4,4],"x":[-1,-1,-1,-1,-1,-0.333333333333333,-0.333333333333333,0.333333333333333,0.333333333333333,1,1],"y":[-1,-0.5,2.22044604925031e-16,0.5,1,-0.5,0.5,-0.5,0.5,-0.5,0.5]},"edges":{"from":["n-OJSWCZDYNQ5DU4TFMFSF6ZLYMNSWY","p-OJQXOX3EMF2GCLTYNRZXQ","n-OJWWC4TLMRXXO3R2HJZGK3TEMVZA","p-OJSXA33SOQXFE3LE","report","data","data","raw_data","n-MZXXEY3BORZTUOTGMN2F62LON5ZGIZLS"],"to":["raw_data","raw_data","report","report","p-OJSXA33SOQXGQ5DNNQ","fit","hist","data","data"],"arrows":["to","to","to","to","to","to","to","to","to"]},"nodesToDataframe":true,"edgesToDataframe":true,"options":{"width":"100%","height":"100%","nodes":{"shape":"dot","physics":false},"manipulation":{"enabled":false},"interaction":{"navigationButtons":true},"edges":{"smooth":false},"physics":{"stabilization":false}},"groups":null,"width":null,"height":null,"idselection":{"enabled":false,"style":"width: 150px; height: 26px","useLabels":true,"main":"Select by id"},"byselection":{"enabled":false,"style":"width: 150px; height: 26px","multiple":false,"hideColor":"rgba(200,200,200,0.5)","highlight":false},"main":{"text":"Dependency graph","style":"font-family:Georgia, Times New Roman, Times, serif;font-weight:bold;font-size:20px;text-align:center;"},"submain":null,"footer":null,"background":"rgba(0, 0, 0, 0)","highlight":{"enabled":false,"hoverNearest":false,"degree":1,"algorithm":"all","hideColor":"rgba(200,200,200,0.5)","labelOnly":true},"collapse":{"enabled":true,"fit":false,"resetHighlight":true,"clusterOptions":null,"keepCoord":true,"labelSuffix":"(cluster)"},"legend":{"width":0.2,"useGroups":false,"position":"left","ncol":1,"stepX":100,"stepY":100,"zoom":true,"nodes":{"label":["Outdated","Imported","Missing","Object","Function","File"],"color":["#000000","#1874CD","#9A32CD","#888888","#888888","#888888"],"shape":["dot","dot","dot","dot","triangle","square"],"font.color":["black","black","black","black","black","black"],"font.size":[20,20,20,20,20,20],"id":[2,6,7,8,10,11]},"nodesToDataframe":true},"tooltipStay":300,"tooltipStyle":"position: fixed;visibility:hidden;padding: 5px;white-space: nowrap;font-family: verdana;font-size:14px;font-color:#000000;background-color: #f5f4ed;-moz-border-radius: 3px;-webkit-border-radius: 3px;border-radius: 3px;border: 1px solid #808074;box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);","igraphlayout":{"type":"square"}},"evals":[],"jsHooks":[]}</script>
+</div>
+</details>
+<!-- TODO also include dependency plot -->
 <h3 id="choose-good-targets">Choose good targets</h3>
 <p>Generally speaking, a good target is</p>
 <ul>
 <li>long enough to eat up a decent chunk of runtime;</li>
 <li>small enough that make() frequently skips it;</li>
 <li>meaningful to your project;</li>
-<li>a well-behaved R object compatible with saveRDS()<a href="#fn4" class="footnote-ref" id="fnref4"><sup>4</sup></a>.</li>
+<li>a well-behaved R object compatible with saveRDS()<a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a>.</li>
 </ul>
 <h1 id="workflow">Workflow</h1>
+<p>Even if you use <code>drake</code>, it makes sense to develop interactively. With <code>r_make("make.R")</code> you build your project. With <code>loadd</code> or <code>readd</code> you can return targets to your session - and then interactively use them. <!-- TODO output? --></p>
 <h2 id="basic-commands">Basic commands</h2>
 <p>Here are the most useful commands.</p>
 <div class="layout-chunk" data-layout="l-body">
 <pre class="r"><code>
-drake_plan() #create a workflow data frame (like my_plan).
-make() # build your project.
-drake_history() # show what you built, when you built it, and the function arguments you used.
-loadd() # load one or more built targets into your R session.
-readd() # read and return a built target.
 vis_drake_graph() # show an interactive visual network representation of your workflow.
-code_to_function() # creates drake_plan()-ready functions from scripts like these.
-    # outdated(): see which targets will be built in the next make().
-    # deps_code(): check the dependencies of a command or function.
-    # drake_failed(): list the targets that failed to build in the last make().
-    # diagnose(): return the full context of a build, including errors, warnings, and messages.</code></pre>
+code_to_function() # creates drake_plan()-ready functions from scripts like these.</code></pre>
 </div>
 <p>Further reading: <a href="https://books.ropensci.org/drake/">The drake R Package User Manual</a></p>
-<section class="footnotes">
+<section class="footnotes" role="doc-endnotes">
 <hr />
 <ol>
-<li id="fn1"><p><a href="https://r4ds.had.co.nz/functions.html">More about functions in R.</a><a href="#fnref1" class="footnote-back">↩</a></p></li>
-<li id="fn2"><p>It’s almost the same as in the example.<a href="#fnref2" class="footnote-back">↩</a></p></li>
-<li id="fn3"><p>If there are many functions, split them up into multiple files.<a href="#fnref3" class="footnote-back">↩</a></p></li>
-<li id="fn4"><p><a href="https://stackoverflow.com/questions/61359114/how-to-use-shiny-app-as-a-target-in-drake">Don’t be like me.</a><a href="#fnref4" class="footnote-back">↩</a></p></li>
+<li id="fn1" role="doc-endnote"><p><a href="https://r4ds.had.co.nz/functions.html">More about functions in R.</a><a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2" role="doc-endnote"><p>It’s almost the same as in the example.<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn3" role="doc-endnote"><p>If there are many functions, split them up into multiple files.<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn4" role="doc-endnote"><p><a href="https://stackoverflow.com/questions/61359114/how-to-use-shiny-app-as-a-target-in-drake">Don’t be like me.</a><a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 </ol>
 </section>
 <!--radix_placeholder_article_footer-->

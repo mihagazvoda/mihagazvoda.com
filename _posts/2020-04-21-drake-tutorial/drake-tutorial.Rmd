@@ -106,6 +106,13 @@ knitr::kable(plan)
 ```
 </details>
 
+<details>
+  <summary><b>See dependency graph.</b></summary>
+```{r}
+drake::vis_drake_graph(plan)
+```
+</details>
+
 <!-- TODO also include dependency plot -->
 
 ### Choose good targets
@@ -118,23 +125,16 @@ Generally speaking, a good target is
 
 
 # Workflow
+Even if you use `drake`, it makes sense to develop interactively. With `r_make("make.R")` you build your project. With `loadd` or `readd` you can return targets to your session - and then interactively use them. 
+<!-- TODO output? -->
 
 ## Basic commands
 
 Here are the most useful commands.
 
 ```{r, eval=F, echo=T}
-drake_plan() #create a workflow data frame (like my_plan).
-make() # build your project.
-drake_history() # show what you built, when you built it, and the function arguments you used.
-loadd() # load one or more built targets into your R session.
-readd() # read and return a built target.
 vis_drake_graph() # show an interactive visual network representation of your workflow.
 code_to_function() # creates drake_plan()-ready functions from scripts like these.
-    # outdated(): see which targets will be built in the next make().
-    # deps_code(): check the dependencies of a command or function.
-    # drake_failed(): list the targets that failed to build in the last make().
-    # diagnose(): return the full context of a build, including errors, warnings, and messages.
 ```
 
 Further reading: [The drake R Package User Manual](https://books.ropensci.org/drake/)
