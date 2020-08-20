@@ -1,7 +1,7 @@
 ---
-title: "Improve your workflow with drake"
+title: "Analyze and improve your data analysis workflow"
 description: |
-  An R package that analyzes and improves your data analysis workflow.
+  A concise guide on R package called drake. 
 categories: 
   - data science
   - R
@@ -20,7 +20,9 @@ draft: true
 knitr::opts_chunk$set(echo = FALSE)
 ```
 
-# Why is it useful
+This is meant as a concise guide to refresh your knowledge. 
+
+# Introduction
 [`drake`](https://github.com/ropensci/drake) is an R package by [Will Landau](https://wlandau.github.io/) that analyzes your workflow. It
 
 * enables to skip steps of the analysis with up-to-date results;  
@@ -47,7 +49,7 @@ drake::drake_example("main")
 ```
 
 <!-- # TODO maybe add R code to create all folders and scripts -->
-## Structure
+## Project structure
 It's suggested that you start your project using this structure^[It's almost the same as in the example.]: 
 
 ```markdown
@@ -81,9 +83,9 @@ Plan is presented as a data frame with columns named `target` and `command`.
 
 ```{r, echo = TRUE}
 # plan.R
-# The workflow plan data frame outlines what you are going to do.
+# The workflow `plan` data frame outlines what you are going to do.
 plan <- drake::drake_plan(
-  #target, command
+  # target, command
   raw_data = readxl::read_excel(file_in("raw_data.xlsx")),
   data = raw_data %>%
     mutate(Species = forcats::fct_inorder(Species)),
@@ -132,9 +134,14 @@ Even if you use `drake`, it makes sense to develop interactively. With `r_make("
 
 Here are the most useful commands.
 
-```{r, eval=F, echo=T}
-vis_drake_graph() # show an interactive visual network representation of your workflow.
-code_to_function() # creates drake_plan()-ready functions from scripts like these.
+```{r}
+library(dplyr)
+tibble::tibble(
+  `function name` = c("vis_drake_graph()", "code_to_function()", "loadd()", "readd()"),
+  description = c("Shows an interactive visual network representation of your workflow.", "Creates drake_plan()-ready functions from scripts like these.", "add description", "add description")
+  ) %>% 
+knitr::kable()
 ```
+
 
 Further reading: [The drake R Package User Manual](https://books.ropensci.org/drake/)
