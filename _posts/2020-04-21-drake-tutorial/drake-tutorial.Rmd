@@ -20,9 +20,6 @@ draft: true
 knitr::opts_chunk$set(echo = FALSE)
 ```
 
-This is meant as a concise guide to refresh your knowledge. 
-
-# Introduction
 [`drake`](https://github.com/ropensci/drake) is an R package by [Will Landau](https://wlandau.github.io/) that analyzes your workflow. It
 
 * enables to skip steps of the analysis with up-to-date results;  
@@ -34,8 +31,7 @@ This is meant as a concise guide to refresh your knowledge.
 
 <!-- TODO include image that: X 1. Launch the code. 2. Wait while it runs. 3. Discover an issue. 4. Restart from scratch. -->
 
-# Action time
-## Setup
+# Setup
 Install `drake`. You can also load an example written by [Kirill Müller](https://github.com/krlmlr). It will appear in a new `main` folder. I will use it as a showcase for some file examples.  
 
 ```{r, eval=F, echo=T}
@@ -48,7 +44,6 @@ drake::drake_example("main")
 # You can use drake::examples() to see all examples
 ```
 
-<!-- # TODO maybe add R code to create all folders and scripts -->
 ## Project structure
 It's suggested that you start your project using this structure^[It's almost the same as in the example.]: 
 
@@ -60,7 +55,9 @@ R/
 └── plan.R
 data/
 ```
-## Make
+You can also use `dflow::use_dflow()` to create almost similar structure. 
+
+### Make
 `make.R` is a master script that 
 
 * loads your packages and functions^[If there are many functions, split them up into multiple files.];
@@ -76,9 +73,9 @@ source("R/plan.R")      # creates drake plan
 make(plan)              # defined in R/plan.R
 ```
 
-## Plan
+### Plan
 
-`drake` plan is the high-level catalog of all data analysis steps (such as data cleaning, model fitting, visuzalization, and reporting) in a workflow.  
+`drake` plan is the high-level catalog of data analysis steps (such as data cleaning, model fitting, visualization, and reporting) in a workflow.  
 Plan is presented as a data frame with columns named `target` and `command`.
 
 ```{r, echo = TRUE}
@@ -117,17 +114,17 @@ drake::vis_drake_graph(plan)
 
 <!-- TODO also include dependency plot -->
 
-### Choose good targets
-Generally speaking, a good target is
+#### Choose good targets
+As Will Landau proposed, a good target is
 
 * long enough to eat up a decent chunk of runtime;
 * small enough that make() frequently skips it;
 * meaningful to your project;
-* a well-behaved R object compatible with saveRDS()^[[Don't be like me.](https://stackoverflow.com/questions/61359114/how-to-use-shiny-app-as-a-target-in-drake)].
+* a well-behaved R object compatible with `saveRDS()`.
 
 
 # Workflow
-Even if you use `drake`, it makes sense to develop interactively. With `r_make("make.R")` you build your project. With `loadd` or `readd` you can return targets to your session - and then interactively use them. 
+Even if you use `drake`, it makes sense to develop interactively. With `r_make("make.R")`^[If name make file `_drake.R` instead, then you are able to call `r_make()` without any argument.] you build your project. With `loadd` or `readd` you can return targets to your session and interactively use them to develop things further. 
 <!-- TODO output? -->
 
 ## Basic commands
@@ -137,11 +134,14 @@ Here are the most useful commands.
 ```{r}
 library(dplyr)
 tibble::tibble(
-  `function name` = c("vis_drake_graph()", "code_to_function()", "loadd()", "readd()"),
-  description = c("Shows an interactive visual network representation of your workflow.", "Creates drake_plan()-ready functions from scripts like these.", "add description", "add description")
+  `function` = c("r_make()", "vis_drake_graph()", "code_to_function()", "loadd()", "readd()"),
+  description = c("Build your project.", "Show an interactive visual network representation of your workflow.", "Create drake_plan()-ready functions from scripts.", "Loads built target(s) into your R session.", "Read and return a built target.")
   ) %>% 
 knitr::kable()
 ```
 
+You can find more function in `drake` [README](https://github.com/ropensci/drake#function-reference).
 
-Further reading: [The drake R Package User Manual](https://books.ropensci.org/drake/)
+<center>$\bullet\bullet\bullet$</center>
+
+For further reading I suggest you [The drake R package User Manual](https://books.ropensci.org/drake/). The book also served as a resource for this post. 
