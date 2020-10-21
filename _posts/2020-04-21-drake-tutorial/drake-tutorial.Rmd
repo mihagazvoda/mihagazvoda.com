@@ -1,7 +1,7 @@
 ---
 title: "Analyze and improve your data analysis workflow"
 description: |
-  A concise guide on R package called drake. 
+  A concise guide to R package drake. 
 categories: 
   - data science
   - R
@@ -140,7 +140,7 @@ tibble::tibble(
 knitr::kable()
 ```
 
-You can find more function in `drake` [README](https://github.com/ropensci/drake#function-reference).
+You can find more functions in `drake` [README](https://github.com/ropensci/drake#function-reference).
 
 <center>$\bullet\bullet\bullet$</center>
 
