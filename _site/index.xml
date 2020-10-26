@@ -13,6 +13,7 @@
       <dc:creator>Miha Gazvoda</dc:creator>
       <link>https://mihagazvoda.com/posts/2020-03-26-man-plans-god-laughs-the-planning-fallacy</link>
       <description>So you’re planning to read the whole article? Let’s see…</description>
+      <category>decision making under uncertainty</category>
       <guid>https://mihagazvoda.com/posts/2020-03-26-man-plans-god-laughs-the-planning-fallacy</guid>
       <pubDate>Mon, 01 Jan 2018 00:00:00 +0000</pubDate>
       <media:content url="https://cdn-images-1.medium.com/max/2266/1*OmbvM1wGHVpCFf6S2vQUrw.png" medium="image" type="image/png"/>
@@ -22,6 +23,7 @@
       <dc:creator>Miha Gazvoda</dc:creator>
       <link>https://mihagazvoda.com/posts/2020-03-26-the-714-words-the-picture-cant-tell</link>
       <description>I’m sorry, but the photo is private. Spoiler for friends: Instagram.</description>
+      <category>this happened to me</category>
       <guid>https://mihagazvoda.com/posts/2020-03-26-the-714-words-the-picture-cant-tell</guid>
       <pubDate>Tue, 12 Dec 2017 00:00:00 +0000</pubDate>
     </item>
@@ -30,6 +32,7 @@
       <dc:creator>Miha Gazvoda</dc:creator>
       <link>https://mihagazvoda.com/posts/2020-03-26-how-i-built-my-first-memory-palace-in-15-minutes</link>
       <description>And you can too.</description>
+      <category>this happened to me</category>
       <guid>https://mihagazvoda.com/posts/2020-03-26-how-i-built-my-first-memory-palace-in-15-minutes</guid>
       <pubDate>Sat, 29 Jul 2017 00:00:00 +0000</pubDate>
       <media:content url="https://cdn-images-1.medium.com/max/2000/0*RXwMjtpe3SVUtk_V." medium="image" type="text/plain"/>
@@ -39,6 +42,7 @@
       <dc:creator>Miha Gazvoda</dc:creator>
       <link>https://mihagazvoda.com/posts/2020-03-26-my-phone-use-in-numbers-and-graphs</link>
       <description>Insights and visualizations from Moment app data</description>
+      <category>data science</category>
       <guid>https://mihagazvoda.com/posts/2020-03-26-my-phone-use-in-numbers-and-graphs</guid>
       <pubDate>Sat, 13 May 2017 00:00:00 +0000</pubDate>
       <media:content url="https://cdn-images-1.medium.com/max/2000/1*lc02xXZy0U12zB2fTIbuIw.png" medium="image" type="image/png"/>
@@ -48,6 +52,7 @@
       <dc:creator>Miha Gazvoda</dc:creator>
       <link>https://mihagazvoda.com/posts/2020-03-26-monument-to-erasmus</link>
       <description>No description needed.</description>
+      <category>this happened to me</category>
       <guid>https://mihagazvoda.com/posts/2020-03-26-monument-to-erasmus</guid>
       <pubDate>Wed, 01 Mar 2017 00:00:00 +0000</pubDate>
     </item>
@@ -56,6 +61,8 @@
       <dc:creator>Miha Gazvoda</dc:creator>
       <link>https://mihagazvoda.com/posts/2020-03-28-the-role-of-luck-in-poker</link>
       <description>How the number of hands played affects the variance?</description>
+      <category>data science</category>
+      <category>decision making under uncertainty</category>
       <guid>https://mihagazvoda.com/posts/2020-03-28-the-role-of-luck-in-poker</guid>
       <pubDate>Mon, 14 Sep 2015 00:00:00 +0000</pubDate>
       <media:content url="https://miro.medium.com/proxy/1*4yDpsryVOjbECfACP193Rg.png" medium="image" type="image/png"/>
