@@ -8,7 +8,7 @@ categories:
 author:
   - name: Miha Gazvoda
     url: https://mihagazvoda.com
-date: 10-26-2020
+date: 04-21-2020
 preview: https://camo.githubusercontent.com/44749362ca36c9e3295f2bcf18975d811564c121/68747470733a2f2f646f63732e726f70656e7363692e6f72672f6472616b652f7265666572656e63652f666967757265732f6c6f676f2e737667
 output:
   distill::distill_article:

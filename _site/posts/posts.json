@@ -1,5 +1,24 @@
 [
   {
+    "path": "posts/2020-04-21-drake-tutorial/",
+    "title": "Analyze and improve your data analysis workflow",
+    "description": "A concise guide to R package drake.",
+    "author": [
+      {
+        "name": "Miha Gazvoda",
+        "url": "https://mihagazvoda.com"
+      }
+    ],
+    "date": "2020-04-21",
+    "categories": [
+      "data science",
+      "R"
+    ],
+    "preview": "https://camo.githubusercontent.com/44749362ca36c9e3295f2bcf18975d811564c121/68747470733a2f2f646f63732e726f70656e7363692e6f72672f6472616b652f7265666572656e63652f666967757265732f6c6f676f2e737667",
+    "last_modified": "2020-10-26T20:59:13+01:00",
+    "input_file": "drake-tutorial.utf8.md"
+  },
+  {
     "path": "posts/2020-03-26-man-plans-god-laughs-the-planning-fallacy/",
     "title": "Man Plans, God Laughs: The Planning Fallacy",
     "description": "So you’re planning to read the whole article? Let’s see…",

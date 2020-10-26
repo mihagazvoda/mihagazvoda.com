@@ -7,7 +7,18 @@
     <description>Miha Gazvoda's personal website
 </description>
     <generator>Distill</generator>
-    <lastBuildDate>Mon, 01 Jan 2018 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 20 Apr 2020 00:00:00 +0000</lastBuildDate>
+    <item>
+      <title>Analyze and improve your data analysis workflow</title>
+      <dc:creator>Miha Gazvoda</dc:creator>
+      <link>https://mihagazvoda.com/posts/2020-04-21-drake-tutorial</link>
+      <description>A concise guide to R package drake.</description>
+      <category>data science</category>
+      <category>R</category>
+      <guid>https://mihagazvoda.com/posts/2020-04-21-drake-tutorial</guid>
+      <pubDate>Mon, 20 Apr 2020 00:00:00 +0000</pubDate>
+      <media:content url="https://camo.githubusercontent.com/44749362ca36c9e3295f2bcf18975d811564c121/68747470733a2f2f646f63732e726f70656e7363692e6f72672f6472616b652f7265666572656e63652f666967757265732f6c6f676f2e737667" medium="image" type="text/plain"/>
+    </item>
     <item>
       <title>Man Plans, God Laughs: The Planning Fallacy</title>
       <dc:creator>Miha Gazvoda</dc:creator>
