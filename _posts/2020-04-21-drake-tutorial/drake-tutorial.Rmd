@@ -27,11 +27,7 @@ knitr::opts_chunk$set(echo = FALSE)
 * encourages good programming practices by modularizing your code into functions^[[More about functions in R.](https://r4ds.had.co.nz/functions.html)];
 * interactively visualizes network representation of your workflow. 
 
-![Perks of using `drake`.](images/drake_points.png){width=80%}
-
-<!-- ![](https://camo.githubusercontent.com/04d35d8cc5a548445bfc33840a88289fdc340ca3/68747470733a2f2f646f63732e726f70656e7363692e6f72672f6472616b652f7265666572656e63652f666967757265732f696e666f677261706869632e737667) -->
-
-<!-- TODO include image that: X 1. Launch the code. 2. Wait while it runs. 3. Discover an issue. 4. Restart from scratch. -->
+![Perks of using `drake`.](../../images/drake_points.png)
 
 # Setup
 Install `drake`. You can also load an example written by [Kirill Müller](https://github.com/krlmlr). It will appear in a new `main` folder. I will use it as a showcase for some file examples.  
