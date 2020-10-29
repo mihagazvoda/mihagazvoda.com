@@ -8,7 +8,7 @@ author:
   - name: Miha Gazvoda
     url: https://mihagazvoda.com
 date: 2018-01-01
-preview: https://cdn-images-1.medium.com/max/2266/1*OmbvM1wGHVpCFf6S2vQUrw.png
+preview: ../../images/planning_fallacy_preview.png
 output:
   distill::distill_article:
     self_contained: false

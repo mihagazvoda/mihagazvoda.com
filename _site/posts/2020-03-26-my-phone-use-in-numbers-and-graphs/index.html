@@ -18,6 +18,72 @@
  <!--radix_placeholder_import_source-->
  <!--/radix_placeholder_import_source-->
 
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css" data-origin="pandoc">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #545454; font-weight: bold; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #a1024a; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007faa; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #008000; } /* Char */
+code span.cn { color: #d91e18; } /* Constant */
+code span.co { color: #545454; } /* Comment */
+code span.cv { color: #545454; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #aa5d00; } /* DataType */
+code span.dv { color: #a1024a; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #a1024a; } /* Float */
+code span.fu { color: #4254a7; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #545454; font-weight: bold; } /* Information */
+code span.kw { color: #007faa; font-weight: bold; } /* Keyword */
+code span.op { color: #696969; } /* Operator */
+code span.ot { color: #007faa; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #008000; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #008000; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #008000; } /* VerbatimString */
+code span.wa { color: #545454; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
   <!--radix_placeholder_meta_tags-->
 <title>Miha Gazvoda: My phone use in numbers and graphs</title>
 
@@ -35,25 +101,31 @@
 <meta property="og:type" content="article"/>
 <meta property="og:description" content="Insights and visualizations from Moment app data"/>
 <meta property="og:url" content="https://mihagazvoda.com/posts/2020-03-26-my-phone-use-in-numbers-and-graphs/"/>
+<meta property="og:image" content="https://mihagazvoda.com/posts/2020-03-26-my-phone-use-in-numbers-and-graphs/../../images/phone_numbers_preview.png"/>
+<meta property="og:image:width" content="1872"/>
+<meta property="og:image:height" content="1404"/>
 <meta property="og:locale" content="en_US"/>
 <meta property="og:site_name" content="Miha Gazvoda"/>
 
 <!--  https://dev.twitter.com/cards/types/summary -->
-<meta property="twitter:card" content="summary"/>
+<meta property="twitter:card" content="summary_large_image"/>
 <meta property="twitter:title" content="Miha Gazvoda: My phone use in numbers and graphs"/>
 <meta property="twitter:description" content="Insights and visualizations from Moment app data"/>
 <meta property="twitter:url" content="https://mihagazvoda.com/posts/2020-03-26-my-phone-use-in-numbers-and-graphs/"/>
+<meta property="twitter:image" content="https://mihagazvoda.com/posts/2020-03-26-my-phone-use-in-numbers-and-graphs/../../images/phone_numbers_preview.png"/>
+<meta property="twitter:image:width" content="1872"/>
+<meta property="twitter:image:height" content="1404"/>
 
 <!--/radix_placeholder_meta_tags-->
   <!--radix_placeholder_rmarkdown_metadata-->
 
 <script type="text/json" id="radix-rmarkdown-metadata">
-{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","description","categories","author","date","preview","output","canonical_url"]}},"value":[{"type":"character","attributes":{},"value":["My phone use in numbers and graphs"]},{"type":"character","attributes":{},"value":["Insights and visualizations from Moment app data"]},{"type":"character","attributes":{},"value":["data science"]},{"type":"list","attributes":{},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","url"]}},"value":[{"type":"character","attributes":{},"value":["Miha Gazvoda"]},{"type":"character","attributes":{},"value":["https://mihagazvoda.com"]}]}]},{"type":"character","attributes":{},"value":["2017-05-13"]},{"type":"character","attributes":{},"value":["https://cdn-images-1.medium.com/max/2000/1*lc02xXZy0U12zB2fTIbuIw.png"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["distill::distill_article"]}},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["self_contained"]}},"value":[{"type":"logical","attributes":{},"value":[false]}]}]},{"type":"character","attributes":{},"value":["https://mihagazvoda.com/posts/2020-03-26-my-phone-use-in-numbers-and-graphs/"]}]}
+{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","description","categories","author","date","preview","output","canonical_url"]}},"value":[{"type":"character","attributes":{},"value":["My phone use in numbers and graphs"]},{"type":"character","attributes":{},"value":["Insights and visualizations from Moment app data"]},{"type":"character","attributes":{},"value":["data science"]},{"type":"list","attributes":{},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","url"]}},"value":[{"type":"character","attributes":{},"value":["Miha Gazvoda"]},{"type":"character","attributes":{},"value":["https://mihagazvoda.com"]}]}]},{"type":"character","attributes":{},"value":["2017-05-13"]},{"type":"character","attributes":{},"value":["../../images/phone_numbers_preview.png"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["distill::distill_article"]}},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["self_contained"]}},"value":[{"type":"logical","attributes":{},"value":[false]}]}]},{"type":"character","attributes":{},"value":["https://mihagazvoda.com/posts/2020-03-26-my-phone-use-in-numbers-and-graphs/"]}]}
 </script>
 <!--/radix_placeholder_rmarkdown_metadata-->
   
   <script type="text/json" id="radix-resource-manifest">
-  {"type":"character","attributes":{},"value":["my-phone-use-in-numbers-and-graphs_files/bowser-1.9.3/bowser.min.js","my-phone-use-in-numbers-and-graphs_files/distill-2.2.21/template.v2.js","my-phone-use-in-numbers-and-graphs_files/jquery-1.11.3/jquery.min.js","my-phone-use-in-numbers-and-graphs_files/webcomponents-2.0.0/webcomponents.js"]}
+  {"type":"character","attributes":{},"value":["my-phone-use-in-numbers-and-graphs_files/anchor-4.2.2/anchor.min.js","my-phone-use-in-numbers-and-graphs_files/bowser-1.9.3/bowser.min.js","my-phone-use-in-numbers-and-graphs_files/distill-2.2.21/template.v2.js","my-phone-use-in-numbers-and-graphs_files/header-attrs-2.5/header-attrs.js","my-phone-use-in-numbers-and-graphs_files/jquery-1.11.3/jquery.min.js","my-phone-use-in-numbers-and-graphs_files/webcomponents-2.0.0/webcomponents.js"]}
   </script>
   <!--radix_placeholder_navigation_in_header-->
 <meta name="distill:offset" content="../.."/>
@@ -1941,7 +2013,9 @@ document.addEventListener('DOMContentLoaded', function() {
 </script>
 
 <!--/radix_placeholder_distill-->
+  <script src="../../site_libs/header-attrs-2.5/header-attrs.js"></script>
   <script src="../../site_libs/jquery-1.11.3/jquery.min.js"></script>
+  <script src="../../site_libs/anchor-4.2.2/anchor.min.js"></script>
   <script src="../../site_libs/bowser-1.9.3/bowser.min.js"></script>
   <script src="../../site_libs/webcomponents-2.0.0/webcomponents.js"></script>
   <script src="../../site_libs/distill-2.2.21/template.v2.js"></script>
@@ -2015,7 +2089,12 @@ document.addEventListener('DOMContentLoaded', function() {
 
 <div class="d-title">
 <h1>My phone use in numbers and graphs</h1>
-<p>Insights and visualizations from Moment app data</p>
+<!--radix_placeholder_categories-->
+<div class="dt-tags">
+  <a href="../../index.html#category:data_science" class="dt-tag">data science</a>
+</div>
+<!--/radix_placeholder_categories-->
+<p><p>Insights and visualizations from Moment app data</p></p>
 </div>
 
 <div class="d-byline">
@@ -2026,11 +2105,11 @@ document.addEventListener('DOMContentLoaded', function() {
 
 <div class="d-article">
 <figure>
-<img src="https://cdn-images-1.medium.com/max/3200/1*HMOfjOwtbLoHEcYJb2Gs7w.jpeg" alt="Image credit." /><figcaption><a href="http://abcnews.go.com/US/apps-secretly-spy-cellphone/story?id=34950812">Image credit.</a></figcaption>
+<img src="https://cdn-images-1.medium.com/max/3200/1*HMOfjOwtbLoHEcYJb2Gs7w.jpeg" alt="" /><figcaption><a href="http://abcnews.go.com/US/apps-secretly-spy-cellphone/story?id=34950812">Image credit.</a></figcaption>
 </figure>
 <p>For the last few months I’ve been interested in the attention economy, how modern technologies hijack our minds to make more profit. I also wrote a ten-page article on the topic as a part of my faculty subject’s grade. During the research, I came across the movement called <a href="http://www.timewellspent.io/">Time Well Spent</a> which wants to “transform the race for attention so it aligns with our best interests”. Their website also offers apps which help you save time instead of wasting it. One of them is <a href="https://inthemoment.io/">Moment</a>.</p>
 <figure>
-<img src="https://cdn-images-1.medium.com/max/2000/1*1gKqtcYtiw6mguy_t75l1A.png" alt="Moment app." /><figcaption>Moment app.</figcaption>
+<img src="https://cdn-images-1.medium.com/max/2000/1*1gKqtcYtiw6mguy_t75l1A.png" alt="" /><figcaption>Moment app.</figcaption>
 </figure>
 <h2 id="moment-app">Moment app</h2>
 <p>Moment is an app that automatically tracks and helps you manage time spent on the mobile phone. The free version of Moment displays the duration of your mobile usage per day. The paid version helps you fight and limit use. There is also a <a href="https://inthemoment.io/family">family version</a>.</p>
@@ -2038,19 +2117,19 @@ document.addEventListener('DOMContentLoaded', function() {
 <h2 id="overview">Overview</h2>
 <p>I started using Moment in the early days of December and forgot about it until recently. Of course, the app was working on its own. The graph below presents my mobile use per day and location. I calculated the location as weighted average of latitudes and longitudes. Let me remind you that you can click on the image or hyperlinks below the graphs for interactive plots.</p>
 <figure>
-<img src="https://cdn-images-1.medium.com/max/3704/1*-odzSqWRHmncZPf87jcq9g.png" alt="See the interactive plot." /><figcaption><a href="https://plot.ly/~mihagazvoda/17">See the interactive plot.</a></figcaption>
+<img src="https://cdn-images-1.medium.com/max/3704/1*-odzSqWRHmncZPf87jcq9g.png" alt="" /><figcaption><a href="https://plot.ly/~mihagazvoda/17">See the interactive plot.</a></figcaption>
 </figure>
 <p><a href="https://www.researchgate.net/publication/283305882_Beyond_Self-Report_Tools_to_Compare_Estimated_and_Real-World_Smartphone_Use">A recent study</a> showed that young adults use their phones for a little more than 5 hours and check it 85 times per day on average. Let’s compare this to my results. <strong>I’ve been using it on average for 3 hours and 10 minutes and checked it 60 times each day.</strong> And I still have a feeling that I’m wasting my time on it…</p>
 <h2 id="average-day">Average day</h2>
 <p>That’s how my average day, expressed in probabilities of me being on the phone for each minute, looks like.</p>
 <figure>
-<img src="https://cdn-images-1.medium.com/max/3704/1*-ZqXMYrzYfSBrs8O7yzzPQ.png" alt="See the interactive plot." /><figcaption><a href="https://plot.ly/~mihagazvoda/21">See the interactive plot.</a></figcaption>
+<img src="https://cdn-images-1.medium.com/max/3704/1*-ZqXMYrzYfSBrs8O7yzzPQ.png" alt="" /><figcaption><a href="https://plot.ly/~mihagazvoda/21">See the interactive plot.</a></figcaption>
 </figure>
 <p>Probabilities over every minute are really noisy, so I applied the median filter to reduce noise. Unfortunately, because of my ‘free’ lifestyle (remember, I was on Erasmus exchange), you can’t learn a lot from the plot.</p>
 <h2 id="average-session">Average session</h2>
 <p>It’s time to take a closer look at the sessions — their durations — and compare them with the results of the previously mentioned study.</p>
 <figure>
-<img src="https://cdn-images-1.medium.com/max/3704/1*GZRU88irTLvgiOkDzYayOA.png" alt="See the interactive plot." /><figcaption><a href="https://plot.ly/~mihagazvoda/19">See the interactive plot.</a></figcaption>
+<img src="https://cdn-images-1.medium.com/max/3704/1*GZRU88irTLvgiOkDzYayOA.png" alt="" /><figcaption><a href="https://plot.ly/~mihagazvoda/19">See the interactive plot.</a></figcaption>
 </figure>
 <p><strong>My <a href="https://en.wikipedia.org/wiki/Median">median</a> session is 95 seconds long.</strong> Theirs, less than half a minute. I assume that’s due to the two reasons: * I usually turn off the mobile data or wifi. Consequently, every time I want to check something online I have to turn it on again and that takes some time. * I mostly don’t use push notifications. That takes additional time when I want to check social media notifications — especially if I get hooked in the <a href="https://journal.thriveglobal.com/how-technology-hijacks-peoples-minds-from-a-magician-and-google-s-design-ethicist-56d62ef5edf3">never-ending news feed</a>.</p>
 <h2 id="favorite-locations">Favorite locations</h2>
@@ -2060,6 +2139,7 @@ document.addEventListener('DOMContentLoaded', function() {
 <h2 id="coding-and-writing">Coding and writing</h2>
 <p>I wanted to keep this post as short and as interesting as possible— without going too much into detail (the article is meant for the general public). Let numbers and graphs speak for themselves. The initial plan also included t-tests to compare use with and without specific social media apps and distribution for my waking time. In the end, for the reasons mentioned above, I decided to leave them out.</p>
 <p>I implemented the code in Python programming language using <a href="http://jupyter.org/">Jupyter Notebook</a>. For data visualization (excluding the map), I used <a href="https://plot.ly/">plotly</a>.</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <!--radix_placeholder_article_footer-->
 <div class="article-footer">
   <p class="social_footer">

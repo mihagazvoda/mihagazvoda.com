@@ -9,7 +9,7 @@ author:
   - name: Miha Gazvoda
     url: https://mihagazvoda.com
 date: 2015-09-14
-preview: https://miro.medium.com/proxy/1*4yDpsryVOjbECfACP193Rg.png
+preview: ../../images/role_luck_in_poker_preview.png
 output:
   distill::distill_article:
     self_contained: false

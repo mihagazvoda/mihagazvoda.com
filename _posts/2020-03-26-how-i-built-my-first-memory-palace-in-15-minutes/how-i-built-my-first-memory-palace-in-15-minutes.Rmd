@@ -8,7 +8,7 @@ author:
   - name: Miha Gazvoda
     url: https://mihagazvoda.com
 date: 2017-07-29
-preview: https://cdn-images-1.medium.com/max/2000/0*RXwMjtpe3SVUtk_V.
+preview: ../../images/memory_palace_preview.png
 output:
   distill::distill_article:
     self_contained: false

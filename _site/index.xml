@@ -7,7 +7,7 @@
     <description>Miha Gazvoda's personal website
 </description>
     <generator>Distill</generator>
-    <lastBuildDate>Mon, 20 Apr 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 21 Apr 2020 00:00:00 +0000</lastBuildDate>
     <item>
       <title>Analyze and improve your data analysis workflow</title>
       <dc:creator>Miha Gazvoda</dc:creator>
@@ -16,7 +16,7 @@
       <category>data science</category>
       <category>R</category>
       <guid>https://mihagazvoda.com/posts/2020-04-21-drake-tutorial</guid>
-      <pubDate>Mon, 20 Apr 2020 00:00:00 +0000</pubDate>
+      <pubDate>Tue, 21 Apr 2020 00:00:00 +0000</pubDate>
       <media:content url="https://mihagazvoda.com/posts/2020-04-21-drake-tutorial/../../images/drake_preview.png" medium="image" type="image/png" width="1872" height="1404"/>
     </item>
     <item>
@@ -27,7 +27,7 @@
       <category>decision making under uncertainty</category>
       <guid>https://mihagazvoda.com/posts/2020-03-26-man-plans-god-laughs-the-planning-fallacy</guid>
       <pubDate>Mon, 01 Jan 2018 00:00:00 +0000</pubDate>
-      <media:content url="https://cdn-images-1.medium.com/max/2266/1*OmbvM1wGHVpCFf6S2vQUrw.png" medium="image" type="image/png"/>
+      <media:content url="https://mihagazvoda.com/posts/2020-03-26-man-plans-god-laughs-the-planning-fallacy/../../images/planning_fallacy_preview.png" medium="image" type="image/png" width="1872" height="1404"/>
     </item>
     <item>
       <title>The 714 words the picture can't tell</title>
@@ -37,6 +37,7 @@
       <category>this happened to me</category>
       <guid>https://mihagazvoda.com/posts/2020-03-26-the-714-words-the-picture-cant-tell</guid>
       <pubDate>Tue, 12 Dec 2017 00:00:00 +0000</pubDate>
+      <media:content url="https://mihagazvoda.com/posts/2020-03-26-the-714-words-the-picture-cant-tell/../../images/words_714_preview.png" medium="image" type="image/png" width="1872" height="1404"/>
     </item>
     <item>
       <title>How I built my first memory palace in 15 minutes</title>
@@ -46,7 +47,7 @@
       <category>this happened to me</category>
       <guid>https://mihagazvoda.com/posts/2020-03-26-how-i-built-my-first-memory-palace-in-15-minutes</guid>
       <pubDate>Sat, 29 Jul 2017 00:00:00 +0000</pubDate>
-      <media:content url="https://cdn-images-1.medium.com/max/2000/0*RXwMjtpe3SVUtk_V." medium="image" type="text/plain"/>
+      <media:content url="https://mihagazvoda.com/posts/2020-03-26-how-i-built-my-first-memory-palace-in-15-minutes/../../images/memory_palace_preview.png" medium="image" type="image/png" width="1872" height="1404"/>
     </item>
     <item>
       <title>My phone use in numbers and graphs</title>
@@ -56,7 +57,7 @@
       <category>data science</category>
       <guid>https://mihagazvoda.com/posts/2020-03-26-my-phone-use-in-numbers-and-graphs</guid>
       <pubDate>Sat, 13 May 2017 00:00:00 +0000</pubDate>
-      <media:content url="https://cdn-images-1.medium.com/max/2000/1*lc02xXZy0U12zB2fTIbuIw.png" medium="image" type="image/png"/>
+      <media:content url="https://mihagazvoda.com/posts/2020-03-26-my-phone-use-in-numbers-and-graphs/../../images/phone_numbers_preview.png" medium="image" type="image/png" width="1872" height="1404"/>
     </item>
     <item>
       <title>Monument to Erasmus</title>
@@ -65,7 +66,8 @@
       <description>No description needed.</description>
       <category>this happened to me</category>
       <guid>https://mihagazvoda.com/posts/2020-03-26-monument-to-erasmus</guid>
-      <pubDate>Wed, 01 Mar 2017 00:00:00 +0000</pubDate>
+      <pubDate>Tue, 28 Feb 2017 00:00:00 +0000</pubDate>
+      <media:content url="https://mihagazvoda.com/posts/2020-03-26-monument-to-erasmus/../../images/erasmus_preview.png" medium="image" type="image/png" width="1872" height="1404"/>
     </item>
     <item>
       <title>The role of luck in poker</title>
@@ -76,7 +78,7 @@
       <category>decision making under uncertainty</category>
       <guid>https://mihagazvoda.com/posts/2020-03-28-the-role-of-luck-in-poker</guid>
       <pubDate>Mon, 14 Sep 2015 00:00:00 +0000</pubDate>
-      <media:content url="https://miro.medium.com/proxy/1*4yDpsryVOjbECfACP193Rg.png" medium="image" type="image/png"/>
+      <media:content url="https://mihagazvoda.com/posts/2020-03-28-the-role-of-luck-in-poker/../../images/role_luck_in_poker_preview.png" medium="image" type="image/png" width="1872" height="1404"/>
     </item>
   </channel>
 </rss>
