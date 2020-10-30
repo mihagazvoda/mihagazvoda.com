@@ -7,16 +7,16 @@
     <description>Miha Gazvoda's personal website
 </description>
     <generator>Distill</generator>
-    <lastBuildDate>Tue, 21 Apr 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 29 Oct 2020 00:00:00 +0000</lastBuildDate>
     <item>
-      <title>Analyze and improve your data analysis workflow</title>
+      <title>Improve your data analysis workflow with drake R package</title>
       <dc:creator>Miha Gazvoda</dc:creator>
       <link>https://mihagazvoda.com/posts/2020-04-21-drake-tutorial</link>
-      <description>A concise guide to R package drake.</description>
+      <description>A quick guide.</description>
       <category>data science</category>
       <category>R</category>
       <guid>https://mihagazvoda.com/posts/2020-04-21-drake-tutorial</guid>
-      <pubDate>Tue, 21 Apr 2020 00:00:00 +0000</pubDate>
+      <pubDate>Thu, 29 Oct 2020 00:00:00 +0000</pubDate>
       <media:content url="https://mihagazvoda.com/posts/2020-04-21-drake-tutorial/../../images/drake_preview.png" medium="image" type="image/png" width="1872" height="1404"/>
     </item>
     <item>
@@ -66,7 +66,7 @@
       <description>No description needed.</description>
       <category>this happened to me</category>
       <guid>https://mihagazvoda.com/posts/2020-03-26-monument-to-erasmus</guid>
-      <pubDate>Tue, 28 Feb 2017 00:00:00 +0000</pubDate>
+      <pubDate>Wed, 01 Mar 2017 00:00:00 +0000</pubDate>
       <media:content url="https://mihagazvoda.com/posts/2020-03-26-monument-to-erasmus/../../images/erasmus_preview.png" medium="image" type="image/png" width="1872" height="1404"/>
     </item>
     <item>

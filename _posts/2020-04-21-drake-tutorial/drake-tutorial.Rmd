@@ -1,14 +1,14 @@
 ---
-title: "Analyze and improve your data analysis workflow"
+title: "Improve your data analysis workflow with drake R package"
 description: |
-  A concise guide to R package drake. 
+  A quick guide. 
 categories: 
   - data science
   - R
 author:
   - name: Miha Gazvoda
     url: https://mihagazvoda.com
-date: 04-21-2020
+date: 10-30-2020
 preview: ../../images/drake_preview.png
 output:
   distill::distill_article:
@@ -94,7 +94,7 @@ plan <- drake::drake_plan(
 )
 ```
 
-Drake plan is presented as a data frame with columns named `target` and `command`. Each row represents a step in the workflow. Each command is a concise expression that makes use of our functions, and each target is the return value of the command. (The target column has the names of the targets, not the values.)
+Drake plan is presented as a data frame with columns named `target` and `command`. Each row represents a step in the workflow. Each command is a concise expression that makes use of our functions, and each target is the return value of the command.
 
 <details>
   <summary><b>See `plan` object.</b></summary>
@@ -116,14 +116,13 @@ drake::vis_drake_graph(plan)
 As Will Landau proposed, a good target is
 
 * long enough to eat up a decent chunk of runtime;
-* small enough that make() frequently skips it;
+* small enough that `make()` frequently skips it;
 * meaningful to your project;
-* a well-behaved R object compatible with `saveRDS()`.
+* an R object compatible with `saveRDS()`.
 
 
 # Workflow
-Even if you use `drake`, it makes sense to develop interactively. With `r_make("make.R")`^[If name make file `_drake.R` instead, then you are able to call `r_make()` without any argument.] you build your project. With `loadd` or `readd` you can return targets to your session and interactively use them to develop things further. 
-<!-- TODO output? -->
+Even if you use `drake`, it makes sense to develop interactively. With `r_make("make.R")`^[If you name make file `_drake.R` instead, you are able to call `r_make()` without an argument.] you build your project. With `loadd` and `readd` you return targets to your session and interactively use them to develop things further. 
 
 ## Basic commands
 
@@ -133,7 +132,7 @@ Here are the most useful commands.
 library(dplyr)
 tibble::tibble(
   `function` = c("r_make()", "clean()", "vis_drake_graph()", "code_to_function()", "loadd()", "readd()"),
-  description = c("Build your project.", "Force targets to be out of date and remove target names from the data in the cache.", "Show an interactive visual network representation of your workflow.", "Create drake_plan()-ready functions from scripts.", "Loads built target(s) into your R session.", "Read and return a built target.")
+  description = c("Build your project.", "Force targets to be out of date and remove target names from the data in the cache.", "Show an interactive visual network representation of your workflow.", "Create functions from scripts so you can pass them as commands in drake plan.", "Loads built target(s) into your R session.", "Read and return a built target.")
   ) %>% 
 knitr::kable()
 ```
