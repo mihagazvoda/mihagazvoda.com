@@ -2,11 +2,15 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" version="1.0">
   <url>
     <loc>https://mihagazvoda.com/about.html</loc>
-    <lastmod>2020-08-02T11:59:51+02:00</lastmod>
+    <lastmod>2020-10-30T17:57:57+01:00</lastmod>
   </url>
   <url>
     <loc>https://mihagazvoda.com/</loc>
     <lastmod>2020-04-27T22:18:06+02:00</lastmod>
+  </url>
+  <url>
+    <loc>https://mihagazvoda.com/README.html</loc>
+    <lastmod>2020-03-26T19:45:46+01:00</lastmod>
   </url>
   <url>
     <loc>https://mihagazvoda.com/posts/2020-04-21-drake-tutorial/</loc>
