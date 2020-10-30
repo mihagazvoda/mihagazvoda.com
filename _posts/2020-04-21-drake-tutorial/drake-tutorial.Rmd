@@ -110,8 +110,6 @@ drake::vis_drake_graph(plan)
 ```
 </details>
 
-<!-- TODO also include dependency plot -->
-
 #### Choose good targets
 As Will Landau proposed, a good target is
 

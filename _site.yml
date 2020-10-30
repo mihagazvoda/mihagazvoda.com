@@ -9,6 +9,7 @@ collections:
     citations: false
 output_dir: "_site"
 navbar:
+  search: false
   logo: images/miha-01.svg
   right:
     - text: "Blog"
