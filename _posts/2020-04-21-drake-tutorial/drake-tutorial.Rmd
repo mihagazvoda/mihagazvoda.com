@@ -1,5 +1,5 @@
 ---
-title: "Improve your data analysis workflow with drake R package"
+title: "Improve your data analysis workflow with the drake R package"
 description: |
   A quick guide. 
 categories: 
