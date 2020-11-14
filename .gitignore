@@ -2,3 +2,4 @@
 .Rproj.user
 miha_gazvoda_website.Rproj
 .DS_Store
+_site/Makefile
