@@ -1,0 +1,56 @@
+---
+title: "Introduction to Bootstrap with Examples in R"
+description: |
+  No description.
+author:
+  - name: Miha Gazvoda
+    url: https://mihagazvoda.com
+date: 11-01-2020
+output:
+  distill::distill_article:
+    self_contained: false
+draft: true
+---
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+# Why Bootstrap?
+Why I prefer bootstrap over standard methods:
+
+* it's intuitive;
+* it allows estimation of the sampling distribution of almost any statistic (measures of accuracy such as bias, variance, confidence itervals, etc. to sample esimates);
+
+Negative:
+* the results depend on the representative sample (independence of samples)
+* time-consuming.
+
+Increasing the number of samples cannot increase the amount of information in the original data; it can only reduce the effects of random sampling errors which can arise from a bootstrap procedure itself. Moreover, there is evidence that numbers of samples greater than 100 lead to negligible improvements in the estimation of standard errors.
+
+
+
+It's hard to assess the accuracy of an estimate other than the mean (median...) since there's no formula for it. 
+
+# Overview and procedure
+
+# Implementation in R
+
+# Further reading
+https://en.wikipedia.org/wiki/Bootstrapping_(statistics)  
+https://stats.stackexchange.com/questions/26088/explaining-to-laypeople-why-bootstrapping-works
+
+
+
+A bootstrap sample `x* = (xi, x2, · · ·, x~)` is obtained by randomly sampling n times, with replacement, from the original data points x1, x2, · · · , Xn. For instance, with n = 7 we might obtain x* = (xs,x7,Xs,x4,x7,x3,xl).  
+
+Typical values for B, the number of bootstrap samples, range from 50 to 200 for standard error estimation. Corresponding to each bootstrap sample is a bootstrap replication of s, namely s(x*b), the value of the statistic s evaluated for x*b. If s(x) is the sample median, for instance, then s(x*) is the median of the bootstrap sample.
+
+The bootstrap estimate of standard error is the standard deviation of the bootstrap replications (estimates).
+
+https://en.wikipedia.org/wiki/Bootstrapping_(statistics)
+
+Maybe mention parametric bootstrapping or that we will focus on non-parametric one.
+
+The bootstrap's virtue is that it produces biases and standard errors in an automatic way, no matter how complicated the functional mapping()= t(F) may be.
