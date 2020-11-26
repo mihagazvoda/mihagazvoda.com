@@ -1,0 +1,65 @@
+---
+title: "Bayesian updating"
+description: |
+  For binomial data.
+author:
+  - name: Miha Gazvoda
+    url: https://mihagazvoda.com
+date: 11-24-2020
+output:
+  distill::distill_article:
+    self_contained: false
+---
+
+I've struggled many time to dive into Bayesian statistics especially inference. I attended probably 10+ hour course (and passed it) without properly understanding what I'm doing. Then I, while watching [the talk about linear models](https://www.youtube.com/watch?v=68ABAU_V8qI) and using common sense, came across Statistical Rethinking [book](https://xcelab.net/rm/statistical-rethinking/) and [video course](https://www.youtube.com/watch?v=4WVelCswXo4). I think they supplement each other really well.[^1]
+
+[^1]: If you need to pick one, go with the book.
+
+While first chapter can be a bit boring I cannot recommend it enough. The author really focuses that you grasp the topic without (almost any) equations but with common sense. And I started to understand what's going on. And even more importantly - I figured out that I learn by doing - not by listening. That's how this article (and a dashboard, but more on this later) was born.[^2]
+
+[^2]: I'm at chapter 4 so don't expect too much.
+
+## Tossing, again
+
+He introduces earth tossing example for approximating proportion of sea on the earth. You throw globe in the air, catch it, check your index finger, write down if it's sea (1) or land (0). By throwing it a lot of times you could estimate proportion of sea on the earth.
+
+TODO paste possible outcomes
+
+Let's think about it. So we have a data generator that causes us to put our index finger on sea with probability `p` (because `p` portion of the surface is sea). Since we don't know what's `p` we can estimate from data which `p` is most likely to generate such data. So we estimate for each `p`:
+
+1. Is there probability that some `p` are more likely than others, based on our knowledge? 
+
+2. How likely is each `p` to generate such data? 
+
+Let's say we don't know anything about `p` so we will assign equal probability to each `p`. What do I mean by each `p`? It's all the values from 0 to 1. But to keep things shorter (not even simpler) let's focus on each tenth percent. And then based on data, we will update this weights. Time to toss. 
+
+No, wait. Because there are only two possible outcomes we can actually calculate how likely is that each of the `p` would produce 1 or 0. So let's say each prior is equally likely. It means:
+
+```{r}
+options(knitr.table.format = "html") 
+library(kableExtra)
+t <- tibble::tibble(
+  p = seq(0, 1, by = 0.1),
+  prior_unstandardized = 1,
+  prior = prior_unstandardized / sum(prior_unstandardized),
+  p_1_unstandardized = p,
+  p_0_unstandardized = 1 - p,
+  p_1 = p_1_unstandardized / sum(p_1_unstandardized),
+  p_0 = p_0_unstandardized / sum(p_0_unstandardized)
+)
+
+t %>% 
+  kbl() %>% 
+  kable_styling()
+```
+
+then you can just multiply columns to get posteriors!
+
+
+
+> When we don't know what caused the data, potential causes that may produce the data in more ways are more plausible. - Statistical Rethinking
+
+
+also add link to dashboard and R code
+
+also add example what happens if you have 01 vs 0011 (it shrinks)
