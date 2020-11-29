@@ -1,5 +1,5 @@
 ---
-title: "Bayesian updating"
+title: "Intuitive Bayesian updating"
 description: |
   For binomial data.
 author:
@@ -11,29 +11,53 @@ output:
     self_contained: false
 ---
 
-I've struggled many time to dive into Bayesian statistics especially inference. I attended probably 10+ hour course (and passed it) without properly understanding what I'm doing. Then I, while watching [the talk about linear models](https://www.youtube.com/watch?v=68ABAU_V8qI) and using common sense, came across Statistical Rethinking [book](https://xcelab.net/rm/statistical-rethinking/) and [video course](https://www.youtube.com/watch?v=4WVelCswXo4). I think they supplement each other really well.[^1]
+I've struggled many time to dive into Bayesian statistics especially inference. I attended probably 10+ hour course (and passed it) without properly understanding what I'm doing. Then I, while watching [the talk about linear models and using common sense](https://www.youtube.com/watch?v=68ABAU_V8qI), came across Statistical Rethinking [book](https://xcelab.net/rm/statistical-rethinking/) and [video course](https://www.youtube.com/watch?v=4WVelCswXo4). [^1]
 
-[^1]: If you need to pick one, go with the book.
+[^1]: I think they supplement each other well. If you need to pick one, go with the book. 
 
-While first chapter can be a bit boring I cannot recommend it enough. The author really focuses that you grasp the topic without (almost any) equations but with common sense. And I started to understand what's going on. And even more importantly - I figured out that I learn by doing - not by listening. That's how this article (and a dashboard, but more on this later) was born.[^2]
+While the first chapter can be a bit boring I cannot recommend it enough. The author focuses that you grasp the topic without (almost any) equations but with common sense. And I started to understand what's going on. And even more importantly - I figured out that I learn by doing - not by listening. That's how this article (and a dashboard, but more on this later) was born.[^2]
 
 [^2]: I'm at chapter 4 so don't expect too much.
 
 ## Tossing, again
 
-He introduces earth tossing example for approximating proportion of sea on the earth. You throw globe in the air, catch it, check your index finger, write down if it's sea (1) or land (0). By throwing it a lot of times you could estimate proportion of sea on the earth.
+The author introduces earth tossing example for approximating proportion of sea on the earth. You throw globe in the air, catch it, check your index finger, write down if it's sea (1 = success) or land (0 = failure). By throwing and catching it a lot of times you could estimate proportion of sea on the earth. But how sure can you be about the estimation?
 
 TODO paste possible outcomes
 
-Let's think about it. So we have a data generator that causes us to put our index finger on sea with probability `p` (because `p` portion of the surface is sea). Since we don't know what's `p` we can estimate from data which `p` is most likely to generate such data. So we estimate for each `p`:
+Let's say `p` is probability of success, i.e. probability that we will catch the earth pointing on sea which translates into proportion of earth's surface covered by the sea. Based on tossing outcomes we will estimate how likely is that each of that `p` could generate such data. By each `p` I mean all probabilities of success, from 0 to 1. (To keep things shorter (not even simpler) let's focus on each tenth percent. Maybe mention outcomes that you plan to use?)
 
-1. Is there probability that some `p` are more likely than others, based on our knowledge? 
+## Priors
 
-2. How likely is each `p` to generate such data? 
+In Bayesian world, there's no only data (it could also be only data) but also your prior knowledge about it. You can incorporate that into a prior^[Prior probability distribution, often simply called the prior.]. But beware, this should be done before peeking into data. 
 
-Let's say we don't know anything about `p` so we will assign equal probability to each `p`. What do I mean by each `p`? It's all the values from 0 to 1. But to keep things shorter (not even simpler) let's focus on each tenth percent. And then based on data, we will update this weights. Time to toss. 
+If you don't know anything about proportion of sea on earth you can assign the same probability to all values of `p`. That's called a flat prior. You usually want to avoid it. It means you haven't done your homework and have no idea what about the process you're modeling. 
 
-No, wait. Because there are only two possible outcomes we can actually calculate how likely is that each of the `p` would produce 1 or 0. So let's say each prior is equally likely. It means:
+For example, if you (100%) know that there's more than 50% of water on sea surface, you can assign 0 probability to when `p` is less than 0.^[Beware, this means that `p` won't be lower than 0.5 no matter the data.] Or if you know the probability should be around 0.5, you can using Gaussian with mean of 0.
+
+
+
+TODO add drawing of different priors
+
+
+## Likelihood
+Likelihood tells you how likely is that model, in our case `p`, would produce such outcome (data). In our example, there are only two outcomes for which we need to figure out the likelihoods. What's the probability, for example, if `p = 0.9` the outcome equals 1? it's 0.9, you're right. And that holds for all `p` values between 0 and 1. We only need to standardize it to get the likelihood so all the probabilities for different `p` sum up to 1. And for 0 outcome, the probability is `1-p`, so 0.1 for `p = 0.9`. And again summing all and dividing. 
+
+Why standardizing? All possibilities have to sum to 1. Because if `p = 1` then the probability it will produce 1 is `1`. This doesn't mean there's 100% chance that outcome 1 was generated by `p = 1`. Also other `p` can generate 1. 
+
+TODO drawing
+
+## Posterior
+
+
+
+
+
+
+
+
+
+Because there are only two possible outcomes we can actually calculate how likely is that each of the `p` would produce 1 or 0. So let's say each prior is equally likely. It means:
 
 ```{r}
 options(knitr.table.format = "html") 
@@ -53,13 +77,22 @@ t %>%
   kable_styling()
 ```
 
+
+## How to do it in R
+
+
 then you can just multiply columns to get posteriors!
 
-
-
 > When we don't know what caused the data, potential causes that may produce the data in more ways are more plausible. - Statistical Rethinking
-
 
 also add link to dashboard and R code
 
 also add example what happens if you have 01 vs 0011 (it shrinks)
+
+From STatistical Rethinking: 
+* The relative number of ways that a value p can produce the data is usually called a **likelihood**. It is derived by enumerating all the possible data sequences that could have happened and then eliminating those sequences inconsistent with the data.
+
+* The **prior** plausibility of any specific p is usually called the prior probability.
+
+* The new, updated plausibility of any specific p is usually called the **posterior**
+probability.

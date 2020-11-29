@@ -85,7 +85,7 @@ code span.wa { color: #545454; font-weight: bold; font-style: italic; } /* Warni
 </style>
 
   <!--radix_placeholder_meta_tags-->
-<title>Miha Gazvoda: Bayesian updating</title>
+<title>Miha Gazvoda: Intuitive Bayesian updating</title>
 
 <meta property="description" itemprop="description" content="For binomial data."/>
 
@@ -97,7 +97,7 @@ code span.wa { color: #545454; font-weight: bold; font-style: italic; } /* Warni
 <meta name="article:author" content="Miha Gazvoda"/>
 
 <!--  https://developers.facebook.com/docs/sharing/webmasters#markup -->
-<meta property="og:title" content="Miha Gazvoda: Bayesian updating"/>
+<meta property="og:title" content="Miha Gazvoda: Intuitive Bayesian updating"/>
 <meta property="og:type" content="article"/>
 <meta property="og:description" content="For binomial data."/>
 <meta property="og:url" content="https://mihagazvoda.com/posts/2020-11-24-bayesian-updating/"/>
@@ -106,7 +106,7 @@ code span.wa { color: #545454; font-weight: bold; font-style: italic; } /* Warni
 
 <!--  https://dev.twitter.com/cards/types/summary -->
 <meta property="twitter:card" content="summary"/>
-<meta property="twitter:title" content="Miha Gazvoda: Bayesian updating"/>
+<meta property="twitter:title" content="Miha Gazvoda: Intuitive Bayesian updating"/>
 <meta property="twitter:description" content="For binomial data."/>
 <meta property="twitter:url" content="https://mihagazvoda.com/posts/2020-11-24-bayesian-updating/"/>
 
@@ -114,7 +114,7 @@ code span.wa { color: #545454; font-weight: bold; font-style: italic; } /* Warni
   <!--radix_placeholder_rmarkdown_metadata-->
 
 <script type="text/json" id="radix-rmarkdown-metadata">
-{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","description","author","date","output","canonical_url"]}},"value":[{"type":"character","attributes":{},"value":["Bayesian updating"]},{"type":"character","attributes":{},"value":["For binomial data."]},{"type":"list","attributes":{},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","url"]}},"value":[{"type":"character","attributes":{},"value":["Miha Gazvoda"]},{"type":"character","attributes":{},"value":["https://mihagazvoda.com"]}]}]},{"type":"character","attributes":{},"value":["11-24-2020"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["distill::distill_article"]}},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["self_contained"]}},"value":[{"type":"logical","attributes":{},"value":[false]}]}]},{"type":"character","attributes":{},"value":["https://mihagazvoda.com/posts/2020-11-24-bayesian-updating/"]}]}
+{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","description","author","date","output","canonical_url"]}},"value":[{"type":"character","attributes":{},"value":["Intuitive Bayesian updating"]},{"type":"character","attributes":{},"value":["For binomial data."]},{"type":"list","attributes":{},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","url"]}},"value":[{"type":"character","attributes":{},"value":["Miha Gazvoda"]},{"type":"character","attributes":{},"value":["https://mihagazvoda.com"]}]}]},{"type":"character","attributes":{},"value":["11-24-2020"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["distill::distill_article"]}},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["self_contained"]}},"value":[{"type":"logical","attributes":{},"value":[false]}]}]},{"type":"character","attributes":{},"value":["https://mihagazvoda.com/posts/2020-11-24-bayesian-updating/"]}]}
 </script>
 <!--/radix_placeholder_rmarkdown_metadata-->
   
@@ -1794,7 +1794,7 @@ document.addEventListener('DOMContentLoaded', function() {
 <!--radix_placeholder_front_matter-->
 
 <script id="distill-front-matter" type="text/json">
-{"title":"Bayesian updating","description":"For binomial data.","authors":[{"author":"Miha Gazvoda","authorURL":"https://mihagazvoda.com","affiliation":"&nbsp;","affiliationURL":"#","orcidID":""}],"publishedDate":"2020-11-24T00:00:00.000+01:00","citationText":"Gazvoda, 2020"}
+{"title":"Intuitive Bayesian updating","description":"For binomial data.","authors":[{"author":"Miha Gazvoda","authorURL":"https://mihagazvoda.com","affiliation":"&nbsp;","affiliationURL":"#","orcidID":""}],"publishedDate":"2020-11-24T00:00:00.000+01:00","citationText":"Gazvoda, 2020"}
 </script>
 
 <!--/radix_placeholder_front_matter-->
@@ -1822,7 +1822,7 @@ document.addEventListener('DOMContentLoaded', function() {
 <!--/radix_placeholder_site_before_body-->
 
 <div class="d-title">
-<h1>Bayesian updating</h1>
+<h1>Intuitive Bayesian updating</h1>
 <!--radix_placeholder_categories-->
 <!--/radix_placeholder_categories-->
 <p><p>For binomial data.</p></p>
@@ -1835,18 +1835,23 @@ document.addEventListener('DOMContentLoaded', function() {
 </div>
 
 <div class="d-article">
-<p>I’ve struggled many time to dive into Bayesian statistics especially inference. I attended probably 10+ hour course (and passed it) without properly understanding what I’m doing. Then I, while watching <a href="https://www.youtube.com/watch?v=68ABAU_V8qI">the talk about linear models</a> and using common sense, came across Statistical Rethinking <a href="https://xcelab.net/rm/statistical-rethinking/">book</a> and <a href="https://www.youtube.com/watch?v=4WVelCswXo4">video course</a>. I think they supplement each other really well.<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></p>
-<p>While first chapter can be a bit boring I cannot recommend it enough. The author really focuses that you grasp the topic without (almost any) equations but with common sense. And I started to understand what’s going on. And even more importantly - I figured out that I learn by doing - not by listening. That’s how this article (and a dashboard, but more on this later) was born.<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a></p>
+<p>I’ve struggled many time to dive into Bayesian statistics especially inference. I attended probably 10+ hour course (and passed it) without properly understanding what I’m doing. Then I, while watching <a href="https://www.youtube.com/watch?v=68ABAU_V8qI">the talk about linear models and using common sense</a>, came across Statistical Rethinking <a href="https://xcelab.net/rm/statistical-rethinking/">book</a> and <a href="https://www.youtube.com/watch?v=4WVelCswXo4">video course</a>. <a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></p>
+<p>While the first chapter can be a bit boring I cannot recommend it enough. The author focuses that you grasp the topic without (almost any) equations but with common sense. And I started to understand what’s going on. And even more importantly - I figured out that I learn by doing - not by listening. That’s how this article (and a dashboard, but more on this later) was born.<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a></p>
 <h2 id="tossing-again">Tossing, again</h2>
-<p>He introduces earth tossing example for approximating proportion of sea on the earth. You throw globe in the air, catch it, check your index finger, write down if it’s sea (1) or land (0). By throwing it a lot of times you could estimate proportion of sea on the earth.</p>
+<p>The author introduces earth tossing example for approximating proportion of sea on the earth. You throw globe in the air, catch it, check your index finger, write down if it’s sea (1 = success) or land (0 = failure). By throwing and catching it a lot of times you could estimate proportion of sea on the earth. But how sure can you be about the estimation?</p>
 <p>TODO paste possible outcomes</p>
-<p>Let’s think about it. So we have a data generator that causes us to put our index finger on sea with probability <code>p</code> (because <code>p</code> portion of the surface is sea). Since we don’t know what’s <code>p</code> we can estimate from data which <code>p</code> is most likely to generate such data. So we estimate for each <code>p</code>:</p>
-<ol type="1">
-<li><p>Is there probability that some <code>p</code> are more likely than others, based on our knowledge?</p></li>
-<li><p>How likely is each <code>p</code> to generate such data?</p></li>
-</ol>
-<p>Let’s say we don’t know anything about <code>p</code> so we will assign equal probability to each <code>p</code>. What do I mean by each <code>p</code>? It’s all the values from 0 to 1. But to keep things shorter (not even simpler) let’s focus on each tenth percent. And then based on data, we will update this weights. Time to toss.</p>
-<p>No, wait. Because there are only two possible outcomes we can actually calculate how likely is that each of the <code>p</code> would produce 1 or 0. So let’s say each prior is equally likely. It means:</p>
+<p>Let’s say <code>p</code> is probability of success, i.e. probability that we will catch the earth pointing on sea which translates into proportion of earth’s surface covered by the sea. Based on tossing outcomes we will estimate how likely is that each of that <code>p</code> could generate such data. By each <code>p</code> I mean all probabilities of success, from 0 to 1. (To keep things shorter (not even simpler) let’s focus on each tenth percent. Maybe mention outcomes that you plan to use?)</p>
+<h2 id="priors">Priors</h2>
+<p>In Bayesian world, there’s no only data (it could also be only data) but also your prior knowledge about it. You can incorporate that into a prior<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a>. But beware, this should be done before peeking into data.</p>
+<p>If you don’t know anything about proportion of sea on earth you can assign the same probability to all values of <code>p</code>. That’s called a flat prior. You usually want to avoid it. It means you haven’t done your homework and have no idea what about the process you’re modeling.</p>
+<p>For example, if you (100%) know that there’s more than 50% of water on sea surface, you can assign 0 probability to when <code>p</code> is less than 0.<a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a> Or if you know the probability should be around 0.5, you can using Gaussian with mean of 0.</p>
+<p>TODO add drawing of different priors</p>
+<h2 id="likelihood">Likelihood</h2>
+<p>Likelihood tells you how likely is that model, in our case <code>p</code>, would produce such outcome (data). In our example, there are only two outcomes for which we need to figure out the likelihoods. What’s the probability, for example, if <code>p = 0.9</code> the outcome equals 1? it’s 0.9, you’re right. And that holds for all <code>p</code> values between 0 and 1. We only need to standardize it to get the likelihood so all the probabilities for different <code>p</code> sum up to 1. And for 0 outcome, the probability is <code>1-p</code>, so 0.1 for <code>p = 0.9</code>. And again summing all and dividing.</p>
+<p>Why standardizing? All possibilities have to sum to 1. Because if <code>p = 1</code> then the probability it will produce 1 is <code>1</code>. This doesn’t mean there’s 100% chance that outcome 1 was generated by <code>p = 1</code>. Also other <code>p</code> can generate 1.</p>
+<p>TODO drawing</p>
+<h2 id="posterior">Posterior</h2>
+<p>Because there are only two possible outcomes we can actually calculate how likely is that each of the <code>p</code> would produce 1 or 0. So let’s say each prior is equally likely. It means:</p>
 <div class="layout-chunk" data-layout="l-body">
 <table class="table" style="margin-left: auto; margin-right: auto;">
 <thead>
@@ -2131,18 +2136,26 @@ p_0
 </tbody>
 </table>
 </div>
+<h2 id="how-to-do-it-in-r">How to do it in R</h2>
 <p>then you can just multiply columns to get posteriors!</p>
 <blockquote>
 <p>When we don’t know what caused the data, potential causes that may produce the data in more ways are more plausible. - Statistical Rethinking</p>
 </blockquote>
 <p>also add link to dashboard and R code</p>
 <p>also add example what happens if you have 01 vs 0011 (it shrinks)</p>
+<p>From STatistical Rethinking: * The relative number of ways that a value p can produce the data is usually called a <strong>likelihood</strong>. It is derived by enumerating all the possible data sequences that could have happened and then eliminating those sequences inconsistent with the data.</p>
+<ul>
+<li><p>The <strong>prior</strong> plausibility of any specific p is usually called the prior probability.</p></li>
+<li><p>The new, updated plausibility of any specific p is usually called the <strong>posterior</strong> probability.</p></li>
+</ul>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <section class="footnotes" role="doc-endnotes">
 <hr />
 <ol>
-<li id="fn1" role="doc-endnote"><p>If you need to pick one, go with the book.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn1" role="doc-endnote"><p>I think they supplement each other well. If you need to pick one, go with the book.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn2" role="doc-endnote"><p>I’m at chapter 4 so don’t expect too much.<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn3" role="doc-endnote"><p>Prior probability distribution, often simply called the prior.<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn4" role="doc-endnote"><p>Beware, this means that <code>p</code> won’t be lower than 0.5 no matter the data.<a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 </ol>
 </section>
 <!--radix_placeholder_article_footer-->
@@ -2153,10 +2166,10 @@ p_0
       <a href="https://www.facebook.com/sharer/sharer.php?s=100&amp;p[url]=https%3A%2F%2Fmihagazvoda.com%2Fposts%2F2020-11-24-bayesian-updating%2F">
         <i class="fab fa-facebook"></i>
       </a>
-      <a href="https://twitter.com/share?text=Bayesian%20updating&amp;url=https%3A%2F%2Fmihagazvoda.com%2Fposts%2F2020-11-24-bayesian-updating%2F">
+      <a href="https://twitter.com/share?text=Intuitive%20Bayesian%20updating&amp;url=https%3A%2F%2Fmihagazvoda.com%2Fposts%2F2020-11-24-bayesian-updating%2F">
         <i class="fab fa-twitter"></i>
       </a>
-      <a href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https%3A%2F%2Fmihagazvoda.com%2Fposts%2F2020-11-24-bayesian-updating%2F&amp;title=Bayesian%20updating">
+      <a href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https%3A%2F%2Fmihagazvoda.com%2Fposts%2F2020-11-24-bayesian-updating%2F&amp;title=Intuitive%20Bayesian%20updating">
         <i class="fab fa-linkedin"></i>
       </a>
     </span>
