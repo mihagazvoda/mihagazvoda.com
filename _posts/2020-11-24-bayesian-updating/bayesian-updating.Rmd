@@ -1,7 +1,7 @@
 ---
-title: "Intuitive Bayesian updating"
+title: "Intuitive Bayesian updating for binomial data"
 description: |
-  For binomial data.
+  With interactive app and examples in R.
 author:
   - name: Miha Gazvoda
     url: https://mihagazvoda.com
@@ -48,34 +48,23 @@ Why standardizing? All possibilities have to sum to 1. Because if `p = 1` then t
 TODO drawing
 
 ## Posterior
+Posterior is what we are interested in. It tells you the plausability of each `p` given it's prior probability and data. It's proportional to a product of likelihood and prior for each value of `p`. So for some value of `p`, let's say `p = 0.9` you just multiply prior probability that `p = 0.9` and likelihood probability that `p = 0.9` generated observed data. Then you need to normalize it, how big this product is compared to other `p` values. This means summing (or integrating) such products over all `p` values. And this values can be either discrete or continuous. 
+
+## Bayesian updating
+But the fun doesn't end there. Let's say you observed multiple tosses and got outcomes `010`. To get the posterior:You need to calculate likelihood for such outcome, or - wait for it - you could do it iteratively. After each toss, each posterior can be used as a prior for the next toss. This means you can just calculate posterior as a normalized product of a prior and likelihood for each outcome. Like this:
+
+TODO posterior image
+
+Simple multiplication means that posterior after `011` is the same as after `110`. It also takes care that `01` is not the same as `0011`. The posterior is narrower in the latter case. You can observe this and get intuition with the reactive app I created. It enables to play around with different priors, trial (toss) outcomes, and observe changes in posterior. 
+
+<iframe width='1000px' height='600px' src='https://mihagazvoda.shinyapps.io/bayesian-updating/' >
+  <p>Byesian updating for dummies</p>
+</iframe>
 
 
 
+TODO add maths session in html detail?
 
-
-
-
-
-
-Because there are only two possible outcomes we can actually calculate how likely is that each of the `p` would produce 1 or 0. So let's say each prior is equally likely. It means:
-
-```{r}
-options(knitr.table.format = "html") 
-library(kableExtra)
-t <- tibble::tibble(
-  p = seq(0, 1, by = 0.1),
-  prior_unstandardized = 1,
-  prior = prior_unstandardized / sum(prior_unstandardized),
-  p_1_unstandardized = p,
-  p_0_unstandardized = 1 - p,
-  p_1 = p_1_unstandardized / sum(p_1_unstandardized),
-  p_0 = p_0_unstandardized / sum(p_0_unstandardized)
-)
-
-t %>% 
-  kbl() %>% 
-  kable_styling()
-```
 
 
 ## How to do it in R
@@ -89,10 +78,10 @@ also add link to dashboard and R code
 
 also add example what happens if you have 01 vs 0011 (it shrinks)
 
-From STatistical Rethinking: 
+From Statistical Rethinking:
+
 * The relative number of ways that a value p can produce the data is usually called a **likelihood**. It is derived by enumerating all the possible data sequences that could have happened and then eliminating those sequences inconsistent with the data.
 
 * The **prior** plausibility of any specific p is usually called the prior probability.
 
-* The new, updated plausibility of any specific p is usually called the **posterior**
-probability.
+* The new, updated plausibility of any specific p is usually called the **posterior** probability.
