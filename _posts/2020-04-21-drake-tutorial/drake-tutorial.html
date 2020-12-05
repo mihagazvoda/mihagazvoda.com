@@ -1460,7 +1460,7 @@ code span.wa { color: #545454; font-weight: bold; font-style: italic; } /* Warni
 <li>interactively visualizes network representation of your workflow.</li>
 </ul>
 <figure>
-<img src="../../images/drake_points.png" alt="" /><figcaption>Perks of using <code>drake</code>.</figcaption>
+<img src="../../images/drake_points.png" alt="Perks of using drake." /><figcaption aria-hidden="true">Perks of using <code>drake</code>.</figcaption>
 </figure>
 <h1 id="setup">Setup</h1>
 <p>Install <code>drake</code>. You can also load an example written by <a href="https://github.com/krlmlr">Kirill Müller</a>. It will appear in a new <code>main</code> folder. I will use it as a showcase for some file examples.</p>
@@ -1478,12 +1478,12 @@ code span.wa { color: #545454; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <h2 id="project-structure">Project structure</h2>
 <p>It’s suggested that you start your project using this structure<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a>:</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode markdown"><code class="sourceCode markdown"><span id="cb1-1"><a href="#cb1-1"></a>make.R</span>
-<span id="cb1-2"><a href="#cb1-2"></a>R/</span>
-<span id="cb1-3"><a href="#cb1-3"></a>├── packages.R</span>
-<span id="cb1-4"><a href="#cb1-4"></a>├── functions.R</span>
-<span id="cb1-5"><a href="#cb1-5"></a>└── plan.R</span>
-<span id="cb1-6"><a href="#cb1-6"></a>data/</span></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode markdown"><code class="sourceCode markdown"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>make.R</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>R/</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>├── packages.R</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>├── functions.R</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>└── plan.R</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>data/</span></code></pre></div>
 <p>You can also use <code>dflow::use_dflow()</code> to create almost similar structure.</p>
 <h3 id="make">Make</h3>
 <p><code>make.R</code> is a master script that</p>
@@ -1528,7 +1528,9 @@ Plan is presented as a data frame with columns named <code>target</code> and <co
 </div>
 <p>Drake plan is presented as a data frame with columns named <code>target</code> and <code>command</code>. Each row represents a step in the workflow. Each command is a concise expression that makes use of our functions, and each target is the return value of the command.</p>
 <details>
-<summary><b>See <code>plan</code> object.</b></summary>
+<summary>
+<b>See <code>plan</code> object.</b>
+</summary>
 <div class="layout-chunk" data-layout="l-body">
 <table>
 <colgroup>
@@ -1567,10 +1569,12 @@ Plan is presented as a data frame with columns named <code>target</code> and <co
 </div>
 </details>
 <details>
-<summary><b>See dependency graph.</b></summary>
+<summary>
+<b>See dependency graph.</b>
+</summary>
 <div class="layout-chunk" data-layout="l-body">
-<div id="htmlwidget-27ad50b76135fde2ce3d" style="width:624px;height:384px;" class="visNetwork html-widget"></div>
-<script type="application/json" data-for="htmlwidget-27ad50b76135fde2ce3d">{"x":{"nodes":{"id":["n-OJSWCZDYNQ5DU4TFMFSF6ZLYMNSWY","p-OJQXOX3EMF2GCLTYNRZXQ","n-OJWWC4TLMRXXO3R2HJZGK3TEMVZA","p-OJSXA33SOQXFE3LE","n-MZXXEY3BORZTUOTGMN2F62LON5ZGIZLS","raw_data","report","data","p-OJSXA33SOQXGQ5DNNQ","fit","hist"],"imported":[true,true,true,true,true,false,false,false,false,false,false],"label":["readxl::read_excel","file raw_data.xlsx","rmarkdown::render","file report.Rmd","forcats::fct_inorder","raw_data","report","data","file report.html","fit","hist"],"status":["imported","missing","imported","missing","imported","outdated","outdated","outdated","outdated","outdated","outdated"],"type":["function","file","function","file","function","object","object","object","file","object","object"],"font.size":[20,20,20,20,20,20,20,20,20,20,20],"color":["#1874CD","#9A32CD","#1874CD","#9A32CD","#1874CD","#000000","#000000","#000000","#000000","#000000","#000000"],"shape":["triangle","square","triangle","square","triangle","dot","dot","dot","square","dot","dot"],"level":[1,1,1,1,1,2,2,3,3,4,4],"x":[-1,-1,-1,-1,-1,-0.333333333333333,-0.333333333333333,0.333333333333333,0.333333333333333,1,1],"y":[-1,-0.5,2.22044604925031e-16,0.5,1,-0.5,0.5,-0.5,0.5,-0.5,0.5]},"edges":{"from":["n-OJSWCZDYNQ5DU4TFMFSF6ZLYMNSWY","p-OJQXOX3EMF2GCLTYNRZXQ","n-OJWWC4TLMRXXO3R2HJZGK3TEMVZA","p-OJSXA33SOQXFE3LE","report","data","data","raw_data","n-MZXXEY3BORZTUOTGMN2F62LON5ZGIZLS"],"to":["raw_data","raw_data","report","report","p-OJSXA33SOQXGQ5DNNQ","fit","hist","data","data"],"arrows":["to","to","to","to","to","to","to","to","to"]},"nodesToDataframe":true,"edgesToDataframe":true,"options":{"width":"100%","height":"100%","nodes":{"shape":"dot","physics":false},"manipulation":{"enabled":false},"edges":{"smooth":{"type":"cubicBezier","forceDirection":"horizontal"}},"interaction":{"navigationButtons":true},"layout":{"hierarchical":{"enabled":true,"direction":"LR"}}},"groups":null,"width":null,"height":null,"idselection":{"enabled":false,"style":"width: 150px; height: 26px","useLabels":true,"main":"Select by id"},"byselection":{"enabled":false,"style":"width: 150px; height: 26px","multiple":false,"hideColor":"rgba(200,200,200,0.5)","highlight":false},"main":{"text":"Dependency graph","style":"font-family:Georgia, Times New Roman, Times, serif;font-weight:bold;font-size:20px;text-align:center;"},"submain":null,"footer":null,"background":"rgba(0, 0, 0, 0)","highlight":{"enabled":false,"hoverNearest":false,"degree":1,"algorithm":"all","hideColor":"rgba(200,200,200,0.5)","labelOnly":true},"collapse":{"enabled":true,"fit":false,"resetHighlight":true,"clusterOptions":null,"keepCoord":true,"labelSuffix":"(cluster)"},"legend":{"width":0.2,"useGroups":false,"position":"left","ncol":1,"stepX":100,"stepY":100,"zoom":true,"nodes":{"label":["Outdated","Imported","Missing","Object","Function","File"],"color":["#000000","#1874CD","#9A32CD","#888888","#888888","#888888"],"shape":["dot","dot","dot","dot","triangle","square"],"font.color":["black","black","black","black","black","black"],"font.size":[20,20,20,20,20,20],"id":[2,6,7,8,10,11]},"nodesToDataframe":true},"tooltipStay":300,"tooltipStyle":"position: fixed;visibility:hidden;padding: 5px;white-space: nowrap;font-family: verdana;font-size:14px;font-color:#000000;background-color: #f5f4ed;-moz-border-radius: 3px;-webkit-border-radius: 3px;border-radius: 3px;border: 1px solid #808074;box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);"},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-dc0328414e1eede603b9" style="width:624px;height:384px;" class="visNetwork html-widget"></div>
+<script type="application/json" data-for="htmlwidget-dc0328414e1eede603b9">{"x":{"nodes":{"id":["n-OJSWCZDYNQ5DU4TFMFSF6ZLYMNSWY","p-OJQXOX3EMF2GCLTYNRZXQ","n-OJWWC4TLMRXXO3R2HJZGK3TEMVZA","p-OJSXA33SOQXFE3LE","n-MZXXEY3BORZTUOTGMN2F62LON5ZGIZLS","raw_data","report","data","p-OJSXA33SOQXGQ5DNNQ","fit","hist"],"imported":[true,true,true,true,true,false,false,false,false,false,false],"label":["readxl::read_excel","file raw_data.xlsx","rmarkdown::render","file report.Rmd","forcats::fct_inorder","raw_data","report","data","file report.html","fit","hist"],"status":["imported","missing","imported","missing","imported","outdated","outdated","outdated","outdated","outdated","outdated"],"type":["function","file","function","file","function","object","object","object","file","object","object"],"font.size":[20,20,20,20,20,20,20,20,20,20,20],"color":["#1874CD","#9A32CD","#1874CD","#9A32CD","#1874CD","#000000","#000000","#000000","#000000","#000000","#000000"],"shape":["triangle","square","triangle","square","triangle","dot","dot","dot","square","dot","dot"],"level":[1,1,1,1,1,2,2,3,3,4,4],"x":[-1,-1,-1,-1,-1,-0.333333333333333,-0.333333333333333,0.333333333333333,0.333333333333333,1,1],"y":[-1,-0.5,2.22044604925031e-16,0.5,1,-0.5,0.5,-0.5,0.5,-0.5,0.5]},"edges":{"from":["n-OJSWCZDYNQ5DU4TFMFSF6ZLYMNSWY","p-OJQXOX3EMF2GCLTYNRZXQ","n-OJWWC4TLMRXXO3R2HJZGK3TEMVZA","p-OJSXA33SOQXFE3LE","report","data","data","raw_data","n-MZXXEY3BORZTUOTGMN2F62LON5ZGIZLS"],"to":["raw_data","raw_data","report","report","p-OJSXA33SOQXGQ5DNNQ","fit","hist","data","data"],"arrows":["to","to","to","to","to","to","to","to","to"]},"nodesToDataframe":true,"edgesToDataframe":true,"options":{"width":"100%","height":"100%","nodes":{"shape":"dot","physics":false},"manipulation":{"enabled":false},"edges":{"smooth":{"type":"cubicBezier","forceDirection":"horizontal"}},"interaction":{"navigationButtons":true},"layout":{"hierarchical":{"enabled":true,"direction":"LR"}}},"groups":null,"width":null,"height":null,"idselection":{"enabled":false,"style":"width: 150px; height: 26px","useLabels":true,"main":"Select by id"},"byselection":{"enabled":false,"style":"width: 150px; height: 26px","multiple":false,"hideColor":"rgba(200,200,200,0.5)","highlight":false},"main":{"text":"Dependency graph","style":"font-family:Georgia, Times New Roman, Times, serif;font-weight:bold;font-size:20px;text-align:center;"},"submain":null,"footer":null,"background":"rgba(0, 0, 0, 0)","highlight":{"enabled":false,"hoverNearest":false,"degree":1,"algorithm":"all","hideColor":"rgba(200,200,200,0.5)","labelOnly":true},"collapse":{"enabled":true,"fit":false,"resetHighlight":true,"clusterOptions":null,"keepCoord":true,"labelSuffix":"(cluster)"},"legend":{"width":0.2,"useGroups":false,"position":"left","ncol":1,"stepX":100,"stepY":100,"zoom":true,"nodes":{"label":["Outdated","Imported","Missing","Object","Function","File"],"color":["#000000","#1874CD","#9A32CD","#888888","#888888","#888888"],"shape":["dot","dot","dot","dot","triangle","square"],"font.color":["black","black","black","black","black","black"],"font.size":[20,20,20,20,20,20],"id":[2,6,7,8,10,11]},"nodesToDataframe":true},"tooltipStay":300,"tooltipStyle":"position: fixed;visibility:hidden;padding: 5px;white-space: nowrap;font-family: verdana;font-size:14px;font-color:#000000;background-color: #f5f4ed;-moz-border-radius: 3px;-webkit-border-radius: 3px;border-radius: 3px;border: 1px solid #808074;box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);"},"evals":[],"jsHooks":[]}</script>
 </div>
 </details>
 <h4 id="choose-good-targets">Choose good targets</h4>
