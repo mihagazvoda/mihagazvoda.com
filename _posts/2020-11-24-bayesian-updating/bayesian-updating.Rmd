@@ -14,11 +14,11 @@ output:
     self_contained: false
 ---
 
-I've struggled many times to dive into Bayesian inference. I attended 10+ hour course (and passed it) without properly understanding what I'm doing. Then I, while watching [the talk about linear models and using common sense](https://www.youtube.com/watch?v=68ABAU_V8qI), came across Statistical Rethinking [book](https://xcelab.net/rm/statistical-rethinking/) and [video course](https://www.youtube.com/watch?v=4WVelCswXo4). [^1]
+I've struggled many times to dive into Bayesian inference. I attended 10+ hour course (and passed it) without properly understanding what' I's going on. Then I, while watching [the talk about linear models and using common sense](https://www.youtube.com/watch?v=68ABAU_V8qI)^[Vincent gave a couple of amazing talks on solving problems using Bayesian inference. [Take a look.](https://koaning.io/talks.html)], came across Statistical Rethinking [book](https://xcelab.net/rm/statistical-rethinking/) and [video course](https://www.youtube.com/watch?v=4WVelCswXo4). [^1]
 
-[^1]: I think they supplement each other well. If you need to pick one, go with the book. 
+[^1]: I think they supplement each other well. If you need to pick one, go with the book. [The first two chapters are available for free.](http://xcelab.net/rmpubs/sr2/statisticalrethinking2_chapters1and2.pdf) 
 
-While the first chapter (and a lecture) can be a bit boring I cannot recommend it enough. The author focuses that you grasp the topic without (almost any) equations but with common sense. And I started to understand what's going on. And even more importantly - I figured out that I learn by doing - not by listening. That's how this article (and a dashboard, but more on this later) was born.[^2]
+In the early chapters, author focuses on presenting the topic with simple examples that can be solved without equations. And I started to understand what's going on. Besides that, I figured out that I learn by doing - not by listening. That's how this article (and a dashboard, but more on this later) was born.[^2]
 
 [^2]: I'm at chapter 4 so don't expect too much.
 

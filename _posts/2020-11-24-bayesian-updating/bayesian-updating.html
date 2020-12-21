@@ -1447,37 +1447,37 @@ code span.wa { color: #545454; font-weight: bold; font-style: italic; } /* Warni
 </div>
 
 <div class="d-article">
-<p>I’ve struggled many times to dive into Bayesian inference. I attended 10+ hour course (and passed it) without properly understanding what I’m doing. Then I, while watching <a href="https://www.youtube.com/watch?v=68ABAU_V8qI">the talk about linear models and using common sense</a>, came across Statistical Rethinking <a href="https://xcelab.net/rm/statistical-rethinking/">book</a> and <a href="https://www.youtube.com/watch?v=4WVelCswXo4">video course</a>. <a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></p>
-<p>While the first chapter (and a lecture) can be a bit boring I cannot recommend it enough. The author focuses that you grasp the topic without (almost any) equations but with common sense. And I started to understand what’s going on. And even more importantly - I figured out that I learn by doing - not by listening. That’s how this article (and a dashboard, but more on this later) was born.<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a></p>
+<p>I’ve struggled many times to dive into Bayesian inference. I attended 10+ hour course (and passed it) without properly understanding what’ I’s going on. Then I, while watching <a href="https://www.youtube.com/watch?v=68ABAU_V8qI">the talk about linear models and using common sense</a><a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>, came across Statistical Rethinking <a href="https://xcelab.net/rm/statistical-rethinking/">book</a> and <a href="https://www.youtube.com/watch?v=4WVelCswXo4">video course</a>. <a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a></p>
+<p>In the early chapters, author focuses on presenting the topic with simple examples that can be solved without equations. And I started to understand what’s going on. Besides that, I figured out that I learn by doing - not by listening. That’s how this article (and a dashboard, but more on this later) was born.<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a></p>
 <h2 id="tossing-again">Tossing, again</h2>
 <p>The author introduces earth tossing example for approximating proportion of sea on the earth surface. You throw globe in the air, catch it, check your index finger, write down if it’s sea (1 = success) or land (0 = failure). By throwing and catching it a lot of times you could estimate proportion of sea on the earth. But how sure can you be about the estimation?</p>
-<p>Let’s say <code>p</code> is probability of success, i.e. probability that we will catch the earth pointing on sea which translates into proportion of earth’s surface covered by the sea. Based on tossing outcomes we will estimate how likely is that each of that <code>p</code> could generate such data. By each <code>p</code> I mean all probabilities of success, from 0 to 1. <a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a></p>
+<p>Let’s say <code>p</code> is probability of success, i.e. probability that we will catch the earth pointing on sea which translates into proportion of earth’s surface covered by the sea. Based on tossing outcomes we will estimate how likely is that each of that <code>p</code> could generate such data. By each <code>p</code> I mean all probabilities of success, from 0 to 1. <a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a></p>
 <h2 id="priors">Priors</h2>
-<p>In Bayesian world, there’s no only data (it could also be only data) but also your prior knowledge about it. You can incorporate that into a prior<a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a>. But beware, this should be done before peeking into data.</p>
+<p>In Bayesian world, there’s no only data (it could also be only data) but also your prior knowledge about it. You can incorporate that into a prior<a href="#fn5" class="footnote-ref" id="fnref5" role="doc-noteref"><sup>5</sup></a>. But beware, this should be done before peeking into data.</p>
 <p>If you don’t know anything about proportion of sea on earth you can assign the same probability to all values of <code>p</code>. That’s called a flat prior. You usually want to avoid it. It means you haven’t “done your homework” and have no idea what about the process you’re modeling.</p>
-<p>For example, if you know that there’s more than 50% of water on sea surface, you can assign 0 probability when <code>p</code> is less than 0.5.<a href="#fn5" class="footnote-ref" id="fnref5" role="doc-noteref"><sup>5</sup></a> Or if you know the probability should be around 0.5, you can use normal (or <a href="https://en.wikipedia.org/wiki/Beta_distribution">beta</a> distribution) with the mean of 0.5.</p>
+<p>For example, if you know that there’s more than 50% of water on sea surface, you can assign 0 probability when <code>p</code> is less than 0.5.<a href="#fn6" class="footnote-ref" id="fnref6" role="doc-noteref"><sup>6</sup></a> Or if you know the probability should be around 0.5, you can use normal (or <a href="https://en.wikipedia.org/wiki/Beta_distribution">beta</a> distribution) with the mean of 0.5.</p>
 <figure>
-<img src="../../images/bayesian-updating/prior.png" alt="Add description." /><figcaption aria-hidden="true">Add description.</figcaption>
+<img src="../../images/bayesian-updating/prior.png" alt="Examples of different priors. Note that priors’ probability densities have to sum to one." /><figcaption aria-hidden="true">Examples of different priors. Note that priors’ probability densities have to sum to one.</figcaption>
 </figure>
 <h2 id="likelihood">Likelihood</h2>
 <p>Likelihood tells you how likely is that “data generator”, in our case flipping machine with <code>p</code> probability of success, would produce such outcome (data). In our example, there are only two outcomes for which we need to figure out the likelihoods. What’s the probability, for example, if <code>p = 0.9</code> the outcome equals 1? it’s 0.9, you’re right. And that holds for all <code>p</code> values between 0 and 1. We only need to standardize it to get the likelihood so all the probabilities for different <code>p</code> sum up to 1. And for 0 outcome, the probability is <code>1-p</code>, so 0.1 for <code>p = 0.9</code>. And then we have to normalize it (dividing each value by their sum).</p>
 <p>Why normalize? All possibilities have to sum to 1. Because if <code>p = 1</code> then the probability it will produce 1 is <code>1</code>. This doesn’t mean there’s 100% chance that outcome 1 was generated by <code>p = 1</code>. Also other <code>p</code> can generate 1.</p>
 <figure>
-<img src="../../images/bayesian-updating/likelihood.png" alt="Add description." /><figcaption aria-hidden="true">Add description.</figcaption>
+<img src="../../images/bayesian-updating/likelihood.png" alt="Likelihood for earth tossing outcomes. Each has to sum up to 1." /><figcaption aria-hidden="true">Likelihood for earth tossing outcomes. Each has to sum up to 1.</figcaption>
 </figure>
 <h2 id="posterior">Posterior</h2>
 <p>Posterior is what we are interested in. It tells the plausability of each <code>p</code> given it’s prior probability and data. It’s proportional to a product of likelihood and prior for each value of <code>p</code>. To get a posterior value of some <code>p</code>, let’s say <code>p = 0.9</code>, you just multiply prior probability that <code>p = 0.9</code> and likelihood probability that <code>p = 0.9</code> generated observed data. Then you need to normalize it, how big this product is compared to other <code>p</code> values. This means summing (or integrating) such products over all <code>p</code> values. And this values can be either discrete or continuous.</p>
 <h3 id="bayesian-updating">Bayesian updating</h3>
 <p>But the fun doesn’t end there. Let’s say you observed multiple tosses and got outcomes <code>010</code>. To get the posterior you need to calculate likelihood for such outcome, or - wait for it - you could do it iteratively. After each toss, each posterior can be used as a prior for the next toss. This means you can just calculate posterior as a normalized product of a prior and likelihood for each outcome. Like this:</p>
 <figure>
-<img src="../../images/bayesian-updating/posterior.png" alt="Add description." /><figcaption aria-hidden="true">Add description.</figcaption>
+<img src="../../images/bayesian-updating/posterior.png" alt="Bayesian magic. For each p you just multiply prior and likelihood densities to get a posterior one (NOT REALLY). This can be done interactively (point by point) - so for example, prior densitity and likelihood of the first oucome can be used as a prior for the next outcome." /><figcaption aria-hidden="true">Bayesian magic. For each <code>p</code> you just multiply prior and likelihood densities to get a posterior one (NOT REALLY). This can be done interactively (point by point) - so for example, prior densitity and likelihood of the first oucome can be used as a prior for the next outcome.</figcaption>
 </figure>
-<p>Simple multiplication means that posterior after <code>011</code> is the same as after <code>110</code>. It also takes care that <code>01</code> is not the same as <code>0011</code>. The posterior is narrower in the latter case.</p>
+<p>Simple multiplication means that posterior after <code>011</code> is the same as after <code>110</code> or <code>101</code>. It also takes care that <code>01</code> is not the same as <code>0011</code>. The posterior is narrower in the latter case.</p>
 <h3 id="app">App</h3>
 <p>I also created a shiny reactive app where you can observe Bayesian updating and get intuition about it. It enables to play around with different priors, trial (toss) outcomes, and observe changes in posterior.</p>
 <iframe width="1000px" height="600px" src="https://mihagazvoda.shinyapps.io/bayesian-updating/">
 <p>
-Byesian updating for dummies
+Bayesian updating for dummies
 </p>
 </iframe>
 <h2 id="how-to-do-it-in-r">How to do it in R</h2>
@@ -1521,11 +1521,12 @@ Byesian updating for dummies
 <section class="footnotes" role="doc-endnotes">
 <hr />
 <ol>
-<li id="fn1" role="doc-endnote"><p>I think they supplement each other well. If you need to pick one, go with the book.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn2" role="doc-endnote"><p>I’m at chapter 4 so don’t expect too much.<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn3" role="doc-endnote"><p>To keep things simpler one can focus on each tenth percent.<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn4" role="doc-endnote"><p>Prior probability distribution, often simply called the prior.<a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn5" role="doc-endnote"><p>Beware, this means that <code>p</code> won’t be lower than 0.5 no matter the data.<a href="#fnref5" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn1" role="doc-endnote"><p>Vincent gave a couple of amazing talks on solving problems using Bayesian inference. <a href="https://koaning.io/talks.html">Take a look.</a><a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2" role="doc-endnote"><p>I think they supplement each other well. If you need to pick one, go with the book. <a href="http://xcelab.net/rmpubs/sr2/statisticalrethinking2_chapters1and2.pdf">The first two chapters are available for free.</a><a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn3" role="doc-endnote"><p>I’m at chapter 4 so don’t expect too much.<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn4" role="doc-endnote"><p>To keep things simpler one can focus on each tenth percent.<a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn5" role="doc-endnote"><p>Prior probability distribution, often simply called the prior.<a href="#fnref5" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn6" role="doc-endnote"><p>Beware, this means that <code>p</code> won’t be lower than 0.5 no matter the data.<a href="#fnref6" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 </ol>
 </section>
 <!--radix_placeholder_article_footer-->
