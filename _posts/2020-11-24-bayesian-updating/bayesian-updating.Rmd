@@ -28,11 +28,11 @@ Let's say `p` is probability of success, i.e. probability that we will catch the
 
 ## Priors
 
-In Bayesian world, there's no only data (it could also be only data) but also your prior knowledge about it. You can incorporate that into a prior^[Prior probability distribution, often simply called the prior.]. But beware, this should be done before peeking into data. 
+In Bayesian world, your prior knowledge counts. If you don't have it, also fine, but you inference won't be as precise as it could be. Prior knowledge can be incorporated by - you guessed it - prior^[Prior probability distribution, often simply called the prior.]. Beware, this should be done before peeking into data. 
 
 If you don't know anything about proportion of water on earth you can assign the same probability to all values of `p`. That's called a flat prior. You usually want to avoid it. It means you haven't "done your homework" and have no idea what about the process you're modeling. 
 
-For example, if you know that there's more than 50% of water on earth's surface, you can assign 0 probability when `p` is less than 0.5.^[Beware, this means that `p` won't be lower than 0.5 no matter the data.] Or if you know the probability should be around 0.5, you can use normal (or [beta](https://en.wikipedia.org/wiki/Beta_distribution) distribution) with the mean of 0.5.
+If you know that there's more than 50% of water on earth's surface, you can assign 0 prior probability to `p` less than 0.5.^[This means that `p` won't be lower than 0.5 no matter the data.] Or if you suspect the probability should be around 0.5, you can use normal (or [beta](https://en.wikipedia.org/wiki/Beta_distribution) distribution) with the mean of 0.5. In this case doesn't make sense to use too big standard deviations, since possible values are only between 0 and 1.
 
 ![Examples of different priors. Note that priors' probability densities have to sum to one. ](../../images/bayesian-updating/prior.png)
 
