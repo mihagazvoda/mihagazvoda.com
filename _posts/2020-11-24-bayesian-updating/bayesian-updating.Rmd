@@ -48,7 +48,8 @@ Why normalize? All possibilities have to sum to 1. Because if `p = 1` then the p
 ![Likelihood for earth tossing outcomes. Each has to sum up to 1.](../../images/bayesian-updating/likelihood.png)
 
 ## Posterior
-Posterior is what we are interested in. It tells the plausability of each `p` given it's prior probability and data. It's proportional to a product of likelihood and prior for each value of `p`. To get a posterior value of some `p`, let's say `p = 0.9`, you just multiply prior probability that `p = 0.9` and likelihood probability that `p = 0.9` generated observed data. Then you need to normalize it, how big this product is compared to other `p` values. This means summing (or integrating) such products over all `p` values. And this values can be either discrete or continuous. 
+
+Posterior is what we are interested in. It tells the plausability of each `p` given it's prior probability and data. It's proportional to a product of likelihood and prior for each value of `p`. To get a posterior value of some `p`, let's say `p = 0.9`, you just multiply prior probability that `p = 0.9` and likelihood probability that such `p` generated observed data. Then you need to normalize it. 
 
 ### Bayesian updating
 But the fun doesn't end there. Let's say you observed multiple tosses and got outcomes `010`. To get the posterior you need to calculate likelihood for such outcome, or - wait for it - you could do it iteratively. After each toss, each posterior can be used as a prior for the next toss. This means you can just calculate posterior as a normalized product of a prior and likelihood for each outcome. Like this:
