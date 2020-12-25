@@ -18,23 +18,21 @@ I've struggled many times to dive into Bayesian inference. I attended 10+ hour c
 
 [^1]: I think they supplement each other well. If you need to pick one, go with the book. [The first two chapters are available for free.](http://xcelab.net/rmpubs/sr2/statisticalrethinking2_chapters1and2.pdf) 
 
-In the early chapters, author focuses on presenting the topic with simple examples that can be solved without equations. And I started to understand what's going on. Besides that, I figured out that I learn by doing - not by listening. That's how this article (and a dashboard, but more on this later) was born.[^2]
-
-[^2]: I'm at chapter 4 so don't expect too much.
+In the early chapters, author focuses on presenting the topic with simple examples that can be solved without equations. And I started to understand what's going on. Besides that, I figured out that I learn by doing - not by listening. That's how this article (and a dashboard, but more on this later) was born.
 
 ## Tossing, again
 
-The author introduces earth tossing example for approximating proportion of sea on the earth surface. You throw globe in the air, catch it, check your index finger, write down if it's sea (1 = success) or land (0 = failure). By throwing and catching it a lot of times you could estimate proportion of sea on the earth. But how sure can you be about the estimation?
+The author introduces earth tossing example for approximating proportion of water on the earth's surface. You throw globe in the air, catch it, check your index finger, write down if it's water (1 = success) or land (0 = failure). By throwing it a lot of times you could estimate proportion of water on earth. But how sure can you be about the estimation?
 
-Let's say `p` is probability of success, i.e. probability that we will catch the earth pointing on sea which translates into proportion of earth's surface covered by the sea. Based on tossing outcomes we will estimate how likely is that each of that `p` could generate such data. By each `p` I mean all probabilities of success, from 0 to 1. ^[To keep things simpler one can focus on each tenth percent.]
+Let's say `p` is probability of success, i.e. probability that we will catch the earth pointing on water which translates into proportion of earth's surface covered by water. Based on tossing outcomes we will estimate how likely is that each of that `p` could generate such data. By each `p` I mean all probabilities of success, from 0 to 1. They can be continuous or discrete. For example, you can focus only on each tenth quantile.
 
 ## Priors
 
 In Bayesian world, there's no only data (it could also be only data) but also your prior knowledge about it. You can incorporate that into a prior^[Prior probability distribution, often simply called the prior.]. But beware, this should be done before peeking into data. 
 
-If you don't know anything about proportion of sea on earth you can assign the same probability to all values of `p`. That's called a flat prior. You usually want to avoid it. It means you haven't "done your homework" and have no idea what about the process you're modeling. 
+If you don't know anything about proportion of water on earth you can assign the same probability to all values of `p`. That's called a flat prior. You usually want to avoid it. It means you haven't "done your homework" and have no idea what about the process you're modeling. 
 
-For example, if you know that there's more than 50% of water on sea surface, you can assign 0 probability when `p` is less than 0.5.^[Beware, this means that `p` won't be lower than 0.5 no matter the data.] Or if you know the probability should be around 0.5, you can use normal (or [beta](https://en.wikipedia.org/wiki/Beta_distribution) distribution) with the mean of 0.5.
+For example, if you know that there's more than 50% of water on earth's surface, you can assign 0 probability when `p` is less than 0.5.^[Beware, this means that `p` won't be lower than 0.5 no matter the data.] Or if you know the probability should be around 0.5, you can use normal (or [beta](https://en.wikipedia.org/wiki/Beta_distribution) distribution) with the mean of 0.5.
 
 ![Examples of different priors. Note that priors' probability densities have to sum to one. ](../../images/bayesian-updating/prior.png)
 
