@@ -22,17 +22,15 @@ I've struggled many times to dive into Bayesian inference. I attended 10+ hour c
 
 In the early chapters, author focuses on presenting the topic with simple examples that can be solved without equations. And I started to understand what's going on. Besides that, I figured out that I learn by doing - not by listening. That's how this article (and a dashboard) was born.
 
-## Earth tossing
+## Tossing
 
 The author introduces earth tossing example for approximating proportion of water on the earth's surface. You throw globe in the air, catch it, check your index finger, write down if it's water (1 = success) or land (0 = failure). By throwing it a lot of times you could estimate proportion of water on earth. But how sure can you be about the estimation?
 
 Let's say `p` is probability of success, i.e. probability that we will catch the earth pointing on water which translates into proportion of earth's surface covered by water. Based on tossing outcomes we will estimate how likely is that each of that `p` could generate such data. By each `p` I mean all probabilities of success, from 0 to 1. They can be continuous or discrete. For example, you can focus only on each tenth quantile.
 
-<center>
 
 ![](../../images/bayesian-updating/globe.png)
 
-</center>
 
 ## Prior
 

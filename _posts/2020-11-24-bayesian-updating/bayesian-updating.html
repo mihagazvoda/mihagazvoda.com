@@ -1450,12 +1450,10 @@ code span.wa { color: #545454; font-weight: bold; font-style: italic; } /* Warni
 <div class="d-article">
 <p>I’ve struggled many times to dive into Bayesian inference. I attended 10+ hour course (and passed it) without properly understanding what’s going on. Then I, while watching <a href="https://www.youtube.com/watch?v=68ABAU_V8qI">the talk about linear models and using common sense</a><a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>, came across Statistical Rethinking <a href="https://xcelab.net/rm/statistical-rethinking/">book</a> and <a href="https://www.youtube.com/watch?v=4WVelCswXo4">video course</a>. <a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a></p>
 <p>In the early chapters, author focuses on presenting the topic with simple examples that can be solved without equations. And I started to understand what’s going on. Besides that, I figured out that I learn by doing - not by listening. That’s how this article (and a dashboard) was born.</p>
-<h2 id="earth-tossing">Earth tossing</h2>
+<h2 id="tossing">Tossing</h2>
 <p>The author introduces earth tossing example for approximating proportion of water on the earth’s surface. You throw globe in the air, catch it, check your index finger, write down if it’s water (1 = success) or land (0 = failure). By throwing it a lot of times you could estimate proportion of water on earth. But how sure can you be about the estimation?</p>
 <p>Let’s say <code>p</code> is probability of success, i.e. probability that we will catch the earth pointing on water which translates into proportion of earth’s surface covered by water. Based on tossing outcomes we will estimate how likely is that each of that <code>p</code> could generate such data. By each <code>p</code> I mean all probabilities of success, from 0 to 1. They can be continuous or discrete. For example, you can focus only on each tenth quantile.</p>
-<center>
 <p><img src="../../images/bayesian-updating/globe.png" /></p>
-</center>
 <h2 id="prior">Prior</h2>
 <p>In Bayesian world, your prior knowledge counts. If you don’t have it, also fine, but you inference won’t be as precise as it could be. Prior knowledge can be incorporated by - you guessed it - prior<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a>. Beware, this should be done before peeking into data.</p>
 <p>If you don’t know anything about proportion of water on earth you can assign the same probability to all values of <code>p</code>. That’s called a flat prior. You usually want to avoid it. It means you haven’t “done your homework” and have no idea what about the process you’re modeling.</p>
