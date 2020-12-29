@@ -1,7 +1,7 @@
 ---
 title: "Intuitive Bayesian inference"
 description: |
-  Binomial data example.
+  Binomial data example
 categories: 
   - data science
   - Bayesian 
@@ -22,7 +22,7 @@ I've struggled many times to dive into Bayesian inference. I attended 10+ hour c
 
 In the early chapters, author focuses on presenting the topic with simple examples that can be solved without equations. And I started to understand what's going on. Besides that, I figured out that I learn by doing - not by listening. That's how this article (and a dashboard) was born.
 
-## Tossing, again
+## Earth tossing
 
 The author introduces earth tossing example for approximating proportion of water on the earth's surface. You throw globe in the air, catch it, check your index finger, write down if it's water (1 = success) or land (0 = failure). By throwing it a lot of times you could estimate proportion of water on earth. But how sure can you be about the estimation?
 
@@ -34,7 +34,7 @@ Let's say `p` is probability of success, i.e. probability that we will catch the
 
 </center>
 
-## Priors
+## Prior
 
 In Bayesian world, your prior knowledge counts. If you don't have it, also fine, but you inference won't be as precise as it could be. Prior knowledge can be incorporated by - you guessed it - prior^[Prior probability distribution, often simply called the prior.]. Beware, this should be done before peeking into data. 
 
