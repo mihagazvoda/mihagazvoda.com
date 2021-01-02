@@ -1844,30 +1844,30 @@ document.addEventListener('DOMContentLoaded', function() {
 </div>
 
 <div class="d-article">
-<p>I’ve struggled many times to dive into Bayesian inference. I attended a 10+ hour course (and passed it) without properly understanding what’s going on. Then I, while watching <a href="https://www.youtube.com/watch?v=68ABAU_V8qI">the talk about linear models and using common sense</a><a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>, came across Statistical Rethinking <a href="https://xcelab.net/rm/statistical-rethinking/">book</a> and <a href="https://www.youtube.com/watch?v=4WVelCswXo4">video course</a>. <a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a></p>
+<p>I’ve struggled many times to dive into Bayesian inference. I attended a 10+ hour course (and passed it) without properly understanding what’s going on. Then, while watching <a href="https://www.youtube.com/watch?v=68ABAU_V8qI">the talk about linear models and using common sense</a><a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>, I came across Statistical Rethinking <a href="https://xcelab.net/rm/statistical-rethinking/">book</a> and <a href="https://www.youtube.com/watch?v=4WVelCswXo4">video course</a>. <a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a></p>
 <p>In the early chapters, the author focuses on presenting the topic with simple examples that can be solved without equations. And I started to understand what’s going on. Besides that, I figured out that I learn by doing - not by listening. That’s how this article (and a dashboard) was born.</p>
 <h2 id="tossing">Tossing</h2>
 <p>The author introduces an earth tossing example for approximating the proportion of water on the earth’s surface. You throw a globe in the air, catch it, check your index finger, write down if it’s water (1 = success) or land (0 = failure). By throwing it a lot of times you could estimate the proportion of water on earth. But how sure can you be about the estimation?</p>
 <p>Let’s say <code>p</code> is a parameter of our model and presents a probability of success, i.e. probability that we will catch the earth pointing on the water which translates into the proportion of earth’s surface covered by water. Based on tossing outcomes we will estimate how likely is that each of that <code>p</code> could generate such data. By each <code>p</code> I mean all probabilities of success, from 0 to 1. They can be continuous or discrete. For example, you can focus only on each tenth quantile.</p>
 <p><img src="../../images/bayesian-updating/globe.png" /></p>
 <h2 id="prior">Prior</h2>
-<p>In the Bayesian world, your prior knowledge counts. If you don’t have it, also fine, but your inference won’t be as precise as it could be. Prior knowledge can be incorporated by - you guessed it - prior<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a>. Beware, this should be done before peeking into data.</p>
-<p>If you don’t know anything about the proportion of water on earth you can assign the same probability to all values of parameter <code>p</code>. That’s called a flat prior. You usually want to avoid it. It means you haven’t “done your homework” and have no idea what about the process you’re modeling.</p>
-<p>If you know that there’s more than 50% of water on the earth’s surface, you can assign 0 prior probability to <code>p</code> less than 0.5.<a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a> Or if you suspect the probability should be around 0.5, you can use normal (or <a href="https://en.wikipedia.org/wiki/Beta_distribution">beta</a> distribution) with the mean of 0.5. In this case doesn’t make sense to use too big standard deviations, since possible values are only between 0 and 1.</p>
+<p>In the Bayesian world, your prior knowledge counts. If you don’t have it, also fine, but your inference won’t be as precise as it could be. In this example, prior knowledge about the parameter <code>p</code> is incorporated into the prior. Generally, this should be done before peeking into data.</p>
+<p>If you don’t know anything about the proportion of water on earth you can assign the same probability to all values of parameter <code>p</code>. That’s called a flat prior. You usually want to avoid it.</p>
+<p>If you know that there’s more than 50% of water on the earth’s surface, you can assign 0 prior probability to <code>p</code> less than 0.5.<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a> Or if you suspect the probability should be around 0.5, you can use normal (or <a href="https://en.wikipedia.org/wiki/Beta_distribution">beta</a> distribution) with the mean of 0.5. It also doesn’t make sense to use too big standard deviations and cut off values below 0 and above 1.</p>
 <center>
 <img src="../../images/bayesian-updating/prior.png" title="fig:" style="width:70.0%" alt="Examples of different priors. Note that priors’ probability densities have to sum to one." />
 </center>
 <h2 id="likelihood">Likelihood</h2>
-<p>Likelihood tells you how likely a model with parameter value <code>p</code> probability of success would produce such outcome(s). In our example, there are only two outcomes, 0 and 1, for which we need to figure out the likelihoods.</p>
-<p>What’s the probability, for example, that the model with <code>p = 0.9</code> produces the outcome 1? It’s 0.9, you’re right. For 0.8, it’s 0.8, and so on. That holds for all parameter values between 0 and 1. It’s a linear relationship where higher <code>p</code> values have higher probability density (when outcome equals 1) - you can see it on the sketch below. We only need to normalize it to get the likelihood so all the probabilities for different <code>p</code> sum up to 1. And for outcome 0, the probability is <code>1-p</code>. So 0.1 for <code>p = 0.9</code>, for example. Then we have to normalize it (dividing each value by their sum).</p>
-<p>Why normalize? All possibilities have to sum to 1. Because if <code>p = 1</code> then the probability it will produce 1 is <code>1</code>. This doesn’t mean there’s a 100% chance that outcome 1 was generated by <code>p = 1</code>. Other <code>p</code> can also generate outcome 1.</p>
+<p>Likelihood tells you how likely a model with parameter value <code>p</code> probability of success would produce such outcome(s). In our example, there are only two possible outcomes, 0 and 1, for which we need to figure out the likelihoods.</p>
+<p>What’s the probability, for example, that the model with <code>p = 0.9</code> produces the outcome 1? It’s 0.9, you’re right. For 0.8, it’s 0.8, and so on. That holds for all parameter values between 0 and 1. It’s a linear relationship where higher <code>p</code> values have higher probability density (when outcome equals 1). You can see it on the sketch below. We only need to normalize it to get the likelihood so all the probabilities for different <code>p</code> sum up to 1. And for outcome 0, the probability is <code>1-p</code>. So 0.1 for <code>p = 0.9</code>, for example.</p>
+<p>Why normalization? All possibilities have to sum to 1. Because if <code>p = 1</code> then the probability it will produce 1 is <code>1</code>. This doesn’t mean there’s a 100% chance that outcome 1 was generated by <code>p = 1</code>. Other <code>p</code> can also generate outcome 1.</p>
 <center>
 <figure>
 <img src="../../images/bayesian-updating/likelihood.png" style="width:70.0%" alt="The likelihood for earth tossing outcomes. Each has to sum up to 1." /><figcaption aria-hidden="true">The likelihood for earth tossing outcomes. Each has to sum up to 1.</figcaption>
 </figure>
 </center>
 <h2 id="posterior">Posterior</h2>
-<p>Posterior is what we are interested in. It tells the plausibility of each <code>p</code> given its prior probability and data. It’s proportional to a product of likelihood and prior for each value of <code>p</code>. To get a posterior value for <code>p = 0.9</code>, you just multiply the prior probability that <code>p = 0.9</code> and the likelihood probability that such <code>p</code> generated observed data. Then you need to normalize it by dividing the posterior value by the sum of posteriors for all <code>p</code>.</p>
+<p>Posterior is what we are interested in. It tells the plausibility of each parameter <code>p</code> given its prior probability and data. It’s proportional to a product of likelihood and prior for each value of <code>p</code>. To get a posterior value for <code>p = 0.9</code>, you just multiply the prior probability that <code>p = 0.9</code> and the likelihood probability that such <code>p</code> generated observed data. Then you need to normalize it by dividing the posterior value by the sum of posteriors for all <code>p</code>.</p>
 <h3 id="bayesian-updating">Bayesian updating</h3>
 <p>But the fun doesn’t end there. Let’s say you observed multiple tosses and got outcomes <code>010</code>. To get the posterior you need to calculate the likelihood for such an outcome, or - wait for it - you can do it iteratively. After each toss, each posterior can be used as a prior for the next toss. This means you can just calculate posterior as a normalized product of a prior and likelihood for each outcome. Like this:</p>
 <center>
@@ -1888,6 +1888,7 @@ Bayesian updating for dummies
 <summary>
 See the above example in R.
 </summary>
+<p>This method is called grid approximation. It means considering only a finite grid of parameter values (although the parameter is continuous).</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre><code><span class='co'># define number of equidistant points between 0 and 1</span>
@@ -1918,8 +1919,7 @@ See the above example in R.
 <ol>
 <li id="fn1" role="doc-endnote"><p>Vincent gave a couple of amazing talks on solving problems using Bayesian inference. <a href="https://koaning.io/talks.html">Take a look.</a><a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn2" role="doc-endnote"><p>I think they supplement each other well. If you need to pick one, go with the book. <a href="http://xcelab.net/rmpubs/sr2/statisticalrethinking2_chapters1and2.pdf">The first two chapters are available for free.</a><a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn3" role="doc-endnote"><p>Prior probability distribution, often simply called the prior.<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn4" role="doc-endnote"><p>This means that <code>p</code> won’t be lower than 0.5 no matter the data.<a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn3" role="doc-endnote"><p>This means that <code>p</code> won’t be lower than 0.5 no matter the data.<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 </ol>
 </section>
 <!--radix_placeholder_article_footer-->
