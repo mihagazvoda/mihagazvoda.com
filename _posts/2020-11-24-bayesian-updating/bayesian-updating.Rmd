@@ -9,7 +9,7 @@ categories:
 author:
   - name: Miha Gazvoda
     url: https://mihagazvoda.com
-date: 12-30-2020
+date: 01-02-2020
 preview: ../../images/bayesian-updating/globe.png
 output:
   distill::distill_article:

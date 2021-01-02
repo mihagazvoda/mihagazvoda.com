@@ -7,19 +7,7 @@
     <description>Miha Gazvoda's personal website
 </description>
     <generator>Distill</generator>
-    <lastBuildDate>Tue, 29 Dec 2020 00:00:00 +0000</lastBuildDate>
-    <item>
-      <title>Intuitive Bayesian inference</title>
-      <dc:creator>Miha Gazvoda</dc:creator>
-      <link>https://mihagazvoda.com/posts/2020-11-24-bayesian-updating</link>
-      <description>Binomial data example</description>
-      <category>data science</category>
-      <category>Bayesian</category>
-      <category>Shiny</category>
-      <guid>https://mihagazvoda.com/posts/2020-11-24-bayesian-updating</guid>
-      <pubDate>Tue, 29 Dec 2020 00:00:00 +0000</pubDate>
-      <media:content url="https://mihagazvoda.com/posts/2020-11-24-bayesian-updating/../../images/bayesian-updating/globe.png" medium="image" type="image/png" width="600" height="450"/>
-    </item>
+    <lastBuildDate>Fri, 30 Oct 2020 00:00:00 +0000</lastBuildDate>
     <item>
       <title>Improve your data analysis workflow with the drake R package</title>
       <dc:creator>Miha Gazvoda</dc:creator>
@@ -30,6 +18,18 @@
       <guid>https://mihagazvoda.com/posts/2020-04-21-drake-tutorial</guid>
       <pubDate>Fri, 30 Oct 2020 00:00:00 +0000</pubDate>
       <media:content url="https://mihagazvoda.com/posts/2020-04-21-drake-tutorial/../../images/drake_preview.png" medium="image" type="image/png" width="1872" height="1404"/>
+    </item>
+    <item>
+      <title>Intuitive Bayesian inference</title>
+      <dc:creator>Miha Gazvoda</dc:creator>
+      <link>https://mihagazvoda.com/posts/2020-11-24-bayesian-updating</link>
+      <description>Binomial data example</description>
+      <category>data science</category>
+      <category>Bayesian</category>
+      <category>Shiny</category>
+      <guid>https://mihagazvoda.com/posts/2020-11-24-bayesian-updating</guid>
+      <pubDate>Wed, 01 Jan 2020 00:00:00 +0000</pubDate>
+      <media:content url="https://mihagazvoda.com/posts/2020-11-24-bayesian-updating/../../images/bayesian-updating/globe.png" medium="image" type="image/png" width="600" height="450"/>
     </item>
     <item>
       <title>Man Plans, God Laughs: The Planning Fallacy</title>
