@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" version="1.0">
   <url>
     <loc>https://mihagazvoda.com/about.html</loc>
-    <lastmod>2020-10-30T17:57:57+01:00</lastmod>
+    <lastmod>2021-01-25T20:19:26+01:00</lastmod>
   </url>
   <url>
     <loc>https://mihagazvoda.com/</loc>
@@ -10,7 +10,11 @@
   </url>
   <url>
     <loc>https://mihagazvoda.com/README.html</loc>
-    <lastmod>2020-11-14T10:04:59+01:00</lastmod>
+    <lastmod>2021-01-25T20:19:26+01:00</lastmod>
+  </url>
+  <url>
+    <loc>https://mihagazvoda.com/posts/wall-riddle/</loc>
+    <lastmod>2021-01-30T17:15:00+01:00</lastmod>
   </url>
   <url>
     <loc>https://mihagazvoda.com/posts/2020-11-24-bayesian-updating/</loc>

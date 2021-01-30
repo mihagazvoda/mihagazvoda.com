@@ -7,7 +7,18 @@
     <description>Miha Gazvoda's personal website
 </description>
     <generator>Distill</generator>
-    <lastBuildDate>Fri, 01 Jan 2021 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 29 Jan 2021 00:00:00 +0000</lastBuildDate>
+    <item>
+      <title>Wall riddle</title>
+      <dc:creator>Miha Gazvoda</dc:creator>
+      <link>https://mihagazvoda.com/posts/wall-riddle</link>
+      <description>A Bayesian way to handle survivorship bias.</description>
+      <category>R</category>
+      <category>Bayesian</category>
+      <guid>https://mihagazvoda.com/posts/wall-riddle</guid>
+      <pubDate>Fri, 29 Jan 2021 00:00:00 +0000</pubDate>
+      <media:content url="https://mihagazvoda.com/posts/wall-riddle/wall-riddle_files/figure-html5/unnamed-chunk-4-1.png" medium="image" type="image/png" width="1248" height="768"/>
+    </item>
     <item>
       <title>Intuitive Bayesian inference</title>
       <dc:creator>Miha Gazvoda</dc:creator>
@@ -17,7 +28,7 @@
       <category>Bayesian</category>
       <category>Shiny</category>
       <guid>https://mihagazvoda.com/posts/2020-11-24-bayesian-updating</guid>
-      <pubDate>Fri, 01 Jan 2021 00:00:00 +0000</pubDate>
+      <pubDate>Sat, 02 Jan 2021 00:00:00 +0000</pubDate>
       <media:content url="https://mihagazvoda.com/posts/2020-11-24-bayesian-updating/../../images/bayesian-updating/globe.png" medium="image" type="image/png" width="600" height="450"/>
     </item>
     <item>

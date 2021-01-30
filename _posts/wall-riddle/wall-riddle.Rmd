@@ -1,0 +1,162 @@
+---
+title: "Wall riddle"
+description: |
+  A Bayesian way to handle survivorship bias. 
+categories:
+  - R
+  - Bayesian
+author:
+  - name: Miha Gazvoda
+    url: https://mihagazvoda.com
+date: 01-30-2021
+output:
+  distill::distill_article:
+    self_contained: false
+---
+
+<!-- https://twitter.com/fishnets88/status/1354151845871169537?s=20 -->
+
+I received following riddle when asking for Bayesian resources:
+
+> Solve this riddle.
+>
+> There is a wall that's kind of tall but not too tall, say 1.8m. You can only see the people who are taller than the wall.
+>
+> Suppose you saw 1m88, 1m90 and 1m81.
+>
+> What can you say about *everyone* who walked past the wall?
+>
+> `r tufte::quote_footer('--- [Vincent D. Warmerdam](https://twitter.com/fishnets88)')`
+
+Challenge accepted.
+
+Spoiler alert: Before reading further, you can try to solve it yourself.
+
+## Approach
+
+To easier imagine things, let's pretend there's a group of people standing behind the wall. We don't know anything about the number of people. That's what you see from behind:
+
+<!-- TODO INSERT PICTURE FROM BEHIND -->
+
+That's what you see from ahead:
+
+<!-- TODO INSERT PICTURE FROM AHEAD -->
+
+If we assume their heights are normally distributed with some mean $\mu$ and standard deviation $\sigma$. A part of this distribution (some people people from the group) can't be observed since it's behind a wall.
+
+![](https://pbs.twimg.com/media/Es00bBCXcAIHkOq?format=png&name=small)
+
+How to write this down?
+
+$$
+p(\mu, \sigma) = \frac{p(D_{bias} | \mu, \sigma) p(\mu, \sigma)}{p(D_{bias})} \propto p(D_{bias} | \mu, \sigma) p(\mu, \sigma) = p(\mu)p(\sigma) \prod_{i} p(h_i | \mu, \sigma)
+$$
+TODO explain how to get from one equation to the other ones
+
+The tricky part here is to calculate $p(h_i | \mu, \sigma)$. But we can help ourselves with the sketch above - our observations come only from the part of the distribution that is above the wall. So likelihoods are basically the same as from Gaussian but normalized by the density proportion that is above the wall. I won't to into maths since this can be easily calculated in R with functions `dnorm()` (to get values for probability density) and `pnorm()` to get cumulative density:
+
+$$
+p(h_i | \mu, \sigma) = \frac{dnorm(h_i, \mu, \sigma)}{pnorm(h_w, \mu, \sigma)}
+$$
+Then you just multiply likeholihoods for all the points. 
+
+
+
+<!-- $$ -->
+<!-- p(h_i | \mu, \sigma) = \frac{\frac{1}{\sigma \sqrt{2\pi}} exp(-\frac{1}{2}(\frac{x - \mu}{\sigma})^2)}{\int \frac{\frac{1}{\sigma \sqrt{2\pi}} exp(-\frac{1}{2}(\frac{x - \mu}{\sigma})^2)} -->
+<!-- $$ -->
+
+This can be packed into an `R` function:
+Tell a bit about this function.
+
+```{r include=TRUE, echo=TRUE}
+calc_likelihood <- function(mu, sigma, observations, wall, ...) {
+  prod(
+    dnorm(observations, mu, sigma) /
+      pnorm(wall, mu, sigma, lower.tail = FALSE)
+  )
+}
+```
+
+Once we know how to calculate likelihood, the simplest way to calculate the posterior (distribution about the Gaussian parameters of all people standing behind a wall) is grid approximation. It uses brute-force approach that is suitable for low number of parameters. It goes like this:
+
+1. Decide on appropriate sequences of parameters values $\mu$ and $\sigma$ and their priors.^[Usually, priors should be probability densities (so they are integrated to 1) but in our case this is not a problem since we will normalize posterior at the end.] This is done in `df_mu` and `df_sigma`. Note that you can easily create Gaussian priors using `dnorm()` function with parameter values set as `x` argument. I decided to use flat priors so one can't argue that the shift in posterior `mu` values happened due to priors, not the wall.
+2. Create grid of parameter combinations. Function `crossing` does that.
+3. Calculate likelihood for each combination of parameters and data. We use `map_dbl()`^[`purrr` is an amazing package for functional programming (replacing loops with functions). [Check it out.](https://purrr.tidyverse.org/)] to calculate likelihood by calling function `calc_likelihood()` on each row (combination of parameter values).
+4. Calculate posterior as a product of likelihood and posteriors for both parameters. We then normalize the posterior to see what's the probability of parameters being exactly as they are. # TODO Fix
+
+```{r include=TRUE, echo=TRUE}
+library(dplyr)
+library(tidyr)
+library(purrr)
+
+wall <- 180
+observations <- c(181, 188, 190)
+
+df_mu <- tibble(
+  mu = seq(170, 190, by = 0.1),
+  prior_mu = 1 # dnorm(mu, 178, 10)
+)
+
+df_sigma <- tibble(
+  sigma = seq(1, 20, by = 0.1),
+  prior_sigma = 1 # dnorm(sigma, 10, 5)
+)
+
+df <- crossing(
+  df_mu,
+  df_sigma
+) %>%
+  mutate(
+    likelihood = pmap_dbl(
+      tibble(., observations = list(observations), wall = wall), 
+      calc_likelihood
+    ),
+    posterior_unstd = likelihood * prior_mu * prior_sigma,
+    posterior = posterior_unstd / sum(posterior_unstd)
+  )
+```
+
+Let's see the results in `df` that is sorted by descending `posterior`:
+
+```{r}
+df %>% 
+  arrange(desc(posterior)) %>% 
+  head() %>% 
+  mutate(across(c(posterior, posterior_unstd, likelihood), scales::scientific, 5)) %>% 
+  knitr::kable()
+```
+
+The most likely parameters for Gaussian distribution describing people height standing behind a wall are $\mu \approx 185cm$ and $\sigma \approx 4.8cm$. Note that $\mu$ is smaller compared to average of observations $\bar{h} = 186.3$.   
+Since our priors are flat means that posteriors are proportional to likelihoods. 
+Beware: posterior values can get really small so generally it's safer to calculate using logs of values and summation instead of multiplication.
+
+```{r}
+library(ggplot2)
+
+ggplot(df, aes(x = mu, y = sigma, z = posterior)) +
+  geom_contour_filled() +
+  labs(
+    title = "Posterior values for different parameter combinations",
+    subtitle = "Brihter colors present zones with higher posterior values."
+  ) +
+  theme_classic() +
+  theme(legend.position = "none") +
+  scale_x_continuous(expand = c(0, 0)) + 
+  scale_y_continuous(expand = c(0, 0))
+```
+
+
+
+## Use cases
+
+A lot of data we collect is biased and sometimes you know how it is biased. Now you know how to make up for that. About another such example, getting customer complaints only when they've been waiting for a long time, [talked Vincent on PyData](https://youtu.be/dE5j6NW-Kzg?t=721).
+ 
+TODO mention that he explains it too
+TODO check mckay book 
+TODO maybe move to the introduction
+
+https://youtu.be/dE5j6NW-Kzg?t=721)
+
+
+
