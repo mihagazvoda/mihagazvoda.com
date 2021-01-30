@@ -7,7 +7,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1"/>
   <meta name="generator" content="distill" />
-  <link rel="alternate" type="application/rss+xml" href="https://mihagazvoda.com/index.xml" />
 
   <style type="text/css">
   /* Hide doc at startup (prevent jankiness while JS renders/transforms) */
@@ -86,368 +85,39 @@ code span.wa { color: #545454; font-weight: bold; font-style: italic; } /* Warni
 </style>
 
   <!--radix_placeholder_meta_tags-->
-  <title>Miha Gazvoda: </title>
+  <title>The wall riddle</title>
+
+  <meta property="description" itemprop="description" content="Bayesian approach for dealing with biased data."/>
 
 
-
+  <!--  https://schema.org/Article -->
+  <meta property="article:published" itemprop="datePublished" content="2021-02-07"/>
+  <meta property="article:created" itemprop="dateCreated" content="2021-02-07"/>
+  <meta name="article:author" content="Miha Gazvoda"/>
 
   <!--  https://developers.facebook.com/docs/sharing/webmasters#markup -->
-  <meta property="og:title" content="Miha Gazvoda: "/>
+  <meta property="og:title" content="The wall riddle"/>
   <meta property="og:type" content="article"/>
+  <meta property="og:description" content="Bayesian approach for dealing with biased data."/>
   <meta property="og:locale" content="en_US"/>
-  <meta property="og:site_name" content="Miha Gazvoda"/>
 
   <!--  https://dev.twitter.com/cards/types/summary -->
   <meta property="twitter:card" content="summary"/>
-  <meta property="twitter:title" content="Miha Gazvoda: "/>
+  <meta property="twitter:title" content="The wall riddle"/>
+  <meta property="twitter:description" content="Bayesian approach for dealing with biased data."/>
 
   <!--/radix_placeholder_meta_tags-->
   <!--radix_placeholder_rmarkdown_metadata-->
 
   <script type="text/json" id="radix-rmarkdown-metadata">
-  {"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","site","listing"]}},"value":[{"type":"character","attributes":{},"value":[""]},{"type":"character","attributes":{},"value":["distill::distill_website"]},{"type":"character","attributes":{},"value":["posts"]}]}
+  {"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","description","categories","author","date","preview","output"]}},"value":[{"type":"character","attributes":{},"value":["The wall riddle"]},{"type":"character","attributes":{},"value":["Bayesian approach for dealing with biased data. \n"]},{"type":"character","attributes":{},"value":["R","Bayesian"]},{"type":"list","attributes":{},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","url"]}},"value":[{"type":"character","attributes":{},"value":["Miha Gazvoda"]},{"type":"character","attributes":{},"value":["https://mihagazvoda.com"]}]}]},{"type":"character","attributes":{},"value":["02-07-2021"]},{"type":"character","attributes":{},"value":["../../images/wall-puzzle/behind.png"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["distill::distill_article"]}},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["self_contained"]}},"value":[{"type":"logical","attributes":{},"value":[false]}]}]}]}
   </script>
   <!--/radix_placeholder_rmarkdown_metadata-->
-  <!--radix_placeholder_navigation_in_header-->
-  <meta name="distill:offset" content=""/>
-
-  <script type="application/javascript">
-
-    window.headroom_prevent_pin = false;
-
-    window.document.addEventListener("DOMContentLoaded", function (event) {
-
-      // initialize headroom for banner
-      var header = $('header').get(0);
-      var headerHeight = header.offsetHeight;
-      var headroom = new Headroom(header, {
-        onPin : function() {
-          if (window.headroom_prevent_pin) {
-            window.headroom_prevent_pin = false;
-            headroom.unpin();
-          }
-        }
-      });
-      headroom.init();
-      if(window.location.hash)
-        headroom.unpin();
-      $(header).addClass('headroom--transition');
-
-      // offset scroll location for banner on hash change
-      // (see: https://github.com/WickyNilliams/headroom.js/issues/38)
-      window.addEventListener("hashchange", function(event) {
-        window.scrollTo(0, window.pageYOffset - (headerHeight + 25));
-      });
-
-      // responsive menu
-      $('.distill-site-header').each(function(i, val) {
-        var topnav = $(this);
-        var toggle = topnav.find('.nav-toggle');
-        toggle.on('click', function() {
-          topnav.toggleClass('responsive');
-        });
-      });
-
-      // nav dropdowns
-      $('.nav-dropbtn').click(function(e) {
-        $(this).next('.nav-dropdown-content').toggleClass('nav-dropdown-active');
-        $(this).parent().siblings('.nav-dropdown')
-           .children('.nav-dropdown-content').removeClass('nav-dropdown-active');
-      });
-      $("body").click(function(e){
-        $('.nav-dropdown-content').removeClass('nav-dropdown-active');
-      });
-      $(".nav-dropdown").click(function(e){
-        e.stopPropagation();
-      });
-    });
+  
+  <script type="text/json" id="radix-resource-manifest">
+  {"type":"character","attributes":{},"value":["wall-riddle_files/anchor-4.2.2/anchor.min.js","wall-riddle_files/bowser-1.9.3/bowser.min.js","wall-riddle_files/distill-2.2.21/template.v2.js","wall-riddle_files/figure-html5/unnamed-chunk-2-1.png","wall-riddle_files/figure-html5/unnamed-chunk-3-1.png","wall-riddle_files/figure-html5/unnamed-chunk-4-1.png","wall-riddle_files/figure-html5/unnamed-chunk-5-1.png","wall-riddle_files/header-attrs-2.5/header-attrs.js","wall-riddle_files/jquery-1.11.3/jquery.min.js","wall-riddle_files/webcomponents-2.0.0/webcomponents.js"]}
   </script>
-
-  <style type="text/css">
-
-  /* Theme (user-documented overrideables for nav appearance) */
-
-  .distill-site-nav {
-    color: rgba(255, 255, 255, 0.8);
-    background-color: #0F2E3D;
-    font-size: 15px;
-    font-weight: 300;
-  }
-
-  .distill-site-nav a {
-    color: inherit;
-    text-decoration: none;
-  }
-
-  .distill-site-nav a:hover {
-    color: white;
-  }
-
-  @media print {
-    .distill-site-nav {
-      display: none;
-    }
-  }
-
-  .distill-site-header {
-
-  }
-
-  .distill-site-footer {
-
-  }
-
-
-  /* Site Header */
-
-  .distill-site-header {
-    width: 100%;
-    box-sizing: border-box;
-    z-index: 3;
-  }
-
-  .distill-site-header .nav-left {
-    display: inline-block;
-    margin-left: 8px;
-  }
-
-  @media screen and (max-width: 768px) {
-    .distill-site-header .nav-left {
-      margin-left: 0;
-    }
-  }
-
-
-  .distill-site-header .nav-right {
-    float: right;
-    margin-right: 8px;
-  }
-
-  .distill-site-header a,
-  .distill-site-header .title {
-    display: inline-block;
-    text-align: center;
-    padding: 14px 10px 14px 10px;
-  }
-
-  .distill-site-header .title {
-    font-size: 18px;
-    min-width: 150px;
-  }
-
-  .distill-site-header .logo {
-    padding: 0;
-  }
-
-  .distill-site-header .logo img {
-    display: none;
-    max-height: 20px;
-    width: auto;
-    margin-bottom: -4px;
-  }
-
-  .distill-site-header .nav-image img {
-    max-height: 18px;
-    width: auto;
-    display: inline-block;
-    margin-bottom: -3px;
-  }
-
-
-
-  @media screen and (min-width: 1000px) {
-    .distill-site-header .logo img {
-      display: inline-block;
-    }
-    .distill-site-header .nav-left {
-      margin-left: 20px;
-    }
-    .distill-site-header .nav-right {
-      margin-right: 20px;
-    }
-    .distill-site-header .title {
-      padding-left: 12px;
-    }
-  }
-
-
-  .distill-site-header .nav-toggle {
-    display: none;
-  }
-
-  .nav-dropdown {
-    display: inline-block;
-    position: relative;
-  }
-
-  .nav-dropdown .nav-dropbtn {
-    border: none;
-    outline: none;
-    color: rgba(255, 255, 255, 0.8);
-    padding: 16px 10px;
-    background-color: transparent;
-    font-family: inherit;
-    font-size: inherit;
-    font-weight: inherit;
-    margin: 0;
-    margin-top: 1px;
-    z-index: 2;
-  }
-
-  .nav-dropdown-content {
-    display: none;
-    position: absolute;
-    background-color: white;
-    min-width: 200px;
-    border: 1px solid rgba(0,0,0,0.15);
-    border-radius: 4px;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.1);
-    z-index: 1;
-    margin-top: 2px;
-    white-space: nowrap;
-    padding-top: 4px;
-    padding-bottom: 4px;
-  }
-
-  .nav-dropdown-content hr {
-    margin-top: 4px;
-    margin-bottom: 4px;
-    border: none;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-  }
-
-  .nav-dropdown-active {
-    display: block;
-  }
-
-  .nav-dropdown-content a, .nav-dropdown-content .nav-dropdown-header {
-    color: black;
-    padding: 6px 24px;
-    text-decoration: none;
-    display: block;
-    text-align: left;
-  }
-
-  .nav-dropdown-content .nav-dropdown-header {
-    display: block;
-    padding: 5px 24px;
-    padding-bottom: 0;
-    text-transform: uppercase;
-    font-size: 14px;
-    color: #999999;
-    white-space: nowrap;
-  }
-
-  .nav-dropdown:hover .nav-dropbtn {
-    color: white;
-  }
-
-  .nav-dropdown-content a:hover {
-    background-color: #ddd;
-    color: black;
-  }
-
-  .nav-right .nav-dropdown-content {
-    margin-left: -45%;
-    right: 0;
-  }
-
-  @media screen and (max-width: 768px) {
-    .distill-site-header a, .distill-site-header .nav-dropdown  {display: none;}
-    .distill-site-header a.nav-toggle {
-      float: right;
-      display: block;
-    }
-    .distill-site-header .title {
-      margin-left: 0;
-    }
-    .distill-site-header .nav-right {
-      margin-right: 0;
-    }
-    .distill-site-header {
-      overflow: hidden;
-    }
-    .nav-right .nav-dropdown-content {
-      margin-left: 0;
-    }
-  }
-
-
-  @media screen and (max-width: 768px) {
-    .distill-site-header.responsive {position: relative; min-height: 500px; }
-    .distill-site-header.responsive a.nav-toggle {
-      position: absolute;
-      right: 0;
-      top: 0;
-    }
-    .distill-site-header.responsive a,
-    .distill-site-header.responsive .nav-dropdown {
-      display: block;
-      text-align: left;
-    }
-    .distill-site-header.responsive .nav-left,
-    .distill-site-header.responsive .nav-right {
-      width: 100%;
-    }
-    .distill-site-header.responsive .nav-dropdown {float: none;}
-    .distill-site-header.responsive .nav-dropdown-content {position: relative;}
-    .distill-site-header.responsive .nav-dropdown .nav-dropbtn {
-      display: block;
-      width: 100%;
-      text-align: left;
-    }
-  }
-
-  /* Site Footer */
-
-  .distill-site-footer {
-    width: 100%;
-    overflow: hidden;
-    box-sizing: border-box;
-    z-index: 3;
-    margin-top: 30px;
-    padding-top: 30px;
-    padding-bottom: 30px;
-    text-align: center;
-  }
-
-  /* Headroom */
-
-  d-title {
-    padding-top: 6rem;
-  }
-
-  @media print {
-    d-title {
-      padding-top: 4rem;
-    }
-  }
-
-  .headroom {
-    z-index: 1000;
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-  }
-
-  .headroom--transition {
-    transition: all .4s ease-in-out;
-  }
-
-  .headroom--unpinned {
-    top: -100px;
-  }
-
-  .headroom--pinned {
-    top: 0;
-  }
-
-  </style>
-
-  <link href="site_libs/font-awesome-5.1.0/css/all.css" rel="stylesheet"/>
-  <link href="site_libs/font-awesome-5.1.0/css/v4-shims.css" rel="stylesheet"/>
-  <script src="site_libs/headroom-0.9.4/headroom.min.js"></script>
+  <!--radix_placeholder_navigation_in_header-->
   <!--/radix_placeholder_navigation_in_header-->
   <!--radix_placeholder_distill-->
 
@@ -1733,443 +1403,230 @@ code span.wa { color: #545454; font-weight: bold; font-style: italic; } /* Warni
   </script>
 
   <!--/radix_placeholder_distill-->
-  <script src="site_libs/header-attrs-2.5/header-attrs.js"></script>
-  <script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
-  <script src="site_libs/anchor-4.2.2/anchor.min.js"></script>
-  <script src="site_libs/bowser-1.9.3/bowser.min.js"></script>
-  <script src="site_libs/webcomponents-2.0.0/webcomponents.js"></script>
-  <script src="site_libs/distill-2.2.21/template.v2.js"></script>
+  <script src="wall-riddle_files/header-attrs-2.5/header-attrs.js"></script>
+  <script src="wall-riddle_files/jquery-1.11.3/jquery.min.js"></script>
+  <script src="wall-riddle_files/anchor-4.2.2/anchor.min.js"></script>
+  <script src="wall-riddle_files/bowser-1.9.3/bowser.min.js"></script>
+  <script src="wall-riddle_files/webcomponents-2.0.0/webcomponents.js"></script>
+  <script src="wall-riddle_files/distill-2.2.21/template.v2.js"></script>
   <!--radix_placeholder_site_in_header-->
-  <style type="text/css">
-  .distill-site-nav {
-    color: black;
-    background-color: #f9f6f7;
-    font-size: 15px;
-    font-weight: 300;
-  }
-
-  .distill-site-nav a {
-    color: inherit;
-    text-decoration: none;
-  }
-
-  .distill-site-nav a:hover {
-    color: inherit;
-  }
-
-  .distill-site-header {
-  }
-
-  .distill-site-footer {
-  }
-
-  @media print {
-    .distill-site-nav {
-      display: none;
-    }
-  }
-  </style>
   <!--/radix_placeholder_site_in_header-->
 
-  <link rel="stylesheet" href="styles.css" type="text/css"/>
 
 </head>
 
-<body class="layout-listing">
+<body>
 
 <!--radix_placeholder_front_matter-->
 
 <script id="distill-front-matter" type="text/json">
-{"title":"","authors":[]}
+{"title":"The wall riddle","description":"Bayesian approach for dealing with biased data.","authors":[{"author":"Miha Gazvoda","authorURL":"https://mihagazvoda.com","affiliation":"&nbsp;","affiliationURL":"#","orcidID":""}],"publishedDate":"2021-02-07T00:00:00.000+01:00","citationText":"Gazvoda, 2021"}
 </script>
 
 <!--/radix_placeholder_front_matter-->
 <!--radix_placeholder_navigation_before_body-->
-<header class="header header--fixed" role="banner">
-<nav class="distill-site-nav distill-site-header">
-<div class="nav-left">
-<span class="logo">
-<img src="images/miha-01.svg"/>
-</span>
-<a href="index.html" class="title">Miha Gazvoda</a>
-</div>
-<div class="nav-right">
-<a href="index.html">Blog</a>
-<a href="about.html">About</a>
-<a href="index.xml">
-<i class="fa fa-rss" aria-hidden="true"></i>
-</a>
-<a href="javascript:void(0);" class="nav-toggle">&#9776;</a>
-</div>
-</nav>
-</header>
 <!--/radix_placeholder_navigation_before_body-->
 <!--radix_placeholder_site_before_body-->
 <!--/radix_placeholder_site_before_body-->
-<!--radix_placeholder_article_listing-->
-
-
-<script type="application/javascript">
-
-function init_posts_list() {
-
-  function load_image(img) {
-    var src = $(img).attr('data-src');
-    if (src) {
-      $(img).attr('src', src);
-      $(img).load(function() {
-        img.removeAttribute('data-src');
-      });
-    }
-  }
-
-  function set_posts_visible(posts, visible) {
-    if (visible) {
-
-      // show bottom border by default
-      $(posts).removeClass('post-preview-last');
-
-      // apply limits if need be
-      var max_posts = 25;
-      var apply_limits = $('.posts-container').hasClass('posts-apply-limit');
-      if (apply_limits && posts.length > max_posts) {
-        posts = $(posts).slice(0, max_posts);
-      } else {
-        $('.posts-more a').addClass('hidden');
-      }
-
-      // apply last style
-      $(posts.slice(-1)[0]).addClass('post-preview-last');
-
-      $(posts).removeClass('hidden');
-      $(posts).find('img[data-src]').each(function(i, img) {
-        load_image(img);
-      });
-    } else {
-      $(posts).addClass('hidden');
-    }
-  }
-
-  function apply_hash_filter() {
-
-    // clear active state
-    $('.categories .active').removeClass('active');
-
-    // mark all posts invisible to start
-    set_posts_visible($('.posts-list').children('a'), false);
-
-    // if we have a hash filter
-    if (window.location.hash && window.location.hash.startsWith("#category:")) {
-
-      // mark posts that match the category visible
-      var page_category = window.location.hash.replace(/^#category:/, "");
-      var posts = $('.post-metadata').map(function(idx, script) {
-        var metadata = $.parseJSON($(script).html());
-        var post = null;
-        $.each(metadata.categories, function(idx, category) {
-          category = category.replace(/ /g,"_");
-          if ((page_category || '').toLowerCase() === "articles" || category === page_category) {
-            post = $(script).parent().get();
-            return false;
-          }
-        });
-        return post;
-      });
-      set_posts_visible(posts, true);
-
-      // mark the hash active
-      $('.categories li>a[href="' + window.location.hash + '"]').addClass('active');
-
-      // update the list_caption
-      var list_caption = $('.posts-list-caption');
-      var caption = (page_category || '').toLowerCase() === "articles"
-        ? list_caption.attr('data-caption')
-        : ('Category: ' + page_category.replace(/_/g," "));
-      list_caption.text(caption);
-
-    } else {
-
-      // no hash filter, make all posts visible (subject to max display)
-      set_posts_visible($('.posts-list').children(), true);
-
-      // reset list caption
-      var list_caption = $('.posts-list-caption');
-      list_caption.text(list_caption.attr('data-caption'));
-
-
-    }
-  }
-
-  // more articles
-  function apply_post_limits(apply) {
-    if (apply) {
-      $('.posts-container').addClass('posts-apply-limit');
-      $('.posts-more a').removeClass('hidden');
-    } else {
-      $('.posts-container').removeClass('posts-apply-limit');
-      $('.posts-more a').addClass('hidden');
-    }
-  }
-
-  // click handling for tags
-  $('.dt-tag').click(function(ev) {
-    window.location.hash = '#category:' + $(this).text().replace(/ /g, "_");
-    return false;
-  })
-
-  // hash filter handling
-  apply_hash_filter();
-  $(window).on('hashchange',function() {
-    apply_post_limits(true);
-    apply_hash_filter();
-  });
-
-  // more articles link
-  $('.posts-more a').click(function(e) {
-    e.preventDefault();
-    apply_post_limits(false);
-    apply_hash_filter();
-    return false;
-  });
-
-}
-
-</script>
-
-
-
-<div class="posts-container posts-with-sidebar posts-apply-limit l-screen-inset">
-<div class="posts-list">
-<h1 class="posts-list-caption" data-caption=""></h1>
-<a href="posts/wall-riddle/" class="post-preview">
-<script class="post-metadata" type="text/json">{"categories":["R","Bayesian"]}</script>
-<div class="metadata">
-<div class="publishedDate">Feb. 6, 2021</div>
-<div class="dt-authors">
-<div class="dt-author">Miha Gazvoda</div>
-</div>
-</div>
-<div class="thumbnail">
-<img src="posts/wall-riddle/../../images/wall-puzzle/behind.png"/>
-</div>
-<div class="description">
-<h2>The wall riddle</h2>
-<div class="dt-tags">
-<div class="dt-tag">R</div>
-<div class="dt-tag">Bayesian</div>
-</div>
-<p>Bayesian approach for dealing with biased data.</p>
-</div>
-</a>
-<a href="posts/2020-11-24-bayesian-updating/" class="post-preview">
-<script class="post-metadata" type="text/json">{"categories":["data science","Bayesian","Shiny"]}</script>
-<div class="metadata">
-<div class="publishedDate">Jan. 2, 2021</div>
-<div class="dt-authors">
-<div class="dt-author">Miha Gazvoda</div>
-</div>
-</div>
-<div class="thumbnail">
-<img src="posts/2020-11-24-bayesian-updating/../../images/bayesian-updating/globe.png"/>
-</div>
-<div class="description">
-<h2>Intuitive Bayesian inference</h2>
-<div class="dt-tags">
-<div class="dt-tag">data science</div>
-<div class="dt-tag">Bayesian</div>
-<div class="dt-tag">Shiny</div>
-</div>
-<p>Binomial data example</p>
-</div>
-</a>
-<a href="posts/2020-04-21-drake-tutorial/" class="post-preview">
-<script class="post-metadata" type="text/json">{"categories":["data science","R"]}</script>
-<div class="metadata">
-<div class="publishedDate">Oct. 30, 2020</div>
-<div class="dt-authors">
-<div class="dt-author">Miha Gazvoda</div>
-</div>
-</div>
-<div class="thumbnail">
-<img src="posts/2020-04-21-drake-tutorial/../../images/drake_preview.png"/>
-</div>
-<div class="description">
-<h2>Improve your data analysis workflow with the drake R package</h2>
-<div class="dt-tags">
-<div class="dt-tag">data science</div>
-<div class="dt-tag">R</div>
-</div>
-<p>A quick guide.</p>
-</div>
-</a>
-<a href="posts/2020-03-26-man-plans-god-laughs-the-planning-fallacy/" class="post-preview">
-<script class="post-metadata" type="text/json">{"categories":["decision making under uncertainty"]}</script>
-<div class="metadata">
-<div class="publishedDate">Jan. 1, 2018</div>
-<div class="dt-authors">
-<div class="dt-author">Miha Gazvoda</div>
-</div>
-</div>
-<div class="thumbnail">
-<img src="posts/2020-03-26-man-plans-god-laughs-the-planning-fallacy/../../images/planning_fallacy_preview.png"/>
-</div>
-<div class="description">
-<h2>Man Plans, God Laughs: The Planning Fallacy</h2>
-<div class="dt-tags">
-<div class="dt-tag">decision making under uncertainty</div>
-</div>
-<p>So you’re planning to read the whole article? Let’s see…</p>
-</div>
-</a>
-<a href="posts/2020-03-26-the-714-words-the-picture-cant-tell/" class="post-preview">
-<script class="post-metadata" type="text/json">{"categories":["this happened to me"]}</script>
-<div class="metadata">
-<div class="publishedDate">Dec. 12, 2017</div>
-<div class="dt-authors">
-<div class="dt-author">Miha Gazvoda</div>
-</div>
-</div>
-<div class="thumbnail">
-<img src="posts/2020-03-26-the-714-words-the-picture-cant-tell/../../images/words_714_preview.png"/>
-</div>
-<div class="description">
-<h2>The 714 words the picture can't tell</h2>
-<div class="dt-tags">
-<div class="dt-tag">this happened to me</div>
-</div>
-<p>I’m sorry, but the photo is private. Spoiler for friends: Instagram.</p>
-</div>
-</a>
-<a href="posts/2020-03-26-how-i-built-my-first-memory-palace-in-15-minutes/" class="post-preview">
-<script class="post-metadata" type="text/json">{"categories":["this happened to me"]}</script>
-<div class="metadata">
-<div class="publishedDate">July 29, 2017</div>
-<div class="dt-authors">
-<div class="dt-author">Miha Gazvoda</div>
-</div>
-</div>
-<div class="thumbnail">
-<img data-src="posts/2020-03-26-how-i-built-my-first-memory-palace-in-15-minutes/../../images/memory_palace_preview.png"/>
-</div>
-<div class="description">
-<h2>How I built my first memory palace in 15 minutes</h2>
-<div class="dt-tags">
-<div class="dt-tag">this happened to me</div>
-</div>
-<p>And you can too.</p>
-</div>
-</a>
-<a href="posts/2020-03-26-my-phone-use-in-numbers-and-graphs/" class="post-preview">
-<script class="post-metadata" type="text/json">{"categories":["data science"]}</script>
-<div class="metadata">
-<div class="publishedDate">May 13, 2017</div>
-<div class="dt-authors">
-<div class="dt-author">Miha Gazvoda</div>
-</div>
-</div>
-<div class="thumbnail">
-<img data-src="posts/2020-03-26-my-phone-use-in-numbers-and-graphs/../../images/phone_numbers_preview.png"/>
-</div>
-<div class="description">
-<h2>My phone use in numbers and graphs</h2>
-<div class="dt-tags">
-<div class="dt-tag">data science</div>
-</div>
-<p>Insights and visualizations from Moment app data</p>
-</div>
-</a>
-<a href="posts/2020-03-26-monument-to-erasmus/" class="post-preview">
-<script class="post-metadata" type="text/json">{"categories":["this happened to me"]}</script>
-<div class="metadata">
-<div class="publishedDate">March 1, 2017</div>
-<div class="dt-authors">
-<div class="dt-author">Miha Gazvoda</div>
-</div>
-</div>
-<div class="thumbnail">
-<img data-src="posts/2020-03-26-monument-to-erasmus/../../images/erasmus_preview.png"/>
-</div>
-<div class="description">
-<h2>Monument to Erasmus</h2>
-<div class="dt-tags">
-<div class="dt-tag">this happened to me</div>
-</div>
-<p>No description needed.</p>
-</div>
-</a>
-<a href="posts/2020-03-28-the-role-of-luck-in-poker/" class="post-preview">
-<script class="post-metadata" type="text/json">{"categories":["data science","decision making under uncertainty"]}</script>
-<div class="metadata">
-<div class="publishedDate">Sept. 14, 2015</div>
-<div class="dt-authors">
-<div class="dt-author">Miha Gazvoda</div>
-</div>
-</div>
-<div class="thumbnail">
-<img data-src="posts/2020-03-28-the-role-of-luck-in-poker/../../images/role_luck_in_poker_preview.png"/>
-</div>
-<div class="description">
-<h2>The role of luck in poker</h2>
-<div class="dt-tags">
-<div class="dt-tag">data science</div>
-<div class="dt-tag">decision making under uncertainty</div>
-</div>
-<p>How the number of hands played affects the variance?</p>
-</div>
-</a>
-</div>
-<div class="posts-sidebar">
-<div class="sidebar-section categories">
-<h3>Categories</h3>
-<ul>
-<li>
-<a href="#category:Articles">Articles</a>
-<span class="category-count">(9)</span>
-</li>
-<li>
-<a href="#category:Bayesian">Bayesian</a>
-<span class="category-count">(2)</span>
-</li>
-<li>
-<a href="#category:data_science">data science</a>
-<span class="category-count">(4)</span>
-</li>
-<li>
-<a href="#category:decision_making_under_uncertainty">decision making under uncertainty</a>
-<span class="category-count">(2)</span>
-</li>
-<li>
-<a href="#category:R">R</a>
-<span class="category-count">(2)</span>
-</li>
-<li>
-<a href="#category:Shiny">Shiny</a>
-<span class="category-count">(1)</span>
-</li>
-<li>
-<a href="#category:this_happened_to_me">this happened to me</a>
-<span class="category-count">(3)</span>
-</li>
-</ul>
-</div>
-</div>
-<div class="posts-more">
-<a href="#">More articles &raquo;</a>
-</div>
-</div>
-<!--/radix_placeholder_article_listing-->
 
 <div class="d-title">
-<h1>index.utf8</h1>
+<h1>The wall riddle</h1>
 <!--radix_placeholder_categories-->
+<div class="dt-tags">
+<div class="dt=tag">R</div>
+<div class="dt=tag">Bayesian</div>
+</div>
 <!--/radix_placeholder_categories-->
-
+<p><p>Bayesian approach for dealing with biased data.</p></p>
 </div>
 
+<div class="d-byline">
+  Miha Gazvoda <a href="https://mihagazvoda.com" class="uri">https://mihagazvoda.com</a> 
+  
+<br/>02-07-2021
+</div>
 
 <div class="d-article">
-<meta name="flattr:id" content="5qyrno">
+<p>I received the following riddle when asking for Bayesian resources on Twitter:</p>
+<blockquote>
+<p>Solve this riddle.</p>
+<p>There is a wall that’s kind of tall but not too tall, say 1.8m. You can only see the people who are taller than the wall.</p>
+<p>Suppose you saw 1m88, 1m90 and 1m81.</p>
+<p>What can you say about <em>everyone</em> who walked past the wall?</p>
+<footer>
+— <a href="https://twitter.com/fishnets88">Vincent D. Warmerdam</a>
+</footer>
+</blockquote>
+<p>Challenge accepted.</p>
+<p>Let’s pretend there’s a group of people standing instead of walking behind a wall. This way it’s easier to sketch the situation. That’s what we see:</p>
+<p><img src="../../images/wall-puzzle/behind.png" /></p>
+<p>This is the view from ahead:</p>
+<p><img src="../../images/wall-puzzle/front.png" /></p>
+<h1 id="bayes-to-the-rescue">Bayes to the rescue!</h1>
+<p>Let’s assume people’s heights are normally distributed with some mean <span class="math inline">\(\mu\)</span> and standard deviation <span class="math inline">\(\sigma\)</span>. A part of this distribution can’t be observed since it’s behind a wall.</p>
+<figure>
+<img src="../../images/wall-puzzle/gaussian.png" alt="Gaussian distribution with parameters \mu and \sigma describing heights of all people. Observed is only part of the distribution above the wall height h_w." /><figcaption aria-hidden="true">Gaussian distribution with parameters <span class="math inline">\(\mu\)</span> and <span class="math inline">\(\sigma\)</span> describing heights of all people. Observed is only part of the distribution above the wall height <span class="math inline">\(h_w\)</span>.</figcaption>
+</figure>
+<p>We will start with <a href="https://en.wikipedia.org/wiki/Bayes%27_theorem#Statement_of_theorem">Bayes’ theorem</a>. We are interested in posterior distribution <span class="math inline">\(p(\mu, \sigma | D_{bias})\)</span> of parameters <span class="math inline">\(\mu\)</span> and <span class="math inline">\(\sigma\)</span> that describe the height of people behind a wall given the observed heights <span class="math inline">\(D_{bias}\)</span>. Since <span class="math inline">\(p(D_{bias})\)</span> serves as a normalizing constant that makes the posterior density integrate to one, we can throw it away.<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> Prior <span class="math inline">\(p(\mu,\sigma)\)</span> can be rewritten as the product of priors for each parameter. The likelihood is a product of the likelihoods of all observed heights.<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a></p>
+<p><span class="math display">\[
+p(\mu, \sigma | D_{bias}) = \frac{p(D_{bias} | \mu, \sigma) p(\mu, \sigma)}{p(D_{bias})} \propto p(D_{bias} | \mu, \sigma) p(\mu, \sigma) = p(\mu)p(\sigma) \prod_{i} p(h_i | \mu, \sigma)
+\]</span></p>
+<p>The tricky part is to calculate <span class="math inline">\(p(h_i | \mu, \sigma)\)</span>. We can help ourselves with the sketch above. Our observations come only from the part of the distribution that is above the wall. So likelihoods are basically the same as from Gaussian but normalized by the density portion that is above the wall. Without getting too much into maths<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a>, this can be easily calculated in R with functions <code>dnorm()</code>, to get values for probability density, and <code>pnorm()</code> to get the probability that the observation is taller than the wall:</p>
+<p><span class="math display">\[
+p(h_i | \mu, \sigma) = \frac{dnorm(h_i, \mu, \sigma)}{pnorm(h_w, \mu, \sigma)}
+\]</span></p>
+<p>Both functions can take vectors for argument values. Then you multiply likelihoods for all the points. Here’s an <code>R</code> function that does that: <!-- TODO mention logarithms --></p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre><code><span class='va'>calc_likelihood</span> <span class='op'>&lt;-</span> <span class='kw'>function</span><span class='op'>(</span><span class='va'>mu</span>, <span class='va'>sigma</span>, <span class='va'>observations</span>, <span class='va'>wall</span><span class='op'>)</span> <span class='op'>{</span>
+  <span class='fu'><a href='https://rdrr.io/r/base/prod.html'>prod</a></span><span class='op'>(</span>
+    <span class='fu'><a href='https://rdrr.io/r/stats/Normal.html'>dnorm</a></span><span class='op'>(</span><span class='va'>observations</span>, <span class='va'>mu</span>, <span class='va'>sigma</span><span class='op'>)</span> <span class='op'>/</span>
+      <span class='fu'><a href='https://rdrr.io/r/stats/Normal.html'>pnorm</a></span><span class='op'>(</span><span class='va'>wall</span>, <span class='va'>mu</span>, <span class='va'>sigma</span>, lower.tail <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span>
+  <span class='op'>)</span>
+<span class='op'>}</span>
+</code></pre>
+</div>
+</div>
+<h1 id="multiplication-is-all-you-need.">Multiplication is all you need.</h1>
+<p>Once we know how to calculate likelihood, the simplest way to calculate the posterior (plausibility of the parameters of Gaussian describing all people standing behind a wall) is a grid approximation. I find it the clearest but it uses brute-force that is suitable only for the low number of parameters. It goes like this:</p>
+<ol type="1">
+<li>Decide on appropriate sequences of parameters values <span class="math inline">\(\mu\)</span> and <span class="math inline">\(\sigma\)</span> and their priors.<a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a> This is done in <code>df_mu</code> and <code>df_sigma</code>. Note that you can easily create Gaussian priors using <code>dnorm()</code> function with parameter values set as the first argument. I decided to use flat priors instead so one can’t argue that the shift in posterior <code>mu</code> values happened due to priors, not the wall. Flat priors also mean the posterior will be proportional to the likelihood.</li>
+<li>Create a grid of parameter combinations. Function <code>crossing</code> does that.</li>
+<li>Calculate likelihood for each combination of parameters and observed heights by calling function <code>calc_likelihood()</code> on each row.</li>
+<li>Calculate posterior as a product of likelihood and parameters’ posteriors. Normalize the posterior to see what’s the probability of occurring for such parameters.</li>
+</ol>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre><code><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://dplyr.tidyverse.org'>dplyr</a></span><span class='op'>)</span>
+<span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://tidyr.tidyverse.org'>tidyr</a></span><span class='op'>)</span>
+<span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='http://purrr.tidyverse.org'>purrr</a></span><span class='op'>)</span>
+
+<span class='va'>wall</span> <span class='op'>&lt;-</span> <span class='fl'>180</span>
+<span class='va'>observations</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>181</span>, <span class='fl'>188</span>, <span class='fl'>190</span><span class='op'>)</span>
+
+<span class='va'>df_mu</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://tibble.tidyverse.org/reference/tibble.html'>tibble</a></span><span class='op'>(</span>
+  mu <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/seq.html'>seq</a></span><span class='op'>(</span><span class='fl'>170</span>, <span class='fl'>190</span>, by <span class='op'>=</span> <span class='fl'>0.1</span><span class='op'>)</span>,
+  prior_mu <span class='op'>=</span> <span class='fl'>1</span> <span class='co'># dnorm(mu, 178, 10)</span>
+<span class='op'>)</span>
+
+<span class='va'>df_sigma</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://tibble.tidyverse.org/reference/tibble.html'>tibble</a></span><span class='op'>(</span>
+  sigma <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/seq.html'>seq</a></span><span class='op'>(</span><span class='fl'>1</span>, <span class='fl'>20</span>, by <span class='op'>=</span> <span class='fl'>0.1</span><span class='op'>)</span>,
+  prior_sigma <span class='op'>=</span> <span class='fl'>1</span> <span class='co'># dnorm(sigma, 10, 5)</span>
+<span class='op'>)</span>
+
+<span class='va'>df</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://tidyr.tidyverse.org/reference/expand.html'>crossing</a></span><span class='op'>(</span><span class='va'>df_mu</span>, <span class='va'>df_sigma</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
+  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/rowwise.html'>rowwise</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
+  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/mutate.html'>mutate</a></span><span class='op'>(</span>likelihood <span class='op'>=</span> <span class='fu'>calc_likelihood</span><span class='op'>(</span><span class='va'>mu</span>, <span class='va'>sigma</span>, <span class='va'>observations</span>, <span class='va'>wall</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>%&gt;%</span> 
+  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/group_by.html'>ungroup</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>%&gt;%</span> 
+  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/mutate.html'>mutate</a></span><span class='op'>(</span>
+    posterior_unstd <span class='op'>=</span> <span class='va'>likelihood</span> <span class='op'>*</span> <span class='va'>prior_mu</span> <span class='op'>*</span> <span class='va'>prior_sigma</span>,
+    posterior <span class='op'>=</span> <span class='va'>posterior_unstd</span> <span class='op'>/</span> <span class='fu'><a href='https://rdrr.io/r/base/sum.html'>sum</a></span><span class='op'>(</span><span class='va'>posterior_unstd</span><span class='op'>)</span>
+  <span class='op'>)</span>
+</code></pre>
+</div>
+</div>
+<h1 id="posterior-looks-beautiful-but-does-it-make-sense">Posterior looks beautiful but does it make sense?</h1>
+<p>Let’s see the results in <code>df</code> that is sorted by descending <code>posterior</code>:</p>
+<div class="layout-chunk" data-layout="l-body">
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: right;">mu</th>
+<th style="text-align: right;">prior_mu</th>
+<th style="text-align: right;">sigma</th>
+<th style="text-align: right;">prior_sigma</th>
+<th style="text-align: left;">likelihood</th>
+<th style="text-align: left;">posterior_unstd</th>
+<th style="text-align: left;">posterior</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">185.0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">4.8</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: left;">3.1452e-04</td>
+<td style="text-align: left;">3.1452e-04</td>
+<td style="text-align: left;">6.7623e-05</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">185.1</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">4.8</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: left;">3.1449e-04</td>
+<td style="text-align: left;">3.1449e-04</td>
+<td style="text-align: left;">6.7617e-05</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">184.9</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">4.9</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: left;">3.1442e-04</td>
+<td style="text-align: left;">3.1442e-04</td>
+<td style="text-align: left;">6.7602e-05</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">185.0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">4.9</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: left;">3.1439e-04</td>
+<td style="text-align: left;">3.1439e-04</td>
+<td style="text-align: left;">6.7596e-05</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">185.1</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">4.7</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: left;">3.1434e-04</td>
+<td style="text-align: left;">3.1434e-04</td>
+<td style="text-align: left;">6.7584e-05</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">185.2</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">4.7</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: left;">3.1430e-04</td>
+<td style="text-align: left;">3.1430e-04</td>
+<td style="text-align: left;">6.7576e-05</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>The most likely parameters for Gaussian distribution describing people height standing behind a wall are <span class="math inline">\(\mu \approx 185cm\)</span> and <span class="math inline">\(\sigma \approx 4.8cm\)</span>. Note that <span class="math inline">\(\mu\)</span> is smaller compared to average of observations <span class="math inline">\(\bar{h} = 186.3cm\)</span>.</p>
+<div class="layout-chunk" data-layout="l-body">
+<p><img src="wall-riddle_files/figure-html5/unnamed-chunk-4-1.png" width="624" /></p>
+</div>
+<details>
+<summary>
+Additional plots to get better understand the posterior.
+</summary>
+<p>The plot below displays normalized probability densities for heights between 180 and 190cm. The normalized probability density is calculated the same as in <span class="math inline">\(p(h_i|\mu, \sigma)\)</span> above; that is divided by the portion of the Gaussian above the wall height.</p>
+<div class="layout-chunk" data-layout="l-body">
+<p><img src="wall-riddle_files/figure-html5/unnamed-chunk-5-1.png" width="624" /></p>
+</div>
+<p>To get the posterior value for some <span class="math inline">\(\mu\)</span> and <span class="math inline">\(\sigma\)</span> you just have to multiply densities (<code>y</code> values on the plot). We can see that <span class="math inline">\(\sigma\)</span> between 10 and 15 make the more sense because higher <span class="math inline">\(\sigma\)</span> values are lower for all heights and small <span class="math inline">\(\sigma\)</span> density for height 181cm is bigger but get’s compensated because when multiplying with densities for 188 and 190 which are way smaller.</p>
+</details>
+<h1 id="dont-give-up-when-your-data-is-biased.">Don’t give up when your data is biased.</h1>
+<p>About another such example, getting customer complaints about their waiting time only when they’ve been waiting for longer than usual, <a href="https://youtu.be/dE5j6NW-Kzg?t=721">talked Vincent on PyData</a>. He also explains the riddle I’ve solved without giving the the solution.</p>
+<p>A lot of data we collect is biased and sometimes we know how it is biased. Luckily - and skillfully - we can make up for that.</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
+<section class="footnotes" role="doc-endnotes">
+<hr />
+<ol>
+<li id="fn1" role="doc-endnote"><p>More about that on <a href="https://stats.stackexchange.com/questions/12112/normalizing-constant-in-bayes-theorem">Cross Validated</a>.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2" role="doc-endnote"><p>Technical note: Likelihood probability is actually not a probability but probability density. As explained in <a href="https://en.wikipedia.org/wiki/Probability_density_function">the first two paragraphs of the Wikipedia</a>, the integral of probability density over some height range returns probability. This is not important in our case since we are comparing likelihoods among themselves.<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn3" role="doc-endnote"><p>Ok, if you <em>really</em> want it: <span class="math display">\[
+p(h_i | \mu, \sigma) = \frac{exp(\frac{-(h_i-\mu)^2}{2\sigma^2})/(\sigma \sqrt{2\pi})}{\int_{x=h_w}^{\infty}(exp(\frac{-(x-\mu)^2}{2\sigma^2}) / (\sigma \sqrt{2\pi}))}
+\]</span> It’s way simpler than it looks.<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn4" role="doc-endnote"><p>Usually, priors should be probability densities (so they integrate to 1) but in our case this is not a problem since we will normalize posterior at the end.<a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section>
 <!--radix_placeholder_article_footer-->
 <!--/radix_placeholder_article_footer-->
 </div>
@@ -2177,6 +1634,15 @@ function init_posts_list() {
 <div class="d-appendix">
 </div>
 
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
 
 <!--radix_placeholder_site_after_body-->
 <!--/radix_placeholder_site_after_body-->
