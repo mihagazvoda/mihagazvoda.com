@@ -1843,7 +1843,6 @@ document.addEventListener('DOMContentLoaded', function() {
 </div>
 
 <div class="d-article">
-<!-- https://twitter.com/fishnets88/status/1354151845871169537?s=20 -->
 <p>I received following riddle when asking for Bayesian resources:</p>
 <blockquote>
 <p>Solve this riddle.</p>
@@ -1855,29 +1854,24 @@ document.addEventListener('DOMContentLoaded', function() {
 </footer>
 </blockquote>
 <p>Challenge accepted.</p>
-<p>Spoiler alert: Before reading further, you can try to solve it yourself.</p>
-<h2 id="approach">Approach</h2>
-<p>To easier imagine things, let’s pretend there’s a group of people standing behind the wall. We don’t know anything about the number of people. That’s what you see from behind:</p>
-<!-- TODO INSERT PICTURE FROM BEHIND -->
-<p>That’s what you see from ahead:</p>
-<!-- TODO INSERT PICTURE FROM AHEAD -->
-<p>If we assume their heights are normally distributed with some mean <span class="math inline">\(\mu\)</span> and standard deviation <span class="math inline">\(\sigma\)</span>. A part of this distribution (some people people from the group) can’t be observed since it’s behind a wall.</p>
+<p>To easier imagine things, let’s pretend there’s a group of people standing behind a wall. We don’t know anything about the number of people. That’s what you see:</p>
+<p><img src="../../images/wall-puzzle/behind.png" /></p>
+<p>That’s what’ you see from ahead’s hiding behing the wall:</p>
+<p><img src="../../images/wall-puzzle/front.png" /></p>
+<p>Let’s assume their heights are normally distributed with some mean <span class="math inline">\(\mu\)</span> and standard deviation <span class="math inline">\(\sigma\)</span>. A part of this distribution can’t be observed since it’s behind a wall.</p>
 <p><img src="https://pbs.twimg.com/media/Es00bBCXcAIHkOq?format=png&amp;name=small" /></p>
-<p>How to write this down?</p>
+<p>How to write this down? We will start with the <a href="https://en.wikipedia.org/wiki/Bayes%27_theorem#Statement_of_theorem">Bayes’ theorem</a>. We are interested in posterior distribution <span class="math inline">\(p(\mu, \sigma | D_{bias})\)</span> of parameters <span class="math inline">\(\mu\)</span> and <span class="math inline">\(\sigma\)</span> that describe weight of people behind a wall given the observed heights <span class="math inline">\(D_{bias}\)</span>. Since <span class="math inline">\(p(D_{bias})\)</span> serves as a normalizing constant that makes the posterior density integrate to one, we can throw it away.<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> Priors of the parameters can be rewritten as their product. Likelihood is a product of likelihoods of all observed heights. But beware, we are missing some.</p>
 <p><span class="math display">\[
-p(\mu, \sigma) = \frac{p(D_{bias} | \mu, \sigma) p(\mu, \sigma)}{p(D_{bias})} \propto p(D_{bias} | \mu, \sigma) p(\mu, \sigma) = p(\mu)p(\sigma) \prod_{i} p(h_i | \mu, \sigma)
-\]</span> TODO explain how to get from one equation to the other ones</p>
-<p>The tricky part here is to calculate <span class="math inline">\(p(h_i | \mu, \sigma)\)</span>. But we can help ourselves with the sketch above - our observations come only from the part of the distribution that is above the wall. So likelihoods are basically the same as from Gaussian but normalized by the density proportion that is above the wall. I won’t to into maths since this can be easily calculated in R with functions <code>dnorm()</code> (to get values for probability density) and <code>pnorm()</code> to get cumulative density:</p>
+p(\mu, \sigma | D_{bias}) = \frac{p(D_{bias} | \mu, \sigma) p(\mu, \sigma)}{p(D_{bias})} \propto p(D_{bias} | \mu, \sigma) p(\mu, \sigma) = p(\mu)p(\sigma) \prod_{i} p(h_i | \mu, \sigma)
+\]</span></p>
+<p>The tricky part is to calculate <span class="math inline">\(p(h_i | \mu, \sigma)\)</span>. We can help ourselves with the sketch above. Our observations come only from the part of the distribution that is above the wall. So likelihoods are basically the same as from Gaussian but normalized by the density proportion that is above the wall. Without getting too much into maths<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a>, this can be easily calculated in R with functions <code>dnorm()</code>, to get values for probability density, and <code>pnorm()</code> to get cumulative density:</p>
 <p><span class="math display">\[
 p(h_i | \mu, \sigma) = \frac{dnorm(h_i, \mu, \sigma)}{pnorm(h_w, \mu, \sigma)}
-\]</span> Then you just multiply likeholihoods for all the points.</p>
-<!-- $$ -->
-<!-- p(h_i | \mu, \sigma) = \frac{\frac{1}{\sigma \sqrt{2\pi}} exp(-\frac{1}{2}(\frac{x - \mu}{\sigma})^2)}{\int \frac{\frac{1}{\sigma \sqrt{2\pi}} exp(-\frac{1}{2}(\frac{x - \mu}{\sigma})^2)} -->
-<!-- $$ -->
-<p>This can be packed into an <code>R</code> function: Tell a bit about this function.</p>
+\]</span></p>
+<p>Both functions can take vectors for argument values. Then you just multiply likelihoods for all the points. Here’s and <code>R</code> functions that does that:</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre><code><span class='va'>calc_likelihood</span> <span class='op'>&lt;-</span> <span class='kw'>function</span><span class='op'>(</span><span class='va'>mu</span>, <span class='va'>sigma</span>, <span class='va'>observations</span>, <span class='va'>wall</span>, <span class='va'>...</span><span class='op'>)</span> <span class='op'>{</span>
+<pre><code><span class='va'>calc_likelihood</span> <span class='op'>&lt;-</span> <span class='kw'>function</span><span class='op'>(</span><span class='va'>mu</span>, <span class='va'>sigma</span>, <span class='va'>observations</span>, <span class='va'>wall</span><span class='op'>)</span> <span class='op'>{</span>
   <span class='fu'><a href='https://rdrr.io/r/base/prod.html'>prod</a></span><span class='op'>(</span>
     <span class='fu'><a href='https://rdrr.io/r/stats/Normal.html'>dnorm</a></span><span class='op'>(</span><span class='va'>observations</span>, <span class='va'>mu</span>, <span class='va'>sigma</span><span class='op'>)</span> <span class='op'>/</span>
       <span class='fu'><a href='https://rdrr.io/r/stats/Normal.html'>pnorm</a></span><span class='op'>(</span><span class='va'>wall</span>, <span class='va'>mu</span>, <span class='va'>sigma</span>, lower.tail <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span>
@@ -1886,12 +1880,12 @@ p(h_i | \mu, \sigma) = \frac{dnorm(h_i, \mu, \sigma)}{pnorm(h_w, \mu, \sigma)}
 </code></pre>
 </div>
 </div>
-<p>Once we know how to calculate likelihood, the simplest way to calculate the posterior (distribution about the Gaussian parameters of all people standing behind a wall) is grid approximation. It uses brute-force approach that is suitable for low number of parameters. It goes like this:</p>
+<p>Once we know how to calculate likelihood, the simplest way to calculate the posterior (plausibility of the parameters of Gaussian describing all people standing behind a wall) is a grid approximation. I find it the most clear but it uses brute-force that is suitable only for the low number of parameters. It goes like this:</p>
 <ol type="1">
-<li>Decide on appropriate sequences of parameters values <span class="math inline">\(\mu\)</span> and <span class="math inline">\(\sigma\)</span> and their priors.<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> This is done in <code>df_mu</code> and <code>df_sigma</code>. Note that you can easily create Gaussian priors using <code>dnorm()</code> function with parameter values set as <code>x</code> argument. I decided to use flat priors so one can’t argue that the shift in posterior <code>mu</code> values happened due to priors, not the wall.</li>
+<li>Decide on appropriate sequences of parameters values <span class="math inline">\(\mu\)</span> and <span class="math inline">\(\sigma\)</span> and their priors.<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a> This is done in <code>df_mu</code> and <code>df_sigma</code>. Note that you can easily create Gaussian priors using <code>dnorm()</code> function with parameter values set as the first argument. I decided to use flat priors instead so one can’t argue that the shift in posterior <code>mu</code> values happened due to priors, not the wall.</li>
 <li>Create grid of parameter combinations. Function <code>crossing</code> does that.</li>
-<li>Calculate likelihood for each combination of parameters and data. We use <code>map_dbl()</code><a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a> to calculate likelihood by calling function <code>calc_likelihood()</code> on each row (combination of parameter values).</li>
-<li>Calculate posterior as a product of likelihood and posteriors for both parameters. We then normalize the posterior to see what’s the probability of parameters being exactly as they are. # TODO Fix</li>
+<li>Calculate likelihood for each combination of parameters and observed heights by calling function <code>calc_likelihood()</code> on each row.</li>
+<li>Calculate posterior as a product of likelihood and parameters’ posteriors. Normalize the posterior to see what’s the probability of occuring for such parameters.</li>
 </ol>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
@@ -1912,15 +1906,11 @@ p(h_i | \mu, \sigma) = \frac{dnorm(h_i, \mu, \sigma)}{pnorm(h_w, \mu, \sigma)}
   prior_sigma <span class='op'>=</span> <span class='fl'>1</span> <span class='co'># dnorm(sigma, 10, 5)</span>
 <span class='op'>)</span>
 
-<span class='va'>df</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://tidyr.tidyverse.org/reference/expand.html'>crossing</a></span><span class='op'>(</span>
-  <span class='va'>df_mu</span>,
-  <span class='va'>df_sigma</span>
-<span class='op'>)</span> <span class='op'>%&gt;%</span>
+<span class='va'>df</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://tidyr.tidyverse.org/reference/expand.html'>crossing</a></span><span class='op'>(</span><span class='va'>df_mu</span>, <span class='va'>df_sigma</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
+  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/rowwise.html'>rowwise</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
+  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/mutate.html'>mutate</a></span><span class='op'>(</span>likelihood <span class='op'>=</span> <span class='fu'>calc_likelihood</span><span class='op'>(</span><span class='va'>mu</span>, <span class='va'>sigma</span>, <span class='va'>observations</span>, <span class='va'>wall</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>%&gt;%</span> 
+  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/group_by.html'>ungroup</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>%&gt;%</span> 
   <span class='fu'><a href='https://dplyr.tidyverse.org/reference/mutate.html'>mutate</a></span><span class='op'>(</span>
-    likelihood <span class='op'>=</span> <span class='fu'><a href='https://purrr.tidyverse.org/reference/map2.html'>pmap_dbl</a></span><span class='op'>(</span>
-      <span class='fu'><a href='https://tibble.tidyverse.org/reference/tibble.html'>tibble</a></span><span class='op'>(</span><span class='va'>.</span>, observations <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span><span class='va'>observations</span><span class='op'>)</span>, wall <span class='op'>=</span> <span class='va'>wall</span><span class='op'>)</span>, 
-      <span class='va'>calc_likelihood</span>
-    <span class='op'>)</span>,
     posterior_unstd <span class='op'>=</span> <span class='va'>likelihood</span> <span class='op'>*</span> <span class='va'>prior_mu</span> <span class='op'>*</span> <span class='va'>prior_sigma</span>,
     posterior <span class='op'>=</span> <span class='va'>posterior_unstd</span> <span class='op'>/</span> <span class='fu'><a href='https://rdrr.io/r/base/sum.html'>sum</a></span><span class='op'>(</span><span class='va'>posterior_unstd</span><span class='op'>)</span>
   <span class='op'>)</span>
@@ -2012,8 +2002,11 @@ Since our priors are flat means that posteriors are proportional to likelihoods.
 <section class="footnotes" role="doc-endnotes">
 <hr />
 <ol>
-<li id="fn1" role="doc-endnote"><p>Usually, priors should be probability densities (so they are integrated to 1) but in our case this is not a problem since we will normalize posterior at the end.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn2" role="doc-endnote"><p><code>purrr</code> is an amazing package for functional programming (replacing loops with functions). <a href="https://purrr.tidyverse.org/">Check it out.</a><a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn1" role="doc-endnote"><p>More about that on <a href="https://stats.stackexchange.com/questions/12112/normalizing-constant-in-bayes-theorem">Cross Validated</a>.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2" role="doc-endnote"><p>Ok, if you <em>really</em> want it: <span class="math display">\[
+p(h_i | \mu, \sigma) = \frac{exp(\frac{-(h_i-\mu)^2}{2\sigma^2})/(\sigma \sqrt{2\pi})}{\int_{x=h_w}^{\infty}(exp(\frac{-(x-\mu)^2}{2\sigma^2}) / (\sigma \sqrt{2\pi}))}
+\]</span> It’s way simpler than it looks.<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn3" role="doc-endnote"><p>Usually, priors should be probability densities (so they are integrated to 1) but in our case this is not a problem since we will normalize posterior at the end.<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 </ol>
 </section>
 <!--radix_placeholder_article_footer-->
