@@ -38,7 +38,7 @@ That's what' you see from ahead's hiding behing the wall:
 
 Let's assume their heights are normally distributed with some mean $\mu$ and standard deviation $\sigma$. A part of this distribution can't be observed since it's behind a wall.
 
-![](https://pbs.twimg.com/media/Es00bBCXcAIHkOq?format=png&name=small)
+![Gaussian distribution with parameters $\mu$ and $\sigma$ describing heights of all people. Observed is only part of the distribution above the wall height $h_w$.](../../images/wall-puzzle/gaussian.png)
 
 How to write this down?
 We will start with the [Bayes' theorem](https://en.wikipedia.org/wiki/Bayes%27_theorem#Statement_of_theorem). We are interested in posterior distribution $p(\mu, \sigma | D_{bias})$ of parameters $\mu$ and $\sigma$ that describe weight of people behind a wall given the observed heights $D_{bias}$. Since $p(D_{bias})$ serves as a normalizing constant that makes the posterior density integrate to one, we can throw it away.^[More about that on [Cross Validated](https://stats.stackexchange.com/questions/12112/normalizing-constant-in-bayes-theorem).] Priors of the parameters can be rewritten as their product. Likelihood is a product of likelihoods of all observed heights. But beware, we are missing some.
