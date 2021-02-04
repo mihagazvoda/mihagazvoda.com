@@ -60,6 +60,7 @@ $$
 
 
 Both functions can take vectors for argument values. Then you just multiply likelihoods for all the points. Here's and `R` functions that does that:
+<!-- TODO mention logarithms -->
 
 ```{r include=TRUE, echo=TRUE}
 calc_likelihood <- function(mu, sigma, observations, wall) {
@@ -72,7 +73,7 @@ calc_likelihood <- function(mu, sigma, observations, wall) {
 
 Once we know how to calculate likelihood, the simplest way to calculate the posterior (plausibility of the parameters of Gaussian describing all people standing behind a wall) is a grid approximation. I find it the most clear but it uses brute-force that is suitable only for the low number of parameters. It goes like this:
 
-1. Decide on appropriate sequences of parameters values $\mu$ and $\sigma$ and their priors.^[Usually, priors should be probability densities (so they are integrated to 1) but in our case this is not a problem since we will normalize posterior at the end.] This is done in `df_mu` and `df_sigma`. Note that you can easily create Gaussian priors using `dnorm()` function with parameter values set as the first argument. I decided to use flat priors instead so one can't argue that the shift in posterior `mu` values happened due to priors, not the wall.
+1. Decide on appropriate sequences of parameters values $\mu$ and $\sigma$ and their priors.^[Usually, priors should be probability densities (so they are integrated to 1) but in our case this is not a problem since we will normalize posterior at the end.] This is done in `df_mu` and `df_sigma`. Note that you can easily create Gaussian priors using `dnorm()` function with parameter values set as the first argument. I decided to use flat priors instead so one can't argue that the shift in posterior `mu` values happened due to priors, not the wall. Flat priors also mean that posterior will be proportional to the likelihood.
 2. Create grid of parameter combinations. Function `crossing` does that.
 3. Calculate likelihood for each combination of parameters and observed heights by calling function `calc_likelihood()` on each row.
 4. Calculate posterior as a product of likelihood and parameters' posteriors. Normalize the posterior to see what's the probability of occuring for such parameters.
@@ -115,9 +116,7 @@ df %>%
   knitr::kable()
 ```
 
-The most likely parameters for Gaussian distribution describing people height standing behind a wall are $\mu \approx 185cm$ and $\sigma \approx 4.8cm$. Note that $\mu$ is smaller compared to average of observations $\bar{h} = 186.3$.   
-Since our priors are flat means that posteriors are proportional to likelihoods. 
-Beware: posterior values can get really small so generally it's safer to calculate using logs of values and summation instead of multiplication.
+The most likely parameters for Gaussian distribution describing people height standing behind a wall are $\mu \approx 185cm$  and $\sigma \approx 4.8cm$. Note that $\mu$ is smaller compared to average of observations $\bar{h} = 186.3cm$.   
 
 ```{r}
 library(ggplot2)
@@ -126,7 +125,7 @@ ggplot(df, aes(x = mu, y = sigma, z = posterior)) +
   geom_contour_filled() +
   labs(
     title = "Posterior values for different parameter combinations",
-    subtitle = "Brihter colors present zones with higher posterior values."
+    subtitle = "Brighter colors present zones with higher posterior values."
   ) +
   theme_classic() +
   theme(legend.position = "none") +
@@ -138,10 +137,7 @@ ggplot(df, aes(x = mu, y = sigma, z = posterior)) +
 
 ## Use cases
 
-A lot of data we collect is biased and sometimes you know how it is biased. Now you know how to make up for that. About another such example, getting customer complaints only when they've been waiting for a long time, [talked Vincent on PyData](https://youtu.be/dE5j6NW-Kzg?t=721).
- 
-TODO mention that he explains it too
-TODO check mckay book 
-TODO maybe move to the introduction
+About another such example, getting customer complaints only when they've been waiting for a long time, [talked Vincent on PyData](https://youtu.be/dE5j6NW-Kzg?t=721). He also explains the riddle I've solved^[It's borrowed from David Mackay's [Information Theory, Inference, and Learning Algorithms](http://www.inference.org.uk/mackay/itila/book.html)] but not the solution. 
 
-https://youtu.be/dE5j6NW-Kzg?t=721)
+A lot of data we collect is biased and sometimes we know how it is biased. Luckily - and skillfully - we can make up for that. 
+

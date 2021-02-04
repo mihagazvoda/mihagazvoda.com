@@ -1472,7 +1472,7 @@ p(\mu, \sigma | D_{bias}) = \frac{p(D_{bias} | \mu, \sigma) p(\mu, \sigma)}{p(D_
 <p><span class="math display">\[
 p(h_i | \mu, \sigma) = \frac{dnorm(h_i, \mu, \sigma)}{pnorm(h_w, \mu, \sigma)}
 \]</span></p>
-<p>Both functions can take vectors for argument values. Then you just multiply likelihoods for all the points. Here’s and <code>R</code> functions that does that:</p>
+<p>Both functions can take vectors for argument values. Then you just multiply likelihoods for all the points. Here’s and <code>R</code> functions that does that: <!-- TODO mention logarithms --></p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre><code><span class='va'>calc_likelihood</span> <span class='op'>&lt;-</span> <span class='kw'>function</span><span class='op'>(</span><span class='va'>mu</span>, <span class='va'>sigma</span>, <span class='va'>observations</span>, <span class='va'>wall</span><span class='op'>)</span> <span class='op'>{</span>
@@ -1486,7 +1486,7 @@ p(h_i | \mu, \sigma) = \frac{dnorm(h_i, \mu, \sigma)}{pnorm(h_w, \mu, \sigma)}
 </div>
 <p>Once we know how to calculate likelihood, the simplest way to calculate the posterior (plausibility of the parameters of Gaussian describing all people standing behind a wall) is a grid approximation. I find it the most clear but it uses brute-force that is suitable only for the low number of parameters. It goes like this:</p>
 <ol type="1">
-<li>Decide on appropriate sequences of parameters values <span class="math inline">\(\mu\)</span> and <span class="math inline">\(\sigma\)</span> and their priors.<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a> This is done in <code>df_mu</code> and <code>df_sigma</code>. Note that you can easily create Gaussian priors using <code>dnorm()</code> function with parameter values set as the first argument. I decided to use flat priors instead so one can’t argue that the shift in posterior <code>mu</code> values happened due to priors, not the wall.</li>
+<li>Decide on appropriate sequences of parameters values <span class="math inline">\(\mu\)</span> and <span class="math inline">\(\sigma\)</span> and their priors.<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a> This is done in <code>df_mu</code> and <code>df_sigma</code>. Note that you can easily create Gaussian priors using <code>dnorm()</code> function with parameter values set as the first argument. I decided to use flat priors instead so one can’t argue that the shift in posterior <code>mu</code> values happened due to priors, not the wall. Flat priors also mean that posterior will be proportional to the likelihood.</li>
 <li>Create grid of parameter combinations. Function <code>crossing</code> does that.</li>
 <li>Calculate likelihood for each combination of parameters and observed heights by calling function <code>calc_likelihood()</code> on each row.</li>
 <li>Calculate posterior as a product of likelihood and parameters’ posteriors. Normalize the posterior to see what’s the probability of occuring for such parameters.</li>
@@ -1593,15 +1593,13 @@ p(h_i | \mu, \sigma) = \frac{dnorm(h_i, \mu, \sigma)}{pnorm(h_w, \mu, \sigma)}
 </tbody>
 </table>
 </div>
-<p>The most likely parameters for Gaussian distribution describing people height standing behind a wall are <span class="math inline">\(\mu \approx 185cm\)</span> and <span class="math inline">\(\sigma \approx 4.8cm\)</span>. Note that <span class="math inline">\(\mu\)</span> is smaller compared to average of observations <span class="math inline">\(\bar{h} = 186.3\)</span>.<br />
-Since our priors are flat means that posteriors are proportional to likelihoods. Beware: posterior values can get really small so generally it’s safer to calculate using logs of values and summation instead of multiplication.</p>
+<p>The most likely parameters for Gaussian distribution describing people height standing behind a wall are <span class="math inline">\(\mu \approx 185cm\)</span> and <span class="math inline">\(\sigma \approx 4.8cm\)</span>. Note that <span class="math inline">\(\mu\)</span> is smaller compared to average of observations <span class="math inline">\(\bar{h} = 186.3cm\)</span>.</p>
 <div class="layout-chunk" data-layout="l-body">
 <p><img src="wall-riddle_files/figure-html5/unnamed-chunk-4-1.png" width="624" /></p>
 </div>
 <h2 id="use-cases">Use cases</h2>
-<p>A lot of data we collect is biased and sometimes you know how it is biased. Now you know how to make up for that. About another such example, getting customer complaints only when they’ve been waiting for a long time, <a href="https://youtu.be/dE5j6NW-Kzg?t=721">talked Vincent on PyData</a>.</p>
-<p>TODO mention that he explains it too TODO check mckay book TODO maybe move to the introduction</p>
-<p><a href="https://youtu.be/dE5j6NW-Kzg?t=721" class="uri">https://youtu.be/dE5j6NW-Kzg?t=721</a>)</p>
+<p>About another such example, getting customer complaints only when they’ve been waiting for a long time, <a href="https://youtu.be/dE5j6NW-Kzg?t=721">talked Vincent on PyData</a>. He also explains the riddle I’ve solved<a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a> but not the solution.</p>
+<p>A lot of data we collect is biased and sometimes we know how it is biased. Luckily - and skillfully - we can make up for that.</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <section class="footnotes" role="doc-endnotes">
 <hr />
@@ -1611,6 +1609,7 @@ Since our priors are flat means that posteriors are proportional to likelihoods.
 p(h_i | \mu, \sigma) = \frac{exp(\frac{-(h_i-\mu)^2}{2\sigma^2})/(\sigma \sqrt{2\pi})}{\int_{x=h_w}^{\infty}(exp(\frac{-(x-\mu)^2}{2\sigma^2}) / (\sigma \sqrt{2\pi}))}
 \]</span> It’s way simpler than it looks.<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn3" role="doc-endnote"><p>Usually, priors should be probability densities (so they are integrated to 1) but in our case this is not a problem since we will normalize posterior at the end.<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn4" role="doc-endnote"><p>It’s borrowed from David Mackay’s <a href="http://www.inference.org.uk/mackay/itila/book.html">Information Theory, Inference, and Learning Algorithms</a><a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 </ol>
 </section>
 <!--radix_placeholder_article_footer-->
