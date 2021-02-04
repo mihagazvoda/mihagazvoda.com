@@ -64,10 +64,10 @@ Both functions can take vectors for argument values. Then you just multiply like
 
 ```{r include=TRUE, echo=TRUE}
 calc_likelihood <- function(mu, sigma, observations, wall) {
-  prod(
-    dnorm(observations, mu, sigma) /
-      pnorm(wall, mu, sigma, lower.tail = FALSE)
-  )
+  exp(sum(
+    dnorm(observations, mu, sigma, log = TRUE) -
+      pnorm(wall, mu, sigma, lower.tail = FALSE, log.p = TRUE)
+  ))
 }
 ```
 
@@ -121,7 +121,7 @@ The most likely parameters for Gaussian distribution describing people height st
 ```{r}
 library(ggplot2)
 
-ggplot(df, aes(x = mu, y = sigma, z = posterior)) +
+ggplot(df, aes(x = mu, y = sigma, z = posterior_unstd)) +
   geom_contour_filled() +
   labs(
     title = "Posterior values for different parameter combinations",
@@ -133,7 +133,31 @@ ggplot(df, aes(x = mu, y = sigma, z = posterior)) +
   scale_y_continuous(expand = c(0, 0))
 ```
 
+<details>
+<summary>Have additional thoughts about the shape?</summary>
+```{r}
+calc_rel_dens <- function(mu, sigma, h, wall) {
+  dnorm(h, mu, sigma) / pnorm(wall, mu, sigma, lower.tail = FALSE)
+}
 
+tibble(
+  mu = 170,
+  h = 180:190
+) %>% 
+  crossing(sigma = 5:20) %>% 
+  rowwise() %>% 
+  mutate(rel_dens = calc_rel_dens(mu, sigma, h, wall)) %>% 
+  ggplot(aes(h, rel_dens, color = sigma, group = sigma)) + 
+  geom_line() +
+  viridis::scale_color_viridis() + 
+  theme_classic() + 
+  labs(
+    title = "Probability densities for Gaussians with mu = 170",
+    x = "Height [cm]",
+    y = "Normalized robability density"
+  )
+```
+</details> 
 
 ## Use cases
 
