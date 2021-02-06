@@ -1,7 +1,7 @@
 ---
-title: "Wall riddle"
+title: "The wall riddle"
 description: |
-  A Bayesian way to handle survivorship bias. 
+  Bayesian approach for dealing with biased data. 
 categories:
   - R
   - Bayesian
@@ -14,7 +14,7 @@ output:
     self_contained: false
 ---
 
-I received following riddle when asking for Bayesian resources:
+I received the following riddle when asking for Bayesian resources on Twitter:
 
 > Solve this riddle.
 >
@@ -28,38 +28,40 @@ I received following riddle when asking for Bayesian resources:
 
 Challenge accepted.
 
-To easier imagine things, let's pretend there's a group of people standing behind a wall. We don't know anything about the number of people. That's what you see:
+Let's pretend there's a group of people standing instead of walking behind a wall. This way it's easier to sketch the situation. That's what we see:
 
 ![](../../images/wall-puzzle/behind.png)
 
-That's what' you see from ahead's hiding behing the wall:
+This is the view from ahead:
 
 ![](../../images/wall-puzzle/front.png)
 
-Let's assume their heights are normally distributed with some mean $\mu$ and standard deviation $\sigma$. A part of this distribution can't be observed since it's behind a wall.
+# Bayes to the rescue!
+
+Let's assume people's heights are normally distributed with some mean $\mu$ and standard deviation $\sigma$. A part of this distribution can't be observed since it's behind a wall.
 
 ![Gaussian distribution with parameters $\mu$ and $\sigma$ describing heights of all people. Observed is only part of the distribution above the wall height $h_w$.](../../images/wall-puzzle/gaussian.png)
 
 How to write this down?
-We will start with the [Bayes' theorem](https://en.wikipedia.org/wiki/Bayes%27_theorem#Statement_of_theorem). We are interested in posterior distribution $p(\mu, \sigma | D_{bias})$ of parameters $\mu$ and $\sigma$ that describe weight of people behind a wall given the observed heights $D_{bias}$. Since $p(D_{bias})$ serves as a normalizing constant that makes the posterior density integrate to one, we can throw it away.^[More about that on [Cross Validated](https://stats.stackexchange.com/questions/12112/normalizing-constant-in-bayes-theorem).] Priors of the parameters can be rewritten as their product. Likelihood is a product of likelihoods of all observed heights. But beware, we are missing some.
+We will start with [Bayes' theorem](https://en.wikipedia.org/wiki/Bayes%27_theorem#Statement_of_theorem). We are interested in posterior distribution $p(\mu, \sigma | D_{bias})$ of parameters $\mu$ and $\sigma$ that describe the height of people behind a wall given the observed heights $D_{bias}$. Since $p(D_{bias})$ serves as a normalizing constant that makes the posterior density integrate to one, we can throw it away.^[More about that on [Cross Validated](https://stats.stackexchange.com/questions/12112/normalizing-constant-in-bayes-theorem).] Priors of the parameters can be rewritten as their product. Likelihood is a product of the likelihoods of all observed heights. But beware, we are can't observe some of them.
 
 $$
 p(\mu, \sigma | D_{bias}) = \frac{p(D_{bias} | \mu, \sigma) p(\mu, \sigma)}{p(D_{bias})} \propto p(D_{bias} | \mu, \sigma) p(\mu, \sigma) = p(\mu)p(\sigma) \prod_{i} p(h_i | \mu, \sigma)
 $$
 
-The tricky part is to calculate $p(h_i | \mu, \sigma)$. We can help ourselves with the sketch above. Our observations come only from the part of the distribution that is above the wall. So likelihoods are basically the same as from Gaussian but normalized by the density proportion that is above the wall. Without getting too much into maths^[Ok, if you *really* want it:
+The tricky part is to calculate $p(h_i | \mu, \sigma)$. We can help ourselves with the sketch above. Our observations come only from the part of the distribution that is above the wall. So likelihoods are basically the same as from Gaussian but normalized by the density portion that is above the wall. Without getting too much into maths^[Ok, if you *really* want it:
 $$
 p(h_i | \mu, \sigma) = \frac{exp(\frac{-(h_i-\mu)^2}{2\sigma^2})/(\sigma \sqrt{2\pi})}{\int_{x=h_w}^{\infty}(exp(\frac{-(x-\mu)^2}{2\sigma^2}) / (\sigma \sqrt{2\pi}))}
 $$
 It's way simpler than it looks.
-], this can be easily calculated in R with functions `dnorm()`, to get values for probability density, and `pnorm()` to get cumulative density:
+], this can be easily calculated in R with functions `dnorm()`, to get values for probability density, and `pnorm()` to get the probability that the observation is taller than the wall:
 
 $$
 p(h_i | \mu, \sigma) = \frac{dnorm(h_i, \mu, \sigma)}{pnorm(h_w, \mu, \sigma)}
 $$
 
 
-Both functions can take vectors for argument values. Then you just multiply likelihoods for all the points. Here's and `R` functions that does that:
+Both functions can take vectors for argument values. Then you multiply likelihoods for all the points. Here's an `R` function that does that:
 <!-- TODO mention logarithms -->
 
 ```{r include=TRUE, echo=TRUE}
@@ -70,6 +72,8 @@ calc_likelihood <- function(mu, sigma, observations, wall) {
   )
 }
 ```
+
+# Multiplication is all you need.
 
 Once we know how to calculate likelihood, the simplest way to calculate the posterior (plausibility of the parameters of Gaussian describing all people standing behind a wall) is a grid approximation. I find it the most clear but it uses brute-force that is suitable only for the low number of parameters. It goes like this:
 
@@ -105,6 +109,8 @@ df <- crossing(df_mu, df_sigma) %>%
     posterior = posterior_unstd / sum(posterior_unstd)
   )
 ```
+
+# Posterior looks beautiful but does it make sense?
 
 Let's see the results in `df` that is sorted by descending `posterior`:
 
@@ -166,7 +172,7 @@ To get the posterior value for some $\mu$ and $\sigma$ you just have to multiply
 
 </details> 
 
-## Use cases
+# Don't give up when your data is biased.
 
 About another such example, getting customer complaints about their waiting time only when they've been waiting for too long, [talked Vincent on PyData](https://youtu.be/dE5j6NW-Kzg?t=721). He also explains the riddle I've solved without giving the the solution. 
 
