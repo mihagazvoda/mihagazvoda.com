@@ -1874,10 +1874,10 @@ p(h_i | \mu, \sigma) = \frac{dnorm(h_i, \mu, \sigma)}{pnorm(h_w, \mu, \sigma)}
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre><code><span class='va'>calc_likelihood</span> <span class='op'>&lt;-</span> <span class='kw'>function</span><span class='op'>(</span><span class='va'>mu</span>, <span class='va'>sigma</span>, <span class='va'>observations</span>, <span class='va'>wall</span><span class='op'>)</span> <span class='op'>{</span>
-  <span class='fu'><a href='https://rdrr.io/r/base/Log.html'>exp</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/sum.html'>sum</a></span><span class='op'>(</span>
-    <span class='fu'><a href='https://rdrr.io/r/stats/Normal.html'>dnorm</a></span><span class='op'>(</span><span class='va'>observations</span>, <span class='va'>mu</span>, <span class='va'>sigma</span>, log <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span> <span class='op'>-</span>
-      <span class='fu'><a href='https://rdrr.io/r/stats/Normal.html'>pnorm</a></span><span class='op'>(</span><span class='va'>wall</span>, <span class='va'>mu</span>, <span class='va'>sigma</span>, lower.tail <span class='op'>=</span> <span class='cn'>FALSE</span>, log.p <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span>
-  <span class='op'>)</span><span class='op'>)</span>
+  <span class='fu'><a href='https://rdrr.io/r/base/prod.html'>prod</a></span><span class='op'>(</span>
+    <span class='fu'><a href='https://rdrr.io/r/stats/Normal.html'>dnorm</a></span><span class='op'>(</span><span class='va'>observations</span>, <span class='va'>mu</span>, <span class='va'>sigma</span><span class='op'>)</span> <span class='op'>/</span>
+      <span class='fu'><a href='https://rdrr.io/r/stats/Normal.html'>pnorm</a></span><span class='op'>(</span><span class='va'>wall</span>, <span class='va'>mu</span>, <span class='va'>sigma</span>, lower.tail <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span>
+  <span class='op'>)</span>
 <span class='op'>}</span>
 </code></pre>
 </div>
@@ -1997,14 +1997,16 @@ p(h_i | \mu, \sigma) = \frac{dnorm(h_i, \mu, \sigma)}{pnorm(h_w, \mu, \sigma)}
 </div>
 <details>
 <summary>
-Have additional thoughts about the shape?
+Here are additional plots to better grasp the intuition about the posterior.
 </summary>
+<p>The plot below displays normalized probability densities for heights between 180 and 190cm. Normalized probability density is calculated the same as in <span class="math inline">\(p(h_i|\mu, \sigma)\)</span> above; that is divided by the portion of the Gaussian above the wall height.</p>
 <div class="layout-chunk" data-layout="l-body">
 <p><img src="wall-riddle_files/figure-html5/unnamed-chunk-5-1.png" width="624" /></p>
 </div>
+<p>To get the posterior value for some <span class="math inline">\(\mu\)</span> and <span class="math inline">\(\sigma\)</span> you just have to multiply densities (<code>y</code> values on the plot). We can see that <span class="math inline">\(\sigma\)</span> between 10 and 15 make the more sense because higher <span class="math inline">\(\sigma\)</span> values are lower for all heights and for small <span class="math inline">\(\sigma\)</span> density for height 181cm is bigger but get’s compensated because when multiplying with densities for 188 and 190 which are way smaller.</p>
 </details>
 <h2 id="use-cases">Use cases</h2>
-<p>About another such example, getting customer complaints only when they’ve been waiting for a long time, <a href="https://youtu.be/dE5j6NW-Kzg?t=721">talked Vincent on PyData</a>. He also explains the riddle I’ve solved<a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a> but not the solution.</p>
+<p>About another such example, getting customer complaints about their waiting time only when they’ve been waiting for too long, <a href="https://youtu.be/dE5j6NW-Kzg?t=721">talked Vincent on PyData</a>. He also explains the riddle I’ve solved without giving the the solution.</p>
 <p>A lot of data we collect is biased and sometimes we know how it is biased. Luckily - and skillfully - we can make up for that.</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <section class="footnotes" role="doc-endnotes">
@@ -2015,7 +2017,6 @@ Have additional thoughts about the shape?
 p(h_i | \mu, \sigma) = \frac{exp(\frac{-(h_i-\mu)^2}{2\sigma^2})/(\sigma \sqrt{2\pi})}{\int_{x=h_w}^{\infty}(exp(\frac{-(x-\mu)^2}{2\sigma^2}) / (\sigma \sqrt{2\pi}))}
 \]</span> It’s way simpler than it looks.<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn3" role="doc-endnote"><p>Usually, priors should be probability densities (so they are integrated to 1) but in our case this is not a problem since we will normalize posterior at the end.<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn4" role="doc-endnote"><p>It’s borrowed from David Mackay’s <a href="http://www.inference.org.uk/mackay/itila/book.html">Information Theory, Inference, and Learning Algorithms</a><a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 </ol>
 </section>
 <!--radix_placeholder_article_footer-->

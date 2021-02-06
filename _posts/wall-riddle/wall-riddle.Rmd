@@ -64,10 +64,10 @@ Both functions can take vectors for argument values. Then you just multiply like
 
 ```{r include=TRUE, echo=TRUE}
 calc_likelihood <- function(mu, sigma, observations, wall) {
-  exp(sum(
-    dnorm(observations, mu, sigma, log = TRUE) -
-      pnorm(wall, mu, sigma, lower.tail = FALSE, log.p = TRUE)
-  ))
+  prod(
+    dnorm(observations, mu, sigma) /
+      pnorm(wall, mu, sigma, lower.tail = FALSE)
+  )
 }
 ```
 
@@ -134,7 +134,10 @@ ggplot(df, aes(x = mu, y = sigma, z = posterior_unstd)) +
 ```
 
 <details>
-<summary>Have additional thoughts about the shape?</summary>
+<summary>Here are additional plots to better grasp the intuition about the posterior.</summary>
+
+The plot below displays normalized probability densities for heights between 180 and 190cm. Normalized probability density is calculated the same as in $p(h_i|\mu, \sigma)$ above; that is divided by the portion of the Gaussian above the wall height. 
+
 ```{r}
 calc_rel_dens <- function(mu, sigma, h, wall) {
   dnorm(h, mu, sigma) / pnorm(wall, mu, sigma, lower.tail = FALSE)
@@ -152,16 +155,20 @@ tibble(
   viridis::scale_color_viridis() + 
   theme_classic() + 
   labs(
-    title = "Probability densities for Gaussians with mu = 170",
+    title = "Probability densities for Gaussians with different sigmas and mu = 170",
     x = "Height [cm]",
-    y = "Normalized robability density"
+    y = "Normalized probability density",
+    caption = ""
   )
 ```
+
+To get the posterior value for some $\mu$ and $\sigma$ you just have to multiply densities (`y` values on the plot). We can see that $\sigma$ between 10 and 15 make the more sense because higher $\sigma$ values are lower for all heights and for small $\sigma$ density for height 181cm is bigger but get's compensated because when multiplying with densities for 188 and 190 which are way smaller. 
+
 </details> 
 
 ## Use cases
 
-About another such example, getting customer complaints only when they've been waiting for a long time, [talked Vincent on PyData](https://youtu.be/dE5j6NW-Kzg?t=721). He also explains the riddle I've solved^[It's borrowed from David Mackay's [Information Theory, Inference, and Learning Algorithms](http://www.inference.org.uk/mackay/itila/book.html)] but not the solution. 
+About another such example, getting customer complaints about their waiting time only when they've been waiting for too long, [talked Vincent on PyData](https://youtu.be/dE5j6NW-Kzg?t=721). He also explains the riddle I've solved without giving the the solution. 
 
 A lot of data we collect is biased and sometimes we know how it is biased. Luckily - and skillfully - we can make up for that. 
 
