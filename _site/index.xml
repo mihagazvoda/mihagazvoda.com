@@ -7,7 +7,7 @@
     <description>Miha Gazvoda's personal website
 </description>
     <generator>Distill</generator>
-    <lastBuildDate>Sat, 06 Feb 2021 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 07 Feb 2021 00:00:00 +0000</lastBuildDate>
     <item>
       <title>The wall riddle</title>
       <dc:creator>Miha Gazvoda</dc:creator>
@@ -15,8 +15,9 @@
       <description>Bayesian approach for dealing with biased data.</description>
       <category>R</category>
       <category>Bayesian</category>
+      <category>data science</category>
       <guid>https://mihagazvoda.com/posts/wall-riddle</guid>
-      <pubDate>Sat, 06 Feb 2021 00:00:00 +0000</pubDate>
+      <pubDate>Sun, 07 Feb 2021 00:00:00 +0000</pubDate>
       <media:content url="https://mihagazvoda.com/posts/wall-riddle/../../images/wall-puzzle/behind.png" medium="image" type="image/png" width="1200" height="900"/>
     </item>
     <item>
