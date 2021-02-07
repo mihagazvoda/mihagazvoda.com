@@ -1467,15 +1467,15 @@ code span.wa { color: #545454; font-weight: bold; font-style: italic; } /* Warni
 <figure>
 <img src="../../images/wall-puzzle/gaussian.png" alt="Gaussian distribution with parameters \mu and \sigma describing heights of all people. Observed is only part of the distribution above the wall height h_w." /><figcaption aria-hidden="true">Gaussian distribution with parameters <span class="math inline">\(\mu\)</span> and <span class="math inline">\(\sigma\)</span> describing heights of all people. Observed is only part of the distribution above the wall height <span class="math inline">\(h_w\)</span>.</figcaption>
 </figure>
-<p>How to write this down? We will start with <a href="https://en.wikipedia.org/wiki/Bayes%27_theorem#Statement_of_theorem">Bayes’ theorem</a>. We are interested in posterior distribution <span class="math inline">\(p(\mu, \sigma | D_{bias})\)</span> of parameters <span class="math inline">\(\mu\)</span> and <span class="math inline">\(\sigma\)</span> that describe the height of people behind a wall given the observed heights <span class="math inline">\(D_{bias}\)</span>. Since <span class="math inline">\(p(D_{bias})\)</span> serves as a normalizing constant that makes the posterior density integrate to one, we can throw it away.<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> Priors of the parameters can be rewritten as their product. Likelihood is a product of the likelihoods of all observed heights. But beware, we are can’t observe some of them.</p>
+<p>We will start with <a href="https://en.wikipedia.org/wiki/Bayes%27_theorem#Statement_of_theorem">Bayes’ theorem</a>. We are interested in posterior distribution <span class="math inline">\(p(\mu, \sigma | D_{bias})\)</span> of parameters <span class="math inline">\(\mu\)</span> and <span class="math inline">\(\sigma\)</span> that describe the height of people behind a wall given the observed heights <span class="math inline">\(D_{bias}\)</span>. Since <span class="math inline">\(p(D_{bias})\)</span> serves as a normalizing constant that makes the posterior density integrate to one, we can throw it away.<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> Prior <span class="math inline">\(p(\mu,\sigma)\)</span> can be rewritten as the product of priors for each parameter. The likelihood is a product of the likelihoods of all observed heights.<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a></p>
 <p><span class="math display">\[
 p(\mu, \sigma | D_{bias}) = \frac{p(D_{bias} | \mu, \sigma) p(\mu, \sigma)}{p(D_{bias})} \propto p(D_{bias} | \mu, \sigma) p(\mu, \sigma) = p(\mu)p(\sigma) \prod_{i} p(h_i | \mu, \sigma)
 \]</span></p>
-<p>The tricky part is to calculate <span class="math inline">\(p(h_i | \mu, \sigma)\)</span>. We can help ourselves with the sketch above. Our observations come only from the part of the distribution that is above the wall. So likelihoods are basically the same as from Gaussian but normalized by the density proportion that is above the wall. Without getting too much into maths<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a>, this can be easily calculated in R with functions <code>dnorm()</code>, to get values for probability density, and <code>pnorm()</code> to get cumulative density:</p>
+<p>The tricky part is to calculate <span class="math inline">\(p(h_i | \mu, \sigma)\)</span>. We can help ourselves with the sketch above. Our observations come only from the part of the distribution that is above the wall. So likelihoods are basically the same as from Gaussian but normalized by the density portion that is above the wall. Without getting too much into maths<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a>, this can be easily calculated in R with functions <code>dnorm()</code>, to get values for probability density, and <code>pnorm()</code> to get the probability that the observation is taller than the wall:</p>
 <p><span class="math display">\[
 p(h_i | \mu, \sigma) = \frac{dnorm(h_i, \mu, \sigma)}{pnorm(h_w, \mu, \sigma)}
 \]</span></p>
-<p>Both functions can take vectors for argument values. Then you just multiply likelihoods for all the points. Here’s and <code>R</code> functions that does that: <!-- TODO mention logarithms --></p>
+<p>Both functions can take vectors for argument values. Then you multiply likelihoods for all the points. Here’s an <code>R</code> function that does that: <!-- TODO mention logarithms --></p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre><code><span class='va'>calc_likelihood</span> <span class='op'>&lt;-</span> <span class='kw'>function</span><span class='op'>(</span><span class='va'>mu</span>, <span class='va'>sigma</span>, <span class='va'>observations</span>, <span class='va'>wall</span><span class='op'>)</span> <span class='op'>{</span>
@@ -1488,12 +1488,12 @@ p(h_i | \mu, \sigma) = \frac{dnorm(h_i, \mu, \sigma)}{pnorm(h_w, \mu, \sigma)}
 </div>
 </div>
 <h1 id="multiplication-is-all-you-need.">Multiplication is all you need.</h1>
-<p>Once we know how to calculate likelihood, the simplest way to calculate the posterior (plausibility of the parameters of Gaussian describing all people standing behind a wall) is a grid approximation. I find it the most clear but it uses brute-force that is suitable only for the low number of parameters. It goes like this:</p>
+<p>Once we know how to calculate likelihood, the simplest way to calculate the posterior (plausibility of the parameters of Gaussian describing all people standing behind a wall) is a grid approximation. I find it the clearest but it uses brute-force that is suitable only for the low number of parameters. It goes like this:</p>
 <ol type="1">
-<li>Decide on appropriate sequences of parameters values <span class="math inline">\(\mu\)</span> and <span class="math inline">\(\sigma\)</span> and their priors.<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a> This is done in <code>df_mu</code> and <code>df_sigma</code>. Note that you can easily create Gaussian priors using <code>dnorm()</code> function with parameter values set as the first argument. I decided to use flat priors instead so one can’t argue that the shift in posterior <code>mu</code> values happened due to priors, not the wall. Flat priors also mean that posterior will be proportional to the likelihood.</li>
-<li>Create grid of parameter combinations. Function <code>crossing</code> does that.</li>
+<li>Decide on appropriate sequences of parameters values <span class="math inline">\(\mu\)</span> and <span class="math inline">\(\sigma\)</span> and their priors.<a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a> This is done in <code>df_mu</code> and <code>df_sigma</code>. Note that you can easily create Gaussian priors using <code>dnorm()</code> function with parameter values set as the first argument. I decided to use flat priors instead so one can’t argue that the shift in posterior <code>mu</code> values happened due to priors, not the wall. Flat priors also mean the posterior will be proportional to the likelihood.</li>
+<li>Create a grid of parameter combinations. Function <code>crossing</code> does that.</li>
 <li>Calculate likelihood for each combination of parameters and observed heights by calling function <code>calc_likelihood()</code> on each row.</li>
-<li>Calculate posterior as a product of likelihood and parameters’ posteriors. Normalize the posterior to see what’s the probability of occuring for such parameters.</li>
+<li>Calculate posterior as a product of likelihood and parameters’ posteriors. Normalize the posterior to see what’s the probability of occurring for such parameters.</li>
 </ol>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
@@ -1604,26 +1604,27 @@ p(h_i | \mu, \sigma) = \frac{dnorm(h_i, \mu, \sigma)}{pnorm(h_w, \mu, \sigma)}
 </div>
 <details>
 <summary>
-Here are additional plots to better grasp the intuition about the posterior.
+Additional plots to get better understand the posterior.
 </summary>
-<p>The plot below displays normalized probability densities for heights between 180 and 190cm. Normalized probability density is calculated the same as in <span class="math inline">\(p(h_i|\mu, \sigma)\)</span> above; that is divided by the portion of the Gaussian above the wall height.</p>
+<p>The plot below displays normalized probability densities for heights between 180 and 190cm. The normalized probability density is calculated the same as in <span class="math inline">\(p(h_i|\mu, \sigma)\)</span> above; that is divided by the portion of the Gaussian above the wall height.</p>
 <div class="layout-chunk" data-layout="l-body">
 <p><img src="wall-riddle_files/figure-html5/unnamed-chunk-5-1.png" width="624" /></p>
 </div>
-<p>To get the posterior value for some <span class="math inline">\(\mu\)</span> and <span class="math inline">\(\sigma\)</span> you just have to multiply densities (<code>y</code> values on the plot). We can see that <span class="math inline">\(\sigma\)</span> between 10 and 15 make the more sense because higher <span class="math inline">\(\sigma\)</span> values are lower for all heights and for small <span class="math inline">\(\sigma\)</span> density for height 181cm is bigger but get’s compensated because when multiplying with densities for 188 and 190 which are way smaller.</p>
+<p>To get the posterior value for some <span class="math inline">\(\mu\)</span> and <span class="math inline">\(\sigma\)</span> you just have to multiply densities (<code>y</code> values on the plot). We can see that <span class="math inline">\(\sigma\)</span> between 10 and 15 make the more sense because higher <span class="math inline">\(\sigma\)</span> values are lower for all heights and small <span class="math inline">\(\sigma\)</span> density for height 181cm is bigger but get’s compensated because when multiplying with densities for 188 and 190 which are way smaller.</p>
 </details>
 <h1 id="dont-give-up-when-your-data-is-biased.">Don’t give up when your data is biased.</h1>
-<p>About another such example, getting customer complaints about their waiting time only when they’ve been waiting for too long, <a href="https://youtu.be/dE5j6NW-Kzg?t=721">talked Vincent on PyData</a>. He also explains the riddle I’ve solved without giving the the solution.</p>
+<p>About another such example, getting customer complaints about their waiting time only when they’ve been waiting for longer than usual, <a href="https://youtu.be/dE5j6NW-Kzg?t=721">talked Vincent on PyData</a>. He also explains the riddle I’ve solved without giving the the solution.</p>
 <p>A lot of data we collect is biased and sometimes we know how it is biased. Luckily - and skillfully - we can make up for that.</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <section class="footnotes" role="doc-endnotes">
 <hr />
 <ol>
 <li id="fn1" role="doc-endnote"><p>More about that on <a href="https://stats.stackexchange.com/questions/12112/normalizing-constant-in-bayes-theorem">Cross Validated</a>.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn2" role="doc-endnote"><p>Ok, if you <em>really</em> want it: <span class="math display">\[
+<li id="fn2" role="doc-endnote"><p>Technical note: Likelihood probability is actually not a probability but probability density. As explained in <a href="https://en.wikipedia.org/wiki/Probability_density_function">the first two paragraphs of the Wikipedia</a>, the integral of probability density over some height range returns probability. This is not important in our case since we are comparing likelihoods among themselves.<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn3" role="doc-endnote"><p>Ok, if you <em>really</em> want it: <span class="math display">\[
 p(h_i | \mu, \sigma) = \frac{exp(\frac{-(h_i-\mu)^2}{2\sigma^2})/(\sigma \sqrt{2\pi})}{\int_{x=h_w}^{\infty}(exp(\frac{-(x-\mu)^2}{2\sigma^2}) / (\sigma \sqrt{2\pi}))}
-\]</span> It’s way simpler than it looks.<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn3" role="doc-endnote"><p>Usually, priors should be probability densities (so they are integrated to 1) but in our case this is not a problem since we will normalize posterior at the end.<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+\]</span> It’s way simpler than it looks.<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn4" role="doc-endnote"><p>Usually, priors should be probability densities (so they integrate to 1) but in our case this is not a problem since we will normalize posterior at the end.<a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 </ol>
 </section>
 <!--radix_placeholder_article_footer-->
