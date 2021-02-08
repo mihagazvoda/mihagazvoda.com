@@ -1857,14 +1857,14 @@ document.addEventListener('DOMContentLoaded', function() {
 <p>Challenge accepted.</p>
 <p>Let’s pretend there’s a group of people standing instead of walking behind a wall. This way it’s easier to sketch the situation. That’s what we see:</p>
 <p><img src="../../images/wall-puzzle/behind.png" /></p>
-<p>This is the view from ahead:</p>
+<p>This is the front view:</p>
 <p><img src="../../images/wall-puzzle/front.png" /></p>
 <h1 id="bayes-to-the-rescue">Bayes to the rescue!</h1>
-<p>Let’s assume people’s heights are normally distributed with some mean <span class="math inline">\(\mu\)</span> and standard deviation <span class="math inline">\(\sigma\)</span>. A part of this distribution can’t be observed since it’s behind a wall.</p>
+<p>We assume people’s heights are normally distributed with some mean <span class="math inline">\(\mu\)</span> and standard deviation <span class="math inline">\(\sigma\)</span>. A part of this distribution can’t be observed since it’s behind the wall.</p>
 <figure>
 <img src="../../images/wall-puzzle/gaussian.png" alt="Gaussian distribution with parameters \mu and \sigma describing heights of all people. Only the part of distribution above the wall h_w is observed." /><figcaption aria-hidden="true">Gaussian distribution with parameters <span class="math inline">\(\mu\)</span> and <span class="math inline">\(\sigma\)</span> describing heights of all people. Only the part of distribution above the wall <span class="math inline">\(h_w\)</span> is observed.</figcaption>
 </figure>
-<p>We will start with <a href="https://en.wikipedia.org/wiki/Bayes%27_theorem#Statement_of_theorem">Bayes’ theorem</a>. We are interested in posterior distribution <span class="math inline">\(p(\mu, \sigma | D_{bias})\)</span> of parameters <span class="math inline">\(\mu\)</span> and <span class="math inline">\(\sigma\)</span> that describe the height of people behind a wall given the observed heights <span class="math inline">\(D_{bias}\)</span>. Since <span class="math inline">\(p(D_{bias})\)</span> serves as a normalizing constant that makes the posterior density integrate to one, we can throw it away.<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> Prior <span class="math inline">\(p(\mu,\sigma)\)</span> can be rewritten as the product of priors for each parameter. The likelihood is a product of the likelihoods of all observed heights.</p>
+<p>Let’s start with <a href="https://en.wikipedia.org/wiki/Bayes%27_theorem#Statement_of_theorem">Bayes’ theorem</a>. We are interested in posterior distribution <span class="math inline">\(p(\mu, \sigma | D_{bias})\)</span> of parameters <span class="math inline">\(\mu\)</span> and <span class="math inline">\(\sigma\)</span> that describe the height of people behind the wall given the observed heights <span class="math inline">\(D_{bias}\)</span>. Since <span class="math inline">\(p(D_{bias})\)</span> serves as a normalizing constant that makes the posterior density integrate to one, we can throw it away.<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> Prior <span class="math inline">\(p(\mu,\sigma)\)</span> can be rewritten as the product of priors for each parameter. The likelihood is a product of the likelihoods of all observed heights.</p>
 <p><span class="math display">\[
 p(\mu, \sigma | D_{bias}) = \frac{p(D_{bias} | \mu, \sigma) p(\mu, \sigma)}{p(D_{bias})} \propto p(D_{bias} | \mu, \sigma) p(\mu, \sigma) = p(\mu)p(\sigma) \prod_{i} p(h_i | \mu, \sigma)
 \]</span></p>
@@ -1885,7 +1885,7 @@ p(h_i | \mu, \sigma) = \frac{dnorm(h_i, \mu, \sigma)}{pnorm(h_w, \mu, \sigma)}
 </div>
 </div>
 <h1 id="multiplication-is-all-you-need.">Multiplication is all you need.</h1>
-<p>Once we know how to calculate the likelihood, the simplest way to calculate the posterior (plausibility of the parameters of Gaussian describing all people standing behind a wall) is a grid approximation. I find it the clearest but it uses brute-force that is suitable only for the low number of parameters. It goes like this:</p>
+<p>Once we know how to calculate the likelihood, the simplest way to calculate the posterior (plausibility of the parameters of Gaussian describing all people standing behind the wall) is a grid approximation. I find it the clearest but it uses brute-force that is suitable only for the low number of parameters. It goes like this:</p>
 <ol type="1">
 <li>Decide on appropriate sequences of parameters values <span class="math inline">\(\mu\)</span> and <span class="math inline">\(\sigma\)</span> and their priors.<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a> This is done in <code>df_mu</code> and <code>df_sigma</code>. Note that you can easily create Gaussian priors using <code>dnorm()</code> function with parameter values set as the first argument. I decided to use flat priors instead so one can’t argue that the shift in posterior <code>mu</code> values happened due to priors, not the wall. Flat priors also mean the posterior will be proportional to the likelihood.</li>
 <li>Create a grid of parameter combinations. Function <code>crossing()</code> does that.</li>
@@ -1995,7 +1995,7 @@ p(h_i | \mu, \sigma) = \frac{dnorm(h_i, \mu, \sigma)}{pnorm(h_w, \mu, \sigma)}
 </tbody>
 </table>
 </div>
-<p>The most likely parameters for Gaussian distribution describing people height standing behind a wall are <span class="math inline">\(\mu \approx 185cm\)</span> and <span class="math inline">\(\sigma \approx 4.8cm\)</span>. Note that <span class="math inline">\(\mu\)</span> is smaller compared to the average of observations <span class="math inline">\(\bar{h} = 186.3cm\)</span>.</p>
+<p>The most likely parameters for Gaussian distribution describing people height standing behind the wall are <span class="math inline">\(\mu \approx 185cm\)</span> and <span class="math inline">\(\sigma \approx 4.8cm\)</span>. Note that <span class="math inline">\(\mu\)</span> is smaller compared to the average of observations <span class="math inline">\(\bar{h} = 186.3cm\)</span>.</p>
 <div class="layout-chunk" data-layout="l-body">
 <p><img src="wall-riddle_files/figure-html5/unnamed-chunk-4-1.png" width="624" /></p>
 </div>
@@ -2010,7 +2010,7 @@ Additional plot to better understand the posterior.
 <p>To get the posterior value for some <span class="math inline">\(\mu\)</span> and <span class="math inline">\(\sigma\)</span> you just have to multiply densities (<code>y</code> values on the plot). We can see that <span class="math inline">\(\sigma\)</span> between 10 and 15 make the more sense because higher <span class="math inline">\(\sigma\)</span> values are lower for all heights and small <span class="math inline">\(\sigma\)</span> density for height 181cm is bigger but gets compensated because when multiplying with densities for 188 and 190 which are way smaller.</p>
 </details>
 <h1 id="dont-give-up-when-your-data-is-biased.">Don’t give up when your data is biased.</h1>
-<p>About another such example, getting customer complaints about their waiting time only when they’ve been waiting for longer than usual, <a href="https://youtu.be/dE5j6NW-Kzg?t=721">talked Vincent on PyData</a>. He also explains the riddle I’ve solved without giving the the solution.</p>
+<p>On PyData conference, <a href="https://youtu.be/dE5j6NW-Kzg?t=721">Vincent D. Warmerdam talked about another such example</a>: getting customer complaints about their waiting time only when they’ve been waiting for longer than usual. He also explains the riddle I’ve solved without giving the solution.</p>
 <p>A lot of data we collect is biased and sometimes we know how it is biased. Luckily - and skillfully - we can make up for that.</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <section class="footnotes" role="doc-endnotes">

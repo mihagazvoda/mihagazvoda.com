@@ -34,17 +34,17 @@ Let's pretend there's a group of people standing instead of walking behind a wal
 
 ![](../../images/wall-puzzle/behind.png)
 
-This is the view from ahead:
+This is the front view:
 
 ![](../../images/wall-puzzle/front.png)
 
 # Bayes to the rescue!
 
-Let's assume people's heights are normally distributed with some mean $\mu$ and standard deviation $\sigma$. A part of this distribution can't be observed since it's behind a wall.
+We assume people's heights are normally distributed with some mean $\mu$ and standard deviation $\sigma$. A part of this distribution can't be observed since it's behind the wall.
 
 ![Gaussian distribution with parameters $\mu$ and $\sigma$ describing heights of all people. Only the part of distribution above the wall $h_w$ is observed.](../../images/wall-puzzle/gaussian.png)
 
-We will start with [Bayes' theorem](https://en.wikipedia.org/wiki/Bayes%27_theorem#Statement_of_theorem). We are interested in posterior distribution $p(\mu, \sigma | D_{bias})$ of parameters $\mu$ and $\sigma$ that describe the height of people behind a wall given the observed heights $D_{bias}$. Since $p(D_{bias})$ serves as a normalizing constant that makes the posterior density integrate to one, we can throw it away.^[More about that on [Cross Validated](https://stats.stackexchange.com/questions/12112/normalizing-constant-in-bayes-theorem).] Prior $p(\mu,\sigma)$ can be rewritten as the product of priors for each parameter. The likelihood is a product of the likelihoods of all observed heights.
+Let's start with [Bayes' theorem](https://en.wikipedia.org/wiki/Bayes%27_theorem#Statement_of_theorem). We are interested in posterior distribution $p(\mu, \sigma | D_{bias})$ of parameters $\mu$ and $\sigma$ that describe the height of people behind the wall given the observed heights $D_{bias}$. Since $p(D_{bias})$ serves as a normalizing constant that makes the posterior density integrate to one, we can throw it away.^[More about that on [Cross Validated](https://stats.stackexchange.com/questions/12112/normalizing-constant-in-bayes-theorem).] Prior $p(\mu,\sigma)$ can be rewritten as the product of priors for each parameter. The likelihood is a product of the likelihoods of all observed heights.
 
 $$
 p(\mu, \sigma | D_{bias}) = \frac{p(D_{bias} | \mu, \sigma) p(\mu, \sigma)}{p(D_{bias})} \propto p(D_{bias} | \mu, \sigma) p(\mu, \sigma) = p(\mu)p(\sigma) \prod_{i} p(h_i | \mu, \sigma)
@@ -76,7 +76,7 @@ calc_likelihood <- function(mu, sigma, observations, wall) {
 
 # Multiplication is all you need.
 
-Once we know how to calculate the likelihood, the simplest way to calculate the posterior (plausibility of the parameters of Gaussian describing all people standing behind a wall) is a grid approximation. I find it the clearest but it uses brute-force that is suitable only for the low number of parameters. It goes like this:
+Once we know how to calculate the likelihood, the simplest way to calculate the posterior (plausibility of the parameters of Gaussian describing all people standing behind the wall) is a grid approximation. I find it the clearest but it uses brute-force that is suitable only for the low number of parameters. It goes like this:
 
 1. Decide on appropriate sequences of parameters values $\mu$ and $\sigma$ and their priors.^[Usually, priors should be probability densities (so they integrate to 1) but in our case this is not a problem since we will normalize posterior at the end.] This is done in `df_mu` and `df_sigma`. Note that you can easily create Gaussian priors using `dnorm()` function with parameter values set as the first argument. I decided to use flat priors instead so one can't argue that the shift in posterior `mu` values happened due to priors, not the wall. Flat priors also mean  the posterior will be proportional to the likelihood.
 2. Create a grid of parameter combinations. Function `crossing()` does that.
@@ -123,7 +123,7 @@ df %>%
   knitr::kable()
 ```
 
-The most likely parameters for Gaussian distribution describing people height standing behind a wall are $\mu \approx 185cm$  and $\sigma \approx 4.8cm$. Note that $\mu$ is smaller compared to the average of observations $\bar{h} = 186.3cm$.   
+The most likely parameters for Gaussian distribution describing people height standing behind the wall are $\mu \approx 185cm$  and $\sigma \approx 4.8cm$. Note that $\mu$ is smaller compared to the average of observations $\bar{h} = 186.3cm$.   
 
 ```{r}
 library(ggplot2)
@@ -174,7 +174,7 @@ To get the posterior value for some $\mu$ and $\sigma$ you just have to multiply
 
 # Don't give up when your data is biased.
 
-About another such example, getting customer complaints about their waiting time only when they've been waiting for longer than usual, [talked Vincent on PyData](https://youtu.be/dE5j6NW-Kzg?t=721). He also explains the riddle I've solved without giving the the solution. 
+On PyData conference, [Vincent D. Warmerdam talked about another such example](https://youtu.be/dE5j6NW-Kzg?t=721): getting customer complaints about their waiting time only when they’ve been waiting for longer than usual. He also explains the riddle I've solved without giving the solution. 
 
 A lot of data we collect is biased and sometimes we know how it is biased. Luckily - and skillfully - we can make up for that. 
 
