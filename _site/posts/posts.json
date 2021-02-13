@@ -1,5 +1,22 @@
 [
   {
+    "path": "posts/tidymodels-introduction/",
+    "title": "Tidymodels introduction",
+    "description": "A short description of the post.",
+    "author": [
+      {
+        "name": "Miha Gazvoda",
+        "url": "https://mihagazvoda.com"
+      }
+    ],
+    "date": "2021-02-13",
+    "categories": [],
+    "contents": "\nDo you like tidyverse and machine learning? Then you’ll love tidymodels. As their website says:\n\nThe tidymodels framework is a collection of packages for modeling and machine learning using tidyverse principles.\n\nIf you would like to start with them, Get started page is great. There’s even an upcoming book about them. The goal of this post is to show how I use them and create a boiler plate for my future use. So my bet is that the most frequent visitor of this website will be me.\nTidymodels’ packages\nusemodels boilerplate\nworkflows\nrsample\nrecipes\nparsnip\ntune\n\n\n\n\n\n\n\n\n\n\n\n\n",
+    "preview": {},
+    "last_modified": "2021-02-13T18:55:22+01:00",
+    "input_file": "tidymodels-introduction.utf8.md"
+  },
+  {
     "path": "posts/wall-riddle/",
     "title": "The wall riddle",
     "description": "Bayesian approach for dealing with biased data.",
