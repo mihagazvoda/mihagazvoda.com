@@ -1897,10 +1897,66 @@ document.addEventListener('DOMContentLoaded', function() {
 </code></pre>
 </div>
 </div>
+<h1 id="tune-metaparameters">Tune metaparameters</h1>
 <div class="layout-chunk" data-layout="l-body">
-
+<div class="sourceCode">
+<pre><code><span class='va'>tune_spec</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://parsnip.tidymodels.org/reference/rand_forest.html'>rand_forest</a></span><span class='op'>(</span>
+  mtry <span class='op'>=</span> <span class='fu'>tune</span><span class='op'>(</span><span class='op'>)</span>,
+  trees <span class='op'>=</span> <span class='fl'>20</span>,
+  min_n <span class='op'>=</span> <span class='fu'>tune</span><span class='op'>(</span><span class='op'>)</span>
+<span class='op'>)</span> <span class='op'>%&gt;%</span>
+  <span class='fu'><a href='https://parsnip.tidymodels.org/reference/set_args.html'>set_mode</a></span><span class='op'>(</span><span class='st'>"regression"</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
+  <span class='fu'><a href='https://parsnip.tidymodels.org/reference/set_engine.html'>set_engine</a></span><span class='op'>(</span><span class='st'>"ranger"</span><span class='op'>)</span>
+</code></pre>
 </div>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
+</div>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre><code><span class='va'>tune_wf</span> <span class='op'>&lt;-</span> <span class='fu'>workflows</span><span class='fu'>::</span><span class='fu'><a href='https://workflows.tidymodels.org//reference/workflow.html'>workflow</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>%&gt;%</span> 
+  <span class='fu'>workflows</span><span class='fu'>::</span><span class='fu'><a href='https://workflows.tidymodels.org//reference/add_recipe.html'>add_recipe</a></span><span class='op'>(</span><span class='va'>df</span><span class='op'>$</span><span class='va'>recipe</span><span class='op'>[[</span><span class='fl'>1</span><span class='op'>]</span><span class='op'>]</span><span class='op'>)</span> <span class='op'>%&gt;%</span> 
+  <span class='fu'>workflows</span><span class='fu'>::</span><span class='fu'><a href='https://workflows.tidymodels.org//reference/add_model.html'>add_model</a></span><span class='op'>(</span><span class='va'>tune_spec</span><span class='op'>)</span>
+</code></pre>
+</div>
+</div>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre><code><span class='fu'>doParallel</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/pkg/doParallel/man/registerDoParallel.html'>registerDoParallel</a></span><span class='op'>(</span><span class='op'>)</span>
+<span class='va'>trees_folds</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rsample.tidymodels.org/reference/vfold_cv.html'>vfold_cv</a></span><span class='op'>(</span><span class='va'>data</span><span class='op'>)</span>
+
+<span class='va'>tune_res</span> <span class='op'>&lt;-</span> <span class='fu'>tune</span><span class='fu'>::</span><span class='fu'><a href='https://tune.tidymodels.org/reference/tune_grid.html'>tune_grid</a></span><span class='op'>(</span>
+  <span class='va'>tune_wf</span>,
+  resamples <span class='op'>=</span> <span class='va'>trees_folds</span>,
+  grid <span class='op'>=</span> <span class='fl'>10</span>
+<span class='op'>)</span>
+
+<span class='va'>tune_res</span><span class='op'>$</span><span class='va'>.metrics</span><span class='op'>[[</span><span class='fl'>1</span><span class='op'>]</span><span class='op'>]</span>
+</code></pre>
+</div>
+<pre><code># A tibble: 20 x 6
+    mtry min_n .metric .estimator .estimate .config
+   &lt;int&gt; &lt;int&gt; &lt;chr&gt;   &lt;chr&gt;          &lt;dbl&gt; &lt;chr&gt;  
+ 1     2     9 rmse    standard       0.420 Model01
+ 2     2     9 rsq     standard       0.908 Model01
+ 3     2     4 rmse    standard       0.377 Model02
+ 4     2     4 rsq     standard       0.932 Model02
+ 5     5    11 rmse    standard       0.497 Model03
+ 6     5    11 rsq     standard       0.973 Model03
+ 7     4    36 rmse    standard       0.515 Model04
+ 8     4    36 rsq     standard      NA     Model04
+ 9     9    25 rmse    standard       0.432 Model05
+10     9    25 rsq     standard       0.931 Model05
+11     8    30 rmse    standard       0.547 Model06
+12     8    30 rsq     standard      NA     Model06
+13     7    22 rmse    standard       0.513 Model07
+14     7    22 rsq     standard       0.942 Model07
+15     4    21 rmse    standard       0.482 Model08
+16     4    21 rsq     standard       0.956 Model08
+17    10    40 rmse    standard       0.526 Model09
+18    10    40 rsq     standard      NA     Model09
+19     6    15 rmse    standard       0.542 Model10
+20     6    15 rsq     standard       0.996 Model10</code></pre>
+</div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <!--radix_placeholder_article_footer-->
 <div class="article-footer">
   <p class="social_footer">

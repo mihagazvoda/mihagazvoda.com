@@ -11,21 +11,21 @@ output:
     self_contained: false
 ---
 
-Do you like [`tidyverse`](https://www.tidyverse.org/) and machine learning? Then you'll love [`tidymodels`](https://www.tidymodels.org/). As their website says: 
+Do you like [`tidyverse`](https://www.tidyverse.org/) and machine learning? Then you'll love [`tidymodels`](https://www.tidymodels.org/): 
 
 > The tidymodels framework is a collection of packages for modeling and machine learning using tidyverse principles.
 
-If you would like to start with them, [Get started](https://www.tidymodels.org/start/) page is great. There's even an upcoming [book](https://www.tmwr.org/) about them. The goal of this post is to show how I use them and create a boiler plate for my future use. So my bet is that the most frequent visitor of this website will be me. 
+If you would like to start, their [Get started](https://www.tidymodels.org/start/) page is great. There's even an upcoming `tidymodels` [book](https://www.tmwr.org/). The goal of this post is to show how I use them and create a boiler plate for my future use.
 
-# Tidymodels' packages
+# tidymodels' packages
+
+
   * [usemodels](https://usemodels.tidymodels.org/) boilerplate
   * [workflows](https://workflows.tidymodels.org/)
   * [rsample]()
   * [recipes]()
   * [parsnip]()
   * [tune](https://tune.tidymodels.org/)
-
-<!-- TODO check parameter tuning in device quality model -->
 
 ```{r include=TRUE, echo=TRUE}
 prepare_recipe <- function(train_data_raw) { # TODO add missing argument for y instead of mpg
@@ -61,6 +61,7 @@ data <- tibble(mtcars)
 # decide how big should be assessment size
 df <- vfold_cv(data, v = 10, prop = 0.5)
 
+# this doesn't make sense since it's the same recipe for all data, does it?
 df$recipe <- map(df$splits, ~prepare_recipe(analysis(.)))
 
 df$train_data <- map2(df$splits, df$recipe, ~bake(.y, analysis(.x)))
@@ -76,24 +77,39 @@ df$evaluation <- map(df$predictions, metrics, truth = actual, estimate = .pred)
 # Tune metaparameters
 
 
-
-
-
-
-
-
-
-
-
-```{r}
-library(workflows)
-
-wf <- workflow() %>% 
-  add_recipe(df$recipe[[1]]) %>% 
-  add_model(set_engine(linear_reg(), "lm"))
-
-wf_fit <- fit(wf, mtcars)
+```{r include=TRUE, echo=TRUE}
+tune_spec <- rand_forest(
+  mtry = tune(),
+  trees = 20,
+  min_n = tune()
+) %>%
+  set_mode("regression") %>%
+  set_engine("ranger")
 ```
+
+
+```{r include=TRUE, echo=TRUE}
+tune_wf <- workflows::workflow() %>% 
+  workflows::add_recipe(df$recipe[[1]]) %>% 
+  workflows::add_model(tune_spec)
+```
+
+
+
+
+```{r include=TRUE, echo=TRUE}
+# doParallel::registerDoParallel()
+# trees_folds <- vfold_cv(data)
+# 
+# tune_res <- tune::tune_grid(
+#   tune_wf,
+#   resamples = trees_folds,
+#   grid = 10
+# )
+# 
+# tune_res$.metrics[[1]]
+```
+
 
 
 
