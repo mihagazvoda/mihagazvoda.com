@@ -7,7 +7,19 @@
     <description>Miha Gazvoda's personal website
 </description>
     <generator>Distill</generator>
-    <lastBuildDate>Sat, 06 Feb 2021 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 22 Feb 2021 00:00:00 +0000</lastBuildDate>
+    <item>
+      <title>Can You Win Riddler Jenga?</title>
+      <dc:creator>Miha Gazvoda</dc:creator>
+      <link>https://mihagazvoda.com/posts/riddler-jenga</link>
+      <description>Can I?</description>
+      <category>data science</category>
+      <category>R</category>
+      <category>The Riddler</category>
+      <guid>https://mihagazvoda.com/posts/riddler-jenga</guid>
+      <pubDate>Mon, 22 Feb 2021 00:00:00 +0000</pubDate>
+      <media:content url="https://mihagazvoda.com/posts/riddler-jenga/../../images/jenga/jenga_tower.png" medium="image" type="image/png" width="1872" height="1404"/>
+    </item>
     <item>
       <title>The wall riddle</title>
       <dc:creator>Miha Gazvoda</dc:creator>
@@ -17,7 +29,7 @@
       <category>Bayesian</category>
       <category>data science</category>
       <guid>https://mihagazvoda.com/posts/wall-riddle</guid>
-      <pubDate>Sat, 06 Feb 2021 00:00:00 +0000</pubDate>
+      <pubDate>Sun, 07 Feb 2021 00:00:00 +0000</pubDate>
       <media:content url="https://mihagazvoda.com/posts/wall-riddle/../../images/wall-puzzle/behind.png" medium="image" type="image/png" width="1200" height="900"/>
     </item>
     <item>
