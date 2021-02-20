@@ -1,0 +1,65 @@
+---
+title: "Can You Win Riddler Jenga?"
+description: |
+  I can.
+author:
+  - name: Miha Gazvoda
+    url: https://mihagazvoda.com
+date: 02-20-2021
+output:
+  distill::distill_article:
+    self_contained: false
+---
+
+> In the game of Jenga, you build a tower and then remove its blocks, one at a time, until the tower collapses. But in Riddler Jenga, you start with one block and then place more blocks on top of it, one at a time.     
+All the blocks have the same alignment (e.g., east-west). Importantly, whenever you place a block, its center is picked randomly along the block directly beneath it. For example, the following animation shows Riddler Jenga towers that were randomly constructed before ultimately collapsing when the fifth, 10th and 15th blocks were placed. The block highlighted in red is the one above which the blocks were no longer balanced.  
+On average, how many blocks must you place so that your tower collapses — that is, until at least one block falls off?
+
+![Gif borrowed from [FiveThirtyEight](https://fivethirtyeight.com/features/can-you-win-riddler-jenga/).](../../images/jenga/riddler_jenga.gif){width=50%}
+
+```{r}
+library(purrr)
+library(ggplot2)
+
+calc_next_brick_center <- function(previous_brick_center) {
+  previous_brick_center + runif(n = 1, min = -0.5, max = 0.5)
+}
+
+are_bricks_above_balanced <- function(brick_center, brick_centers_above) {
+  abs(brick_center - mean(brick_centers_above)) < 0.5
+}
+
+get_tower_top_level <- function(...){
+  brick_centers <- c(0)
+  is_tower_balanced <- TRUE
+
+  while(is_tower_balanced) {
+    next_brick_center <- calc_next_brick_center(tail(brick_centers, n = 1))
+
+    brick_centers <- c(brick_centers, next_brick_center)
+
+    bricks_count <- length(brick_centers)
+
+    is_tower_balanced <- all(map2_lgl(
+      brick_centers[-bricks_count],
+      map(2:bricks_count, ~brick_centers[.:bricks_count]),
+      are_bricks_above_balanced
+    ))
+
+  }
+
+  length(brick_centers)
+}
+```
+
+
+```{r}
+tower_heights <- map_int(1:1000, get_tower_top_level)
+
+mean(tower_heights)
+
+data.frame(tower_height = tower_heights) %>%
+  ggplot(aes(x = tower_height, y = ..prop..)) +
+  geom_bar()
+```
+
