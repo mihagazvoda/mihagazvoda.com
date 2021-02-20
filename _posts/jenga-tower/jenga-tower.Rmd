@@ -1,0 +1,68 @@
+---
+title: "Jenga tower"
+description: |
+  A short description of the post.
+author:
+  - name: Miha Gazvoda
+    url: https://mihagazvoda.com
+date: 02-20-2021
+output:
+  distill::distill_article:
+    self_contained: false
+---
+
+```{r}
+calc_next_brick_center <- function(previous_brick_center) {
+  previous_brick_center + runif(n = 1, min = -0.5, max = 0.5)
+}
+
+are_bricks_above_balanced <- function(brick_center, brick_centers_above) {
+  abs(brick_center - mean(brick_centers_above)) < 0.5
+}
+```
+
+
+```{r}
+
+
+get_tower_top_level <- function(...){
+  brick_centers <- c(0)
+  is_tower_balanced <- TRUE
+
+  while(is_tower_balanced) {
+    next_brick_center <- calc_next_brick_center(tail(brick_centers, n = 1))
+
+    brick_centers <- c(brick_centers, next_brick_center)
+
+    subtowers <- dplyr::tibble(
+      brick_level = 1:(length(brick_centers) - 1),
+    ) %>%
+      rowwise() %>%
+      mutate(
+        brick_center = brick_centers[brick_level],
+        brick_centers_above = list(brick_centers[-1:-brick_level]),
+        avg_brick_center_above = mean(brick_centers_above),
+        is_balanced = abs(avg_brick_center_above - brick_center) < 0.5
+      )
+
+      is_tower_balanced <- all(subtowers$is_balanced)
+  }
+
+  length(brick_centers)
+}
+
+tower_heights <- sapply(1:1000, get_tower_top_level)
+
+mean(tower_heights)
+
+library(dplyr)
+library(ggplot2)
+
+tibble(tower_height = tower_heights) %>%
+  ggplot(aes(x = tower_height, y = ..prop..)) +
+  geom_bar()
+
+```
+
+
+
