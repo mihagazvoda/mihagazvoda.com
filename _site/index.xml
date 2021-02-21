@@ -12,7 +12,10 @@
       <title>Can You Win Riddler Jenga?</title>
       <dc:creator>Miha Gazvoda</dc:creator>
       <link>https://mihagazvoda.com/posts/riddler-jenga</link>
-      <description>I can.</description>
+      <description>I can - I think.</description>
+      <category>data science</category>
+      <category>R</category>
+      <category>The Riddler</category>
       <guid>https://mihagazvoda.com/posts/riddler-jenga</guid>
       <pubDate>Sat, 20 Feb 2021 00:00:00 +0000</pubDate>
       <media:content url="https://mihagazvoda.com/posts/riddler-jenga/jenga-tower_files/figure-html5/unnamed-chunk-2-1.png" medium="image" type="image/png" width="1248" height="768"/>
