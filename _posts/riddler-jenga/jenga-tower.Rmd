@@ -71,10 +71,20 @@ are_blocks_above_balanced <- function(block_center, block_centers_above) {
 }
 ```
 
-Sooo, now it's the action time! 
+`get_all_possible_subtowers` can be best explained with an example. Let's say the tower has 5 blocks, 1 at the bottom, 5 at the top. The function returns subtowers [1, 2, 3, 4, 5], [2, 3, 4, 5], [3, 4, 5], and [4, 5]. 
 
 ```{r}
-get_tower_top_level <- function(...){
+get_all_possible_subtowers <- function(block_centers) {
+    blocks_count <- length(block_centers)
+    purrr::map(1:(blocks_count - 1), ~block_centers[.:blocks_count])
+}
+```
+
+With `get_tower_top_level` we are measuring how many blocks (= levels) the tower consists of when collapses.  
+We always start building the tower with a block that has center at position 0. Then we place the next block center using `calc_next_block_center`. By concatenating `block_center` and `next_block_center` we get new, updated tower. Possible subtowers are then splitted by the bottom block and the blocks above and passed to `are_blocks_above_balanced`. When this is not true anymore, while loop breaks and all blocks in the off-balanced tower are counted. 
+
+```{r}
+get_tower_top_level <- function(...) {
   block_centers <- c(0)
   is_tower_balanced <- TRUE
 
@@ -83,30 +93,41 @@ get_tower_top_level <- function(...){
 
     block_centers <- c(block_centers, next_block_center)
 
-    blocks_count <- length(block_centers)
-
-    is_tower_balanced <- all(purrr::map2_lgl(
-      block_centers[-blocks_count],
-      purrr::map(2:blocks_count, ~block_centers[.:blocks_count]),
-      are_blocks_above_balanced
+    subtowers <- get_all_possible_subtowers(block_centers)
+    
+    is_tower_balanced <- all(purrr::map(
+      subtowers, 
+      ~are_blocks_above_balanced(.[1], .[-1])
     ))
-
   }
 
   length(block_centers)
 }
 ```
 
+Then we just simulate building of thousands of Jenga towers and calculate mean number of blocks in the collapsed towers.
 
 ```{r}
-tower_heights <- purrr::map_int(1:1000, get_tower_top_level)
+tower_heights <- purrr::map_int(1:1e4, get_tower_top_level)
 
 mean(tower_heights)
-
-ggplot2::ggplot(
-  data.frame(tower_height = tower_heights), 
-  ggplot2::aes(x = tower_height, y = ..prop..)
-) +
-  ggplot2::geom_bar()
 ```
 
+We can plot the distribution:
+
+```{r, echo=FALSE}
+library(ggplot2)
+ggplot(
+  data.frame(tower_height = tower_heights), 
+  aes(x = tower_height, y = ..prop..)
+) +
+  geom_bar() +
+  theme_classic() +
+  labs(
+    title = "Distribution of number of blocks in the collapsed towers",
+    y = "p",
+    x = "Number of blocks"
+  )
+```
+
+Now, let me rest my brain (but not nerves) by playing Jenga.

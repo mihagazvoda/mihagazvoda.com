@@ -115,7 +115,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   <!--/radix_placeholder_rmarkdown_metadata-->
   
   <script type="text/json" id="radix-resource-manifest">
-  {"type":"character","attributes":{},"value":["jenga-tower_files/anchor-4.2.2/anchor.min.js","jenga-tower_files/bowser-1.9.3/bowser.min.js","jenga-tower_files/distill-2.2.21/template.v2.js","jenga-tower_files/figure-html5/unnamed-chunk-2-1.png","jenga-tower_files/figure-html5/unnamed-chunk-4-1.png","jenga-tower_files/header-attrs-2.6.6/header-attrs.js","jenga-tower_files/header-attrs-2.7/header-attrs.js","jenga-tower_files/jquery-1.11.3/jquery.min.js","jenga-tower_files/popper-2.6.0/popper.min.js","jenga-tower_files/tippy-6.2.7/tippy-bundle.umd.min.js","jenga-tower_files/tippy-6.2.7/tippy-light-border.css","jenga-tower_files/tippy-6.2.7/tippy.css","jenga-tower_files/tippy-6.2.7/tippy.umd.min.js","jenga-tower_files/webcomponents-2.0.0/webcomponents.js"]}
+  {"type":"character","attributes":{},"value":["jenga-tower_files/anchor-4.2.2/anchor.min.js","jenga-tower_files/bowser-1.9.3/bowser.min.js","jenga-tower_files/distill-2.2.21/template.v2.js","jenga-tower_files/figure-html5/unnamed-chunk-2-1.png","jenga-tower_files/figure-html5/unnamed-chunk-4-1.png","jenga-tower_files/figure-html5/unnamed-chunk-5-1.png","jenga-tower_files/figure-html5/unnamed-chunk-6-1.png","jenga-tower_files/header-attrs-2.6.6/header-attrs.js","jenga-tower_files/header-attrs-2.7/header-attrs.js","jenga-tower_files/jquery-1.11.3/jquery.min.js","jenga-tower_files/popper-2.6.0/popper.min.js","jenga-tower_files/tippy-6.2.7/tippy-bundle.umd.min.js","jenga-tower_files/tippy-6.2.7/tippy-light-border.css","jenga-tower_files/tippy-6.2.7/tippy.css","jenga-tower_files/tippy-6.2.7/tippy.umd.min.js","jenga-tower_files/webcomponents-2.0.0/webcomponents.js"]}
   </script>
   <!--radix_placeholder_navigation_in_header-->
   <!--/radix_placeholder_navigation_in_header-->
@@ -1523,10 +1523,21 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 </code></pre>
 </div>
 </div>
-<p>Sooo, now it’s the action time!</p>
+<p><code>get_all_possible_subtowers</code> can be best explained with an example. Let’s say the tower has 5 blocks, 1 at the bottom, 5 at the top. The function returns subtowers [1, 2, 3, 4, 5], [2, 3, 4, 5], [3, 4, 5], and [4, 5].</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>get_tower_top_level</span> <span class='op'>&lt;-</span> <span class='kw'>function</span><span class='op'>(</span><span class='va'>...</span><span class='op'>)</span><span class='op'>{</span>
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>get_all_possible_subtowers</span> <span class='op'>&lt;-</span> <span class='kw'>function</span><span class='op'>(</span><span class='va'>block_centers</span><span class='op'>)</span> <span class='op'>{</span>
+    <span class='va'>blocks_count</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/length.html'>length</a></span><span class='op'>(</span><span class='va'>block_centers</span><span class='op'>)</span>
+    <span class='fu'>purrr</span><span class='fu'>::</span><span class='fu'><a href='https://purrr.tidyverse.org/reference/map.html'>map</a></span><span class='op'>(</span><span class='fl'>1</span><span class='op'>:</span><span class='op'>(</span><span class='va'>blocks_count</span> <span class='op'>-</span> <span class='fl'>1</span><span class='op'>)</span>, <span class='op'>~</span><span class='va'>block_centers</span><span class='op'>[</span><span class='va'>.</span><span class='op'>:</span><span class='va'>blocks_count</span><span class='op'>]</span><span class='op'>)</span>
+<span class='op'>}</span>
+</code></pre>
+</div>
+</div>
+<p>With <code>get_tower_top_level</code> we are measuring how many blocks (= levels) the tower consists of when collapses.<br />
+We always start building the tower with a block that has center at position 0. Then we place the next block center using <code>calc_next_block_center</code>. By concatenating <code>block_center</code> and <code>next_block_center</code> we get new, updated tower. Possible subtowers are then splitted by the bottom block and the blocks above and passed to <code>are_blocks_above_balanced</code>. When this is not true anymore, while loop breaks and all blocks in the off-balanced tower are counted.</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>get_tower_top_level</span> <span class='op'>&lt;-</span> <span class='kw'>function</span><span class='op'>(</span><span class='va'>...</span><span class='op'>)</span> <span class='op'>{</span>
   <span class='va'>block_centers</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>0</span><span class='op'>)</span>
   <span class='va'>is_tower_balanced</span> <span class='op'>&lt;-</span> <span class='cn'>TRUE</span>
 
@@ -1535,14 +1546,12 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 
     <span class='va'>block_centers</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='va'>block_centers</span>, <span class='va'>next_block_center</span><span class='op'>)</span>
 
-    <span class='va'>blocks_count</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/length.html'>length</a></span><span class='op'>(</span><span class='va'>block_centers</span><span class='op'>)</span>
-
-    <span class='va'>is_tower_balanced</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/all.html'>all</a></span><span class='op'>(</span><span class='fu'>purrr</span><span class='fu'>::</span><span class='fu'><a href='https://purrr.tidyverse.org/reference/map2.html'>map2_lgl</a></span><span class='op'>(</span>
-      <span class='va'>block_centers</span><span class='op'>[</span><span class='op'>-</span><span class='va'>blocks_count</span><span class='op'>]</span>,
-      <span class='fu'>purrr</span><span class='fu'>::</span><span class='fu'><a href='https://purrr.tidyverse.org/reference/map.html'>map</a></span><span class='op'>(</span><span class='fl'>2</span><span class='op'>:</span><span class='va'>blocks_count</span>, <span class='op'>~</span><span class='va'>block_centers</span><span class='op'>[</span><span class='va'>.</span><span class='op'>:</span><span class='va'>blocks_count</span><span class='op'>]</span><span class='op'>)</span>,
-      <span class='va'>are_blocks_above_balanced</span>
+    <span class='va'>subtowers</span> <span class='op'>&lt;-</span> <span class='fu'>get_all_possible_subtowers</span><span class='op'>(</span><span class='va'>block_centers</span><span class='op'>)</span>
+    
+    <span class='va'>is_tower_balanced</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/all.html'>all</a></span><span class='op'>(</span><span class='fu'>purrr</span><span class='fu'>::</span><span class='fu'><a href='https://purrr.tidyverse.org/reference/map.html'>map</a></span><span class='op'>(</span>
+      <span class='va'>subtowers</span>, 
+      <span class='op'>~</span><span class='fu'>are_blocks_above_balanced</span><span class='op'>(</span><span class='va'>.</span><span class='op'>[</span><span class='fl'>1</span><span class='op'>]</span>, <span class='va'>.</span><span class='op'>[</span><span class='op'>-</span><span class='fl'>1</span><span class='op'>]</span><span class='op'>)</span>
     <span class='op'>)</span><span class='op'>)</span>
-
   <span class='op'>}</span>
 
   <span class='fu'><a href='https://rdrr.io/r/base/length.html'>length</a></span><span class='op'>(</span><span class='va'>block_centers</span><span class='op'>)</span>
@@ -1550,24 +1559,21 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 </code></pre>
 </div>
 </div>
+<p>Then we just simulate building of thousands of Jenga towers and calculate mean number of blocks in the collapsed towers.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>tower_heights</span> <span class='op'>&lt;-</span> <span class='fu'>purrr</span><span class='fu'>::</span><span class='fu'><a href='https://purrr.tidyverse.org/reference/map.html'>map_int</a></span><span class='op'>(</span><span class='fl'>1</span><span class='op'>:</span><span class='fl'>1000</span>, <span class='va'>get_tower_top_level</span><span class='op'>)</span>
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>tower_heights</span> <span class='op'>&lt;-</span> <span class='fu'>purrr</span><span class='fu'>::</span><span class='fu'><a href='https://purrr.tidyverse.org/reference/map.html'>map_int</a></span><span class='op'>(</span><span class='fl'>1</span><span class='op'>:</span><span class='fl'>1e4</span>, <span class='va'>get_tower_top_level</span><span class='op'>)</span>
 
 <span class='fu'><a href='https://rdrr.io/r/base/mean.html'>mean</a></span><span class='op'>(</span><span class='va'>tower_heights</span><span class='op'>)</span>
 </code></pre>
 </div>
-<pre><code>[1] 7.122</code></pre>
-<div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'>ggplot2</span><span class='fu'>::</span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span><span class='op'>(</span>
-  <span class='fu'><a href='https://rdrr.io/r/base/data.frame.html'>data.frame</a></span><span class='op'>(</span>tower_height <span class='op'>=</span> <span class='va'>tower_heights</span><span class='op'>)</span>, 
-  <span class='fu'>ggplot2</span><span class='fu'>::</span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>tower_height</span>, y <span class='op'>=</span> <span class='va'>..prop..</span><span class='op'>)</span>
-<span class='op'>)</span> <span class='op'>+</span>
-  <span class='fu'>ggplot2</span><span class='fu'>::</span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_bar.html'>geom_bar</a></span><span class='op'>(</span><span class='op'>)</span>
-</code></pre>
+<pre><code>[1] 7.1192</code></pre>
 </div>
-<p><img src="jenga-tower_files/figure-html5/unnamed-chunk-4-1.png" width="624" /></p>
+<p>We can plot the distribution:</p>
+<div class="layout-chunk" data-layout="l-body">
+<p><img src="jenga-tower_files/figure-html5/unnamed-chunk-6-1.png" width="624" /></p>
 </div>
+<p>Now, let me rest my brain (but not nerves) by playing Jenga.</p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <section class="footnotes" role="doc-endnotes">
 <hr />
