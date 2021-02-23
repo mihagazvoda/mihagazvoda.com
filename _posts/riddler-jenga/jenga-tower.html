@@ -1482,30 +1482,35 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 </div>
 
 <div class="d-article">
-<p>This weekend I solved the Jenga problem from <a href="https://fivethirtyeight.com/tag/the-riddler/">The Riddler</a>. In this post, I described my solution. But first, the riddle:</p>
+<p>This weekend I solved the Jenga problem from <a href="https://fivethirtyeight.com/tag/the-riddler/">The Riddler</a>. In this post, I describe my solution. But first, the riddle:</p>
 <blockquote>
 <p>In the game of Jenga, you build a tower and then remove its blocks, one at a time, until the tower collapses. But in Riddler Jenga, you start with one block and then place more blocks on top of it, one at a time.</p>
 <p>All the blocks have the same alignment (e.g., east-west). Importantly, whenever you place a block, its center is picked randomly along the block directly beneath it.</p>
 <p>On average, how many blocks must you place so that your tower collapses — that is, until at least one block falls off?</p>
 </blockquote>
-<p>For details, <a href="https://fivethirtyeight.com/features/can-you-win-riddler-jenga/">visit Riddler’s official page</a>.</p>
-<h1 id="solution">Solution</h1>
-<p>Let’s say we have Jenga tower (as on the sketch) and want to calculate whether it’s stable.</p>
-<p><img src="../../images/jenga/jenga_tower.png" /></p>
-<p>But - what happens when the tower is not stable? It crashes. Why, how? Because - we can borrow this from physics - sum of forces <span class="math inline">\(F_i\)</span> or torques <span class="math inline">\(\tau_i\)</span> doesn’t equal 0. So conditions for the Jenga tower to be stable are these: <span class="math display">\[
+<p>For additional explanation, <a href="https://fivethirtyeight.com/features/can-you-win-riddler-jenga/">visit Riddler’s official page</a>.</p>
+<h1 id="why-does-the-tower-collapse">Why does the tower collapse?</h1>
+<p>Let’s say we have the Jenga tower (as on the sketch) and want to calculate whether it’s stable.</p>
+<figure>
+<img src="../../images/jenga/jenga_tower.png" alt="The Jenga tower with marked forces of gravity on blocks’ centers and potential axes of rotation." /><figcaption aria-hidden="true">The Jenga tower with marked forces of gravity on blocks’ centers and potential axes of rotation.</figcaption>
+</figure>
+<p>When the tower is stable, sum of forces and torques acting on it equals zero: <span class="math display">\[
 \sum F_i = 0  
 \]</span> <span class="math display">\[
 \sum \tau_i = 0
 \]</span></p>
-<p>Forces are not problematic: only forces of gravity act on the blocks (you can see them on the sketch) in their centers. But they get (or at least could be) neutralized by the opposite force of the blocks below and table.</p>
-<p>Falling Jenga tower actually <em>rotates</em>, not drops. The problem is torque. Potential axes of rotations are blocks’ edges.<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> They are marked with <span class="math inline">\(\times\)</span> on the sketch. Sum of torques has to be 0 for each of these axes. Torque is defined as: <span class="math display">\[
+<p>The tower collapses when one of these equations is not fulfilled. Forces are not problematic: only forces of gravity act on the blocks (you can see them on the sketch) in their centers. But they get neutralized by the opposite force of the blocks below and table.</p>
+<p>The collapsing Jenga tower <em>rotates</em>, not drops. The problem is imbalanced torque. Potential axes of rotations are edges pf the blocks.<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> They are marked with <span class="math inline">\(\times\)</span> on the sketch. The sum of torques has to be 0 for each of these axes. Torque is defined as: <span class="math display">\[
 \tau = F \cdot r \cdot sin\theta
 \]</span> where <span class="math inline">\(\tau\)</span> is torque, <span class="math inline">\(r\)</span> moment arm, <span class="math inline">\(F\)</span> applied force, and <span class="math inline">\(\theta\)</span> the angle between the force vector and the lever arm vector.<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a></p>
-<p><img src="../../images/jenga/door_torque.png" /></p>
-<p>To better understand torque, look at the sketch above. It represents door from above. Someone wants to open them by applying the force at the door handle. Torque is applied on the door hinges.</p>
-<p>The same way we can calculate (sum of) torques on all blocks’ edges. The situation is simpler: we only care that gravity center of any block (or multiple blocks together) is on lateral side of the tower. This can’t be compensated by the opposite torque (it’s just air resistance) so the tower collapses. Gravity center of the multiple blocks is average the average of their center positions.</p>
-<h1 id="applied-solution">Applied solution</h1>
-<p>Now to the code. We assume each block has uniformly distributed mass and it’s 1 unit long. Each time we add block its center is picked randomly along the block beneath it. Function <code>calc_next_block_center</code> does that.</p>
+<figure>
+<img src="../../images/jenga/door_torque.png" alt="The sketch represents the door from above and torque applied to the door hinges when someone wants to open the door." /><figcaption aria-hidden="true">The sketch represents the door from above and torque applied to the door hinges when someone wants to open the door.</figcaption>
+</figure>
+<p>To better understand torque, look at the sketch above. It represents the door from above. Someone wants to open them by applying force at the door handle. Torque is applied on the door hinges and can be calculated by the equation above.</p>
+<p>In the same way we can calculate (sum of) torques on all blocks’ edges. The situation is even simpler: we only care that the gravity center of any block (or multiple blocks together) is on lateral side (farther from the tower’s center) compared to the edge of some brick (potential axis of rotation). This torque can’t be compensated (there’s nothing on the other side, just air resistance) so the tower collapses.</p>
+<p>On the Jenga tower sketch, circled <span class="math inline">\(\times\)</span> marks the axis around which the tower rotates when collapses. The center of gravity of the top 2 blocks is more to the left compared to the axis of rotation.</p>
+<h1 id="enough-theory-lets-code">Enough theory, let’s code</h1>
+<p>We assume each block has uniformly distributed mass and it’s 1 unit long. Each time we add block its center is picked randomly along the block beneath it. Function <code>calc_next_block_center</code> does that.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='va'>calc_next_block_center</span> <span class='op'>&lt;-</span> <span class='kw'>function</span><span class='op'>(</span><span class='va'>previous_block_center</span><span class='op'>)</span> <span class='op'>{</span>
@@ -1562,12 +1567,12 @@ We always start building the tower with a block that has center at position 0. T
 <p>Then we just simulate building of thousands of Jenga towers and calculate mean number of blocks in the collapsed towers.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>tower_heights</span> <span class='op'>&lt;-</span> <span class='fu'>purrr</span><span class='fu'>::</span><span class='fu'><a href='https://purrr.tidyverse.org/reference/map.html'>map_int</a></span><span class='op'>(</span><span class='fl'>1</span><span class='op'>:</span><span class='fl'>1e4</span>, <span class='va'>get_tower_top_level</span><span class='op'>)</span>
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>tower_heights</span> <span class='op'>&lt;-</span> <span class='fu'>purrr</span><span class='fu'>::</span><span class='fu'><a href='https://purrr.tidyverse.org/reference/map.html'>map_int</a></span><span class='op'>(</span><span class='fl'>1</span><span class='op'>:</span><span class='fl'>1e3</span>, <span class='va'>get_tower_top_level</span><span class='op'>)</span>
 
 <span class='fu'><a href='https://rdrr.io/r/base/mean.html'>mean</a></span><span class='op'>(</span><span class='va'>tower_heights</span><span class='op'>)</span>
 </code></pre>
 </div>
-<pre><code>[1] 7.1205</code></pre>
+<pre><code>[1] 6.968</code></pre>
 </div>
 <p>We can plot the distribution:</p>
 <div class="layout-chunk" data-layout="l-body">
@@ -1578,7 +1583,7 @@ We always start building the tower with a block that has center at position 0. T
 <section class="footnotes" role="doc-endnotes">
 <hr />
 <ol>
-<li id="fn1" role="doc-endnote"><p>It could also be block center but you need huge force to break it.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn1" role="doc-endnote"><p>It could also be the block’s center but you need huge force/torque to break the block.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn2" role="doc-endnote"><p>Note that a <span class="math inline">\(\tau\)</span>, <span class="math inline">\(F\)</span>, and <span class="math inline">\(r\)</span> are in reality vectors bet here we are interested only in their magnitudes.<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 </ol>
 </section>
