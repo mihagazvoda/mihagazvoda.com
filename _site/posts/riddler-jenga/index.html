@@ -1886,7 +1886,7 @@ document.addEventListener('DOMContentLoaded', function() {
 </div>
 
 <div class="d-article">
-<p>This weekend I solved the Jenga problem from <a href="https://fivethirtyeight.com/tag/the-riddler/">The Riddler</a>. In this post, I describe my solution. But first, the riddle:</p>
+<p>In this post, I describe my solution for the Jenga problem from <a href="https://fivethirtyeight.com/tag/the-riddler/">The Riddler</a>. But first, the riddle:</p>
 <blockquote>
 <p>In the game of Jenga, you build a tower and then remove its blocks, one at a time, until the tower collapses. But in Riddler Jenga, you start with one block and then place more blocks on top of it, one at a time.</p>
 <p>All the blocks have the same alignment (e.g., east-west). Importantly, whenever you place a block, its center is picked randomly along the block directly beneath it.</p>
@@ -1898,23 +1898,23 @@ document.addEventListener('DOMContentLoaded', function() {
 <figure>
 <img src="../../images/jenga/jenga_tower.png" alt="The Jenga tower with marked forces of gravity on blocks’ centers and potential axes of rotation." /><figcaption aria-hidden="true">The Jenga tower with marked forces of gravity on blocks’ centers and potential axes of rotation.</figcaption>
 </figure>
-<p>When the tower is stable, sum of forces and torques acting on it equals zero: <span class="math display">\[
-\sum F_i = 0  
+<p>Physics says that the tower is stable when sum of forces and torques acting on it equals zero: <span class="math display">\[
+\sum F = 0  
 \]</span> <span class="math display">\[
-\sum \tau_i = 0
+\sum \tau = 0
 \]</span></p>
-<p>The tower collapses when one of these equations is not fulfilled. Forces are not problematic: only forces of gravity act on the blocks (you can see them on the sketch) in their centers. But they get neutralized by the opposite force of the blocks below and table.</p>
-<p>The collapsing Jenga tower <em>rotates</em>, not drops. The problem is imbalanced torque. Potential axes of rotations are edges pf the blocks.<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> They are marked with <span class="math inline">\(\times\)</span> on the sketch. The sum of torques has to be 0 for each of these axes. Torque is defined as: <span class="math display">\[
+<p>The tower collapses when one of these equations is not fulfilled. Forces are not problematic: only forces of gravity act on the blocks’ centers (you can see them on the sketch). But they get neutralized by the opposite force of the blocks below and table.</p>
+<p>The collapsing Jenga tower <em>rotates</em>, not drops. The problem is imbalanced torque. Potential axes of rotations are edges of the blocks.<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> They are marked with <span class="math inline">\(\times\)</span> on the sketch. The sum of torques has to be 0 for each of these axes. Torque is defined as: <span class="math display">\[
 \tau = F \cdot r \cdot sin\theta
 \]</span> where <span class="math inline">\(\tau\)</span> is torque, <span class="math inline">\(r\)</span> moment arm, <span class="math inline">\(F\)</span> applied force, and <span class="math inline">\(\theta\)</span> the angle between the force vector and the lever arm vector.<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a></p>
 <figure>
 <img src="../../images/jenga/door_torque.png" alt="The sketch represents the door from above and torque applied to the door hinges when someone wants to open the door." /><figcaption aria-hidden="true">The sketch represents the door from above and torque applied to the door hinges when someone wants to open the door.</figcaption>
 </figure>
 <p>To better understand torque, look at the sketch above. It represents the door from above. Someone wants to open them by applying force at the door handle. Torque is applied on the door hinges and can be calculated by the equation above.</p>
-<p>In the same way we can calculate (sum of) torques on all blocks’ edges. The situation is even simpler: we only care that the gravity center of any block (or multiple blocks together) is on lateral side (farther from the tower’s center) compared to the edge of some brick (potential axis of rotation). This torque can’t be compensated (there’s nothing on the other side, just air resistance) so the tower collapses.</p>
-<p>On the Jenga tower sketch, circled <span class="math inline">\(\times\)</span> marks the axis around which the tower rotates when collapses. The center of gravity of the top 2 blocks is more to the left compared to the axis of rotation.</p>
+<p>In the same way we can calculate (sum of) torques on all blocks’ edges. The situation is even simpler: we only care that the gravity center of any block (or multiple blocks together) is on the lateral side (farther from the tower’s center) compared to the edge of some brick (potential axis of rotation). This torque can’t be compensated (there’s nothing on the other side, just air resistance) so the tower collapses.</p>
+<p>On the Jenga tower sketch, circled <span class="math inline">\(\bigotimes\)</span> marks the axis around which the tower rotates when collapses. The center of gravity of the top 2 blocks is more to the left compared to the axis of rotation.</p>
 <h1 id="enough-theory-lets-code">Enough theory, let’s code</h1>
-<p>We assume each block has uniformly distributed mass and it’s 1 unit long. Each time we add block its center is picked randomly along the block beneath it. Function <code>calc_next_block_center</code> does that.</p>
+<p>Let’s assume each block has uniformly distributed mass and is 1 unit long. Each time we add a block its center is picked randomly along the block beneath it. The <code>calc_next_block_center</code> function does that.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='va'>calc_next_block_center</span> <span class='op'>&lt;-</span> <span class='kw'>function</span><span class='op'>(</span><span class='va'>previous_block_center</span><span class='op'>)</span> <span class='op'>{</span>
@@ -1923,7 +1923,7 @@ document.addEventListener('DOMContentLoaded', function() {
 </code></pre>
 </div>
 </div>
-<p>The function <code>are_block_above_balanced</code> calculates whether are blocks above some block balanced. Condition for that is that position of their combined gravity forces are less than half a brick away from the center of the brick beneath them.</p>
+<p>The <code>are_block_above_balanced</code> function calculates whether the blocks above some block are balanced. The condition for that is that position of their combined gravity forces is less than half a brick away from the center of the brick beneath them.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='va'>are_blocks_above_balanced</span> <span class='op'>&lt;-</span> <span class='kw'>function</span><span class='op'>(</span><span class='va'>block_center</span>, <span class='va'>block_centers_above</span><span class='op'>)</span> <span class='op'>{</span>
@@ -1932,7 +1932,7 @@ document.addEventListener('DOMContentLoaded', function() {
 </code></pre>
 </div>
 </div>
-<p><code>get_all_possible_subtowers</code> can be best explained with an example. Let’s say the tower has 5 blocks, 1 at the bottom, 5 at the top. The function returns subtowers [1, 2, 3, 4, 5], [2, 3, 4, 5], [3, 4, 5], and [4, 5].</p>
+<p>When we place a new block we have to check <code>are_blocks_above_balanced</code> for every block (excluding the one we placed) and the blocks above it. The <code>get_all_possible_subtowers</code> function makes this easier. It returns all possible subtowers: for example, if the tower has 5 blocks (block 1 at the bottom and block 5 at the top). The function returns the subtowers [1, 2, 3, 4, 5], [2, 3, 4, 5], [3, 4, 5], and [4, 5]. The lowest block in the subtower is then passed as the <code>block_center</code> and others as <code>block_centers_above</code> to the function <code>are_blocks_above_balanced</code>.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='va'>get_all_possible_subtowers</span> <span class='op'>&lt;-</span> <span class='kw'>function</span><span class='op'>(</span><span class='va'>block_centers</span><span class='op'>)</span> <span class='op'>{</span>
@@ -1942,8 +1942,8 @@ document.addEventListener('DOMContentLoaded', function() {
 </code></pre>
 </div>
 </div>
-<p>With <code>get_tower_top_level</code> we are measuring how many blocks (= levels) the tower consists of when collapses.<br />
-We always start building the tower with a block that has center at position 0. Then we place the next block center using <code>calc_next_block_center</code>. By concatenating <code>block_center</code> and <code>next_block_center</code> we get new, updated tower. Possible subtowers are then splitted by the bottom block and the blocks above and passed to <code>are_blocks_above_balanced</code>. When this is not true anymore, while loop breaks and all blocks in the off-balanced tower are counted.</p>
+<p>With <code>get_tower_top_level</code> we are measuring how many blocks the tower consists of when collapses.<br />
+We always start building the tower with a block that has a center at position 0. Then we place the next block using <code>calc_next_block_center</code>. By concatenating <code>block_center</code> and <code>next_block_center</code> we get a new, taller tower. Possible subtowers, created with <code>get_all_possible_subtowers</code>, are then split by the bottom block and the blocks above and passed to <code>are_blocks_above_balanced</code>. When any of the <code>are_blocks_above_balanced</code> returns false, while loop breaks and all blocks in the collapsed tower are counted.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='va'>get_tower_top_level</span> <span class='op'>&lt;-</span> <span class='kw'>function</span><span class='op'>(</span><span class='va'>...</span><span class='op'>)</span> <span class='op'>{</span>
@@ -1968,27 +1968,27 @@ We always start building the tower with a block that has center at position 0. T
 </code></pre>
 </div>
 </div>
-<p>Then we just simulate building of thousands of Jenga towers and calculate mean number of blocks in the collapsed towers.</p>
+<p>To get the approximation for the average number of bricks in the collapsing tower, we simulate building ten thousand towers.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>tower_heights</span> <span class='op'>&lt;-</span> <span class='fu'>purrr</span><span class='fu'>::</span><span class='fu'><a href='https://purrr.tidyverse.org/reference/map.html'>map_int</a></span><span class='op'>(</span><span class='fl'>1</span><span class='op'>:</span><span class='fl'>1e3</span>, <span class='va'>get_tower_top_level</span><span class='op'>)</span>
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>tower_heights</span> <span class='op'>&lt;-</span> <span class='fu'>purrr</span><span class='fu'>::</span><span class='fu'><a href='https://purrr.tidyverse.org/reference/map.html'>map_int</a></span><span class='op'>(</span><span class='fl'>1</span><span class='op'>:</span><span class='fl'>1e4</span>, <span class='va'>get_tower_top_level</span><span class='op'>)</span>
 
 <span class='fu'><a href='https://rdrr.io/r/base/mean.html'>mean</a></span><span class='op'>(</span><span class='va'>tower_heights</span><span class='op'>)</span>
 </code></pre>
 </div>
-<pre><code>[1] 6.968</code></pre>
+<pre><code>[1] 7.0498</code></pre>
 </div>
 <p>We can plot the distribution:</p>
 <div class="layout-chunk" data-layout="l-body">
 <p><img src="jenga-tower_files/figure-html5/unnamed-chunk-6-1.png" width="624" /></p>
 </div>
-<p>Now, let me rest my brain (but not nerves) by playing Jenga.</p>
+<p>Now, let me rest my brain (but not my nerves) by playing Jenga.</p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <section class="footnotes" role="doc-endnotes">
 <hr />
 <ol>
 <li id="fn1" role="doc-endnote"><p>It could also be the block’s center but you need huge force/torque to break the block.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn2" role="doc-endnote"><p>Note that a <span class="math inline">\(\tau\)</span>, <span class="math inline">\(F\)</span>, and <span class="math inline">\(r\)</span> are in reality vectors bet here we are interested only in their magnitudes.<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2" role="doc-endnote"><p>Note that a <span class="math inline">\(\tau\)</span>, <span class="math inline">\(F\)</span>, and <span class="math inline">\(r\)</span> are actually vectors but we are interested only in their magnitudes.<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 </ol>
 </section>
 <!--radix_placeholder_article_footer-->

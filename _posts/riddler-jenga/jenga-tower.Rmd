@@ -16,7 +16,7 @@ output:
     self_contained: false
 ---
 
-This weekend I solved the Jenga problem from [The Riddler](https://fivethirtyeight.com/tag/the-riddler/). In this post, I describe my solution. But first, the riddle:
+In this post, I describe my solution for the Jenga problem from [The Riddler](https://fivethirtyeight.com/tag/the-riddler/). But first, the riddle:
 
 > In the game of Jenga, you build a tower and then remove its blocks, one at a time, until the tower collapses. But in Riddler Jenga, you start with one block and then place more blocks on top of it, one at a time. 
 >
@@ -32,33 +32,33 @@ Let's say we have the Jenga tower (as on the sketch) and want to calculate wheth
 
 ![The Jenga tower with marked forces of gravity on blocks' centers and potential axes of rotation.](../../images/jenga/jenga_tower.png)
 
-When the tower is stable, sum of forces and torques acting on it equals zero:
+Physics says that the tower is stable when sum of forces and torques acting on it equals zero:
 $$
-\sum F_i = 0  
+\sum F = 0  
 $$
 $$
-\sum \tau_i = 0
+\sum \tau = 0
 $$
 
-The tower collapses when one of these equations is not fulfilled. Forces are not problematic: only forces of gravity act on the blocks (you can see them on the sketch) in their centers. But they get neutralized by the opposite force of the blocks below and table.
+The tower collapses when one of these equations is not fulfilled. Forces are not problematic: only forces of gravity act on the blocks' centers (you can see them on the sketch). But they get neutralized by the opposite force of the blocks below and table.
 
-The collapsing Jenga tower *rotates*, not drops. The problem is imbalanced torque. Potential axes of rotations are edges pf the blocks.^[It could also be the block's center but you need huge force/torque to break the block.] They are marked with $\times$ on the sketch. The sum of torques has to be 0 for each of these axes. Torque is defined as:
+The collapsing Jenga tower *rotates*, not drops. The problem is imbalanced torque. Potential axes of rotations are edges of the blocks.^[It could also be the block's center but you need huge force/torque to break the block.] They are marked with $\times$ on the sketch. The sum of torques has to be 0 for each of these axes. Torque is defined as:
 $$
 \tau = F \cdot r \cdot sin\theta
 $$
-where $\tau$ is torque, $r$ moment arm, $F$ applied force, and $\theta$  the angle between the force vector and the lever arm vector.^[Note that a $\tau$, $F$, and $r$ are in reality vectors bet here we are interested only in their magnitudes.] 
+where $\tau$ is torque, $r$ moment arm, $F$ applied force, and $\theta$  the angle between the force vector and the lever arm vector.^[Note that a $\tau$, $F$, and $r$ are actually vectors but we are interested only in their magnitudes.] 
 
 ![The sketch represents the door from above and torque applied to the door hinges when someone wants to open the door.](../../images/jenga/door_torque.png)
 
 To better understand torque, look at the sketch above. It represents the door from above. Someone wants to open them by applying force at the door handle. Torque is applied on the door hinges and can be calculated by the equation above.
 
-In the same way we can calculate (sum of) torques on all blocks' edges. The situation is even simpler: we only care that the gravity center of any block (or multiple blocks together) is on lateral side (farther from the tower's center) compared to the edge of some brick (potential axis of rotation). This torque can't be compensated (there's nothing on the other side, just air resistance) so the tower collapses. 
+In the same way we can calculate (sum of) torques on all blocks' edges. The situation is even simpler: we only care that the gravity center of any block (or multiple blocks together) is on the lateral side (farther from the tower's center) compared to the edge of some brick (potential axis of rotation). This torque can't be compensated (there's nothing on the other side, just air resistance) so the tower collapses. 
 
-On the Jenga tower sketch, circled $\times$ marks the axis around which the tower rotates when collapses. The center of gravity of the top 2 blocks is more to the left compared to the axis of rotation.
+On the Jenga tower sketch, circled $\bigotimes$ marks the axis around which the tower rotates when collapses. The center of gravity of the top 2 blocks is more to the left compared to the axis of rotation. 
 
 # Enough theory, let's code
 
-We assume each block has uniformly distributed mass and it's 1 unit long.  Each time we add block its center is picked randomly along the block beneath it. Function `calc_next_block_center` does that.
+Let's assume each block has uniformly distributed mass and is 1 unit long. Each time we add a block its center is picked randomly along the block beneath it. The  `calc_next_block_center` function does that.
 
 ```{r}
 calc_next_block_center <- function(previous_block_center) {
@@ -66,7 +66,7 @@ calc_next_block_center <- function(previous_block_center) {
 }
 ```
 
-The function `are_block_above_balanced` calculates whether are blocks above some block balanced. Condition for that is that position of their combined gravity forces are less than half a brick away from the center of the brick beneath them.
+The `are_block_above_balanced` function  calculates whether the blocks above some block are balanced. The condition for that is that position of their combined gravity forces is less than half a brick away from the center of the brick beneath them.
 
 ```{r}
 are_blocks_above_balanced <- function(block_center, block_centers_above) {
@@ -74,7 +74,7 @@ are_blocks_above_balanced <- function(block_center, block_centers_above) {
 }
 ```
 
-`get_all_possible_subtowers` can be best explained with an example. Let's say the tower has 5 blocks, 1 at the bottom, 5 at the top. The function returns subtowers [1, 2, 3, 4, 5], [2, 3, 4, 5], [3, 4, 5], and [4, 5]. 
+When we place a new block we have to check `are_blocks_above_balanced` for every block (excluding the one we placed) and the blocks above it. The `get_all_possible_subtowers` function makes this easier. It returns all possible subtowers: for example, if the tower has 5 blocks (block 1 at the bottom and block 5 at the top). The function returns the subtowers [1, 2, 3, 4, 5], [2, 3, 4, 5], [3, 4, 5], and [4, 5]. The lowest block in the subtower is then passed as the `block_center` and others as `block_centers_above` to the function `are_blocks_above_balanced`.
 
 ```{r}
 get_all_possible_subtowers <- function(block_centers) {
@@ -83,8 +83,8 @@ get_all_possible_subtowers <- function(block_centers) {
 }
 ```
 
-With `get_tower_top_level` we are measuring how many blocks (= levels) the tower consists of when collapses.  
-We always start building the tower with a block that has center at position 0. Then we place the next block center using `calc_next_block_center`. By concatenating `block_center` and `next_block_center` we get new, updated tower. Possible subtowers are then splitted by the bottom block and the blocks above and passed to `are_blocks_above_balanced`. When this is not true anymore, while loop breaks and all blocks in the off-balanced tower are counted. 
+With `get_tower_top_level` we are measuring how many blocks the tower consists of when collapses.  
+We always start building the tower with a block that has a center at position 0. Then we place the next block using `calc_next_block_center`. By concatenating `block_center` and `next_block_center` we get a new, taller tower. Possible subtowers, created with `get_all_possible_subtowers`, are then split by the bottom block and the blocks above and passed to `are_blocks_above_balanced`. When any of the `are_blocks_above_balanced` returns false, while loop breaks and all blocks in the collapsed tower are counted. 
 
 ```{r}
 get_tower_top_level <- function(...) {
@@ -108,10 +108,10 @@ get_tower_top_level <- function(...) {
 }
 ```
 
-Then we just simulate building of thousands of Jenga towers and calculate mean number of blocks in the collapsed towers.
+To get the approximation for the average number of bricks in the collapsing tower, we simulate building ten thousand towers.
 
 ```{r}
-tower_heights <- purrr::map_int(1:1e3, get_tower_top_level)
+tower_heights <- purrr::map_int(1:1e4, get_tower_top_level)
 
 mean(tower_heights)
 ```
@@ -133,4 +133,4 @@ ggplot(
   )
 ```
 
-Now, let me rest my brain (but not nerves) by playing Jenga.
+Now, let me rest my brain (but not my nerves) by playing Jenga.
