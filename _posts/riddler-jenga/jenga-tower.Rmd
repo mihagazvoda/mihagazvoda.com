@@ -10,7 +10,7 @@ categories:
   - data science
   - R
   - The Riddler
-preview: ../../images/jenga/jenga_tower.png
+preview: ../../images/jenga/jenga_preview.png
 output:
   distill::distill_article:
     self_contained: false
