@@ -7,7 +7,18 @@
     <description>Miha Gazvoda's personal website
 </description>
     <generator>Distill</generator>
-    <lastBuildDate>Mon, 22 Feb 2021 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 07 Mar 2021 00:00:00 +0000</lastBuildDate>
+    <item>
+      <title>You have three coins in your pocket...</title>
+      <dc:creator>Miha Gazvoda</dc:creator>
+      <link>https://mihagazvoda.com/posts/riddler-3-coins</link>
+      <description>Solving a puzzle from 538's Riddler Express.</description>
+      <category>R</category>
+      <category>data science</category>
+      <category>The Riddler</category>
+      <guid>https://mihagazvoda.com/posts/riddler-3-coins</guid>
+      <pubDate>Sun, 07 Mar 2021 00:00:00 +0000</pubDate>
+    </item>
     <item>
       <title>Can You Win Riddler Jenga?</title>
       <dc:creator>Miha Gazvoda</dc:creator>
