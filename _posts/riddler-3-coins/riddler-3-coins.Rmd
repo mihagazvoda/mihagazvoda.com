@@ -10,6 +10,7 @@ categories:
   - R
   - data science
   - The Riddler
+preview: ../../images/coins/coin.png
 output:
   distill::distill_article:
     self_contained: false
@@ -22,6 +23,8 @@ This weekend I've been solving [the March 5 538's Riddler Express](https://fivet
 > Each of these coins can buy you a string whose length in centimeters equals the value of the coin in cents, i.e., the penny buys 1 cm of string, the nickel buys 5 cm of string, etc. After purchasing your three lengths of string, what is the probability that they can be the side lengths of a triangle?
 
 Although the analytical solution is simple, I chose the simulation. More fun!
+
+![](../../images/coins/coin.png)
 
 # Solution
 
