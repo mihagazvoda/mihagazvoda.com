@@ -34,13 +34,13 @@ The possible coin values, i.e. lengths of strings we can buy with the coins:^[`L
 coin_sample_space <- c(1L, 5L, 10L, 25L)
 ```
 
-With the `sample` function we draw, with replacement three coins that will be in our pocket.
+With the `sample` function, we sample with replacement three coins that will be in our pocket.
 
 ```{r}
 sample(coin_sample_space, size = 3, replace = TRUE)
 ```
 
-With these three coins, we buy strings of appropriate lengths. To determine whether they can shape a triangle the sum of shorter two strings has to be longer than the longest one.
+With these three coins, we buy strings of appropriate lengths. To determine whether the strings can shape a triangle, the sum of the shorter two has to be longer than the longest one.
 
 ```{r}
 is_triangle <- function(coins) {
@@ -50,7 +50,7 @@ is_triangle <- function(coins) {
 
 Note that `sum(coins)` already contains maximum length - that's why we are comparing it to two times the max length.
 
-We repeat the same process zillion, ok `n`, times:
+We repeat the same process zillion, okay `n`, times:
 
   1. Sample three coins with replacement from `coin_sample_space`.
   2. Determine whether we can shape a triangle with the purchased strings.
